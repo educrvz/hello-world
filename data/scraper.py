@@ -412,12 +412,50 @@ def download_pdf(state_slug: str, output_dir: str) -> str:
     return None
 
 
+def find_pdf_for_state(pdf_dir: str, slug: str, code: str) -> str:
+    """
+    Find a PDF file for a given state. Supports multiple naming conventions:
+      - {slug}.pdf           (e.g., acre.pdf)
+      - {CODE}_*.pdf         (e.g., AC_20260315.pdf)
+      - {CODE}.pdf           (e.g., AC.pdf)
+    Returns the file path or None.
+    """
+    # Try slug-based name first
+    slug_path = os.path.join(pdf_dir, f"{slug}.pdf")
+    if os.path.exists(slug_path):
+        return slug_path
+
+    # Try exact state code
+    code_path = os.path.join(pdf_dir, f"{code}.pdf")
+    if os.path.exists(code_path):
+        return code_path
+
+    # Try state code with date suffix (XX_YYYYMMDD.pdf pattern)
+    import glob
+    pattern = os.path.join(pdf_dir, f"{code}_*.pdf")
+    matches = sorted(glob.glob(pattern))
+    if matches:
+        return matches[-1]  # Use the most recent by filename
+
+    # Case-insensitive search for any of the above
+    try:
+        for f in os.listdir(pdf_dir):
+            f_upper = f.upper()
+            if f_upper == f"{code}.PDF" or f_upper.startswith(f"{code}_") and f_upper.endswith(".PDF"):
+                return os.path.join(pdf_dir, f)
+    except OSError:
+        pass
+
+    return None
+
+
 def scrape_all(pdf_dir: str, download: bool = False) -> tuple:
     """
     Parse all state PDFs. Returns (hospitals, failures).
 
     Args:
-        pdf_dir: Directory containing {state_slug}.pdf files
+        pdf_dir: Directory containing PDF files (supports multiple naming conventions:
+                 {slug}.pdf, {STATE_CODE}.pdf, or {STATE_CODE}_YYYYMMDD.pdf)
         download: If True, download missing PDFs first
     """
     all_hospitals = []
@@ -428,10 +466,8 @@ def scrape_all(pdf_dir: str, download: bool = False) -> tuple:
         os.makedirs(pdf_dir, exist_ok=True)
 
     for slug, (code, name) in sorted(STATES.items()):
-        pdf_path = os.path.join(pdf_dir, f"{slug}.pdf")
-
-        # Download if requested and missing
-        if download and not os.path.exists(pdf_path):
+        # Download if requested and no PDF found
+        if download and not find_pdf_for_state(pdf_dir, slug, code):
             downloaded = download_pdf(slug, pdf_dir)
             if not downloaded:
                 all_failures.append({
@@ -443,13 +479,16 @@ def scrape_all(pdf_dir: str, download: bool = False) -> tuple:
                 stats[code] = 0
                 continue
 
+        # Find the PDF using flexible naming
+        pdf_path = find_pdf_for_state(pdf_dir, slug, code)
+
         # Check if PDF exists
-        if not os.path.exists(pdf_path):
-            print(f"[{code}] {name}: PDF not found at {pdf_path}")
+        if not pdf_path:
+            print(f"[{code}] {name}: No PDF found in {pdf_dir} (tried {slug}.pdf, {code}.pdf, {code}_*.pdf)")
             all_failures.append({
                 "state": code,
                 "state_name": name,
-                "error": f"PDF not found: {pdf_path}",
+                "error": f"PDF not found in {pdf_dir}",
                 "slug": slug,
             })
             stats[code] = 0

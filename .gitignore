@@ -1,5 +1,5 @@
 # PDFs (downloaded separately)
-data/pdfs/
+data/pdfs/*.pdf
 
 # Geocode cache
 data/geocode_cache.json
