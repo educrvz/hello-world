@@ -1,0 +1,26 @@
+{
+  "name": "SOS Antiveneno - Hospitais com Soro",
+  "short_name": "SOS Antiveneno",
+  "description": "Encontre hospitais com soro antiveneno mais próximos de você",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0066CC",
+  "background_color": "#F5F5F5",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

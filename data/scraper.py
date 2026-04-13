@@ -99,7 +99,8 @@ COLUMN_PATTERNS = {
     "antivenoms": [
         "antiveneno", "antivenenos", "soro", "soros",
         "antivenenos disponíveis", "antivenenos disponiveis",
-        "tipo de soro", "tipos de soro",
+        "atendimentos disponíveis", "atendimentos disponiveis",
+        "atendimentos", "tipo de soro", "tipos de soro",
     ],
 }
 
@@ -167,13 +168,22 @@ def is_header_row(row: list, header_map: dict) -> bool:
     non_empty = [str(c).strip() for c in row if c and str(c).strip()]
     if not non_empty:
         return True  # Empty row
+    # A row is a header if multiple cells match column pattern names
+    matches = 0
     for cell in non_empty:
         norm = normalize_text(cell)
+        if len(norm) > 30:
+            return False  # Data cells tend to be long; headers are short
         for patterns in COLUMN_PATTERNS.values():
             for pat in patterns:
-                if normalize_text(pat) in norm or norm in normalize_text(pat):
-                    return True
-    return False
+                pat_norm = normalize_text(pat)
+                if norm == pat_norm or (len(pat_norm) >= 5 and norm == pat_norm):
+                    matches += 1
+                    break
+            else:
+                continue
+            break
+    return matches >= 2  # Need at least 2 column-name matches to be a header
 
 
 def is_empty_row(row: list) -> bool:
@@ -309,25 +319,34 @@ def extract_tables_from_pdf(pdf_path: str, state_slug: str) -> list:
                     if not row:
                         continue
 
-                    # First row of first page: detect headers
-                    if header_map is None:
-                        header_map = normalize_columns(row)
-                        if header_map:
-                            continue
-                        else:
-                            # Could not detect headers — try next row
-                            continue
+                    # Detect headers — keep trying rows until we find one
+                    if not header_map:
+                        candidate = normalize_columns(row)
+                        if candidate:
+                            header_map = candidate
+                        # Either way, skip this row (it's a header or title)
+                        continue
 
                     # Skip repeated headers and empty rows
                     if is_header_row(row, header_map) or is_empty_row(row):
                         continue
 
-                    # Build record from row
+                    # Build record from row using positional mapping.
+                    # Some PDFs have "wide" tables (18 cols) where each logical
+                    # column spans 3 physical columns with None spacers.
+                    # We extract non-None values and map them positionally
+                    # to the detected field names (sorted by header index).
+                    field_order = [header_map[k] for k in sorted(header_map.keys())]
+                    effective_values = [
+                        str(v).strip() if v else ""
+                        for v in row if v is not None
+                    ]
                     record = {}
-                    for col_idx, field_name in header_map.items():
-                        if col_idx < len(row):
-                            val = row[col_idx]
-                            record[field_name] = str(val).strip() if val else ""
+                    for i, field_name in enumerate(field_order):
+                        if i < len(effective_values):
+                            record[field_name] = effective_values[i]
+                        else:
+                            record[field_name] = ""
 
                     # Track city — some PDFs have city in a merged cell
                     # that only appears once for multiple hospitals

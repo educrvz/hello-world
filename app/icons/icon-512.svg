@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect fill="#0066CC" rx="102" width="512" height="512"/>
+  <text x="256" y="260" font-size="160" font-weight="bold" text-anchor="middle" fill="white" font-family="sans-serif" dominant-baseline="central">SOS</text>
+  <text x="256" y="390" font-size="58" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="sans-serif">ANTIVENENO</text>
+</svg>

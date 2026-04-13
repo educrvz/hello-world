@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0066CC">
+    <meta name="description" content="Encontre hospitais com soro antiveneno mais próximos de você">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
+    <title>SOS Antiveneno</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <style>
+        :root {
+            --blue: #0066CC;
+            --blue-dark: #004C99;
+            --red: #D32F2F;
+            --green: #2E7D32;
+            --orange: #F57F17;
+            --bg: #F5F5F5;
+            --card: #FFFFFF;
+            --text: #212121;
+            --text2: #616161;
+            --shadow: 0 2px 8px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.5; }
+        .hidden { display: none !important; }
+
+        /* SAMU Banner */
+        .samu-banner {
+            background: var(--red); color: white; text-align: center;
+            padding: 10px 16px; font-size: 17px; font-weight: 700;
+            position: sticky; top: 0; z-index: 200;
+        }
+        .samu-banner a { color: white; text-decoration: none; }
+
+        /* Header */
+        .header {
+            background: var(--blue); color: white; padding: 16px;
+            position: sticky; top: 45px; z-index: 100; box-shadow: var(--shadow);
+        }
+        .header h1 { font-size: 22px; font-weight: 700; }
+        .header p { font-size: 13px; opacity: 0.9; margin-top: 2px; }
+        .header-row { display: flex; justify-content: space-between; align-items: center; }
+        .btn-map-toggle {
+            background: rgba(255,255,255,0.2); border: 2px solid white; color: white;
+            padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+            cursor: pointer; white-space: nowrap;
+        }
+
+        /* Loading Screen */
+        .screen-loading {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 60vh; text-align: center; padding: 32px;
+        }
+        .screen-loading h2 { font-size: 28px; color: var(--blue); margin-bottom: 8px; }
+        .screen-loading p { color: var(--text2); margin-bottom: 24px; }
+        .spinner {
+            width: 48px; height: 48px; border: 4px solid #ddd;
+            border-top-color: var(--blue); border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .btn-primary {
+            background: var(--blue); color: white; border: none; border-radius: 8px;
+            padding: 14px 28px; font-size: 18px; font-weight: 600; cursor: pointer;
+            min-height: 48px;
+        }
+        .btn-primary:active { background: var(--blue-dark); }
+
+        /* Filters */
+        .filters { padding: 12px 16px; background: white; border-bottom: 1px solid #e0e0e0; }
+        .filter-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+        .filter-row::-webkit-scrollbar { display: none; }
+        .filter-select {
+            width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;
+            font-size: 16px; background: white; color: var(--text); appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center;
+        }
+        .filter-select:focus { border-color: var(--blue); outline: none; }
+        .search-input {
+            width: 100%; padding: 12px 16px; border: 2px solid #ddd; border-radius: 8px;
+            font-size: 16px; margin-top: 8px;
+        }
+        .search-input:focus { border-color: var(--blue); outline: none; }
+        .chip {
+            display: inline-flex; align-items: center; padding: 8px 14px;
+            border-radius: 20px; border: 2px solid var(--blue); background: white;
+            font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap;
+            min-height: 38px; color: var(--blue); flex-shrink: 0;
+        }
+        .chip.active { background: var(--blue); color: white; }
+        .state-select { margin-top: 8px; }
+
+        /* Results info */
+        .results-info {
+            padding: 8px 16px; font-size: 13px; color: var(--text2);
+            background: var(--bg); border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Hospital Cards */
+        .card-list { padding: 8px 0 80px; }
+        .card {
+            background: var(--card); border-radius: var(--radius); padding: 16px;
+            margin: 10px 16px; box-shadow: var(--shadow);
+        }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .card h3 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
+        .card .city { font-size: 14px; color: var(--text2); margin-top: 2px; }
+        .card .address { font-size: 13px; color: var(--text2); margin-top: 4px; }
+        .distance-badge {
+            font-size: 15px; font-weight: 700; padding: 4px 10px;
+            border-radius: 16px; white-space: nowrap; flex-shrink: 0;
+        }
+        .dist-near { background: #E8F5E9; color: var(--green); }
+        .dist-mid { background: #FFF8E1; color: var(--orange); }
+        .dist-far { background: #FFEBEE; color: var(--red); }
+        .dist-approx::after { content: " ~"; font-size: 11px; }
+
+        /* Antivenom tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .tag {
+            font-size: 11px; font-weight: 600; padding: 3px 8px;
+            border-radius: 10px; color: white; text-transform: uppercase; letter-spacing: 0.3px;
+        }
+        .tag-escorpionico { background: #F9A825; }
+        .tag-botropico { background: #388E3C; }
+        .tag-crotalico { background: #757575; }
+        .tag-laquetico { background: #2E7D32; }
+        .tag-elapidico { background: #D32F2F; }
+        .tag-foneutrico { background: #7B1FA2; }
+        .tag-loxoscelico { background: #795548; }
+        .tag-lonomico { background: #EF6C00; }
+        .tag-default { background: #1976D2; }
+
+        /* Action buttons */
+        .actions { display: flex; gap: 10px; margin-top: 12px; }
+        .btn-call {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            background: var(--green); color: white; border: none; border-radius: 8px;
+            padding: 12px 16px; font-size: 16px; font-weight: 600; text-decoration: none;
+            min-height: 48px; flex: 1; cursor: pointer;
+        }
+        .btn-directions {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            background: var(--blue); color: white; border: none; border-radius: 8px;
+            padding: 12px 16px; font-size: 16px; font-weight: 600; text-decoration: none;
+            min-height: 48px; flex: 1; cursor: pointer;
+        }
+        .btn-share {
+            display: flex; align-items: center; justify-content: center;
+            background: #25D366; color: white; border: none; border-radius: 8px;
+            padding: 12px; min-height: 48px; cursor: pointer; font-size: 18px;
+        }
+
+        /* Load more */
+        .load-more {
+            display: block; width: calc(100% - 32px); margin: 12px 16px;
+            padding: 14px; background: white; border: 2px solid var(--blue);
+            border-radius: 8px; font-size: 16px; font-weight: 600;
+            color: var(--blue); cursor: pointer; text-align: center;
+        }
+
+        /* Map */
+        #map-container {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 300;
+        }
+        #map { width: 100%; height: 100%; }
+        .map-back {
+            position: fixed; top: 16px; left: 16px; z-index: 400;
+            background: white; border: none; border-radius: 8px;
+            padding: 10px 16px; font-size: 15px; font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3); cursor: pointer; color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            background: white; border-top: 1px solid #e0e0e0;
+            padding: 16px; text-align: center; font-size: 12px; color: var(--text2);
+        }
+        .footer a { color: var(--blue); }
+
+        /* Empty state */
+        .empty-state { text-align: center; padding: 40px 16px; color: var(--text2); }
+        .empty-state p { font-size: 16px; margin-top: 8px; }
+
+        /* Leaflet popup override */
+        .leaflet-popup-content { font-family: var(--font); font-size: 14px; }
+        .leaflet-popup-content a { color: var(--blue); }
+    </style>
+</head>
+<body>
+    <!-- SAMU Banner -->
+    <div class="samu-banner" id="samu-banner">
+        <a href="tel:192">&#128680; Emergência? Ligue 192 (SAMU)</a>
+    </div>
+
+    <!-- Header -->
+    <div class="header" id="main-header">
+        <div class="header-row">
+            <div>
+                <h1>SOS Antiveneno</h1>
+                <p>Encontre o hospital mais próximo com soro antiveneno</p>
+            </div>
+            <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="screen-loading" class="screen-loading">
+        <h2>SOS Antiveneno</h2>
+        <p>Encontre hospitais com soro antiveneno perto de você</p>
+        <div class="spinner" id="spinner"></div>
+        <p id="loading-msg" style="margin-top:16px; font-size:14px; color:#999;">Carregando dados...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="screen-list" class="hidden">
+        <!-- Filters -->
+        <div class="filters">
+            <select class="filter-select" id="filter-incident" onchange="onIncidentFilter()">
+                <option value="">O que aconteceu?</option>
+                <option value="escorpiao">Picada de escorpião</option>
+                <option value="cobra">Picada de cobra</option>
+                <option value="aranha">Picada de aranha</option>
+                <option value="lagarta">Contato com taturana/lagarta</option>
+                <option value="outro">Outro / Não sei</option>
+            </select>
+            <div class="filter-row" id="antivenom-chips"></div>
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital, cidade ou estado..." oninput="onSearchInput()">
+            <select class="filter-select state-select" id="filter-state" onchange="onStateFilter()">
+                <option value="">Todos os estados</option>
+            </select>
+        </div>
+
+        <!-- Results info -->
+        <div class="results-info" id="results-info"></div>
+
+        <!-- Hospital cards -->
+        <div class="card-list" id="card-list"></div>
+
+        <!-- Load more -->
+        <button class="load-more hidden" id="btn-load-more" onclick="loadMore()">Carregar mais hospitais</button>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Dados: Ministério da Saúde — PESA (Pontos Estratégicos de Soro Antiveneno)</p>
+            <p>Em caso de emergência, ligue <a href="tel:192">192 (SAMU)</a></p>
+            <p style="margin-top:8px; font-size:11px;">Este aplicativo é uma ferramenta de auxílio. Sempre ligue 192 (SAMU) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
+        </div>
+    </div>
+
+    <!-- Map Screen -->
+    <div id="map-container" class="hidden">
+        <button class="map-back" onclick="toggleMap()">&#8592; Voltar para lista</button>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script>
+    (function() {
+    'use strict';
+
+    // ===== CONFIG =====
+    var SHOW_COUNT = 10;
+    var GPS_TIMEOUT = 15000;
+
+    // ===== STATE =====
+    var hospitals = [];
+    var userLat = null, userLng = null;
+    var gpsAvailable = false;
+    var searchQuery = '';
+    var filterAntivenom = null;
+    var filterState = null;
+    var showCount = SHOW_COUNT;
+    var mapInstance = null;
+    var mapMarkers = [];
+    var mapShowing = false;
+
+    // ===== ANTIVENOM CONFIG =====
+    var ANTIVENOM_COLORS = {
+        'escorpionico': 'tag-escorpionico',
+        'botropico': 'tag-botropico',
+        'crotalico': 'tag-crotalico',
+        'laquetico': 'tag-laquetico',
+        'elapidico': 'tag-elapidico',
+        'foneutrico': 'tag-foneutrico',
+        'loxoscelico': 'tag-loxoscelico',
+        'lonomico': 'tag-lonomico'
+    };
+
+    var INCIDENT_MAP = {
+        'escorpiao': ['escorpionico'],
+        'cobra': ['botropico', 'crotalico', 'laquetico', 'elapidico'],
+        'aranha': ['foneutrico', 'loxoscelico', 'aracnidico'],
+        'lagarta': ['lonomico'],
+        'outro': []
+    };
+
+    // ===== UTILS =====
+    function norm(s) {
+        if (!s) return '';
+        return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function haversine(lat1, lon1, lat2, lon2) {
+        var R = 6371;
+        var dLat = (lat2 - lat1) * Math.PI / 180;
+        var dLon = (lon2 - lon1) * Math.PI / 180;
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function formatDist(km) {
+        if (km < 1) return Math.round(km * 1000) + ' m';
+        if (km < 10) return km.toFixed(1) + ' km';
+        return Math.round(km) + ' km';
+    }
+
+    function distClass(km) {
+        if (km < 50) return 'dist-near';
+        if (km < 150) return 'dist-mid';
+        return 'dist-far';
+    }
+
+    function formatPhone(phone) {
+        if (!phone) return null;
+        var digits = phone.replace(/\D/g, '');
+        if (digits.length < 8) return null;
+        var full = digits.startsWith('55') ? digits : '55' + digits;
+        return '+' + full;
+    }
+
+    function tagClass(name) {
+        var n = norm(name);
+        for (var key in ANTIVENOM_COLORS) {
+            if (n.indexOf(key) !== -1) return ANTIVENOM_COLORS[key];
+        }
+        return 'tag-default';
+    }
+
+    // ===== DATA LOADING =====
+    function loadHospitals() {
+        return fetch('hospitals.json')
+            .then(function(r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            })
+            .then(function(data) {
+                hospitals = data.filter(function(h) {
+                    return h.hospital_name && h.lat != null && h.lng != null;
+                });
+                return hospitals;
+            });
+    }
+
+    // ===== GEOLOCATION =====
+    function requestLocation() {
+        return new Promise(function(resolve) {
+            if (!navigator.geolocation) { resolve(null); return; }
+            document.getElementById('loading-msg').textContent = 'Buscando sua localização...';
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    userLat = pos.coords.latitude;
+                    userLng = pos.coords.longitude;
+                    gpsAvailable = true;
+                    resolve(pos);
+                },
+                function() {
+                    gpsAvailable = false;
+                    resolve(null);
+                },
+                { enableHighAccuracy: true, timeout: GPS_TIMEOUT, maximumAge: 300000 }
+            );
+        });
+    }
+
+    // ===== FILTERING & SORTING =====
+    function getFiltered() {
+        var results = hospitals.slice();
+
+        // Text search
+        if (searchQuery) {
+            var q = norm(searchQuery);
+            results = results.filter(function(h) {
+                var hay = norm(h.hospital_name + ' ' + h.city + ' ' + h.state_name + ' ' + (h.address || ''));
+                return hay.indexOf(q) !== -1;
+            });
+        }
+
+        // State filter
+        if (filterState) {
+            results = results.filter(function(h) { return h.state === filterState; });
+        }
+
+        // Antivenom filter
+        if (filterAntivenom) {
+            var types = Array.isArray(filterAntivenom) ? filterAntivenom : [filterAntivenom];
+            results = results.filter(function(h) {
+                if (!h.antivenoms) return false;
+                return types.some(function(t) {
+                    return h.antivenoms.some(function(a) { return norm(a).indexOf(t) !== -1; });
+                });
+            });
+        }
+
+        // Add distance
+        if (gpsAvailable) {
+            results.forEach(function(h) {
+                h._dist = haversine(userLat, userLng, h.lat, h.lng);
+            });
+            results.sort(function(a, b) { return a._dist - b._dist; });
+        } else {
+            results.sort(function(a, b) {
+                var s = a.state_name.localeCompare(b.state_name, 'pt-BR');
+                return s !== 0 ? s : a.city.localeCompare(b.city, 'pt-BR');
+            });
+        }
+
+        return results;
+    }
+
+    // ===== POPULATE FILTERS =====
+    function populateFilters() {
+        // State dropdown
+        var states = {};
+        hospitals.forEach(function(h) { states[h.state] = h.state_name; });
+        var sel = document.getElementById('filter-state');
+        Object.keys(states).sort().forEach(function(code) {
+            var opt = document.createElement('option');
+            opt.value = code;
+            opt.textContent = states[code] + ' (' + code + ')';
+            sel.appendChild(opt);
+        });
+        // Antivenom chips
+        var allTypes = {};
+        hospitals.forEach(function(h) {
+            if (h.antivenoms) h.antivenoms.forEach(function(a) {
+                var key = norm(a);
+                if (!allTypes[key]) allTypes[key] = a;
+            });
+        });
+        var chipContainer = document.getElementById('antivenom-chips');
+        var chipOrder = ['escorpionico','botropico','crotalico','laquetico','elapidico','foneutrico','loxoscelico','lonomico'];
+        chipOrder.forEach(function(key) {
+            for (var k in allTypes) {
+                if (k.indexOf(key) !== -1) {
+                    var btn = document.createElement('button');
+                    btn.className = 'chip';
+                    btn.dataset.type = key;
+                    btn.textContent = allTypes[k];
+                    btn.onclick = function() { onChipClick(this.dataset.type); };
+                    chipContainer.appendChild(btn);
+                    delete allTypes[k];
+                    break;
+                }
+            }
+        });
+        // Any remaining types
+        for (var k in allTypes) {
+            var btn = document.createElement('button');
+            btn.className = 'chip';
+            btn.dataset.type = k;
+            btn.textContent = allTypes[k];
+            btn.onclick = function() { onChipClick(this.dataset.type); };
+            chipContainer.appendChild(btn);
+        }
+    }
+
+    // ===== RENDER CARD =====
+    function renderCard(h) {
+        var distHtml = '';
+        if (gpsAvailable && h._dist != null) {
+            var approx = (h.geocode_quality === 'city_centroid') ? ' dist-approx' : '';
+            distHtml = '<span class="distance-badge ' + distClass(h._dist) + approx + '">' + formatDist(h._dist) + '</span>';
+        }
+        var tagsHtml = '';
+        if (h.antivenoms && h.antivenoms.length) {
+            tagsHtml = '<div class="tags">' + h.antivenoms.map(function(a) {
+                return '<span class="tag ' + tagClass(a) + '">' + a + '</span>';
+            }).join('') + '</div>';
+        }
+        var phoneLink = formatPhone(h.phone);
+        var callHtml = '';
+        if (phoneLink) {
+            callHtml = '<a class="btn-call" href="tel:' + phoneLink + '">&#128222; Ligar ' + h.phone + '</a>';
+        } else if (h.phone) {
+            callHtml = '<a class="btn-call" href="tel:' + h.phone + '">&#128222; ' + h.phone + '</a>';
+        }
+        var dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
+        var shareText = encodeURIComponent(
+            'Preciso de soro antiveneno!\nHospital: ' + h.hospital_name +
+            '\nCidade: ' + h.city + ' - ' + h.state +
+            (h.phone ? '\nTelefone: ' + h.phone : '') +
+            '\nComo chegar: ' + dirUrl
+        );
+        return '<div class="card">' +
+            '<div class="card-header">' +
+                '<div><h3>' + h.hospital_name + '</h3>' +
+                '<div class="city">' + h.city + ', ' + h.state + '</div>' +
+                (h.address ? '<div class="address">' + h.address + '</div>' : '') +
+                '</div>' + distHtml +
+            '</div>' +
+            tagsHtml +
+            '<div class="actions">' +
+                callHtml +
+                '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>' +
+                '<button class="btn-share" onclick="window.open(\'https://wa.me/?text=' + shareText + '\')" title="Compartilhar via WhatsApp">&#128279;</button>' +
+            '</div>' +
+        '</div>';
+    }
+
+    // ===== RENDER LIST =====
+    function renderList() {
+        var filtered = getFiltered();
+        var visible = filtered.slice(0, showCount);
+        var remaining = filtered.length - visible.length;
+
+        // Results info
+        var info = document.getElementById('results-info');
+        if (gpsAvailable) {
+            info.textContent = filtered.length + ' hospitais encontrados' +
+                (filtered.length > 0 && visible[0]._dist != null ? ' — mais próximo: ' + formatDist(visible[0]._dist) : '');
+        } else {
+            info.textContent = filtered.length + ' hospitais encontrados (localização indisponível — ordenados por estado)';
+        }
+
+        // Cards
+        var list = document.getElementById('card-list');
+        if (filtered.length === 0) {
+            list.innerHTML = '<div class="empty-state"><p>&#128269;</p><p>Nenhum hospital encontrado com os filtros selecionados.</p></div>';
+        } else {
+            list.innerHTML = visible.map(renderCard).join('');
+        }
+
+        // Load more button
+        var btn = document.getElementById('btn-load-more');
+        if (remaining > 0) {
+            btn.textContent = 'Carregar mais ' + Math.min(remaining, SHOW_COUNT) + ' de ' + remaining + ' hospitais';
+            btn.classList.remove('hidden');
+        } else {
+            btn.classList.add('hidden');
+        }
+    }
+
+    // ===== RENDER MAP =====
+    function renderMap() {
+        var filtered = getFiltered();
+        if (!mapInstance) {
+            var center = gpsAvailable ? [userLat, userLng] : [-14.235, -51.925];
+            var zoom = gpsAvailable ? 8 : 4;
+            mapInstance = L.map('map').setView(center, zoom);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap',
+                maxZoom: 18
+            }).addTo(mapInstance);
+            if (gpsAvailable) {
+                L.circleMarker([userLat, userLng], {
+                    radius: 10, fillColor: '#4285F4', fillOpacity: 1,
+                    color: 'white', weight: 3
+                }).addTo(mapInstance).bindPopup('Sua localização');
+            }
+        }
+        // Clear old markers
+        mapMarkers.forEach(function(m) { mapInstance.removeLayer(m); });
+        mapMarkers = [];
+        // Add hospital markers
+        var bounds = gpsAvailable ? [[userLat, userLng]] : [];
+        filtered.forEach(function(h) {
+            var distText = (gpsAvailable && h._dist != null) ? ' — ' + formatDist(h._dist) : '';
+            var phoneLink = formatPhone(h.phone);
+            var popup = '<strong>' + h.hospital_name + '</strong><br>' +
+                h.city + ', ' + h.state + distText + '<br>' +
+                (phoneLink ? '<a href="tel:' + phoneLink + '">&#128222; ' + h.phone + '</a><br>' : '') +
+                '<a href="https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng +
+                '" target="_blank">&#128506; Como Chegar</a>';
+            var marker = L.marker([h.lat, h.lng]).addTo(mapInstance).bindPopup(popup);
+            mapMarkers.push(marker);
+            bounds.push([h.lat, h.lng]);
+        });
+        if (bounds.length > 1) {
+            mapInstance.fitBounds(bounds, { padding: [30, 30] });
+        }
+        setTimeout(function() { mapInstance.invalidateSize(); }, 100);
+    }
+
+    // ===== EVENT HANDLERS =====
+    var searchTimer = null;
+    window.onSearchInput = function() {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function() {
+            searchQuery = document.getElementById('search-input').value.trim();
+            showCount = SHOW_COUNT;
+            renderList();
+        }, 300);
+    };
+
+    window.onIncidentFilter = function() {
+        var val = document.getElementById('filter-incident').value;
+        if (!val || val === 'outro') {
+            filterAntivenom = null;
+        } else {
+            filterAntivenom = INCIDENT_MAP[val] || null;
+        }
+        // Update chips to match
+        document.querySelectorAll('.chip').forEach(function(c) { c.classList.remove('active'); });
+        showCount = SHOW_COUNT;
+        renderList();
+    };
+
+    window.onStateFilter = function() {
+        filterState = document.getElementById('filter-state').value || null;
+        showCount = SHOW_COUNT;
+        renderList();
+    };
+
+    window.onChipClick = function(type) {
+        if (filterAntivenom && !Array.isArray(filterAntivenom) && filterAntivenom === type) {
+            filterAntivenom = null;
+        } else {
+            filterAntivenom = type;
+        }
+        document.getElementById('filter-incident').value = '';
+        document.querySelectorAll('.chip').forEach(function(c) {
+            c.classList.toggle('active', c.dataset.type === filterAntivenom);
+        });
+        showCount = SHOW_COUNT;
+        renderList();
+    };
+
+    window.loadMore = function() {
+        showCount += SHOW_COUNT;
+        renderList();
+    };
+
+    window.toggleMap = function() {
+        mapShowing = !mapShowing;
+        document.getElementById('map-container').classList.toggle('hidden', !mapShowing);
+        document.getElementById('screen-list').classList.toggle('hidden', mapShowing);
+        document.getElementById('main-header').classList.toggle('hidden', mapShowing);
+        document.getElementById('samu-banner').classList.toggle('hidden', mapShowing);
+        if (mapShowing) renderMap();
+    };
+
+    // ===== INIT =====
+    function init() {
+        Promise.all([loadHospitals(), requestLocation()])
+            .then(function() {
+                if (hospitals.length === 0) {
+                    document.getElementById('loading-msg').textContent =
+                        'Nenhum dado disponível. Execute o pipeline de dados primeiro.';
+                    document.getElementById('spinner').classList.add('hidden');
+                    return;
+                }
+                document.getElementById('screen-loading').classList.add('hidden');
+                document.getElementById('screen-list').classList.remove('hidden');
+                populateFilters();
+                renderList();
+            })
+            .catch(function(e) {
+                document.getElementById('loading-msg').textContent =
+                    'Erro ao carregar dados: ' + e.message;
+                document.getElementById('spinner').classList.add('hidden');
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js').catch(function() {});
+    }
+    })();
+    </script>
+</body>
+</html>
