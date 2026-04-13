@@ -99,7 +99,8 @@ COLUMN_PATTERNS = {
     "antivenoms": [
         "antiveneno", "antivenenos", "soro", "soros",
         "antivenenos disponíveis", "antivenenos disponiveis",
-        "tipo de soro", "tipos de soro",
+        "atendimentos disponíveis", "atendimentos disponiveis",
+        "atendimentos", "tipo de soro", "tipos de soro",
     ],
 }
 
@@ -330,12 +331,22 @@ def extract_tables_from_pdf(pdf_path: str, state_slug: str) -> list:
                     if is_header_row(row, header_map) or is_empty_row(row):
                         continue
 
-                    # Build record from row
+                    # Build record from row using positional mapping.
+                    # Some PDFs have "wide" tables (18 cols) where each logical
+                    # column spans 3 physical columns with None spacers.
+                    # We extract non-None values and map them positionally
+                    # to the detected field names (sorted by header index).
+                    field_order = [header_map[k] for k in sorted(header_map.keys())]
+                    effective_values = [
+                        str(v).strip() if v else ""
+                        for v in row if v is not None
+                    ]
                     record = {}
-                    for col_idx, field_name in header_map.items():
-                        if col_idx < len(row):
-                            val = row[col_idx]
-                            record[field_name] = str(val).strip() if val else ""
+                    for i, field_name in enumerate(field_order):
+                        if i < len(effective_values):
+                            record[field_name] = effective_values[i]
+                        else:
+                            record[field_name] = ""
 
                     # Track city — some PDFs have city in a merged cell
                     # that only appears once for multiple hospitals
