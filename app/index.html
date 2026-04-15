@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0066CC">
     <meta name="description" content="Encontre hospitais com soro antiveneno mais próximos de você">
-    <link rel="manifest" href="manifest.json">
+    <!-- <link rel="manifest" href="manifest.json"> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
     <title>SOS Antiveneno</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
@@ -32,10 +32,19 @@
         /* SAMU Banner */
         .samu-banner {
             background: var(--red); color: white; text-align: center;
-            padding: 10px 16px; font-size: 17px; font-weight: 700;
+            padding: 10px 16px; font-size: 15px; font-weight: 700;
             position: sticky; top: 0; z-index: 200;
         }
-        .samu-banner a { color: white; text-decoration: none; }
+        .samu-banner .samu-text { margin-bottom: 8px; }
+        .samu-buttons { display: flex; gap: 10px; justify-content: center; }
+        .samu-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            background: white; color: var(--red); border: none; border-radius: 8px;
+            padding: 10px 18px; font-size: 17px; font-weight: 800;
+            text-decoration: none; min-height: 44px; flex: 1; max-width: 180px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .samu-btn:active { background: #ffcccc; }
 
         /* Header */
         .header {
@@ -94,7 +103,65 @@
             min-height: 38px; color: var(--blue); flex-shrink: 0;
         }
         .chip.active { background: var(--blue); color: white; }
-        .state-select { margin-top: 8px; }
+        .state-select { margin-top: 8px; margin-bottom: 12px; }
+
+        /* City search for manual location */
+        /* Filter toggle */
+        .filter-toggle {
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd;
+            border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--text2);
+            cursor: pointer; margin-bottom: 4px;
+        }
+        .filter-toggle.active { background: #E3F2FD; color: var(--blue); border-color: var(--blue); }
+        .filters-collapsible { display: none; }
+        .filters-collapsible.open { display: block; }
+        .filters-always { } /* always-visible filter content */
+
+        .location-bar {
+            background: #E3F2FD; border: 2px solid var(--blue); border-radius: 8px;
+            padding: 12px; margin-top: 8px; display: flex; flex-direction: column; gap: 8px;
+        }
+        .location-bar label { font-size: 13px; font-weight: 600; color: var(--blue-dark); }
+        .location-bar input {
+            width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 8px;
+            font-size: 15px;
+        }
+        .location-bar input:focus { border-color: var(--blue); outline: none; }
+        .city-suggestions {
+            list-style: none; background: white; border: 1px solid #ddd; border-radius: 8px;
+            max-height: 200px; overflow-y: auto; margin: 0; padding: 0;
+            box-shadow: var(--shadow);
+        }
+        .city-suggestions li {
+            padding: 10px 12px; cursor: pointer; font-size: 14px; border-bottom: 1px solid #f0f0f0;
+        }
+        .city-suggestions li:hover, .city-suggestions li.selected { background: #E3F2FD; }
+        .location-chosen {
+            background: #E8F5E9; border-color: var(--green); padding: 10px 12px;
+            border-radius: 8px; border: 2px solid var(--green); font-size: 14px;
+            display: flex; justify-content: space-between; align-items: center; margin-top: 8px;
+        }
+        .location-chosen button {
+            background: none; border: none; color: var(--red); font-weight: 700;
+            cursor: pointer; font-size: 16px;
+        }
+
+        /* Antivenom info section */
+        .antivenom-info {
+            margin-top: 8px; padding: 10px 12px; background: #F3E5F5; border-radius: 8px;
+            border: 1px solid #CE93D8;
+        }
+        .antivenom-info summary {
+            font-size: 13px; font-weight: 600; color: #6A1B9A; cursor: pointer;
+        }
+        .antivenom-info .info-grid {
+            display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 8px;
+        }
+        .antivenom-info .info-item {
+            font-size: 12px; line-height: 1.4; padding: 4px 0;
+        }
+        .antivenom-info .info-item strong { color: #4A148C; }
 
         /* Results info */
         .results-info {
@@ -107,6 +174,21 @@
         .card {
             background: var(--card); border-radius: var(--radius); padding: 16px;
             margin: 10px 16px; box-shadow: var(--shadow);
+        }
+        .card-nearest {
+            border: 3px solid var(--green); position: relative;
+            box-shadow: 0 4px 16px rgba(46,125,50,0.25);
+        }
+        .nearest-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: var(--green); color: white; font-size: 12px; font-weight: 700;
+            padding: 4px 10px; border-radius: 4px; margin-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        /* Phone unavailable */
+        .phone-unavailable {
+            font-size: 13px; color: #999; font-style: italic; padding: 8px 0;
+            width: 100%;
         }
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
         .card h3 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
@@ -122,9 +204,10 @@
         .dist-approx::after { content: " ~"; font-size: 11px; }
 
         /* Antivenom tags */
-        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
+        .tags-label { font-size: 12px; font-weight: 700; color: var(--text2); margin-right: 2px; }
         .tag {
-            font-size: 11px; font-weight: 600; padding: 3px 8px;
+            font-size: 12px; font-weight: 600; padding: 4px 10px;
             border-radius: 10px; color: white; text-transform: uppercase; letter-spacing: 0.3px;
         }
         .tag-escorpionico { background: #F9A825; }
@@ -138,12 +221,13 @@
         .tag-default { background: #1976D2; }
 
         /* Action buttons */
-        .actions { display: flex; gap: 10px; margin-top: 12px; }
+        .actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .phones-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
         .btn-call {
             display: flex; align-items: center; justify-content: center; gap: 6px;
             background: var(--green); color: white; border: none; border-radius: 8px;
-            padding: 12px 16px; font-size: 16px; font-weight: 600; text-decoration: none;
-            min-height: 48px; flex: 1; cursor: pointer;
+            padding: 12px 16px; font-size: 15px; font-weight: 600; text-decoration: none;
+            min-height: 48px; flex: 1; cursor: pointer; min-width: 0;
         }
         .btn-directions {
             display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -152,9 +236,9 @@
             min-height: 48px; flex: 1; cursor: pointer;
         }
         .btn-share {
-            display: flex; align-items: center; justify-content: center;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
             background: #25D366; color: white; border: none; border-radius: 8px;
-            padding: 12px; min-height: 48px; cursor: pointer; font-size: 18px;
+            padding: 12px 14px; min-height: 48px; cursor: pointer; font-size: 13px; font-weight: 600;
         }
 
         /* Load more */
@@ -171,10 +255,47 @@
         }
         #map { width: 100%; height: 100%; }
         .map-back {
-            position: fixed; top: 16px; left: 16px; z-index: 400;
-            background: white; border: none; border-radius: 8px;
-            padding: 10px 16px; font-size: 15px; font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3); cursor: pointer; color: var(--text);
+            position: fixed; top: 16px; left: 60px; z-index: 1000;
+            background: var(--blue); border: none; border-radius: 8px;
+            padding: 12px 20px; font-size: 16px; font-weight: 700;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4); cursor: pointer; color: white;
+        }
+
+        /* CIATox cards */
+        .ciatox-section {
+            padding: 0 16px 8px;
+        }
+        .ciatox-label {
+            font-size: 13px; font-weight: 700; color: #B71C1C;
+            padding: 8px 0 4px; display: flex; align-items: center; gap: 6px;
+        }
+        .card-ciatox {
+            background: #FFF3E0; border-radius: var(--radius); padding: 14px 16px;
+            margin: 6px 0 10px; box-shadow: var(--shadow);
+            border-left: 4px solid #E65100;
+        }
+        .card-ciatox h4 { font-size: 15px; font-weight: 700; color: #BF360C; margin-bottom: 2px; }
+        .card-ciatox .ciatox-city { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+        .card-ciatox .ciatox-phones { display: flex; flex-wrap: wrap; gap: 6px; }
+        .card-ciatox .btn-ciatox {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: #E65100; color: white; border: none; border-radius: 6px;
+            padding: 8px 12px; font-size: 13px; font-weight: 600;
+            text-decoration: none; cursor: pointer;
+        }
+
+        /* Source date on cards — subtle */
+        .source-date {
+            font-size: 10px; color: #bbb; margin-top: 8px;
+            padding-top: 4px;
+        }
+        .source-date a { color: #aaa; text-decoration: none; }
+        .source-date a:hover { text-decoration: underline; color: var(--blue); }
+
+        /* Privacy note */
+        .privacy-note {
+            background: #E3F2FD; border-radius: 8px; padding: 10px 14px;
+            font-size: 12px; color: #1565C0; margin-top: 12px; line-height: 1.4;
         }
 
         /* Footer */
@@ -196,7 +317,12 @@
 <body>
     <!-- SAMU Banner -->
     <div class="samu-banner" id="samu-banner">
-        <a href="tel:192">&#128680; Emergência? Ligue 192 (SAMU)</a>
+        <div class="samu-text">&#128680; Emergência? Ligue imediatamente:</div>
+        <div class="samu-buttons">
+            <a class="samu-btn" href="tel:192">&#128222; 192 SAMU</a>
+            <a class="samu-btn" href="tel:193">&#128222; 193 Bombeiros</a>
+        </div>
+        <div style="font-size:11px; opacity:0.8; margin-top:6px;">Esta ferramenta é apenas informativa.</div>
     </div>
 
     <!-- Header -->
@@ -222,23 +348,53 @@
     <div id="screen-list" class="hidden">
         <!-- Filters -->
         <div class="filters">
-            <select class="filter-select" id="filter-incident" onchange="onIncidentFilter()">
-                <option value="">O que aconteceu?</option>
-                <option value="escorpiao">Picada de escorpião</option>
-                <option value="cobra">Picada de cobra</option>
-                <option value="aranha">Picada de aranha</option>
-                <option value="lagarta">Contato com taturana/lagarta</option>
-                <option value="outro">Outro / Não sei</option>
-            </select>
-            <div class="filter-row" id="antivenom-chips"></div>
-            <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital, cidade ou estado..." oninput="onSearchInput()">
-            <select class="filter-select state-select" id="filter-state" onchange="onStateFilter()">
-                <option value="">Todos os estados</option>
-            </select>
+            <!-- Manual location picker (shown when GPS unavailable) -->
+            <div id="location-bar" class="location-bar hidden">
+                <label>&#128205; Para encontrar hospitais próximos, informe sua cidade:</label>
+                <input type="text" id="city-search" placeholder="Digite o nome da cidade..." oninput="onCitySearch()" autocomplete="off">
+                <ul class="city-suggestions hidden" id="city-suggestions"></ul>
+            </div>
+            <div id="location-chosen" class="location-chosen hidden">
+                <span id="location-chosen-text"></span>
+                <button onclick="clearChosenLocation()" title="Remover">&#10005;</button>
+            </div>
+            <!-- Collapsible filters (hidden by default when GPS active) -->
+            <button class="filter-toggle" id="filter-toggle" onclick="toggleFilters()">&#128269; Filtrar por tipo, estado ou nome</button>
+            <div class="filters-collapsible" id="filters-collapsible">
+                <select class="filter-select" id="filter-incident" onchange="onIncidentFilter()">
+                    <option value="">Tipo de acidente (opcional)</option>
+                    <option value="escorpiao">Picada de escorpião</option>
+                    <option value="cobra">Picada de cobra</option>
+                    <option value="aranha">Picada de aranha</option>
+                    <option value="lagarta">Contato com taturana/lagarta</option>
+                    <option value="outro">Outro / Não sei</option>
+                </select>
+                <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital, cidade ou estado..." oninput="onSearchInput()">
+                <select class="filter-select state-select" id="filter-state" onchange="onStateFilter()">
+                    <option value="">Todos os estados</option>
+                </select>
+                <div class="filter-row" id="antivenom-chips"></div>
+                <!-- Antivenom info/explanation (below the chips) -->
+                <details class="antivenom-info">
+                    <summary>&#9432; O que significam os tipos de soro?</summary>
+                    <div class="info-grid">
+                        <div class="info-item"><strong>&#128013; Picada de cobra</strong> &#8594; procure <strong>Botrópico</strong> (jararaca, urutu), <strong>Crotálico</strong> (cascavel), <strong>Laquético</strong> (surucucu) ou <strong>Elapídico</strong> (coral)</div>
+                        <div class="info-item"><strong>&#129410; Picada de escorpião</strong> &#8594; procure <strong>Escorpiônico</strong></div>
+                        <div class="info-item"><strong>&#128375; Picada de aranha</strong> &#8594; procure <strong>Fonêutrico</strong> (armadeira), <strong>Loxoscélico</strong> (aranha marrom) ou <strong>Aracnídico</strong></div>
+                        <div class="info-item"><strong>&#128027; Contato com taturana</strong> &#8594; procure <strong>Lonômico</strong></div>
+                    </div>
+                </details>
+            </div>
         </div>
 
         <!-- Results info -->
         <div class="results-info" id="results-info"></div>
+
+        <!-- CIATox section -->
+        <div class="ciatox-section hidden" id="ciatox-section">
+            <div class="ciatox-label">&#9888;&#65039; Centro de Assistência Toxicológica (CIATox) do seu estado</div>
+            <div id="ciatox-cards"></div>
+        </div>
 
         <!-- Hospital cards -->
         <div class="card-list" id="card-list"></div>
@@ -246,11 +402,17 @@
         <!-- Load more -->
         <button class="load-more hidden" id="btn-load-more" onclick="loadMore()">Carregar mais hospitais</button>
 
+        <!-- Privacy note -->
+        <div class="privacy-note" style="margin: 12px 16px;">
+            &#128274; Este site utiliza sua localização <strong>apenas</strong> para mostrar os hospitais mais próximos. <strong>Não armazenamos nem compartilhamos seus dados.</strong>
+        </div>
+
         <!-- Footer -->
         <div class="footer">
-            <p>Dados: Ministério da Saúde — PESA (Pontos Estratégicos de Soro Antiveneno)</p>
-            <p>Em caso de emergência, ligue <a href="tel:192">192 (SAMU)</a></p>
-            <p style="margin-top:8px; font-size:11px;">Este aplicativo é uma ferramenta de auxílio. Sempre ligue 192 (SAMU) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
+            <p><strong>Fonte dos dados:</strong> <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia" target="_blank" rel="noopener">Ministério da Saúde — Hospitais de Referência para Atendimento de Acidentes por Animais Peçonhentos</a></p>
+            <p style="margin-top:6px;">PESA — Pontos Estratégicos de Soro Antiveneno</p>
+            <p style="margin-top:8px;">Em caso de emergência, ligue <a href="tel:192">192 (SAMU)</a> ou <a href="tel:193">193 (Bombeiros)</a></p>
+            <p style="margin-top:8px; font-size:11px;">Este aplicativo é uma ferramenta de auxílio e informação. Sempre ligue 192 (SAMU) ou 193 (Bombeiros) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
         </div>
     </div>
 
@@ -300,6 +462,43 @@
         'lagarta': ['lonomico'],
         'outro': []
     };
+
+    // ===== CIATox DATA =====
+    // Source: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/ciatox
+    var CIATOX = [
+        {state:"AM",city:"Manaus",name:"CIT/AM",phones:["(92) 3305-4702","0800-722-6001"]},
+        {state:"BA",city:"Salvador",name:"CIATox/BA",phones:["0800-284-4343","(71) 3103-4343"]},
+        {state:"CE",city:"Fortaleza",name:"CIATox/CE",phones:["(85) 3255-5050","(85) 3255-5012"]},
+        {state:"DF",city:"Brasília",name:"CIATox/DF",phones:["0800-644-6774","(61) 3225-6512"]},
+        {state:"ES",city:"Vitória",name:"CIATox/ES",phones:["0800-83-9904","(27) 3636-7575"]},
+        {state:"GO",city:"Goiânia",name:"CIATox/GO",phones:["0800-646-4350","(62) 3241-2723"]},
+        {state:"MT",city:"Cuiabá",name:"Centro Antiveneno/MT",phones:["0800-722-6001","(65) 3318-4872"]},
+        {state:"MS",city:"Campo Grande",name:"CIVITOX/MS",phones:["(67) 3386-8655","0800-722-6001"]},
+        {state:"MG",city:"Belo Horizonte",name:"CIATox/MG",phones:["(31) 3224-4000","(31) 3239-9224"]},
+        {state:"PA",city:"Belém",name:"CIT/PA",phones:["0800-722-6001","(91) 3249-6370"]},
+        {state:"PB",city:"Campina Grande",name:"CIATox Campina Grande",phones:["0800-722-6001","(83) 3310-5850"]},
+        {state:"PB",city:"João Pessoa",name:"CIATox João Pessoa",phones:["0800-722-6001","(83) 3224-6688"]},
+        {state:"PR",city:"Curitiba",name:"CIATox/PR",phones:["0800-041-0148","(41) 3235-6737"]},
+        {state:"PR",city:"Cascavel",name:"CIATox Cascavel",phones:["(45) 3321-5261"]},
+        {state:"PR",city:"Londrina",name:"CIATox Londrina",phones:["(43) 3371-2244"]},
+        {state:"PR",city:"Maringá",name:"CCI Maringá",phones:["(44) 3011-9127"]},
+        {state:"PE",city:"Recife",name:"CIATox/PE",phones:["0800-722-6001","(81) 3181-6450"]},
+        {state:"PI",city:"Teresina",name:"CITOX/PI",phones:["0800-280-3661"]},
+        {state:"RJ",city:"Niterói",name:"CCIn Niterói",phones:["0800-722-6001","(21) 2629-9033"]},
+        {state:"RN",city:"Natal",name:"CEATOX/RN",phones:["0800-281-7005","(84) 3232-4295"]},
+        {state:"RS",city:"Porto Alegre",name:"CIT/RS",phones:["0800-721-3000","(51) 2139-9200"]},
+        {state:"SC",city:"Florianópolis",name:"CIATox/SC",phones:["0800-643-5252","(48) 3721-9083"]},
+        {state:"SP",city:"São Paulo",name:"CIATox/SP (HC-USP)",phones:["0800-014-8110","(11) 2661-8800"]},
+        {state:"SP",city:"São Paulo",name:"CCI São Paulo",phones:["0800-771-3733","(11) 5012-2399"]},
+        {state:"SP",city:"Campinas",name:"CIATox Campinas",phones:["(19) 3521-7555"]},
+        {state:"SP",city:"Ribeirão Preto",name:"CIATox Ribeirão Preto",phones:["(16) 3602-1190"]},
+        {state:"SP",city:"Botucatu",name:"CEATOX Botucatu",phones:["(14) 3880-0673"]},
+        {state:"SP",city:"Santos",name:"CIATox Santos",phones:["(13) 3222-2878"]},
+        {state:"SP",city:"São José do Rio Preto",name:"CIATox S.J. Rio Preto",phones:["(17) 3201-5175"]},
+        {state:"SP",city:"São José dos Campos",name:"CCI S.J. Campos",phones:["0800-722-6001","(12) 3901-3509"]},
+        {state:"SP",city:"Taubaté",name:"CCI Taubaté",phones:["(12) 3621-6036"]},
+        {state:"SE",city:"Aracaju",name:"CIATox/SE",phones:["0800-722-6001"]}
+    ];
 
     // ===== UTILS =====
     function norm(s) {
@@ -353,8 +552,9 @@
                 return r.json();
             })
             .then(function(data) {
-                hospitals = data.filter(function(h) {
-                    return h.hospital_name && h.lat != null && h.lng != null;
+                var list = Array.isArray(data) ? data : data.hospitals || data;
+                hospitals = list.filter(function(h) {
+                    return h.hospital_name;
                 });
                 return hospitals;
             });
@@ -413,13 +613,17 @@
         // Add distance
         if (gpsAvailable) {
             results.forEach(function(h) {
-                h._dist = haversine(userLat, userLng, h.lat, h.lng);
+                if (h.lat != null && h.lng != null) {
+                    h._dist = haversine(userLat, userLng, h.lat, h.lng);
+                } else {
+                    h._dist = 999999;
+                }
             });
             results.sort(function(a, b) { return a._dist - b._dist; });
         } else {
             results.sort(function(a, b) {
-                var s = a.state_name.localeCompare(b.state_name, 'pt-BR');
-                return s !== 0 ? s : a.city.localeCompare(b.city, 'pt-BR');
+                var s = (a.state_name || '').localeCompare(b.state_name || '', 'pt-BR');
+                return s !== 0 ? s : (a.city || '').localeCompare(b.city || '', 'pt-BR');
             });
         }
 
@@ -474,33 +678,73 @@
     }
 
     // ===== RENDER CARD =====
-    function renderCard(h) {
+    function renderCard(h, idx) {
+        var isNearest = gpsAvailable && idx === 0;
         var distHtml = '';
-        if (gpsAvailable && h._dist != null) {
-            var approx = (h.geocode_quality === 'city_centroid') ? ' dist-approx' : '';
+        if (gpsAvailable && h._dist != null && h._dist < 999999) {
+            var approx = (h.geocode_tier === 3) ? ' dist-approx' : '';
             distHtml = '<span class="distance-badge ' + distClass(h._dist) + approx + '">' + formatDist(h._dist) + '</span>';
         }
+
+        // Nearest badge
+        var nearestHtml = isNearest ? '<div class="nearest-badge">&#127973; Hospital mais próximo</div>' : '';
+
+        // Antivenoms — prominently displayed
         var tagsHtml = '';
         if (h.antivenoms && h.antivenoms.length) {
-            tagsHtml = '<div class="tags">' + h.antivenoms.map(function(a) {
+            tagsHtml = '<div class="tags"><span class="tags-label">Atendimentos:</span>' + h.antivenoms.map(function(a) {
                 return '<span class="tag ' + tagClass(a) + '">' + a + '</span>';
             }).join('') + '</div>';
         }
-        var phoneLink = formatPhone(h.phone);
+
+        // Multiple phone numbers — hide button when unavailable
+        var phones = h.phones || (h.phone ? [h.phone] : []);
+        // Filter out "não disponível", "Sem contato", empty, "****"
+        var validPhones = phones.filter(function(p) {
+            if (!p) return false;
+            var pn = norm(p).trim();
+            return pn.length > 3 && pn.indexOf('nao disponivel') === -1 && pn.indexOf('sem contato') === -1 && p.replace(/\*/g, '').trim().length > 0;
+        });
         var callHtml = '';
-        if (phoneLink) {
-            callHtml = '<a class="btn-call" href="tel:' + phoneLink + '">&#128222; Ligar ' + h.phone + '</a>';
-        } else if (h.phone) {
-            callHtml = '<a class="btn-call" href="tel:' + h.phone + '">&#128222; ' + h.phone + '</a>';
+        if (validPhones.length > 0) {
+            callHtml = '<div class="phones-row">' + validPhones.map(function(p) {
+                var link = formatPhone(p);
+                if (link) {
+                    return '<a class="btn-call" href="tel:' + link + '">&#128222; ' + p + '</a>';
+                }
+                return '<a class="btn-call" href="tel:' + p.replace(/\D/g, '') + '">&#128222; ' + p + '</a>';
+            }).join('') + '</div>';
+        } else {
+            callHtml = '<div class="phone-unavailable">Telefone não disponível</div>';
         }
-        var dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
+
+        var dirHtml = '';
+        if (h.lat != null && h.lng != null) {
+            var dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
+            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>';
+        } else if (h.address) {
+            var dirUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.hospital_name + ', ' + h.city + ', ' + h.state);
+            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>';
+        }
+
+        var phoneText = validPhones.join(' / ');
         var shareText = encodeURIComponent(
             'Preciso de soro antiveneno!\nHospital: ' + h.hospital_name +
             '\nCidade: ' + h.city + ' - ' + h.state +
-            (h.phone ? '\nTelefone: ' + h.phone : '') +
-            '\nComo chegar: ' + dirUrl
+            (phoneText ? '\nTelefone: ' + phoneText : '') +
+            (h.lat ? '\nComo chegar: https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng : '')
         );
-        return '<div class="card">' +
+
+        // Source date — subtle
+        var sourceHtml = '';
+        if (h.source_date) {
+            var dateFormatted = h.source_date.split('-').reverse().join('/');
+            sourceHtml = '<div class="source-date">Atualizado ' + dateFormatted +
+                ' — <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia" target="_blank" rel="noopener">Fonte: MS</a></div>';
+        }
+
+        return '<div class="card' + (isNearest ? ' card-nearest' : '') + '">' +
+            nearestHtml +
             '<div class="card-header">' +
                 '<div><h3>' + h.hospital_name + '</h3>' +
                 '<div class="city">' + h.city + ', ' + h.state + '</div>' +
@@ -510,13 +754,71 @@
             tagsHtml +
             '<div class="actions">' +
                 callHtml +
-                '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>' +
-                '<button class="btn-share" onclick="window.open(\'https://wa.me/?text=' + shareText + '\')" title="Compartilhar via WhatsApp">&#128279;</button>' +
+                dirHtml +
+                '<button class="btn-share" onclick="window.open(\'https://wa.me/?text=' + shareText + '\')" title="Compartilhar via WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.665-1.467A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.09 0-4.032-.66-5.625-1.783l-.403-.262-2.768.87.872-2.696-.283-.424A9.698 9.698 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg> Enviar</button>' +
             '</div>' +
+            sourceHtml +
         '</div>';
     }
 
     // ===== RENDER LIST =====
+    // ===== CIATox RENDERING =====
+    function getCiatoxForContext() {
+        // Determine which CIATox centers to show based on state filter, chosen city, or nearest hospital
+        var targetState = null;
+        var refCity = null;
+        if (filterState) {
+            targetState = filterState;
+        } else if (chosenCity) {
+            targetState = chosenCity.state;
+            refCity = chosenCity.name;
+        } else if (gpsAvailable) {
+            var sorted = hospitals.filter(function(h) { return h.lat && h.lng; });
+            if (sorted.length > 0) {
+                sorted.sort(function(a, b) {
+                    return haversine(userLat, userLng, a.lat, a.lng) - haversine(userLat, userLng, b.lat, b.lng);
+                });
+                targetState = sorted[0].state;
+                refCity = sorted[0].city;
+            }
+        }
+        if (!targetState) return [];
+        var stateCenters = CIATOX.filter(function(c) { return c.state === targetState; });
+        if (stateCenters.length <= 2) return stateCenters;
+        // Pick closest: prioritize same city, then capital/first entry
+        if (refCity) {
+            var refNorm = norm(refCity);
+            stateCenters.sort(function(a, b) {
+                var aMatch = norm(a.city) === refNorm ? 0 : 1;
+                var bMatch = norm(b.city) === refNorm ? 0 : 1;
+                return aMatch - bMatch;
+            });
+        }
+        return stateCenters.slice(0, 2);
+    }
+
+    function renderCiatox() {
+        var centers = getCiatoxForContext();
+        var section = document.getElementById('ciatox-section');
+        var container = document.getElementById('ciatox-cards');
+        if (centers.length === 0) {
+            section.classList.add('hidden');
+            return;
+        }
+        section.classList.remove('hidden');
+        container.innerHTML = centers.map(function(c) {
+            var phonesHtml = c.phones.map(function(p) {
+                var link = '+55' + p.replace(/\D/g, '');
+                return '<a class="btn-ciatox" href="tel:' + link + '">&#128222; ' + p + '</a>';
+            }).join('');
+            return '<div class="card-ciatox">' +
+                '<h4>&#9888;&#65039; ' + c.name + '</h4>' +
+                '<div class="ciatox-city">' + c.city + ', ' + c.state + ' — Orientação toxicológica por telefone</div>' +
+                '<div class="ciatox-phones">' + phonesHtml + '</div>' +
+            '</div>';
+        }).join('');
+    }
+
     function renderList() {
         var filtered = getFiltered();
         var visible = filtered.slice(0, showCount);
@@ -525,24 +827,26 @@
         // Results info
         var info = document.getElementById('results-info');
         if (gpsAvailable) {
-            info.textContent = filtered.length + ' hospitais encontrados' +
-                (filtered.length > 0 && visible[0]._dist != null ? ' — mais próximo: ' + formatDist(visible[0]._dist) : '');
+            info.textContent = 'Mostrando os ' + visible.length + ' mais próximos de ' + filtered.length + ' hospitais';
         } else {
-            info.textContent = filtered.length + ' hospitais encontrados (localização indisponível — ordenados por estado)';
+            info.textContent = filtered.length + ' hospitais encontrados (ordenados por estado)';
         }
+
+        // CIATox
+        renderCiatox();
 
         // Cards
         var list = document.getElementById('card-list');
         if (filtered.length === 0) {
             list.innerHTML = '<div class="empty-state"><p>&#128269;</p><p>Nenhum hospital encontrado com os filtros selecionados.</p></div>';
         } else {
-            list.innerHTML = visible.map(renderCard).join('');
+            list.innerHTML = visible.map(function(h, i) { return renderCard(h, i); }).join('');
         }
 
         // Load more button
         var btn = document.getElementById('btn-load-more');
         if (remaining > 0) {
-            btn.textContent = 'Carregar mais ' + Math.min(remaining, SHOW_COUNT) + ' de ' + remaining + ' hospitais';
+            btn.textContent = 'Ver mais ' + Math.min(remaining, SHOW_COUNT) + ' hospitais (' + remaining + ' restantes)';
             btn.classList.remove('hidden');
         } else {
             btn.classList.add('hidden');
@@ -573,11 +877,16 @@
         // Add hospital markers
         var bounds = gpsAvailable ? [[userLat, userLng]] : [];
         filtered.forEach(function(h) {
-            var distText = (gpsAvailable && h._dist != null) ? ' — ' + formatDist(h._dist) : '';
-            var phoneLink = formatPhone(h.phone);
+            if (h.lat == null || h.lng == null) return;
+            var distText = (gpsAvailable && h._dist != null && h._dist < 999999) ? ' — ' + formatDist(h._dist) : '';
+            var phones = h.phones || (h.phone ? [h.phone] : []);
+            var phonesHtml = phones.map(function(p) {
+                var link = formatPhone(p);
+                return link ? '<a href="tel:' + link + '">&#128222; ' + p + '</a>' : '';
+            }).filter(Boolean).join('<br>');
             var popup = '<strong>' + h.hospital_name + '</strong><br>' +
                 h.city + ', ' + h.state + distText + '<br>' +
-                (phoneLink ? '<a href="tel:' + phoneLink + '">&#128222; ' + h.phone + '</a><br>' : '') +
+                (phonesHtml ? phonesHtml + '<br>' : '') +
                 '<a href="https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng +
                 '" target="_blank">&#128506; Como Chegar</a>';
             var marker = L.marker([h.lat, h.lng]).addTo(mapInstance).bindPopup(popup);
@@ -648,6 +957,110 @@
         if (mapShowing) renderMap();
     };
 
+    // ===== FILTER TOGGLE =====
+    window.toggleFilters = function() {
+        var panel = document.getElementById('filters-collapsible');
+        var btn = document.getElementById('filter-toggle');
+        var isOpen = panel.classList.contains('open');
+        panel.classList.toggle('open');
+        btn.classList.toggle('active', !isOpen);
+        btn.innerHTML = isOpen ? '&#128269; Filtrar por tipo, estado ou nome' : '&#10005; Fechar filtros';
+    };
+
+    // ===== SHARE (native or clipboard) =====
+    window.shareHospital = function(text) {
+        if (navigator.share) {
+            navigator.share({ title: 'SOS Antiveneno', text: text }).catch(function() {});
+        } else {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Informações copiadas!');
+            }).catch(function() {
+                prompt('Copie as informações:', text);
+            });
+        }
+    };
+
+    // ===== CITY PICKER (when GPS unavailable) =====
+    var allCities = []; // [{name, state, lat, lng}]
+    var chosenCity = null;
+
+    function buildCityIndex() {
+        var seen = {};
+        hospitals.forEach(function(h) {
+            if (!h.city) return;
+            var key = norm(h.city) + '|' + h.state;
+            if (!seen[key]) {
+                seen[key] = { name: h.city, state: h.state, state_name: h.state_name, lat: null, lng: null };
+            }
+            // Prefer a hospital that has coordinates
+            if (h.lat != null && h.lng != null && seen[key].lat == null) {
+                seen[key].lat = h.lat;
+                seen[key].lng = h.lng;
+            }
+        });
+        allCities = Object.values(seen);
+        allCities.sort(function(a, b) { return a.name.localeCompare(b.name, 'pt-BR'); });
+    }
+
+    window.onCitySearch = function() {
+        var q = norm(document.getElementById('city-search').value.trim());
+        var list = document.getElementById('city-suggestions');
+        if (q.length < 2) { list.classList.add('hidden'); return; }
+        var matches = allCities.filter(function(c) {
+            return norm(c.name).indexOf(q) !== -1;
+        }).slice(0, 8);
+        if (matches.length === 0) { list.classList.add('hidden'); return; }
+        list.innerHTML = matches.map(function(c, i) {
+            return '<li onclick="pickCity(' + i + ')" data-idx="' + i + '">' + c.name + ', ' + c.state + '</li>';
+        }).join('');
+        list.classList.remove('hidden');
+        // Store matches for pickCity
+        list._matches = matches;
+    };
+
+    window.pickCity = function(idx) {
+        var list = document.getElementById('city-suggestions');
+        var city = list._matches[idx];
+        if (!city) return;
+        chosenCity = city;
+        if (city.lat != null && city.lng != null) {
+            userLat = city.lat;
+            userLng = city.lng;
+            gpsAvailable = true;
+        } else {
+            // No coords for this city — filter by state and use search
+            userLat = null;
+            userLng = null;
+            gpsAvailable = false;
+            // Pre-fill search with city name to filter results
+            document.getElementById('search-input').value = city.name;
+            searchQuery = city.name;
+        }
+
+        document.getElementById('city-search').value = '';
+        list.classList.add('hidden');
+        document.getElementById('location-bar').classList.add('hidden');
+        document.getElementById('location-chosen').classList.remove('hidden');
+        document.getElementById('location-chosen-text').innerHTML =
+            '&#128205; ' + city.name + ', ' + city.state;
+
+        showCount = SHOW_COUNT;
+        renderList();
+    };
+
+    window.clearChosenLocation = function() {
+        chosenCity = null;
+        userLat = null;
+        userLng = null;
+        gpsAvailable = false;
+        document.getElementById('search-input').value = '';
+        searchQuery = '';
+        document.getElementById('location-chosen').classList.add('hidden');
+        document.getElementById('location-bar').classList.remove('hidden');
+        showCount = SHOW_COUNT;
+        renderList();
+    };
+
     // ===== INIT =====
     function init() {
         Promise.all([loadHospitals(), requestLocation()])
@@ -661,6 +1074,15 @@
                 document.getElementById('screen-loading').classList.add('hidden');
                 document.getElementById('screen-list').classList.remove('hidden');
                 populateFilters();
+                buildCityIndex();
+                // Show city picker and expand filters if GPS not available
+                if (!gpsAvailable) {
+                    document.getElementById('location-bar').classList.remove('hidden');
+                    // Auto-open filters when no GPS — user needs them
+                    document.getElementById('filters-collapsible').classList.add('open');
+                    document.getElementById('filter-toggle').classList.add('active');
+                    document.getElementById('filter-toggle').innerHTML = '&#10005; Fechar filtros';
+                }
                 renderList();
             })
             .catch(function(e) {
@@ -672,10 +1094,10 @@
 
     document.addEventListener('DOMContentLoaded', init);
 
-    // Register service worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(function() {});
-    }
+    // Service worker disabled for local preview
+    // if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.register('sw.js').catch(function() {});
+    // }
     })();
     </script>
 </body>

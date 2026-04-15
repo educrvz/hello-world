@@ -1,13 +1,16 @@
-# PDFs (downloaded separately)
-data/pdfs/*.pdf
+# PDF source files (large, copyrighted by Ministério da Saúde)
+*.pdf
+pesa-pdfs.zip
 
-# Geocode cache
-data/geocode_cache.json
+# Intermediate/cache files
+geocode_cache.json
+hospitals_raw.json
+hospitals_failed.json
+hospitals_failed_geocode.json
 
 # Python
 __pycache__/
 *.pyc
-*.pyo
 .venv/
 venv/
 
