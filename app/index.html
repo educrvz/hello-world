@@ -364,7 +364,6 @@
     <div class="header" id="main-header">
         <div class="header-row">
             <div>
-                <h1>SoroJá</h1>
                 <p><strong>SoroJá: Encontre os Pontos Estratégicos de Soro Antiveneno - PESA (hospitais de referência) para atendimento de acidentes por animais peçonhentos mais próximo</strong></p>
             </div>
             <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
@@ -585,6 +584,15 @@
         return 'tag-default';
     }
 
+    function tagEmoji(name) {
+        var n = norm(name);
+        if (n.indexOf('escorpion') !== -1) return '🦂';
+        if (n.indexOf('botrop') !== -1 || n.indexOf('crotal') !== -1 || n.indexOf('laquet') !== -1 || n.indexOf('elapid') !== -1) return '🐍';
+        if (n.indexOf('foneutr') !== -1 || n.indexOf('loxoscel') !== -1) return '🕷️';
+        if (n.indexOf('lonom') !== -1) return '🐛';
+        return '💉';
+    }
+
     function tagTooltip(name) {
         var n = norm(name);
         if (n.indexOf('escorpion') !== -1) return 'Escorpião';
@@ -760,7 +768,12 @@
                 var tooltip = tagTooltip(a);
                 return '<span class="tag ' + tagClass(a) + '"' + (tooltip ? ' data-tooltip="' + tooltip + '"' : '') + '>' + a + '</span>';
             }).join('');
-            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis (' + h.antivenoms.length + ')</summary><div class="tags">' + tagsList + '</div></details>';
+            var seenEmoji = {}, emojis = [];
+            h.antivenoms.forEach(function(a) {
+                var e = tagEmoji(a);
+                if (!seenEmoji[e]) { seenEmoji[e] = true; emojis.push(e); }
+            });
+            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis ' + emojis.join('') + '</summary><div class="tags">' + tagsList + '</div></details>';
         }
 
         // Multiple phone numbers — hide button when unavailable
