@@ -11686,8 +11686,8 @@
       "Aracnídico"
     ],
     "source_date": "2026-01-05",
-    "lat": -1.606155,
-    "lng": -45.996813,
+    "lat": -3.7416367,
+    "lng": -45.2514192,
     "geocode_tier": 3
   },
   {
@@ -13832,8 +13832,8 @@
       "Escorpiônico"
     ],
     "source_date": "2026-01-05",
-    "lat": -2.66331,
-    "lng": -44.285681,
+    "lat": -5.5799743,
+    "lng": -44.3841617,
     "geocode_tier": 3
   },
   {
@@ -37504,9 +37504,9 @@
       "Escorpiônico"
     ],
     "source_date": "2026-02-10",
-    "lat": -21.619941,
-    "lng": -51.171219,
-    "geocode_tier": 2
+    "lat": -21.6927714,
+    "lng": -51.0710755,
+    "geocode_tier": 1
   },
   {
     "state": "SP",
@@ -38036,9 +38036,9 @@
       "Lonômico"
     ],
     "source_date": "2026-02-10",
-    "lat": -22.887963,
-    "lng": -48.441071,
-    "geocode_tier": 3
+    "lat": -22.8961055,
+    "lng": -48.4921123,
+    "geocode_tier": 2
   },
   {
     "state": "SP",
@@ -40866,8 +40866,8 @@
       "Escorpiônico"
     ],
     "source_date": "2026-02-10",
-    "lat": -21.768088,
-    "lng": -52.116591,
+    "lat": -21.7743843,
+    "lng": -52.1120806,
     "geocode_tier": 1
   },
   {
@@ -41228,9 +41228,9 @@
       "Escorpiônico"
     ],
     "source_date": "2026-02-10",
-    "lat": -20.811433,
-    "lng": -49.508695,
-    "geocode_tier": 2
+    "lat": -22.9060715,
+    "lng": -49.6277378,
+    "geocode_tier": 3
   },
   {
     "state": "SP",
@@ -41492,8 +41492,8 @@
       "Lonômico"
     ],
     "source_date": "2026-02-10",
-    "lat": -20.827562,
-    "lng": -49.395845,
+    "lat": -20.8284854,
+    "lng": -49.3974172,
     "geocode_tier": 1
   },
   {
