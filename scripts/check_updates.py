@@ -73,7 +73,7 @@ def scrape_online_dates():
     for url in PAGES:
         try:
             resp = requests.get(url, timeout=30, headers={
-                "User-Agent": "SOS-Antiveneno-Update-Checker/1.0"
+                "User-Agent": "SoroJa-Update-Checker/1.0"
             })
             resp.raise_for_status()
         except Exception as e:
@@ -104,7 +104,7 @@ def scrape_online_dates():
 
 def main():
     print("=" * 60)
-    print("  SOS Antiveneno — Verificador de Atualizações PESA")
+    print("  SoroJá — Verificador de Atualizações PESA")
     print("=" * 60)
     print()
 

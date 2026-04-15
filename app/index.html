@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0066CC">
-    <meta name="description" content="Encontre hospitais com soro antiveneno mais próximos de você">
+    <meta name="description" content="SoroJá — Encontre hospitais com soro antiveneno mais próximos de você">
     <!-- <link rel="manifest" href="manifest.json"> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
-    <title>SOS Antiveneno</title>
+    <title>SoroJá</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
     <style>
         :root {
@@ -329,7 +329,7 @@
     <div class="header" id="main-header">
         <div class="header-row">
             <div>
-                <h1>SOS Antiveneno</h1>
+                <h1>SoroJá</h1>
                 <p>Encontre o hospital mais próximo com soro antiveneno</p>
             </div>
             <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
@@ -338,7 +338,7 @@
 
     <!-- Loading Screen -->
     <div id="screen-loading" class="screen-loading">
-        <h2>SOS Antiveneno</h2>
+        <h2>SoroJá</h2>
         <p>Encontre hospitais com soro antiveneno perto de você</p>
         <div class="spinner" id="spinner"></div>
         <p id="loading-msg" style="margin-top:16px; font-size:14px; color:#999;">Carregando dados...</p>
@@ -729,7 +729,7 @@
 
         var phoneText = validPhones.join(' / ');
         var shareText = encodeURIComponent(
-            'Preciso de soro antiveneno!\nHospital: ' + h.hospital_name +
+            'SoroJá — Preciso de soro antiveneno!\nHospital: ' + h.hospital_name +
             '\nCidade: ' + h.city + ' - ' + h.state +
             (phoneText ? '\nTelefone: ' + phoneText : '') +
             (h.lat ? '\nComo chegar: https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng : '')
@@ -970,7 +970,7 @@
     // ===== SHARE (native or clipboard) =====
     window.shareHospital = function(text) {
         if (navigator.share) {
-            navigator.share({ title: 'SOS Antiveneno', text: text }).catch(function() {});
+            navigator.share({ title: 'SoroJá', text: text }).catch(function() {});
         } else {
             navigator.clipboard.writeText(text).then(function() {
                 alert('Informações copiadas!');
