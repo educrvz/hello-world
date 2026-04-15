@@ -378,10 +378,16 @@
                 <details class="antivenom-info">
                     <summary>&#9432; O que significam os tipos de soro?</summary>
                     <div class="info-grid">
-                        <div class="info-item"><strong>&#128013; Picada de cobra</strong> &#8594; procure <strong>Botrópico</strong> (jararaca, urutu), <strong>Crotálico</strong> (cascavel), <strong>Laquético</strong> (surucucu) ou <strong>Elapídico</strong> (coral)</div>
-                        <div class="info-item"><strong>&#129410; Picada de escorpião</strong> &#8594; procure <strong>Escorpiônico</strong></div>
-                        <div class="info-item"><strong>&#128375; Picada de aranha</strong> &#8594; procure <strong>Fonêutrico</strong> (armadeira), <strong>Loxoscélico</strong> (aranha marrom) ou <strong>Aracnídico</strong></div>
-                        <div class="info-item"><strong>&#128027; Contato com taturana</strong> &#8594; procure <strong>Lonômico</strong></div>
+                        <div class="info-item"><strong>&#128013; Picada de cobra</strong> &#8594; Pode requerer soro: <strong>Botrópico</strong> (jararaca, urutu), <strong>Crotálico</strong> (cascavel), <strong>Laquético</strong> (surucucu) ou <strong>Elapídico</strong> (coral verdadeira)</div>
+                        <div class="info-item"><strong>&#129410; Picada de escorpião</strong> &#8594; Pode requerer soro: <strong>Escorpiônico</strong></div>
+                        <div class="info-item"><strong>&#128375; Picada de aranha</strong> &#8594; Pode requerer soro: <strong>Fonêutrico</strong> (armadeira) ou <strong>Loxoscélico</strong> (aranha-marrom)</div>
+                        <div class="info-item"><strong>&#128027; Contato com taturana</strong> &#8594; Pode requerer soro: <strong>Lonômico</strong></div>
+                    </div>
+                    <div style="margin-top:10px; padding:8px; background:#FFF3E0; border-radius:6px; font-size:12px; color:#BF360C;">
+                        <strong>&#9888;&#65039; Procure atendimento imediato em caso de:</strong> dor intensa, vômitos, dificuldade para respirar, sangramento, inchaço que avança, ou alteração da visão.
+                    </div>
+                    <div style="margin-top:6px; font-size:11px; color:#666; font-style:italic;">
+                        A indicação e aplicação do soro devem ser feitas exclusivamente por profissionais de saúde.
                     </div>
                 </details>
             </div>
@@ -412,7 +418,7 @@
             <p><strong>Fonte dos dados:</strong> <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia" target="_blank" rel="noopener">Ministério da Saúde — Hospitais de Referência para Atendimento de Acidentes por Animais Peçonhentos</a></p>
             <p style="margin-top:6px;">PESA — Pontos Estratégicos de Soro Antiveneno</p>
             <p style="margin-top:8px;">Em caso de emergência, ligue <a href="tel:192">192 (SAMU)</a> ou <a href="tel:193">193 (Bombeiros)</a></p>
-            <p style="margin-top:8px; font-size:11px;">Este aplicativo é uma ferramenta de auxílio e informação. Sempre ligue 192 (SAMU) ou 193 (Bombeiros) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
+            <p style="margin-top:8px; font-size:11px;">Este site tem caráter informativo e não substitui avaliação médica. A indicação e aplicação do soro antiveneno devem ser feitas exclusivamente por profissionais de saúde. Sempre ligue 192 (SAMU) ou 193 (Bombeiros) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
         </div>
     </div>
 
@@ -458,7 +464,7 @@
     var INCIDENT_MAP = {
         'escorpiao': ['escorpionico'],
         'cobra': ['botropico', 'crotalico', 'laquetico', 'elapidico'],
-        'aranha': ['foneutrico', 'loxoscelico', 'aracnidico'],
+        'aranha': ['foneutrico', 'loxoscelico'],
         'lagarta': ['lonomico'],
         'outro': []
     };
@@ -702,7 +708,7 @@
         // Antivenoms — prominently displayed
         var tagsHtml = '';
         if (h.antivenoms && h.antivenoms.length) {
-            tagsHtml = '<div class="tags"><span class="tags-label">Atendimentos:</span>' + h.antivenoms.map(function(a) {
+            tagsHtml = '<div class="tags"><span class="tags-label">Soros disponíveis:</span>' + h.antivenoms.map(function(a) {
                 return '<span class="tag ' + tagClass(a) + '">' + a + '</span>';
             }).join('') + '</div>';
         }
