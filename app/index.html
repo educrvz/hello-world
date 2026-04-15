@@ -773,7 +773,7 @@
                 var e = tagEmoji(a);
                 if (!seenEmoji[e]) { seenEmoji[e] = true; emojis.push(e); }
             });
-            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis ' + emojis.join('') + '</summary><div class="tags">' + tagsList + '</div></details>';
+            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis ' + emojis.join(' ') + '</summary><div class="tags">' + tagsList + '</div></details>';
         }
 
         // Multiple phone numbers — hide button when unavailable
