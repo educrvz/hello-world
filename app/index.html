@@ -753,7 +753,7 @@
                 var tooltip = tagTooltip(a);
                 return '<span class="tag ' + tagClass(a) + '"' + (tooltip ? ' data-tooltip="' + tooltip + '"' : '') + '>' + a + '</span>';
             }).join('');
-            tagsHtml = '<details class="tags-details" open><summary>Soros disponíveis (' + h.antivenoms.length + ')</summary><div class="tags">' + tagsList + '</div></details>';
+            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis (' + h.antivenoms.length + ')</summary><div class="tags">' + tagsList + '</div></details>';
         }
 
         // Multiple phone numbers — hide button when unavailable
