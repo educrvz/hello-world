@@ -204,11 +204,39 @@
         .dist-approx::after { content: " ~"; font-size: 11px; }
 
         /* Antivenom tags */
-        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; align-items: center; }
-        .tags-label { font-size: 12px; font-weight: 700; color: var(--text2); margin-right: 2px; }
+        .tags-details { margin-top: 10px; }
+        .tags-details summary {
+            font-size: 12px; font-weight: 700; color: var(--text2);
+            cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 5px;
+            user-select: none;
+        }
+        .tags-details summary::-webkit-details-marker { display: none; }
+        .tags-details summary::before { content: '▶'; font-size: 9px; transition: transform 0.2s; display: inline-block; }
+        .tags-details[open] summary::before { transform: rotate(90deg); }
+        .tags-details .tags { margin-top: 8px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
         .tag {
             font-size: 12px; font-weight: 600; padding: 4px 10px;
             border-radius: 10px; color: white; text-transform: uppercase; letter-spacing: 0.3px;
+            position: relative; cursor: default;
+        }
+        .tag[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(33,33,33,0.92);
+            color: white;
+            font-size: 11px;
+            font-weight: 400;
+            padding: 4px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 50;
+            text-transform: none;
+            letter-spacing: 0;
         }
         .tag-escorpionico { background: #F9A825; }
         .tag-botropico { background: #388E3C; }
@@ -330,7 +358,7 @@
         <div class="header-row">
             <div>
                 <h1>SoroJá</h1>
-                <p>Encontre o hospital mais próximo com soro antiveneno</p>
+                <p>Encontre o Hospital <em>Referência</em> mais próximo</p>
             </div>
             <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
         </div>
@@ -550,6 +578,19 @@
         return 'tag-default';
     }
 
+    function tagTooltip(name) {
+        var n = norm(name);
+        if (n.indexOf('escorpion') !== -1) return 'Escorpião';
+        if (n.indexOf('botrop') !== -1) return 'Jararaca, urutu e outras víboras';
+        if (n.indexOf('crotal') !== -1) return 'Cascavel';
+        if (n.indexOf('laquet') !== -1) return 'Surucucu';
+        if (n.indexOf('elapid') !== -1) return 'Coral verdadeira';
+        if (n.indexOf('foneutr') !== -1) return 'Aranha armadeira';
+        if (n.indexOf('loxoscel') !== -1) return 'Aranha-marrom';
+        if (n.indexOf('lonom') !== -1) return 'Taturana / lagarta';
+        return '';
+    }
+
     // ===== DATA LOADING =====
     function loadHospitals() {
         return fetch('hospitals.json')
@@ -705,12 +746,14 @@
         // Nearest badge
         var nearestHtml = isNearest ? '<div class="nearest-badge">&#127973; Hospital mais próximo</div>' : '';
 
-        // Antivenoms — prominently displayed
+        // Antivenoms — collapsible toggle with tooltips
         var tagsHtml = '';
         if (h.antivenoms && h.antivenoms.length) {
-            tagsHtml = '<div class="tags"><span class="tags-label">Soros disponíveis:</span>' + h.antivenoms.map(function(a) {
-                return '<span class="tag ' + tagClass(a) + '">' + a + '</span>';
-            }).join('') + '</div>';
+            var tagsList = h.antivenoms.map(function(a) {
+                var tooltip = tagTooltip(a);
+                return '<span class="tag ' + tagClass(a) + '"' + (tooltip ? ' data-tooltip="' + tooltip + '"' : '') + '>' + a + '</span>';
+            }).join('');
+            tagsHtml = '<details class="tags-details" open><summary>Soros disponíveis (' + h.antivenoms.length + ')</summary><div class="tags">' + tagsList + '</div></details>';
         }
 
         // Multiple phone numbers — hide button when unavailable
