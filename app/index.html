@@ -565,16 +565,26 @@
         return new Promise(function(resolve) {
             if (!navigator.geolocation) { resolve(null); return; }
             document.getElementById('loading-msg').textContent = 'Buscando sua localização...';
+            function onSuccess(pos) {
+                userLat = pos.coords.latitude;
+                userLng = pos.coords.longitude;
+                gpsAvailable = true;
+                resolve(pos);
+            }
+            function onError() {
+                gpsAvailable = false;
+                resolve(null);
+            }
+            // Try high accuracy first, fall back to low accuracy
             navigator.geolocation.getCurrentPosition(
-                function(pos) {
-                    userLat = pos.coords.latitude;
-                    userLng = pos.coords.longitude;
-                    gpsAvailable = true;
-                    resolve(pos);
-                },
+                onSuccess,
                 function() {
-                    gpsAvailable = false;
-                    resolve(null);
+                    // High accuracy failed — try without it (works better on desktops)
+                    navigator.geolocation.getCurrentPosition(
+                        onSuccess,
+                        onError,
+                        { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 }
+                    );
                 },
                 { enableHighAccuracy: true, timeout: GPS_TIMEOUT, maximumAge: 300000 }
             );
@@ -1075,13 +1085,9 @@
                 document.getElementById('screen-list').classList.remove('hidden');
                 populateFilters();
                 buildCityIndex();
-                // Show city picker and expand filters if GPS not available
+                // Show city picker when GPS not available, but keep filters collapsed
                 if (!gpsAvailable) {
                     document.getElementById('location-bar').classList.remove('hidden');
-                    // Auto-open filters when no GPS — user needs them
-                    document.getElementById('filters-collapsible').classList.add('open');
-                    document.getElementById('filter-toggle').classList.add('active');
-                    document.getElementById('filter-toggle').innerHTML = '&#10005; Fechar filtros';
                 }
                 renderList();
             })
