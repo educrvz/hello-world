@@ -311,6 +311,13 @@
             padding: 8px 12px; font-size: 13px; font-weight: 600;
             text-decoration: none; cursor: pointer;
         }
+        .btn-ciatox-more {
+            display: block; width: 100%; margin-top: 6px; padding: 8px 12px;
+            background: none; border: 1px solid #E65100; border-radius: 6px;
+            color: #E65100; font-size: 13px; font-weight: 600; cursor: pointer;
+            text-align: center;
+        }
+        .btn-ciatox-more:active { background: #FFF3E0; }
 
         /* Source date on cards — subtle */
         .source-date {
@@ -358,7 +365,7 @@
         <div class="header-row">
             <div>
                 <h1>SoroJá</h1>
-                <p>Encontre o Hospital <em>Referência</em> mais próximo</p>
+                <p><strong>SoroJá: Encontre os Pontos Estratégicos de Soro Antiveneno - PESA (hospitais de referência) para atendimento de acidentes por animais peçonhentos mais próximo</strong></p>
             </div>
             <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
         </div>
@@ -843,8 +850,7 @@
         }
         if (!targetState) return [];
         var stateCenters = CIATOX.filter(function(c) { return c.state === targetState; });
-        if (stateCenters.length <= 2) return stateCenters;
-        // Pick closest: prioritize same city, then capital/first entry
+        // Pick closest first: prioritize same city, then capital/first entry
         if (refCity) {
             var refNorm = norm(refCity);
             stateCenters.sort(function(a, b) {
@@ -853,7 +859,7 @@
                 return aMatch - bMatch;
             });
         }
-        return stateCenters.slice(0, 2);
+        return stateCenters;
     }
 
     function renderCiatox() {
@@ -865,7 +871,7 @@
             return;
         }
         section.classList.remove('hidden');
-        container.innerHTML = centers.map(function(c) {
+        function renderCenter(c) {
             var phonesHtml = c.phones.map(function(p) {
                 var link = '+55' + p.replace(/\D/g, '');
                 return '<a class="btn-ciatox" href="tel:' + link + '">&#128222; ' + p + '</a>';
@@ -875,8 +881,30 @@
                 '<div class="ciatox-city">' + c.city + ', ' + c.state + ' — Orientação toxicológica por telefone</div>' +
                 '<div class="ciatox-phones">' + phonesHtml + '</div>' +
             '</div>';
-        }).join('');
+        }
+        var html = renderCenter(centers[0]);
+        if (centers.length > 1) {
+            html += '<div class="ciatox-more hidden" id="ciatox-more">' +
+                centers.slice(1).map(renderCenter).join('') +
+            '</div>' +
+            '<button class="btn-ciatox-more" id="btn-ciatox-more" onclick="toggleCiatoxMore()">Ver mais (' + (centers.length - 1) + ')</button>';
+        }
+        container.innerHTML = html;
     }
+
+    window.toggleCiatoxMore = function() {
+        var more = document.getElementById('ciatox-more');
+        var btn = document.getElementById('btn-ciatox-more');
+        if (!more) return;
+        if (more.classList.contains('hidden')) {
+            more.classList.remove('hidden');
+            btn.textContent = 'Ver menos';
+        } else {
+            more.classList.add('hidden');
+            var count = more.querySelectorAll('.card-ciatox').length;
+            btn.textContent = 'Ver mais (' + count + ')';
+        }
+    };
 
     function renderList() {
         var filtered = getFiltered();
