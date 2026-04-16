@@ -103,7 +103,6 @@
             min-height: 38px; color: var(--blue); flex-shrink: 0;
         }
         .chip.active { background: var(--blue); color: white; }
-        .state-select { margin-top: 8px; margin-bottom: 12px; }
 
         /* City search for manual location */
         /* Filter toggle */
@@ -427,9 +426,6 @@
                     <option value="outro">Outro / Não sei</option>
                 </select>
                 <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital, cidade ou estado..." oninput="onSearchInput()">
-                <select class="filter-select state-select" id="filter-state" onchange="onStateFilter()">
-                    <option value="">Todos os estados</option>
-                </select>
                 <div class="filter-row" id="antivenom-chips"></div>
                 <!-- Antivenom info/explanation (below the chips) -->
                 <details class="antivenom-info">
@@ -751,16 +747,9 @@
 
     // ===== POPULATE FILTERS =====
     function populateFilters() {
-        // State dropdown
+        // State dropdown (location bar only, collapsible filter removed)
         var states = {};
         hospitals.forEach(function(h) { states[h.state] = h.state_name; });
-        var sel = document.getElementById('filter-state');
-        Object.keys(states).sort().forEach(function(code) {
-            var opt = document.createElement('option');
-            opt.value = code;
-            opt.textContent = states[code] + ' (' + code + ')';
-            sel.appendChild(opt);
-        });
         // Antivenom chips
         var allTypes = {};
         hospitals.forEach(function(h) {
@@ -1070,11 +1059,7 @@
         renderList();
     };
 
-    window.onStateFilter = function() {
-        filterState = document.getElementById('filter-state').value || null;
-        showCount = SHOW_COUNT;
-        renderList();
-    };
+    // State filter removed from collapsible panel (use search bar instead)
 
     window.onChipClick = function(type) {
         if (filterAntivenom && !Array.isArray(filterAntivenom) && filterAntivenom === type) {
