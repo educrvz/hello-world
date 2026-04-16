@@ -425,7 +425,10 @@
                     <option value="lagarta">Contato com taturana/lagarta</option>
                     <option value="outro">Outro / Não sei</option>
                 </select>
-                <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital, cidade ou estado..." oninput="onSearchInput()">
+                <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital ou cidade..." oninput="onSearchInput()">
+                <select class="filter-select" id="filter-state" onchange="onStateFilter()" style="margin-top:8px; margin-bottom:12px;">
+                    <option value="">Todos os estados</option>
+                </select>
                 <div class="filter-row" id="antivenom-chips"></div>
                 <!-- Antivenom info/explanation (below the chips) -->
                 <details class="antivenom-info">
@@ -747,9 +750,16 @@
 
     // ===== POPULATE FILTERS =====
     function populateFilters() {
-        // State dropdown (location bar only, collapsible filter removed)
+        // State dropdown
         var states = {};
         hospitals.forEach(function(h) { states[h.state] = h.state_name; });
+        var sel = document.getElementById('filter-state');
+        Object.keys(states).sort().forEach(function(code) {
+            var opt = document.createElement('option');
+            opt.value = code;
+            opt.textContent = states[code] + ' (' + code + ')';
+            sel.appendChild(opt);
+        });
         // Antivenom chips
         var allTypes = {};
         hospitals.forEach(function(h) {
@@ -1059,7 +1069,11 @@
         renderList();
     };
 
-    // State filter removed from collapsible panel (use search bar instead)
+    window.onStateFilter = function() {
+        filterState = document.getElementById('filter-state').value || null;
+        showCount = SHOW_COUNT;
+        renderList();
+    };
 
     window.onChipClick = function(type) {
         if (filterAntivenom && !Array.isArray(filterAntivenom) && filterAntivenom === type) {
