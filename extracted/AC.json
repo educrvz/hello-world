@@ -1,0 +1,172 @@
+[
+  {
+    "state": "ACRE",
+    "municipality": "Acrelândia",
+    "health_unit_name": "Unidade Mista de Saúde de Acrelândia",
+    "address": "Avenida Paraná, 346 – Centro",
+    "phones_raw": "(68) 3235-1188",
+    "cnes": "5701929",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Assis Brasil",
+    "health_unit_name": "Unidade Mista de Assis Brasil",
+    "address": "Rua D. Giocondo Maria Grotti, s/n - Centro",
+    "phones_raw": "(68) 3548-1135",
+    "cnes": "2001020",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Brasiléia",
+    "health_unit_name": "Hospital de Clínicas Raimundo Chaar",
+    "address": "BR 317, km 01, Bairro ALberto Castro s/n",
+    "phones_raw": "(68) 3546-3804",
+    "cnes": "2001500",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Cruzeiro do Sul",
+    "health_unit_name": "Hospital Regional do Juruá",
+    "address": "Avenida 25 de Agosto, 5121 - Aeroporto Velho",
+    "phones_raw": "(68) 3322-5516",
+    "cnes": "5336171",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Feijó",
+    "health_unit_name": "Hospital Geral de Feijó",
+    "address": "Avenida Mal. Deodoro, s/n - Centro",
+    "phones_raw": "(68) 99222-5074",
+    "cnes": "2000636",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Jordão",
+    "health_unit_name": "Hospital da Família de Jordão",
+    "address": "Rua Romildo Magalhães, s/n – Centro",
+    "phones_raw": "(68) 3464-1037",
+    "cnes": "5353947",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Mâncio Lima",
+    "health_unit_name": "Hospital Dr. Abel Pinheiro Maciel Filho",
+    "address": "Avenida Japiim, s/n - Centro",
+    "phones_raw": "(68) 99946-0048 / 99986 2932",
+    "cnes": "2000083",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Manoel Urbano",
+    "health_unit_name": "Unidade Mista de Manuel Urbano",
+    "address": "Rua Francisco Freitas, s/n - São José",
+    "phones_raw": "(68) 3611-1005",
+    "cnes": "2000970",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Marechal Thaumaturgo",
+    "health_unit_name": "Unidade Mista de Marechal Thaumaturgo",
+    "address": "Rua 5 de novembro, s/n - Centro",
+    "phones_raw": "(68) 3325-1048",
+    "cnes": "2001594",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Plácido de Castro",
+    "health_unit_name": "Hospital Dr. Manoel Marinho Monte",
+    "address": "Rua Epitácio Pessoa, 550 - Centro",
+    "phones_raw": "(68) 3237-1821",
+    "cnes": "2000997",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Porto Walter",
+    "health_unit_name": "Unidade Mista de Porto Walter",
+    "address": "Rua Mamede Cameli, s/n - Centro",
+    "phones_raw": "(68) 8422-2372",
+    "cnes": "5661714",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Rio Branco",
+    "health_unit_name": "HUERB - Hosp. de Urgência e Emergência de Rio Branco",
+    "address": "Avenida Nações Unidas, 700 - Bosque",
+    "phones_raw": "(68) 3223-3080",
+    "cnes": "2001578",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Santa Rosa do Purus",
+    "health_unit_name": "Unidade Mista de Santa Rosa do Purus",
+    "address": "Rua Raimundo Fernandes de Moura, s/n - Cidade Nova",
+    "phones_raw": "(68) 3615-1056",
+    "cnes": "5858208",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Sena Madureira",
+    "health_unit_name": "Hospital João Câncio Fernandes",
+    "address": "Rua Quintino Bocaiúva, 1054 - Centro",
+    "phones_raw": "(68) 3612-2271",
+    "cnes": "2000865",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Senador Guiomard",
+    "health_unit_name": "Hospital Dr. Ari Rodrigues",
+    "address": "Avenida Eduardo Assmar, 133 - COHAB",
+    "phones_raw": "(68) 3232-2667",
+    "cnes": "2000725",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Tarauacá",
+    "health_unit_name": "Hospital Dr. Sansão Gomes",
+    "address": "Avenida Avelino Leal, 1221 - Copacabana",
+    "phones_raw": "(68) 99954-9484",
+    "cnes": "2000121",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "ACRE",
+    "municipality": "Xapuri",
+    "health_unit_name": "Hospital Epaminondas Jácome",
+    "address": "Rua 6 de Agosto, 240 - Centro",
+    "phones_raw": "(68) 3542-2316",
+    "cnes": "2000393",
+    "antivenoms_raw": ["Botrópico", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  }
+]

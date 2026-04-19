@@ -1,0 +1,262 @@
+[
+  {
+    "state": "AMAPÁ",
+    "municipality": "Amapá",
+    "health_unit_name": "Unidade Mista de Saúde de Amapá",
+    "address": "Avenida Guarani, 742 - Nova Esperança",
+    "phones_raw": null,
+    "cnes": "2019701",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Aracnídico", "Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Calçoene",
+    "health_unit_name": "Unidade Mista de Saúde de Calçoene",
+    "address": "Avenida FAB, 726 - Liberdade",
+    "phones_raw": null,
+    "cnes": "2019728",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico"],
+    "source_notes": "phone shown as **** in source; 'Aracnídico Escorpiônico' appears without separator in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Cutias",
+    "health_unit_name": "U.B.S Américo Coelho Pereira",
+    "address": "Avenida Isaias de Jesus Leite, 151 - Centro",
+    "phones_raw": null,
+    "cnes": "2021021",
+    "antivenoms_raw": ["Botrópico", "Aracnídico", "Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Ferreira Gomes",
+    "health_unit_name": "Unidade Mista de Saúde de Ferreira Gomes",
+    "address": "Avenida Luzia Serra Cavalcante, 774",
+    "phones_raw": null,
+    "cnes": "2019663",
+    "antivenoms_raw": ["Botrópico", "Escorpiônico", "Aracnídico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Itaubal",
+    "health_unit_name": "Unidade Básica de Saúde de Itaubal",
+    "address": "Rua João Palma dos Reis, s/n",
+    "phones_raw": null,
+    "cnes": "2021293",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source; 'Aracnídico Escorpiônico' appears without separator in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Laranjal do Jarí",
+    "health_unit_name": "Hospital Estadual de Laranjal do Jarí",
+    "address": "Avenida Tancredo Neves, 2435 - Agreste",
+    "phones_raw": "(96) 3621-2719",
+    "cnes": "2020076",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "'Aracnídico Escorpiônico' appears without separator in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Macapá",
+    "health_unit_name": "Hospital de Emergência Oswaldo Cruz",
+    "address": "Rua Hamilton Silva, 139 - Central",
+    "phones_raw": null,
+    "cnes": "2020653",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "phone cell blank in source; 'Aracnídico Escorpiônico' appears without separator"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Macapá",
+    "health_unit_name": "UPA Zona Norte",
+    "address": "Rua: Francisco Alves Corrêa, 1527 - Novo Horizonte",
+    "phones_raw": null,
+    "cnes": "770916",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Elapídico", "Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Macapá",
+    "health_unit_name": "Unidde Básica de Saúde Manoelzinho - Bailique",
+    "address": "Ponte Rio Marinheiro, S/N, Cidade Nova, Vila Progresso",
+    "phones_raw": null,
+    "cnes": "2019876",
+    "antivenoms_raw": ["Botrópico", "Laquético."],
+    "source_notes": "phone shown as **** in source; trailing period preserved from source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Mazagão",
+    "health_unit_name": "Unidade Mista de Saúde de Mazagão",
+    "address": "Rua Presidente Vargas, 1274 - Centro",
+    "phones_raw": null,
+    "cnes": "2020165",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Escorpiônico", "Aracnídico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Oiapoque",
+    "health_unit_name": "Hospital Estadual de Oiapoque",
+    "address": "Rua Presidente Kennedy, 700 - Centro",
+    "phones_raw": null,
+    "cnes": "2021463",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source; 'Aracnídico Escorpiônico' appears without separator"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Oiapoque",
+    "health_unit_name": "Companhia Especial de Fronteira - Clevelância do Norte",
+    "address": "Clevelândia do Norte, Oiapoque - AP, 68980-000",
+    "phones_raw": null,
+    "cnes": null,
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "military border post; phone shown as **** and CNES blank in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Pedra Branca",
+    "health_unit_name": "Unidade Mista de Saúde de Pedra Branca do Amaparí",
+    "address": "Rua Francisco Dutra, 517 - Centro",
+    "phones_raw": null,
+    "cnes": "2021218",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Porto Grande",
+    "health_unit_name": "Hospital Municipal Porto Grande",
+    "address": "Avenida 8 de Agosto, 336 - Centro",
+    "phones_raw": null,
+    "cnes": "2019736",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico", "Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Pracuúba",
+    "health_unit_name": "Unidade Mista de Saúde Pracuúba",
+    "address": "Rua Eloagio Ferreira S/N bairro - Centro",
+    "phones_raw": null,
+    "cnes": "2020726",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Aracnídico Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Santana",
+    "health_unit_name": "Hospital Estadual de Santana",
+    "address": "Rua Salvador Diniz, 187 - Remédios",
+    "phones_raw": null,
+    "cnes": "2021064",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Serra do Navio",
+    "health_unit_name": "Unidade Mista de Saúde de Serra do Navio",
+    "address": "Travessa A1, 529 - Vila Intermediaria",
+    "phones_raw": null,
+    "cnes": "2021382",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Aracnídico", "Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Tartarugalzinho",
+    "health_unit_name": "Unidade Mista de Saúde de Tartarugalzinho",
+    "address": "Rua Mãe Veronica, 768 - Centro",
+    "phones_raw": null,
+    "cnes": "2019671",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico", "Lonômico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Vitoria do Jari",
+    "health_unit_name": "Unidade Mista de Saúde de Vitoria do Jari",
+    "address": "Avenida Ayrton Senna, 1180 - Comercial",
+    "phones_raw": null,
+    "cnes": "2020149",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Elapídico", "Aracnídico", "Escorpiônico"],
+    "source_notes": "phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Oiapoque",
+    "health_unit_name": "UBSI Manga",
+    "address": "DSEI AP POLO BASE DE SAUDE INDIGENA MANGA",
+    "phones_raw": null,
+    "cnes": "2021137",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI); phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Oiapoque",
+    "health_unit_name": "UBSI Kumenê",
+    "address": "DSEI AP POLO BASE DE SAUDE INDIGENA KUMENÊ",
+    "phones_raw": null,
+    "cnes": "2021102",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI); address wraps across pages 4-5"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Oiapoque",
+    "health_unit_name": "UBSI Kumarumã",
+    "address": "DSEI AP POLO BASE DE SAUDE INDIGENA KUMARUMÃ",
+    "phones_raw": null,
+    "cnes": "2021110",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": "indigenous health polo base (UBSI); phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Pedra Branca",
+    "health_unit_name": "UBSI Aramirã",
+    "address": "DSEI AP POLO BASE DE SAUDE INDIGENA ARAMIRÃ",
+    "phones_raw": null,
+    "cnes": "2021412",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI); phone shown as **** in source"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Óbidos/Pará",
+    "health_unit_name": "UBSI Bona Apalai",
+    "address": "DSEI POLO BASE BONA APALAI",
+    "phones_raw": null,
+    "cnes": "494747",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elpoloídico", "Pracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI) physically located in Óbidos/PA but referenced by AP document; antivenom names have typos preserved from source ('Elpoloídico'/'Pracnídico')"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Almerim/Pará",
+    "health_unit_name": "UBSI Missão Tiriyó",
+    "address": "POLO-BASE TIPO I - MISSÃO TIRIYO",
+    "phones_raw": null,
+    "cnes": "494402",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI) physically located in Almerim/PA but referenced by AP document"
+  },
+  {
+    "state": "AMAPÁ",
+    "municipality": "Almerim/Pará",
+    "health_unit_name": "UBSI Kuxaré",
+    "address": "POLO-BASE TIPO I - MISSÃO TIRIYO",
+    "phones_raw": null,
+    "cnes": "2916118",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Crotálico", "Elapídico", "Aracnídico Escorpiônico."],
+    "source_notes": "indigenous health polo base (UBSI); address wraps across pages 5-6"
+  }
+]

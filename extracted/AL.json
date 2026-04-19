@@ -1,0 +1,152 @@
+[
+  {
+    "state": "ALAGOAS",
+    "municipality": "Arapiraca",
+    "health_unit_name": "Unidade de Emergência Dr. Daniel Houly",
+    "address": "Rod. AL 220, km 05 s/n Arapiraca",
+    "phones_raw": "(82) 359-2450 e 3529-2488",
+    "cnes": "3015408",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Delmiro Gouveia",
+    "health_unit_name": "UPA Delmiro Gouveia",
+    "address": "R. Luiz Luna Torres, Delmiro Gouveia",
+    "phones_raw": "(82) 98114-0105",
+    "cnes": "7641117",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Palmeira Dos Índios",
+    "health_unit_name": "UPA Palmeira dos Índios",
+    "address": "R. Bráulio Montenegro, 2311 - Vila Maria",
+    "phones_raw": "(82) 3421-2309",
+    "cnes": "7481624",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Pão de Açúcar",
+    "health_unit_name": "Unid. Mista Djalma G. dos Anjos",
+    "address": "Rua Padre José Soares Pinto, 850 - Centro",
+    "phones_raw": "(82) 3624-1128",
+    "cnes": "2719290",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Penedo",
+    "health_unit_name": "Unid. de Emergência Enfermeiro Antônio de Jesus",
+    "address": "Rua Matheus Ferreira, s/n - Santa Luzia",
+    "phones_raw": "(82) 3551-3355",
+    "cnes": "7097794",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Piranhas",
+    "health_unit_name": "Unid. Senador Afonso Farias de Melo",
+    "address": "Avenida Maceió, s/n - Xingó",
+    "phones_raw": "(82) 3686-1972/1195",
+    "cnes": "2704544",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Santana do Ipanema",
+    "health_unit_name": "Hospital Regional Dr. Clodolfo Melo",
+    "address": "Avenida João Agostinho - Santo Antônio",
+    "phones_raw": "(82) 3621-3588",
+    "cnes": "5616298",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Maceió",
+    "health_unit_name": "Hospital Escola Dr. Helvio Auto - HEHA",
+    "address": "Rua Cônego Fernando Lyra, no Trapiche da Barra",
+    "phones_raw": "(82) 3315-6826 e (82) 3315-3244",
+    "cnes": "2720035",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Fonêutrico", "Lonômico", "Loxoscélico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Maceió",
+    "health_unit_name": "UPA 24 horas Dr Ismar Gatto",
+    "address": "Av. Juca Sampaio, 600, Jacintinho",
+    "phones_raw": "(82) 3023-5682",
+    "cnes": "4156730",
+    "antivenoms_raw": ["Escorpiônico"],
+    "source_notes": "municipality inherited from previous row (blank in source)"
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Maceió",
+    "health_unit_name": "UPA Galba Novaes",
+    "address": "Av. Maceió, 341 - Tabuleiro do Martins, Maceió - AL, 57061-110",
+    "phones_raw": "(82) 3315-3504",
+    "cnes": "4156714",
+    "antivenoms_raw": ["Escorpiônico"],
+    "source_notes": "municipality inherited from previous row (blank in source)"
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Coruripe",
+    "health_unit_name": "UPA Coruripe",
+    "address": "Praça Dr. Castro Azevedo, 47 Centro",
+    "phones_raw": "(82) 99127-1490",
+    "cnes": "7471645",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Antiaracnídico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Maragogi",
+    "health_unit_name": "UPA Maragogi",
+    "address": "AL-101, 200 - Maragogi, AL, 57955-000",
+    "phones_raw": "(82) 99305-4192",
+    "cnes": "7916043",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Antiaracnídico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Porto Calvo",
+    "health_unit_name": "Hospital Regional do Norte",
+    "address": "Rua Alto da Forca s/n, Bairro Mangazala, Rodovia AL105 CEP 57900.000.",
+    "phones_raw": "(82) 98889-9642",
+    "cnes": "7042671",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Antiaracnídico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "União dos Palmares",
+    "health_unit_name": "Hospital Regional da Mata",
+    "address": "BR-104 - União dos Palmares, AL, 57800-000",
+    "phones_raw": "(82) 3281-9300",
+    "cnes": "7753470",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Antiaracnídico"],
+    "source_notes": null
+  },
+  {
+    "state": "ALAGOAS",
+    "municipality": "Viçosa",
+    "health_unit_name": "UPA Viçosa",
+    "address": "R. Juarez Távora, 57 - Viçosa, AL, 57700-000",
+    "phones_raw": "(82) 9954-1345",
+    "cnes": "7099185",
+    "antivenoms_raw": ["Botrópico", "Crotálico", "Laquético", "Elapídico", "Escorpiônico", "Antiaracnídico"],
+    "source_notes": null
+  }
+]

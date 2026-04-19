@@ -22,3 +22,6 @@ Thumbs.db
 .vscode/
 .idea/
 .vercel
+
+# Claude Code session cache
+.claude/

@@ -21,7 +21,22 @@ Este aplicativo reúne todos os dados em um só lugar e usa a localização do s
 
 ## Dados
 
-Os dados são extraídos dos PDFs oficiais do Ministério da Saúde (PESA) para todos os 27 estados brasileiros, geocodificados e disponibilizados como JSON estático.
+Os dados são extraídos dos PDFs oficiais do Ministério da Saúde (PESA) para
+todos os 27 estados brasileiros, geocodificados via Google Maps, auditados
+com um classificador de qualidade em várias camadas, e publicados como JSON
+estático em `app/hospitals.json`.
+
+O processo completo — extract → merge → normalize → QA → geocode → classify
+v3 → repair → publish — é executado por:
+
+```bash
+./scripts/refresh_dataset.sh
+```
+
+Runbook completo: **[docs/PROCESS.md](docs/PROCESS.md)**.
+Reports de cada etapa do último refresh: **[reports/](reports/)**.
+Feedback de usuários sobre pins incorretos:
+**[SoroJ Feedback (Notion)](https://www.notion.so/SoroJ-Feedback-345eeae1044a80b99355cb03bd794c15?source=copy_link)**.
 
 ## Em caso de emergência
 
@@ -30,8 +45,13 @@ Os dados são extraídos dos PDFs oficiais do Ministério da Saúde (PESA) para 
 ## Estrutura
 
 ```
-data/           # Scripts de extração de dados (Python)
-app/            # Aplicativo web (HTML/CSS/JS estático)
+scripts/        # Pipeline de dados (Python + shell orchestrator)
+extracted/      # Um JSON por estado, extraído dos PDFs
+Docs Estado/    # PDFs oficiais PESA, nomeados {UF}_{YYYYMMDD}.pdf
+build/          # Artefatos intermediários + publish_ready_v1.csv (dataset final)
+reports/        # Relatório por etapa do pipeline (01–10)
+docs/           # PROCESS.md — runbook do refresh
+app/            # Aplicativo web (HTML/CSS/JS estático) + hospitals.json
 ```
 
 ## Licença

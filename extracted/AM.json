@@ -1,0 +1,952 @@
+[
+  {
+    "state": "AMAZONAS",
+    "municipality": "Alvarães",
+    "health_unit_name": "Unidade Mista de Alvarães",
+    "address": "Estrada Alvarães Nogueira, s/n - Centro",
+    "phones_raw": "(97) 3345-1204/1255",
+    "cnes": "2017768",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Amaturá",
+    "health_unit_name": "Unidade Mista de Amaturá - Hospital Frei Roberto San Severino",
+    "address": "Rua Antonieta Zao, s/n - Centro",
+    "phones_raw": "(97) 3463-1128",
+    "cnes": "2016648",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Anamã",
+    "health_unit_name": "Unidade Mista de Anamã - Hospital Francisco Sales de Moura",
+    "address": "Rua Alvaro Maia, 106 - Centro",
+    "phones_raw": "(97) 3356-1239",
+    "cnes": "2017679",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Anori",
+    "health_unit_name": "Unidade Hospitalar de Anori - Hospital Darlinda Ribeiro",
+    "address": "Avenida N. Sra. do Perpétuo Socorro, s/n - São Sebastião",
+    "phones_raw": "(97) 3352-1260",
+    "cnes": "2017379",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Apuí",
+    "health_unit_name": "Unidade Mista de Apuí - Hospital Eduardo Braga",
+    "address": "Avenida Engº Talles Monte Razo, s/n - Vila Nova",
+    "phones_raw": "(97) 3389-1219",
+    "cnes": "2013282",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Crotálico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Atalaia do Norte",
+    "health_unit_name": "Unidade Mista de Atalaia do Norte - Hospital São Sebastião",
+    "address": "Rua Augusto Luzeiro, s/n - Centro",
+    "phones_raw": "(97) 3417-1115/1152",
+    "cnes": "2016672",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Atalaia do Norte",
+    "health_unit_name": "1º Pelotão Especial de Fronteira - PEF (Exército-8º BIS)",
+    "address": "Comunidade de Palmeira do Javari",
+    "phones_raw": null,
+    "cnes": null,
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": "military border post; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Atalaia do Norte",
+    "health_unit_name": "4º Pelotão Especial de Fronteira - PEF (Exército-8º BIS)",
+    "address": "Comunidade de Estirão do Equador",
+    "phones_raw": null,
+    "cnes": null,
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": "military border post; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Atalaia do Norte",
+    "health_unit_name": "Polo Base Alto Ituí",
+    "address": "Comunidade Vida Nova",
+    "phones_raw": null,
+    "cnes": "7159277",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Atalaia do Norte",
+    "health_unit_name": "Polo Base Médio Curuçá",
+    "address": "Comunidade São Sebastião",
+    "phones_raw": null,
+    "cnes": "7159293",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Autazes",
+    "health_unit_name": "Unidade Mista de Autazes",
+    "address": "Rua Francisco Barroncas, s/n - Centro",
+    "phones_raw": "(92) 3317-1231/1335",
+    "cnes": "2013045",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Barcelos",
+    "health_unit_name": "Unidade Mista de Barcelos",
+    "address": "Rua Dorval Porto, 1136 - Centro",
+    "phones_raw": "(97) 3321-1122",
+    "cnes": "2015242",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Barreirinha",
+    "health_unit_name": "Unidade Mista de Barreirinha",
+    "address": "Rua Terra Preta do Castanhal, s/n - São Judas Tadeu",
+    "phones_raw": "(92) 3531-8125/7059",
+    "cnes": "2012022",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Barreirinha",
+    "health_unit_name": "Polo Base Araticum",
+    "address": "Rio Andirá",
+    "phones_raw": null,
+    "cnes": "7406150",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Benjamin Constant",
+    "health_unit_name": "Hospital Geral Dr. Melvino de Jesus",
+    "address": "Rua 13 de Maio, 1492 - Coimbra",
+    "phones_raw": "(97) 3415-5246/6240",
+    "cnes": "2016974",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Beruri",
+    "health_unit_name": "Hospital Antonio Ferreira Campos",
+    "address": "Avenida Costa e Silva, s/n - São Francisco",
+    "phones_raw": "(97) 3351-1142",
+    "cnes": "2016605",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Boa Vista do Ramos",
+    "health_unit_name": "Unidade Mista de Boa Vista do Ramos",
+    "address": "Estrada Presidente Figueiredo, s/n - Centro",
+    "phones_raw": "(97) 3545-5158/7179",
+    "cnes": "2016354",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Boca do Acre",
+    "health_unit_name": "Unidade Hospitalar de Boca do Acre",
+    "address": "Rua Coronel José Assunção, s/n - Plator do Piquiá",
+    "phones_raw": "(97) 3451-2157",
+    "cnes": "2012499",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Borba",
+    "health_unit_name": "Hospital Vó Mundoca",
+    "address": "Rua Silverino Nery, s/n - Centro",
+    "phones_raw": "(92) 3512-1526/1104",
+    "cnes": "2012383",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Caapiranga",
+    "health_unit_name": "Unidade Hospitalar Odilon Alves de Araújo",
+    "address": "Rua Félix Amorim, s/n - Santa Luzia",
+    "phones_raw": "(92) 3364-1040",
+    "cnes": "2016656",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Canutama",
+    "health_unit_name": "Hospital Regional de Canutama Dr. Leonardo Parente",
+    "address": "Avenida Botinelly, 213 - Centro",
+    "phones_raw": "(97) 3334-1337/1068",
+    "cnes": "2016419",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Carauari",
+    "health_unit_name": "Hospital Unidade Mista de Carauari",
+    "address": "Rua Celino de Menezes, 1672 - Nova República",
+    "phones_raw": "(97) 3491-1116/1350",
+    "cnes": "2017555",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Careiro Castanho",
+    "health_unit_name": "Hospital Deoclécio dos Santos",
+    "address": "BR 319 Km 102 - Centro",
+    "phones_raw": "(92) 3362-1092/1137",
+    "cnes": "2017652",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Careiro da Várzea",
+    "health_unit_name": "Unidade Hospitalar de Careiro da Várzea",
+    "address": "Rua Walmir Bezerra, Centro",
+    "phones_raw": null,
+    "cnes": "2016915",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": "phone not provided"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Coari",
+    "health_unit_name": "Hospital Regional de Coari Dr. Odair Carlos Geraldo",
+    "address": "Estrada Coari-Mamiá, 490 - Espírito Santo",
+    "phones_raw": "(97) 3561-4141",
+    "cnes": "2018136",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Codajás",
+    "health_unit_name": "Hospital João da Silva Bastos",
+    "address": "Rua Padre Domingos, s/n - Santa Luzia",
+    "phones_raw": "(97) 3353-0090",
+    "cnes": "2019523",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Eirunepé",
+    "health_unit_name": "Unidade Hospitalar de Eirunepé",
+    "address": "Rua Padre Hosphel, 1181 - Nossa Senhora Aparecida",
+    "phones_raw": "(97) 3481-1428/3198",
+    "cnes": "2016397",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Envira",
+    "health_unit_name": "Unidade Hospitalar Evaristo Rates da Silva",
+    "address": "Rua 27 de julho, 306 - São Francisco",
+    "phones_raw": "(97) 3483-1045",
+    "cnes": "2708892",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Fonte Boa",
+    "health_unit_name": "Hospital Regional de Fonte Boa",
+    "address": "Rua Ajuricaba, s/n - Centro",
+    "phones_raw": "(97) 3423-1690",
+    "cnes": "2017717",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Guajará",
+    "health_unit_name": "Hospital João Miguel da Cruz Barbosa",
+    "address": "Rua Presidente Vargas, s/n - Centro",
+    "phones_raw": "(97) 3485-1148",
+    "cnes": "2017997",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Humaitá",
+    "health_unit_name": "Hospital Dra. Luiza da Conceição Fernandes",
+    "address": "Rua 05 de setembro, 522 - Centro",
+    "phones_raw": "(97) 3373-2190/1104",
+    "cnes": "2017016",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Crotálico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Ipixuna",
+    "health_unit_name": "Unidade Hospitalar de Ipixuna",
+    "address": "Avenida João Hercules Primo, s/n - Torre",
+    "phones_raw": "(97) 3482-1073/1067",
+    "cnes": "2013614",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Iranduba",
+    "health_unit_name": "Hospital Hilda Freire",
+    "address": "Travessa Juruá, s/n - Centro",
+    "phones_raw": "(92) 3367-2302/2107",
+    "cnes": "2012839",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Itacoatiara",
+    "health_unit_name": "Hospital Regional José Mendes",
+    "address": "Rua Castro Leite, 2593 - Iraci",
+    "phones_raw": "(92) 3521-4215/4220",
+    "cnes": "2016923",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Itamarati",
+    "health_unit_name": "Unidade Hospitalar Antonio de Souza Brito",
+    "address": "Rua Major Maia, s/n - Centro",
+    "phones_raw": "(97) 3484-1072",
+    "cnes": "2013568",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Itapiranga",
+    "health_unit_name": "Hospital Miguel Batista de Oliveira",
+    "address": "Rua Bárbara Miranda, s/n - Centro",
+    "phones_raw": "(92) 3575-2112",
+    "cnes": "2708906",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Japurá",
+    "health_unit_name": "Hospital Mayara Redman A. Aziz",
+    "address": "Avenida Juscelino Kubtscheck, s/n - Centro",
+    "phones_raw": "(97) 3426-1195",
+    "cnes": "2013495",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Japurá",
+    "health_unit_name": "3º Pelotão Especial de Fronteira do Exército – PEF (Exército 8º BIS)",
+    "address": "Comunidade Vila Bitencourt",
+    "phones_raw": null,
+    "cnes": null,
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": "military border post; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Juruá",
+    "health_unit_name": "Unidade Mista de Juruá",
+    "address": "Rua Samuel Amaral, 13 - Centro",
+    "phones_raw": "(97) 3427-1109",
+    "cnes": "2708914",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Jutaí",
+    "health_unit_name": "Unidade Hospitalar de Jutaí",
+    "address": "Rua 7 de março, s/n - Centro",
+    "phones_raw": "(97) 3425-1132",
+    "cnes": "2011875",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Jutaí",
+    "health_unit_name": "Polo Base Boca do Biá",
+    "address": "Comunidade Boca do Biá",
+    "phones_raw": null,
+    "cnes": "7340923",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Lábrea",
+    "health_unit_name": "Unidade Mista de Lábrea",
+    "address": "Rua Coronel Luiz Gomes, s/n - Centro",
+    "phones_raw": "(97) 3331-1465",
+    "cnes": "2012618",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Crotálico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Lábrea",
+    "health_unit_name": "Polo Base Crispim",
+    "address": "Terra Indígena Lago Mahara",
+    "phones_raw": null,
+    "cnes": "9425578",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Lábrea",
+    "health_unit_name": "Polo Base Marrecão",
+    "address": "Aldeia Marrecão T I Deni",
+    "phones_raw": null,
+    "cnes": "9472878",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Manacapuru",
+    "health_unit_name": "Hospital Regional de Manacapuru Lázaro Reis",
+    "address": "Estrada Manoel Urbano - KM 83 - São José",
+    "phones_raw": "(92) 3361-1907",
+    "cnes": "2013258",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Lonômico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Manaquiri",
+    "health_unit_name": "Hospital Raimundo Rodrigues Irmãos",
+    "address": "Rua Bom Pastor, s/n - Centro",
+    "phones_raw": "(92) 3363-1323",
+    "cnes": "2011891",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Manaus",
+    "health_unit_name": "Fundação de Medicina Tropical",
+    "address": "Avenida Pedro Teixeira, 25 - Dom Pedro I",
+    "phones_raw": "(92) 2127-3471",
+    "cnes": "2013606",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Lonômico", "Crotálico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Manicoré",
+    "health_unit_name": "Hospital Regional de Manicoré Dr. Hamilton Cidade",
+    "address": "Travessa 24 de outubro, s/n - Centro",
+    "phones_raw": "(97) 3385-1043/1040",
+    "cnes": "2014688",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Manicoré",
+    "health_unit_name": "Polo Base Boca do Jauari",
+    "address": "Rio Madeira Aldeia Boca do Jauari",
+    "phones_raw": null,
+    "cnes": "7800339",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Maraã",
+    "health_unit_name": "Unidade Mista de Maraã",
+    "address": "Avenida 25 de março, s/n - Centro",
+    "phones_raw": "(97) 3428-1099",
+    "cnes": "2017660",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Maraã",
+    "health_unit_name": "Centro de Saude Maximo Maia da Silva O Coruja",
+    "address": "Comunidade São Pedro do Cuiu Cuiu",
+    "phones_raw": null,
+    "cnes": "5625300",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Maués",
+    "health_unit_name": "Hospital Raimunda Francisca Dinelly da Silva",
+    "address": "Estrada dos Moraes, 898 - Maresia",
+    "phones_raw": "(92) 3542-1112/3222",
+    "cnes": "2018144",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Maués",
+    "health_unit_name": "Polo Base Nova Esperança",
+    "address": "Aldeia Nova Esperança",
+    "phones_raw": null,
+    "cnes": "7651708",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Nhamundá",
+    "health_unit_name": "Hospital Coronel Pedro Macedo",
+    "address": "Rua Senador Álvaro Maia, 23 - Centro",
+    "phones_raw": "(92) 3534-7624/7300",
+    "cnes": "2016540",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Nova Olinda do Norte",
+    "health_unit_name": "Hospital Dr. Galo Manuel Ibañez",
+    "address": "Rua 7 de setembro, 364 - Santa Luzia",
+    "phones_raw": "(92) 3318-1207/1227",
+    "cnes": "2011905",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Nova Olinda do Norte",
+    "health_unit_name": "Polo Base Kwatá",
+    "address": "Rio Canuma",
+    "phones_raw": null,
+    "cnes": "5359198",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Novo Airão",
+    "health_unit_name": "Unidade Hospitalar de Novo Airão",
+    "address": "Avenida João Tiburtino da Silva, s/n - Centro",
+    "phones_raw": "(92) 3365-1535",
+    "cnes": "2708922",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Novo Aripuanã",
+    "health_unit_name": "Hospital Regional de Novo Aripuanã",
+    "address": "Rua Raimundo Oliveira, s/n - Tucumã",
+    "phones_raw": "(97) 3379-1481/1101",
+    "cnes": "2019604",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Parintins",
+    "health_unit_name": "Hospital Regional Jofre Matos Cohen",
+    "address": "Rua Herberth Azevedo, 985 - Santa Clara",
+    "phones_raw": "(92) 3533-4158",
+    "cnes": "3210243",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Lonômico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Parintins",
+    "health_unit_name": "P.S. Denizal Pereira",
+    "address": "Rua João Pereira, s/n - Agrovila do Cabori",
+    "phones_raw": "(92) 3532-1069",
+    "cnes": "3112845",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Pauini",
+    "health_unit_name": "Ambulatório Municipal Mario Said",
+    "address": "Rua 19 de março, 536 - Cidade Alta",
+    "phones_raw": "(97) 3458-1253/1132",
+    "cnes": "2018381",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Presidente Figueiredo",
+    "health_unit_name": "Hospital Geral Evaldo Neves Falcão",
+    "address": "BR 174 Km 107 - Centro",
+    "phones_raw": "(92) 3324-1005",
+    "cnes": "2013320",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Presidente Figueiredo",
+    "health_unit_name": "Hospital de Balbina",
+    "address": "Rua Rio Negro, s/n - Vila de Balbina",
+    "phones_raw": "(92) 3312-1200",
+    "cnes": "7132026",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Presidente Figueiredo",
+    "health_unit_name": "Hospital de Pitinga",
+    "address": "Avenida Cassiterita, s/n - Vila do Pitinga",
+    "phones_raw": "(92) 3323-1225",
+    "cnes": "5928761",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Rio Preto da Eva",
+    "health_unit_name": "Hospital Thomé de Medeiros Raposo",
+    "address": "Rua Gov. Angelo do Amaral, s/n - Centro",
+    "phones_raw": "(92) 3358-1135",
+    "cnes": "2708930",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Santa Isabel do Rio Negro",
+    "health_unit_name": "Unidade Mista de Santa Isabel do Rio Negro",
+    "address": "Rua Danilo Correa, s/n - Centro",
+    "phones_raw": "(97) 3441-1944/1138",
+    "cnes": "2016478",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Santa Isabel do Rio Negro",
+    "health_unit_name": "PB Missão Marauia",
+    "address": "Missão Marauia",
+    "phones_raw": null,
+    "cnes": "9681760",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": "indigenous mission post; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Santo Antônio do Içá",
+    "health_unit_name": "Unidade Hospitalar Dom Adalberto Marzzin",
+    "address": "Rua Hugo Ribeiro, s/n - Santa Etelvina",
+    "phones_raw": "(97) 3461-1959/1182",
+    "cnes": "3220966",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Santo Antônio do Içá",
+    "health_unit_name": "3º Pelotão Especial de Fronteira do Exército – PEF (Exército 8º BIS)",
+    "address": "Comunidade Ipiranga",
+    "phones_raw": null,
+    "cnes": null,
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": "military border post; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Hospital de Guarnição de São Gabriel da Cachoeira",
+    "address": "Rua Quitino de Sá Cavalcante, s/n - Dabarú",
+    "phones_raw": "(97) 3471-1413/1475",
+    "cnes": "4004787",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Unidade Mista de Iauaretê",
+    "address": "Rua da Missão - Vila de Iauaretê - Área Indígena Iauaretê",
+    "phones_raw": null,
+    "cnes": "2717387",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Unidade Basica de Saúde de Inambu",
+    "address": "Inambu",
+    "phones_raw": null,
+    "cnes": "7149735",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Unidade Basica de Saúde de Maiá",
+    "address": "Maiá",
+    "phones_raw": null,
+    "cnes": "7149751",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Unidade Basica de Saúde de Maturacá",
+    "address": "Comunidade Indígena de Maturacá",
+    "phones_raw": null,
+    "cnes": "7149743",
+    "antivenoms_raw": ["Botrópico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "2º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade Querari",
+    "phones_raw": null,
+    "cnes": "4004752",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "3º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade São Joaquim",
+    "phones_raw": null,
+    "cnes": "4004744",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "4º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade Cucui",
+    "phones_raw": null,
+    "cnes": "4004736",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "5º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade Maturacá",
+    "phones_raw": null,
+    "cnes": "4004760",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "6º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade Pari-Cachoeira - Área Indígena Pari-Cachoeira",
+    "phones_raw": null,
+    "cnes": "5982146",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post; address wraps across pages 8-9"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "7º Pelotão Especial de Fronteira do Exército (5º BIS)",
+    "address": "Comunidade Tunuí - Área Indígena Tunuí-Cachoeira",
+    "phones_raw": null,
+    "cnes": "7620187",
+    "antivenoms_raw": ["Botrópico", "Laquético"],
+    "source_notes": "military border post"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Polo Base Iauaretê",
+    "address": "Vila São Miguel",
+    "phones_raw": null,
+    "cnes": "9493190",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Gabriel da Cachoeira",
+    "health_unit_name": "Polo Base Pari-Cachoeira",
+    "address": "Rio Tiquie",
+    "phones_raw": null,
+    "cnes": "9493433",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Paulo de Olivença",
+    "health_unit_name": "Unidade Mista de São Paulo de Olivença",
+    "address": "Rua Monsenhor Evangelista, 309 - Centro",
+    "phones_raw": "(97)3431-1482/1043",
+    "cnes": "2018128",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Paulo de Olivença",
+    "health_unit_name": "Polo Base Vendaval",
+    "address": "Comunidade Vendaval",
+    "phones_raw": null,
+    "cnes": "6771513",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "São Sebastião do Uatumã",
+    "health_unit_name": "Hospital Rosa Fabiana Falabella",
+    "address": "Rua Álvaro Maia, s/n - Santa Maria",
+    "phones_raw": "(92) 3572-1391/1107",
+    "cnes": "2011859",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Silves",
+    "health_unit_name": "Unidade Mista Zalina Garcia",
+    "address": "Rua Eduardo Garcia, 26 - Centro",
+    "phones_raw": "(92) 3528-2156/2115",
+    "cnes": "2016249",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tabatinga",
+    "health_unit_name": "Hospital de Guarnição",
+    "address": "Avenida da Amizade, s/n - Centro",
+    "phones_raw": "(97) 3412-2403",
+    "cnes": "2016125",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tabatinga",
+    "health_unit_name": "Unidade de Pronto Atendimento - Maternidade Celina Villacrez Ruiz",
+    "address": "Rua Primeiro de Fevereiro, 271",
+    "phones_raw": "(97) 3412-4881",
+    "cnes": "7459750",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Lonômico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tabatinga",
+    "health_unit_name": "Polo Base Belém do Solimões",
+    "address": "Cimunidade de Belém do Solimões",
+    "phones_raw": null,
+    "cnes": "6992803",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico"],
+    "source_notes": "indigenous health polo base; municipality inherited (blank in source)"
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tapauá",
+    "health_unit_name": "Hospital Ana Tereza Ponciana",
+    "address": "Avenida Castelo Branco, s/n - Centro",
+    "phones_raw": "(97) 3391-1128/1249",
+    "cnes": "2012553",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tefé",
+    "health_unit_name": "Hospital Regional de Tefé",
+    "address": "Estrada do Bexiga, s/n - Fonte Boa",
+    "phones_raw": "(97) 3343-2446/2469",
+    "cnes": "2016141",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico", "Lonômico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Tonantins",
+    "health_unit_name": "Hospital Frei Francisco",
+    "address": "Rua Valentina Santos, s/n - Centro",
+    "phones_raw": "(97) 3464-1222",
+    "cnes": "2012804",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Uarini",
+    "health_unit_name": "Hospital Regional Francisco Lopes",
+    "address": "Avenida Franco Lopes, s/n - Centro",
+    "phones_raw": "(97) 3346-1411",
+    "cnes": "2016443",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Urucará",
+    "health_unit_name": "Unidade Mista de Urucará",
+    "address": "Rua Major Lobato Mendes, s/n - Santa Luzia",
+    "phones_raw": "(92) 3571-1657",
+    "cnes": "2717395",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  },
+  {
+    "state": "AMAZONAS",
+    "municipality": "Urucurituba",
+    "health_unit_name": "Hospital Silvério Pontes",
+    "address": "Rua Armandinho Fernandes, 15 - Centro",
+    "phones_raw": "(92) 3524-7137",
+    "cnes": "2016567",
+    "antivenoms_raw": ["Botrópico", "Laquético", "Fonêutrico", "Loxoscélico", "Escorpiônico", "Elapídico"],
+    "source_notes": null
+  }
+]

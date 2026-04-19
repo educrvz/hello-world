@@ -1,0 +1,5 @@
+row_id,source_state_abbr,source_state_file,state_clean,municipality_clean,health_unit_name_clean,address_clean,cnes,geocode_query,needs_review_pre_geocode,missing_fields
+PA_0049,PA,PA.json,PARÁ,Cametá,UPA 24h Dr. Haroldo Martins,,,"UPA 24h Dr. Haroldo Martins, Cametá, PARÁ, Brasil",true,address_and_cnes
+PA_0096,PA,PA.json,PARÁ,Mojuí dos Campos,Hospital Municipal de Mojuí dos Campos,,,"Hospital Municipal de Mojuí dos Campos, Mojuí dos Campos, PARÁ, Brasil",true,address_and_cnes
+RO_0037,RO,RO.json,RONDÔNIA,Vale Do Anari,Hospital De Pequeno Porte De Vale Do Anari,,,"Hospital De Pequeno Porte De Vale Do Anari, Vale Do Anari, RONDÔNIA, Brasil",true,address_and_cnes
+SP_0099,SP,SP.json,SÃO PAULO,ITAPOLIS,SANTA CASA DE MISERICÓRDIA DE ITÁPOLIS,,,"SANTA CASA DE MISERICÓRDIA DE ITÁPOLIS, ITAPOLIS, SÃO PAULO, Brasil",true,address_and_cnes
