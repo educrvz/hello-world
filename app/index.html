@@ -213,6 +213,7 @@
         .tags-details summary::before { content: '▶'; font-size: 9px; transition: transform 0.2s; display: inline-block; }
         .tags-details[open] summary::before { transform: rotate(90deg); }
         .tags-details .tags { margin-top: 8px; }
+        .tags-emojis { font-size: 30px; line-height: 1; vertical-align: middle; }
         .tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
         .tag {
             font-size: 12px; font-weight: 600; padding: 4px 10px;
@@ -819,7 +820,7 @@
                 var e = tagEmoji(a);
                 if (!seenEmoji[e]) { seenEmoji[e] = true; emojis.push(e); }
             });
-            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis ' + emojis.join(' ') + '</summary><div class="tags">' + tagsList + '</div></details>';
+            tagsHtml = '<details class="tags-details"><summary>Soros disponíveis <span class="tags-emojis">' + emojis.join(' ') + '</span></summary><div class="tags">' + tagsList + '</div></details>';
         }
 
         // Multiple phone numbers — hide button when unavailable
@@ -846,10 +847,10 @@
         var dirHtml = '';
         if (h.lat != null && h.lng != null) {
             var dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
-            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>';
+            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
         } else if (h.address) {
             var dirUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.hospital_name + ', ' + h.city + ', ' + h.state);
-            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener">&#128506; Como Chegar</a>';
+            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
         }
 
         var phoneText = validPhones.join(' / ');
@@ -1034,7 +1035,7 @@
                 h.city + ', ' + h.state + distText + '<br>' +
                 (phonesHtml ? phonesHtml + '<br>' : '') +
                 '<a href="https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng +
-                '" target="_blank">&#128506; Como Chegar</a>';
+                '" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
             var marker = L.marker([h.lat, h.lng]).addTo(mapInstance).bindPopup(popup);
             mapMarkers.push(marker);
             bounds.push([h.lat, h.lng]);
