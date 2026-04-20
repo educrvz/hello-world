@@ -1,4 +1,10 @@
 {
+  "9164": {
+    "reason": "Correção de coordenadas via reporte do usuário (distrito de São Francisco Xavier).",
+    "verified_on": "2026-04-20",
+    "lat": -22.9110249006052,
+    "lng": -45.9499242157524
+  },
   "2082187": {
     "reason": "Campus universitário não atende; endereço real é a Unidade de Emergência HCFMRP.",
     "verified_on": "2026-04-20",
@@ -6,11 +12,5 @@
     "lng": -47.8084284,
     "address": "R. Bernardino de Campos, 1000 - Centro, Ribeirão Preto - SP, 14015-130, Brasil",
     "note": "*Campus universitário não atende; endereço correto é a Unidade de Emergência"
-  },
-  "9164": {
-    "reason": "Coordenadas atualizadas manualmente (edge case).",
-    "verified_on": "2026-04-20",
-    "lat": -22.911024900605216,
-    "lng": -45.94992421575247
   }
 }
