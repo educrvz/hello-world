@@ -43,6 +43,7 @@ INPUT = BUILD / "master_geocoded_patched_v1.csv"
 OUT_APP = ROOT / "app" / "hospitals.json"
 OUT_ROOT = ROOT / "hospitals.json"
 OVERRIDES = ROOT / "data" / "location_overrides.json"
+SOURCE_DATES = ROOT / "data" / "source_dates.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from phone_utils import expand_phones  # noqa: E402
@@ -58,7 +59,16 @@ TIER_MAP = {
 
 
 def load_pdf_date_map() -> dict[str, str]:
-    """Map UF -> ISO date from the most recent matching PDF in Docs Estado/."""
+    """Map UF -> ISO date of the source PDF.
+
+    Prefers data/source_dates.json (committed to git, used by CI and fresh
+    checkouts). Falls back to scanning Docs Estado/ so the local refresh
+    workflow still works after a new PDF is downloaded.
+    """
+    if SOURCE_DATES.exists():
+        data = json.loads(SOURCE_DATES.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            return {k.upper(): str(v) for k, v in data.items()}
     out: dict[str, str] = {}
     if not DOCS_ESTADO.exists():
         return out
