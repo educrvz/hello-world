@@ -88,6 +88,27 @@
   {
     "state": "AC",
     "state_name": "Acre",
+    "city": "Jordão",
+    "hospital_name": "Hospital da Família de Jordão",
+    "address": "Rua Romildo Magalhães, s/n – Centro",
+    "phones": [
+      "(68) 3464-1037"
+    ],
+    "cnes": "5353947",
+    "antivenoms": [
+      "Botrópico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -9.193736999999999,
+    "lng": -71.9494558,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AC",
+    "state_name": "Acre",
     "city": "Mâncio Lima",
     "hospital_name": "Hospital Dr. Abel Pinheiro Maciel Filho",
     "address": "Avenida Japiim, s/n - Centro",
@@ -2974,6 +2995,26 @@
     "state": "AP",
     "state_name": "Amapá",
     "city": "Oiapoque",
+    "hospital_name": "UBSI Kumenê",
+    "address": "DSEI AP POLO BASE DE SAUDE INDIGENA KUMENÊ",
+    "phones": [],
+    "cnes": "2021102",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Crotálico",
+      "Elapídico",
+      "Aracnídico Escorpiônico."
+    ],
+    "source_date": "2025-11-10",
+    "lat": 3.8472023,
+    "lng": -51.8283798,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AP",
+    "state_name": "Amapá",
+    "city": "Oiapoque",
     "hospital_name": "UBSI Kumarumã",
     "address": "DSEI AP POLO BASE DE SAUDE INDIGENA KUMARUMÃ",
     "phones": [],
@@ -3212,6 +3253,28 @@
     "source_date": "2026-01-05",
     "lat": -10.4120546,
     "lng": -38.3333678,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Antas",
+    "hospital_name": "Hospital Santa Maria",
+    "address": "Rua Dr. Juarez Guerra, 18 - Centro",
+    "phones": [
+      "(75) 3277-1163"
+    ],
+    "cnes": "2799847",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.4134668,
+    "lng": -38.332487300000004,
     "geocode_tier": 1
   },
   {
@@ -3667,6 +3730,29 @@
     "source_date": "2026-01-05",
     "lat": -14.9785362,
     "lng": -40.4093145,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Cachoeira",
+    "hospital_name": "Hospital São João de Deus (Santa Casa de Misericórdia de Cachoeira)",
+    "address": "Praça Dr. Aristides Milton, s/n - Centro",
+    "phones": [
+      "(75) 3425-4040",
+      "(75) 3425-4000"
+    ],
+    "cnes": "2386879",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.601557900000001,
+    "lng": -38.9636005,
     "geocode_tier": 1
   },
   {
@@ -4433,6 +4519,29 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Esplanada",
+    "hospital_name": "Hospital São Francisco e São Vicente (Santa Casa de Misericórdia)",
+    "address": "Av. São Francisco, 318 - Centro",
+    "phones": [
+      "(75) 3427-1523",
+      "(75) 3427-1360"
+    ],
+    "cnes": "2627183",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.791911899999999,
+    "lng": -37.951271,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Euclides da Cunha",
     "hospital_name": "UPA Dr. Aristides Freitas de Queiroz",
     "address": "Av. Renato Campos, s/n - Pau Miúdo",
@@ -4532,6 +4641,29 @@
     "source_date": "2026-01-05",
     "lat": -12.2774821,
     "lng": -38.9406161,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Filadélfia",
+    "hospital_name": "Hospital São Sebastião",
+    "address": "Av. ACM, s/n - Centro",
+    "phones": [
+      "(74) 3551-2201"
+    ],
+    "cnes": "2401665",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquético",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.745146,
+    "lng": -40.1329966,
     "geocode_tier": 1
   },
   {
@@ -4800,6 +4932,24 @@
     "source_date": "2026-01-05",
     "lat": -13.773068,
     "lng": -42.7128405,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Igrapiuna",
+    "hospital_name": "Hospital Maternidade Luiz Eduardo Magalhães",
+    "address": "Av. Geovane de Almeida Dócio, s/n - Edrizio Régis",
+    "phones": [
+      "(73) 3225-1140"
+    ],
+    "cnes": "2413299",
+    "antivenoms": [
+      "É suprido pela rede de frio quando do atendimento de ocorrência, dada a proximidade"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.8206471,
+    "lng": -39.141853,
     "geocode_tier": 1
   },
   {
@@ -5710,6 +5860,26 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Laje",
+    "hospital_name": "Hospital e Maternidade Municipal Ranulfo José de Almeida",
+    "address": "Av. Antonio Carlos Magalhães, s/n - Centro",
+    "phones": [
+      "(75) 3662-2634"
+    ],
+    "cnes": "2390078",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico e Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.1677757,
+    "lng": -39.4216245,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Lamarão",
     "hospital_name": "Hospital Municipal Catharina Maria dos Reis",
     "address": "Rua do Conj. Habitacional Minha Casa Minha Vida",
@@ -5764,6 +5934,28 @@
     "source_date": "2026-01-05",
     "lat": -12.5608725,
     "lng": -41.3883689,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Livramento de Nossa Senhora",
+    "hospital_name": "Hospital Municipal de Livramento (Hosp. Munic. Dr. Ulysses Celestino da Silva)",
+    "address": "Av. Presidente Vargas, 829 - Centro",
+    "phones": [
+      "(77) 3444-2223"
+    ],
+    "cnes": "2487616",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.6397709,
+    "lng": -41.839531,
     "geocode_tier": 1
   },
   {
@@ -6890,6 +7082,49 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Santa Luz",
+    "hospital_name": "Hospital Municipal Petronilho Evangelista dos Santos",
+    "address": "Rua Pedro Evangelista dos Santos nº 195, Centro",
+    "phones": [
+      "(75) 3265-2099",
+      "(75) 98298-3998"
+    ],
+    "cnes": "2510278",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.2544854,
+    "lng": -39.375203899999995,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Santa Teresinha",
+    "hospital_name": "Hospital Municipal Edite Nogueira Rangel",
+    "address": "Rua Alto da Boa Vista, s/n - Centro",
+    "phones": [
+      "(75) 3639-2165"
+    ],
+    "cnes": "2514435",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico e Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.7706906,
+    "lng": -39.5266404,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Santana",
     "hospital_name": "Hospital Municipal Dr. Francisco Flores",
     "address": "Rua Manoel Novais, 1 - Centro",
@@ -6987,6 +7222,29 @@
     "lat": -11.4632917,
     "lng": -39.52799,
     "geocode_tier": 3
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "São Félix",
+    "hospital_name": "Hospital Nossa Senhora da Pompéia",
+    "address": "Rua Nova, 01 - Centro",
+    "phones": [
+      "(75) 3438-3900",
+      "(75) 3438-3905"
+    ],
+    "cnes": "2520613",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.604156600000001,
+    "lng": -38.9736453,
+    "geocode_tier": 1
   },
   {
     "state": "BA",
@@ -7295,6 +7553,27 @@
     "lat": -13.084664,
     "lng": -43.4688003,
     "geocode_tier": 3
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Sobradinho",
+    "hospital_name": "Hospital Municipal Maria Auxiliadora de Carvalho Torres",
+    "address": "Av. D , s/n Quadra 2, São Francisco",
+    "phones": [
+      "(74) 3537-2966"
+    ],
+    "cnes": "2524163",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Aracnídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -9.474609599999999,
+    "lng": -40.8165554,
+    "geocode_tier": 1
   },
   {
     "state": "BA",
@@ -8307,6 +8586,29 @@
   {
     "state": "CE",
     "state_name": "Ceará",
+    "city": "Irapuã Pinheiro",
+    "hospital_name": "Hospital Municipal São Bernardo",
+    "address": "R. José Josué Costa, s/n",
+    "phones": [
+      "(88) 3569-1140"
+    ],
+    "cnes": "2328437",
+    "antivenoms": [
+      "Crotálico",
+      "Laquético",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Lonômico",
+      "Loxoscélico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -5.916556099999999,
+    "lng": -39.2655129,
+    "geocode_tier": 1
+  },
+  {
+    "state": "CE",
+    "state_name": "Ceará",
     "city": "Itapipoca",
     "hospital_name": "Hospital e Maternidade São Vicente de Paulo",
     "address": "R. Urbano Teixeira Menezes, 1 - Fazendinha",
@@ -8915,6 +9217,48 @@
     "lat": -3.5698125,
     "lng": -41.0946295,
     "geocode_tier": 3
+  },
+  {
+    "state": "DF",
+    "state_name": "Distrito Federal",
+    "city": "Brasília - Asa Norte",
+    "hospital_name": "Hospital Regional da Asa Norte - HRAN",
+    "address": "SMHN s/n, Quadra 101, Área Especial - Plano Piloto",
+    "phones": [
+      "(61) 3449-4727"
+    ],
+    "cnes": "10464",
+    "antivenoms": [
+      "Soro antibotrópico",
+      "soro anticrotálico",
+      "soro antiaracnídico",
+      "soro antiescorpiônico e soro antilonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -15.7850532,
+    "lng": -47.8827527,
+    "geocode_tier": 1
+  },
+  {
+    "state": "DF",
+    "state_name": "Distrito Federal",
+    "city": "Brasília - Asa Sul",
+    "hospital_name": "Hospital Materno Infantil de Brasília - HMIB",
+    "address": "SGAS 608/609 Módulo A - L2 Sul",
+    "phones": [
+      "(61) 3449-7746"
+    ],
+    "cnes": "10537",
+    "antivenoms": [
+      "Soro antibotrópico",
+      "soro anticrotálico",
+      "soro antiescorpiônico",
+      "soro Antiaracnídico e soro antilonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -15.8238787,
+    "lng": -47.8970194,
+    "geocode_tier": 1
   },
   {
     "state": "DF",
@@ -9903,6 +10247,25 @@
     "source_date": "2026-01-05",
     "lat": -18.1268397,
     "lng": -40.3619041,
+    "geocode_tier": 1
+  },
+  {
+    "state": "ES",
+    "state_name": "Espírito Santo",
+    "city": "Mucurici",
+    "hospital_name": "Hospital São João Batista",
+    "address": "Rua Coronel Vindilino Lima, 117 - Centro",
+    "phones": [
+      "(27) 3751-1331"
+    ],
+    "cnes": "2702800",
+    "antivenoms": [
+      "Escorpiônico",
+      "Botrópico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -18.094394299999998,
+    "lng": -40.5174064,
     "geocode_tier": 1
   },
   {
@@ -11825,6 +12188,29 @@
   {
     "state": "GO",
     "state_name": "Goiás",
+    "city": "Planaltina de Goiás",
+    "hospital_name": "Hospital Municipal Materno Infantil Santa Rita de Cassia",
+    "address": "Quadra 08, 115 - Setor Leste",
+    "phones": [
+      "(61) 3637-8166",
+      "(61) 3637-2115"
+    ],
+    "cnes": "2437651",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -15.4617351,
+    "lng": -47.603357599999995,
+    "geocode_tier": 1
+  },
+  {
+    "state": "GO",
+    "state_name": "Goiás",
     "city": "Pontalina",
     "hospital_name": "UPA Dr. Osires de Urzeda Natal",
     "address": "Rua 6 com Avenida B, s/n - Setor Bela Vista",
@@ -12552,6 +12938,30 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "BALSAS",
+    "hospital_name": "UPA Dr Dilamar Fortes",
+    "address": "Praça da amizade, S/N - Cohab I",
+    "phones": [
+      "(99)3541-2197"
+    ],
+    "cnes": "9475117",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -7.539554999999999,
+    "lng": -46.0475712,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "BACABEIRA",
     "hospital_name": "Hospital e Maternidade Nayla Gonçalo",
     "address": "Avenida Humberto de Campos, Bacabeira",
@@ -13165,6 +13575,28 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "CONCEIÇÃO DO LAGO AÇU",
+    "hospital_name": "Hospital Municipal Manoel Melo de Matos",
+    "address": "Av. Principal, S/N, Centro",
+    "phones": [],
+    "cnes": "7597037",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -3.840543,
+    "lng": -44.8960686,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "CURURUPU",
     "hospital_name": "Serviço de Pronto Atendimento",
     "address": "Av. Liberalinno Miranda, S/N, Centro",
@@ -13442,6 +13874,28 @@
     "lat": -2.1272959,
     "lng": -45.8885977,
     "geocode_tier": 3
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "GOV. LUIS ROCHA",
+    "hospital_name": "Hospital Municipal Pedro Ferreira Calado",
+    "address": "Praça Presidente Jucelino",
+    "phones": [],
+    "cnes": "2460564",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -5.4743018999999995,
+    "lng": -44.072033499999996,
+    "geocode_tier": 1
   },
   {
     "state": "MA",
@@ -14484,6 +14938,30 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "PINDARÉ MIRIM",
+    "hospital_name": "Hospital e Maternidade José Sarney",
+    "address": "AV ELIAS HAICKEL",
+    "phones": [
+      "(98)3654-2629"
+    ],
+    "cnes": "2461285",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -3.6073225999999994,
+    "lng": -45.341359,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "PIO XII",
     "hospital_name": "Hospital Municipal de Pio XII",
     "address": "Rua Juscelino Kubstchek, S/N Centro",
@@ -15098,6 +15576,28 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "SÃO PREDRO DOS CRENTES",
+    "hospital_name": "Hospital Amancio Coutinho",
+    "address": "Rua Antonio Felizmino",
+    "phones": [],
+    "cnes": "7628749",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -6.8242864,
+    "lng": -46.5322758,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "SÃO JOÃO DO CARU",
     "hospital_name": "Hospital Municipal de São João do Caru",
     "address": "Rua do Comércio",
@@ -15188,6 +15688,30 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "SÃO VICENTE DE FERRER",
+    "hospital_name": "Hospital Agostinho dos Santos Jacinto",
+    "address": "Av. Getulio Vargas, S/N Centro",
+    "phones": [
+      "(98) 98117 6713"
+    ],
+    "cnes": "2450453",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.8951292,
+    "lng": -44.8802776,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "SITIO NOVO",
     "hospital_name": "Hospital Municipal Frei Alberto Beretta",
     "address": "Rua Ana Gomes Diniz, S/N Loteamento Leotino",
@@ -15209,6 +15733,30 @@
     "lat": -5.8765601,
     "lng": -46.7061096,
     "geocode_tier": 3
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "SUCUPIRA DO NORTE",
+    "hospital_name": "Hospital Municipal Augusto de Sousa Milhomem",
+    "address": "Rua Nova, 123 Centro",
+    "phones": [
+      "(99) 99202 3225"
+    ],
+    "cnes": "2655896",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -6.4883163999999995,
+    "lng": -44.188654899999996,
+    "geocode_tier": 1
   },
   {
     "state": "MA",
@@ -15420,6 +15968,30 @@
     "source_date": "2026-01-05",
     "lat": -3.783178299999999,
     "lng": -45.5818214,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "URBANOS SANTOS",
+    "hospital_name": "Hospital Municipal Edir Melo",
+    "address": "Rua do Sol, S/N Centro",
+    "phones": [
+      "(98) 3461 1824"
+    ],
+    "cnes": "2464454",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -3.2101089999999997,
+    "lng": -43.4019453,
     "geocode_tier": 1
   },
   {
@@ -16756,6 +17328,24 @@
     "source_date": "2025-12-18",
     "lat": -18.2386568,
     "lng": -42.8373771,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Comercinho",
+    "hospital_name": "Unidade Básica de Saúde Lauro Rocha",
+    "address": "Rua José Joaquim dos Reis, 329, Centro",
+    "phones": [
+      "(11) 91593-6041"
+    ],
+    "cnes": "6289770",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -16.2972997,
+    "lng": -41.792025699999996,
     "geocode_tier": 1
   },
   {
@@ -18252,6 +18842,27 @@
     "source_date": "2025-12-18",
     "lat": -16.6527694,
     "lng": -41.0270951,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "João Molevade",
+    "hospital_name": "Hospital Margarida",
+    "address": "Rua Dr. Geraldo S. Sá , s/n - Vila Tanque",
+    "phones": [
+      "(31) 3852-3144"
+    ],
+    "cnes": "2709848",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Loxoscélico e Fonêutrico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -19.828962399999998,
+    "lng": -43.1438499,
     "geocode_tier": 1
   },
   {
@@ -20529,6 +21140,24 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "São José de Safira",
+    "hospital_name": "PSF Maria Ribeiro Figueiredo",
+    "address": "Rua Senhora Aparecida, 43, Centro",
+    "phones": [
+      "(33)99703-1458"
+    ],
+    "cnes": "5509289",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -18.3255813,
+    "lng": -42.1480636,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "São José do Goiabal",
     "hospital_name": "Unidade de Pronto Atendimento Jurandir Martins Guimarães",
     "address": "Rua Mário Rolla, 109 - Centro",
@@ -22413,6 +23042,28 @@
   {
     "state": "MS",
     "state_name": "Mato Grosso do Sul",
+    "city": "São Gabriel d'Oeste",
+    "hospital_name": "Hospital Municipal José Valdir Antunes de Oliveira",
+    "address": "Rua João Evangelista Rosa, 1156 - Centro",
+    "phones": [
+      "(67) 3295-3206"
+    ],
+    "cnes": "2659603",
+    "antivenoms": [
+      "Escorpiônico",
+      "Botrópico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Elapídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -19.3940223,
+    "lng": -54.5808318,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MS",
+    "state_name": "Mato Grosso do Sul",
     "city": "Selvíria",
     "hospital_name": "Hospital Municipal Santa Rita de Cássia",
     "address": "Rua Rui Barbosa, s/n - Centro",
@@ -23508,6 +24159,29 @@
     "source_date": "2026-01-05",
     "lat": -11.0077899,
     "lng": -55.24654529999999,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MT",
+    "state_name": "Mato Grosso",
+    "city": "Itiquira",
+    "hospital_name": "Unidade de Pronto Atendimento",
+    "address": "Rua das Andorinhas, s/n-Distrito deOuro Branco do Sul",
+    "phones": [
+      "(65) 3492 1039"
+    ],
+    "cnes": "5883423",
+    "antivenoms": [
+      "Crotálico",
+      "Elapídico",
+      "Laquetico",
+      "Escorpiônico",
+      "Loxoscelico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -17.2036007,
+    "lng": -54.146710899999995,
     "geocode_tier": 1
   },
   {
@@ -24669,6 +25343,30 @@
     "source_date": "2026-01-05",
     "lat": -13.5487068,
     "lng": -58.8184337,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MT",
+    "state_name": "Mato Grosso",
+    "city": "Serra Nova do Norte",
+    "hospital_name": "Centro de Saúde",
+    "address": "Rua Açai,s/n,– Serra Nova Dourada – CEP: 78668-000",
+    "phones": [
+      "(66) 98414-2378"
+    ],
+    "cnes": "2311593",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquetico",
+      "Escorpiônico",
+      "Loxoscelico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.0885859,
+    "lng": -51.396504199999995,
     "geocode_tier": 1
   },
   {
@@ -30018,6 +30716,30 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Campo do Tenente",
+    "hospital_name": "Pronto Atendimento 24 horas São Luiz",
+    "address": "Rua Maria Clara Brandão Tesseroli, 89 - Centro",
+    "phones": [
+      "(41) 3628-1284"
+    ],
+    "cnes": "13773",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.976159,
+    "lng": -49.6828704,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Campo Largo",
     "hospital_name": "Centro Médico Hospitalar",
     "address": "Rua Adhemar de Barros, 3615 - Bom Jesus",
@@ -31935,6 +32657,22 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Missal",
+    "hospital_name": "Hospital e Maternidade Nossa Srª de Fátima",
+    "address": "Rua Sete de Setembro, 753, Centro",
+    "phones": [
+      "(45) 3244-1390"
+    ],
+    "cnes": "2575957",
+    "antivenoms": [],
+    "source_date": "2026-01-05",
+    "lat": -25.0935609,
+    "lng": -54.2475114,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Morretes",
     "hospital_name": "Hospital e Maternidade Municipal Dr. Alcídio Bortolin",
     "address": "Rua Santos Dumont, 91 - Centro",
@@ -32272,6 +33010,30 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Paulo de Frontin",
+    "hospital_name": "Hospital São João Batista",
+    "address": "Rua Rui Barbosa, 209 - Centro",
+    "phones": [
+      "(42) 3543-1102"
+    ],
+    "cnes": "2559188",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.0430034,
+    "lng": -50.8335084,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Piên",
     "hospital_name": "Centro de Saúde de Piên",
     "address": "Rua Belo Horizonte, 92 - Centro",
@@ -32385,6 +33147,30 @@
     "source_date": "2026-01-05",
     "lat": -24.5362253,
     "lng": -49.9345002,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Piraquara",
+    "hospital_name": "UPA 24h Armando Neme Filho",
+    "address": "Rodovia João Leopoldo Jacomel, s/n - Primavera",
+    "phones": [
+      "(41) 3590-3758"
+    ],
+    "cnes": "7309708",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.4580934,
+    "lng": -49.0997087,
     "geocode_tier": 1
   },
   {
@@ -33112,6 +33898,30 @@
     "source_date": "2026-01-05",
     "lat": -25.6904665,
     "lng": -50.301308,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "São Jorge do Oeste",
+    "hospital_name": "Hospital Dr. Julio Zavala Barrientos",
+    "address": "Avenida Iguaçu, 894 - Centro",
+    "phones": [
+      "(46) 3534-1213"
+    ],
+    "cnes": "2585030",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.709009899999998,
+    "lng": -52.922666,
     "geocode_tier": 1
   },
   {
@@ -34809,6 +35619,25 @@
   {
     "state": "RO",
     "state_name": "Rondônia",
+    "city": "Campo Novo Ro",
+    "hospital_name": "Hospital De Pequeno Porte De Campo Novo De Rondônia",
+    "address": "Av. 1º De Maio, Nº 2217",
+    "phones": [
+      "(69) 3239-2255"
+    ],
+    "cnes": "2369923",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético."
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.5702809,
+    "lng": -63.61945989999999,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RO",
+    "state_name": "Rondônia",
     "city": "Cerejeiras",
     "hospital_name": "Hospital São Lucas",
     "address": "Rua Nova Zelândia N°1192 Centro",
@@ -34932,6 +35761,26 @@
     "source_date": "2026-01-05",
     "lat": -9.3678922,
     "lng": -62.583358,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RO",
+    "state_name": "Rondônia",
+    "city": "Espigão Do Oeste",
+    "hospital_name": "Hospital Municipal Angelina Georgetti",
+    "address": "Rua Paraná, 3357 - Liberdade",
+    "phones": [
+      "(69) 3912-8054",
+      "(69) 3912-8022"
+    ],
+    "cnes": "2808587",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.5320714,
+    "lng": -61.007923600000005,
     "geocode_tier": 1
   },
   {
@@ -38621,6 +39470,28 @@
     "state": "SC",
     "state_name": "Santa Catarina",
     "city": "Jaraguá do Sul",
+    "hospital_name": "Hospital e Maternidade Jaraguá",
+    "address": "R. dos Motoristas de 1936, 120",
+    "phones": [
+      "(47) 3274.3000"
+    ],
+    "cnes": "2306344",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Aracnídico",
+      "lonômico",
+      "Elapidico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.474658500000004,
+    "lng": -49.0820157,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SC",
+    "state_name": "Santa Catarina",
+    "city": "Jaraguá do Sul",
     "hospital_name": "Hospital São José",
     "address": "R. Dr. Waldomiro Mazurechen, 80",
     "phones": [
@@ -40145,6 +41016,30 @@
   {
     "state": "SE",
     "state_name": "Sergipe",
+    "city": "Canindé do São Francisco",
+    "hospital_name": "Hospital Haydde Carvalho Leite Santos",
+    "address": "Rua Haydde de Carvalho, s/n - Centro",
+    "phones": [
+      "(79) 3346-1950"
+    ],
+    "cnes": "2658542",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -9.6620993,
+    "lng": -37.790877099999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SE",
+    "state_name": "Sergipe",
     "city": "Estância",
     "hospital_name": "Hosp. Amparo de Maria",
     "address": "Rua Dr. Jesse Fontes, 197 - Centro",
@@ -40264,6 +41159,57 @@
     "source_date": "2026-01-05",
     "lat": -10.3189192,
     "lng": -36.57588320000001,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SE",
+    "state_name": "Sergipe",
+    "city": "Nossa Senhora da Glória",
+    "hospital_name": "Hosp. Regional Governador João Alves Filho",
+    "address": "Avenida 26 de Setembro, 121 - Silos",
+    "phones": [
+      "(79) 3411-1335",
+      "(79) 3411-1783",
+      "(79) 3411-7007"
+    ],
+    "cnes": "2421542",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.2094915,
+    "lng": -37.404962,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SE",
+    "state_name": "Sergipe",
+    "city": "Nossa Senhora do Socorro",
+    "hospital_name": "Pronto Atendimento 24h Fernando Franco",
+    "address": "BR 235, s/n - Parque dos Farois",
+    "phones": [
+      "(79) 3254-8074",
+      "(79) 3279-1125"
+    ],
+    "cnes": "6451632",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.8508839,
+    "lng": -37.069320499999996,
     "geocode_tier": 1
   },
   {
@@ -41822,6 +42768,24 @@
   {
     "state": "SP",
     "state_name": "São Paulo",
+    "city": "Ferraz de Vasconcellos",
+    "hospital_name": "Hospital Dr. Osíris Florindo Coelho",
+    "address": "R. Princesa Isabel, 270- Vila Correa",
+    "phones": [
+      "(11) 4675.3444"
+    ],
+    "cnes": "2080079",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -23.538184599999997,
+    "lng": -46.3585281,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
     "city": "Franca",
     "hospital_name": "Santa Casa de Franca",
     "address": "Praça D. Pedro II, 1826 - Centro",
@@ -42367,6 +43331,28 @@
     "lat": -24.1836612,
     "lng": -46.8170607,
     "geocode_tier": 3
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "Itapecerica Serra",
+    "hospital_name": "Maternidade Municipal Zoraide Eva das Dores",
+    "address": "Rua Carlos Eduardo D. Tautico, 77 - Centro",
+    "phones": [
+      "(11) 4668-6803"
+    ],
+    "cnes": "2086271",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Loxoscélico",
+      "Fonêutrico",
+      "Escorpiônico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -23.7006555,
+    "lng": -46.8479094,
+    "geocode_tier": 1
   },
   {
     "state": "SP",
@@ -44790,6 +45776,28 @@
   {
     "state": "SP",
     "state_name": "São Paulo",
+    "city": "São Luis do Paraitinga",
+    "hospital_name": "Santa Casa de Misericórdia",
+    "address": "Praça Coronel Teodoro Coelho, 48 - Centro",
+    "phones": [
+      "(12) 3671-1299"
+    ],
+    "cnes": "2079690",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -23.2254389,
+    "lng": -45.3077057,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
     "city": "São Miguel Arcanjo",
     "hospital_name": "Hospital Municipal",
     "address": "Rua Antonia Fogaça Almeida Lima, 420 - Centro",
@@ -45616,6 +46624,26 @@
   {
     "state": "TO",
     "state_name": "Tocantins",
+    "city": "Centenário",
+    "hospital_name": "Unidade Básica de Saúde Antônio Gonçalves Lima",
+    "address": "Avenida Ceará, s/n - Centro",
+    "phones": [
+      "(63) 3420-1154"
+    ],
+    "cnes": "2370727",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -8.9617553,
+    "lng": -47.3391488,
+    "geocode_tier": 1
+  },
+  {
+    "state": "TO",
+    "state_name": "Tocantins",
     "city": "Colinas do Tocantins",
     "hospital_name": "Hospital Municipal de Colinas",
     "address": "Rua Tiradentes, s/n - Setor Campinas",
@@ -45859,6 +46887,50 @@
   {
     "state": "TO",
     "state_name": "Tocantins",
+    "city": "Mateiros",
+    "hospital_name": "Centro Municipal de Saúde Cristo Rei",
+    "address": "Rua Jalapão, QD 29, LT APM 03 - Centro",
+    "phones": [
+      "(63) 3534-1007"
+    ],
+    "cnes": "2487039",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Aracnídeo"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.5444176,
+    "lng": -46.4184372,
+    "geocode_tier": 1
+  },
+  {
+    "state": "TO",
+    "state_name": "Tocantins",
+    "city": "Miracema",
+    "hospital_name": "Hospital Regional de Miracema",
+    "address": "Avenida Irmã Emma Rudolfh Navarro, s/n - Universitário",
+    "phones": [
+      "(63) 3929-3030"
+    ],
+    "cnes": "2765659",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Aracnídeo",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -9.5692749,
+    "lng": -48.4127587,
+    "geocode_tier": 1
+  },
+  {
+    "state": "TO",
+    "state_name": "Tocantins",
     "city": "Natividade",
     "hospital_name": "Hospital de Peq. Porte Dr Fred Nunes da Silva",
     "address": "Rua Pref. Odilardo Nunes, QD 10, s/n - Setor Nova Esperança",
@@ -45992,6 +47064,29 @@
     "lat": -10.1840276,
     "lng": -48.9117926,
     "geocode_tier": 3
+  },
+  {
+    "state": "TO",
+    "state_name": "Tocantins",
+    "city": "Paranã",
+    "hospital_name": "Hospital Municipal Menino Jesus de Praga",
+    "address": "Avenida L, Quadra 107, Lote 4 e 5 - Centro",
+    "phones": [
+      "(63) 3371-1394"
+    ],
+    "cnes": "2560240",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Aracnídeo",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.6176897,
+    "lng": -47.877905999999996,
+    "geocode_tier": 1
   },
   {
     "state": "TO",

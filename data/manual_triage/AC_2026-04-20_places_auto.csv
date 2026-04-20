@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AC_0006,AC,Hospital da Família de Jordão,Jordão,"places_high:hospital type, muni match, UF in FA, 0.3km from old",accept_best,-9.193736999999999,-71.9494558,,"Jordão - AC, 69975-000",ChIJFdpEmWEnnJERn7po2821BOc,ROOFTOP

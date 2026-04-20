@@ -1,0 +1,5 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+TO_0009,TO,Unidade Básica de Saúde Antônio Gonçalves Lima,Centenário,"places_high:doctor type, muni match, UF in FA, 0.5km from old",accept_best,-8.9617553,-47.3391488,,"R. Ceará, Centenário - TO, 77723-000",ChIJPQtvfQpTL5MRvrQRl_i9pX8,ROOFTOP
+TO_0021,TO,Centro Municipal de Saúde Cristo Rei,Mateiros,"places_high:hospital type, muni match, UF in FA, 0.3km from old",accept_best,-10.5444176,-46.4184372,,"R. Quinze - Centro, Mateiros - TO, 77593-000",ChIJowGkmGFxMZMRte5x7HJ5ECs,ROOFTOP
+TO_0022,TO,Hospital Regional de Miracema,Miracema,"places_high:hospital type, muni match, UF in FA, 2.2km from old",accept_best,-9.5692749,-48.4127587,,"Av. Francisco Carneiro, 1 - St. Sussuapara, Miracema do Tocantins - TO, 77650-000",ChIJP-YZRwBnJJMRsr4PGIldtLc,ROOFTOP
+TO_0029,TO,Hospital Municipal Menino Jesus de Praga,Paranã,"places_high:hospital type, muni match, UF in FA, 1.0km from old",accept_best,-12.6176897,-47.877905999999996,,"Av. L, 122-154 - Paranã, TO, 77360-000",ChIJ3V-uUB-RR5MRoRHSZ6yXEms,ROOFTOP

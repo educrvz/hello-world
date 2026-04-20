@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AP_0021,AP,UBSI Kumenê,Oiapoque,"places_high:health type, muni match, UF in FA, 0.8km from old",accept_best,3.8472023,-51.8283798,,"R. Lélio Silva - Nova Esperanca, Oiapoque - AP, 68980-000",ChIJyxVPJmHFbI0RBzeZfjavDQw,ROOFTOP

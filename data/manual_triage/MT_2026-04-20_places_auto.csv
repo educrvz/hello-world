@@ -1,0 +1,3 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+MT_0042,MT,Unidade de Pronto Atendimento,Itiquira,"places_high:hospital type, muni match, UF in FA, 0.3km from old",accept_best,-17.2036007,-54.146710899999995,,"Av. Treze de Maio, 500 - CENTRO, Itiquira - MT, 78790-000",ChIJH1eGgmFXeZMR_j8KQuIYaQk,ROOFTOP
+MT_0095,MT,Centro de Saúde,Serra Nova do Norte,"places_high:health type, muni match, UF in FA, 0.5km from old",accept_best,-12.0885859,-51.396504199999995,,"R. Açaí, Serra Nova Dourada - MT, 78668-000",ChIJcwu4RDr0E5MRN38juWtyKNw,ROOFTOP

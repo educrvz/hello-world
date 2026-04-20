@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+SC_0066,SC,Hospital e Maternidade Jaraguá,Jaraguá do Sul,"places_high:hospital type, muni match, UF in FA, 7.9km from old",accept_best,-26.474658500000004,-49.0820157,,"Rua dos Motoristas de 1936, 120 - Czerniewicz, Jaraguá do Sul - SC, 89255-060",ChIJ83_4oVSU3pQRhF29CDZrKBc,ROOFTOP

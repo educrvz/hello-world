@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+ES_0040,ES,Hospital São João Batista,Mucurici,"places_high:hospital type, muni match, UF in FA, 0.5km from old",accept_best,-18.094394299999998,-40.5174064,,"R. Santo Antônio, 17 - Mucurici, ES, 29880-000",ChIJt_yq5ksEtQARY_ugayEjefk,ROOFTOP
