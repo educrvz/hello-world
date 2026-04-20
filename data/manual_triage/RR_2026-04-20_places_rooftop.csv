@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+RR_0003,RR,Unidade Mista Irmã Aqulina,Caracaraí,"places_rooftop:hospital type, muni match, UF in FA, 122km away (penalty)",accept_best,1.8285521,-61.1217398,,"Caracaraí - RR, 69360-000",ChIJ86aonsE5jY0R1CAukGdz0dY,ROOFTOP

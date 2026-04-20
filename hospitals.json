@@ -44,6 +44,28 @@
   {
     "state": "AC",
     "state_name": "Acre",
+    "city": "Brasiléia",
+    "hospital_name": "Hospital de Clínicas Raimundo Chaar",
+    "address": "BR 317, km 01, Bairro ALberto Castro s/n",
+    "phones": [
+      "(68) 3546-3804"
+    ],
+    "cnes": "2001500",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -10.9916431,
+    "lng": -68.7596374,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AC",
+    "state_name": "Acre",
     "city": "Cruzeiro do Sul",
     "hospital_name": "Hospital Regional do Juruá",
     "address": "Avenida 25 de Agosto, 5121 - Aeroporto Velho",
@@ -152,6 +174,27 @@
   {
     "state": "AC",
     "state_name": "Acre",
+    "city": "Marechal Thaumaturgo",
+    "hospital_name": "Unidade Mista de Marechal Thaumaturgo",
+    "address": "Rua 5 de novembro, s/n - Centro",
+    "phones": [
+      "(68) 3325-1048"
+    ],
+    "cnes": "2001594",
+    "antivenoms": [
+      "Botrópico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -8.9483336,
+    "lng": -72.7858033,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AC",
+    "state_name": "Acre",
     "city": "Plácido de Castro",
     "hospital_name": "Hospital Dr. Manoel Marinho Monte",
     "address": "Rua Epitácio Pessoa, 550 - Centro",
@@ -256,6 +299,27 @@
     "source_date": "2025-10-15",
     "lat": -9.0672348,
     "lng": -68.6579612,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AC",
+    "state_name": "Acre",
+    "city": "Senador Guiomard",
+    "hospital_name": "Hospital Dr. Ari Rodrigues",
+    "address": "Avenida Eduardo Assmar, 133 - COHAB",
+    "phones": [
+      "(68) 3232-2667"
+    ],
+    "cnes": "2000725",
+    "antivenoms": [
+      "Botrópico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -10.1585325,
+    "lng": -67.7324754,
     "geocode_tier": 1
   },
   {
@@ -1159,6 +1223,30 @@
   {
     "state": "AM",
     "state_name": "Amazonas",
+    "city": "Careiro Castanho",
+    "hospital_name": "Hospital Deoclécio dos Santos",
+    "address": "BR 319 Km 102 - Centro",
+    "phones": [
+      "(92) 3362-1092",
+      "(92) 3362-1137"
+    ],
+    "cnes": "2017652",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico",
+      "Elapídico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -3.8228287,
+    "lng": -60.3583449,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
     "city": "Careiro da Várzea",
     "hospital_name": "Unidade Hospitalar de Careiro da Várzea",
     "address": "Rua Walmir Bezerra, Centro",
@@ -1958,6 +2046,24 @@
   {
     "state": "AM",
     "state_name": "Amazonas",
+    "city": "Parintins",
+    "hospital_name": "P.S. Denizal Pereira",
+    "address": "Rua João Pereira, s/n - Agrovila do Cabori",
+    "phones": [
+      "(92) 3532-1069"
+    ],
+    "cnes": "3112845",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -2.459484150148123,
+    "lng": -57.101479905313944,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
     "city": "Pauini",
     "hospital_name": "Ambulatório Municipal Mario Said",
     "address": "Rua 19 de março, 536 - Cidade Alta",
@@ -1978,6 +2084,70 @@
     "lat": -7.7120419,
     "lng": -67.0027635,
     "geocode_tier": 3
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
+    "city": "Presidente Figueiredo",
+    "hospital_name": "Hospital Geral Evaldo Neves Falcão",
+    "address": "BR 174 Km 107 - Centro",
+    "phones": [
+      "(92) 3324-1005"
+    ],
+    "cnes": "2013320",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico",
+      "Elapídico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -1.9804119,
+    "lng": -60.0515228,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
+    "city": "Presidente Figueiredo",
+    "hospital_name": "Hospital de Balbina",
+    "address": "Rua Rio Negro, s/n - Vila de Balbina",
+    "phones": [
+      "(92) 3312-1200"
+    ],
+    "cnes": "7132026",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico",
+      "Elapídico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -1.9359938999999997,
+    "lng": -59.4208309,
+    "geocode_tier": 1
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
+    "city": "Presidente Figueiredo",
+    "hospital_name": "Hospital de Pitinga",
+    "address": "Avenida Cassiterita, s/n - Vila do Pitinga",
+    "phones": [
+      "(92) 3323-1225"
+    ],
+    "cnes": "5928761",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -0.7779529,
+    "lng": -60.081122699999995,
+    "geocode_tier": 1
   },
   {
     "state": "AM",
@@ -2163,6 +2333,22 @@
     "lat": -0.1268975,
     "lng": -67.0869634,
     "geocode_tier": 3
+  },
+  {
+    "state": "AM",
+    "state_name": "Amazonas",
+    "city": "São Gabriel da Cachoeira",
+    "hospital_name": "Unidade Basica de Saúde de Maturacá",
+    "address": "Comunidade Indígena de Maturacá",
+    "phones": [],
+    "cnes": "7149743",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -0.12174019999999999,
+    "lng": -67.0912926,
+    "geocode_tier": 1
   },
   {
     "state": "AM",
@@ -3048,6 +3234,26 @@
     "geocode_tier": 3
   },
   {
+    "state": "AP",
+    "state_name": "Amapá",
+    "city": "Almerim/Pará",
+    "hospital_name": "UBSI Kuxaré",
+    "address": "POLO-BASE TIPO I - MISSÃO TIRIYO",
+    "phones": [],
+    "cnes": "2916118",
+    "antivenoms": [
+      "Botrópico",
+      "Laquético",
+      "Crotálico",
+      "Elapídico",
+      "Aracnídico Escorpiônico."
+    ],
+    "source_date": "2025-11-10",
+    "lat": -1.2962761,
+    "lng": -52.9623413,
+    "geocode_tier": 1
+  },
+  {
     "state": "BA",
     "state_name": "Bahia",
     "city": "Abaíra",
@@ -3334,6 +3540,25 @@
     "lat": -11.9589473,
     "lng": -40.1671053,
     "geocode_tier": 2
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Barra",
+    "hospital_name": "Hospital Municipal Santa Rita",
+    "address": "Rua São João, s/n – São João",
+    "phones": [
+      "(74) 3662-2153",
+      "(74) 3662-2449"
+    ],
+    "cnes": "3048209",
+    "antivenoms": [
+      "É suprido pela rede de frio quando do atendimento de ocorrência, dada a proximidade"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.0806801,
+    "lng": -43.140346699999995,
+    "geocode_tier": 1
   },
   {
     "state": "BA",
@@ -5042,6 +5267,26 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Inhambupe",
+    "hospital_name": "Hospital Municipal Antônio Carlos Magalhães",
+    "address": "Av. ACM, 1 - Centro",
+    "phones": [],
+    "cnes": "2653230",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.7914797,
+    "lng": -38.3539762,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Ipiaú",
     "hospital_name": "Hospital Geral de Ipiaú",
     "address": "Av. Durval Carneiro, s/n – Santana",
@@ -5294,6 +5539,29 @@
     "source_date": "2026-01-05",
     "lat": -16.0837022,
     "lng": -39.61897740000001,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Itajú do Colônia",
+    "hospital_name": "Unidade Mista de Itajú do Colônia",
+    "address": "Av. Lomanto Júnior, 365 - Centro",
+    "phones": [
+      "(73) 98149-4623"
+    ],
+    "cnes": "2414074",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquético",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -15.142038099999999,
+    "lng": -39.724231599999996,
     "geocode_tier": 1
   },
   {
@@ -5860,6 +6128,26 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Lagedo do Tabocal",
+    "hospital_name": "Hospital Municipal Álvaro Fagundes",
+    "address": "Rua Achilles Brochini, s/n - Centro",
+    "phones": [
+      "(73) 3556-1222"
+    ],
+    "cnes": "2602210",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.475440899999999,
+    "lng": -40.224335599999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Laje",
     "hospital_name": "Hospital e Maternidade Municipal Ranulfo José de Almeida",
     "address": "Av. Antonio Carlos Magalhães, s/n - Centro",
@@ -6002,6 +6290,48 @@
     "lat": -15.5625365,
     "lng": -40.4240565,
     "geocode_tier": 3
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Macaúbas",
+    "hospital_name": "UPA de Macaúbas",
+    "address": "Av. Via do Acesso, s/n - Luís Eduardo Magalhães",
+    "phones": [
+      "(77) 3473-1269"
+    ],
+    "cnes": "717573",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.0149013,
+    "lng": -42.7004643,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Madre de Deus",
+    "hospital_name": "Hospital Municipal Dr. Eduardo Ribeiro Bahiana",
+    "address": "Av. Milton Bahia Ribeiro, 1900 - Centro",
+    "phones": [
+      "(71) 3604-4005"
+    ],
+    "cnes": "3289826",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -12.7376045,
+    "lng": -38.60854690000001,
+    "geocode_tier": 1
   },
   {
     "state": "BA",
@@ -6838,6 +7168,47 @@
   {
     "state": "BA",
     "state_name": "Bahia",
+    "city": "Presidente Jânio Quadros",
+    "hospital_name": "Centro de Saúde São João Batista",
+    "address": "Av. Antônio Carlos Magalhães, s/n - Centro",
+    "phones": [
+      "(77) 3492-2231",
+      "(77) 3492-2282"
+    ],
+    "cnes": "4030184",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -14.684367,
+    "lng": -41.679277,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Presidente Tancredo Neves",
+    "hospital_name": "Hospital Maternidade Luis Eduardo Magalhães",
+    "address": "Rua Heitor Guedes de Melo, s/n - Ginásio",
+    "phones": [
+      "(73) 3540-1003"
+    ],
+    "cnes": "2600730",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -13.4573862,
+    "lng": -39.422460099999995,
+    "geocode_tier": 1
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
     "city": "Queimadas",
     "hospital_name": "Hospital Municipal Dr. Edson Silva",
     "address": "Praça da Matriz, 97 - Centro",
@@ -7412,6 +7783,29 @@
     "lat": -14.5710273,
     "lng": -42.94450519999999,
     "geocode_tier": 3
+  },
+  {
+    "state": "BA",
+    "state_name": "Bahia",
+    "city": "Senhor do Bonfim",
+    "hospital_name": "Hospital Dr. Antonio Monteiro",
+    "address": "Praça Duque de Caxias, 172 – Centro",
+    "phones": [
+      "(74) 3544-4121"
+    ],
+    "cnes": "2770012",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquético",
+      "Escorpiônico",
+      "Araneídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -10.4614765,
+    "lng": -40.1832754,
+    "geocode_tier": 1
   },
   {
     "state": "BA",
@@ -9031,6 +9425,29 @@
   {
     "state": "CE",
     "state_name": "Ceará",
+    "city": "Senador Pompeu",
+    "hospital_name": "Hospital e Maternidade Santa Isabel",
+    "address": "Av. Joaquim Ferreira de Magalhães, 997 - Centro",
+    "phones": [
+      "(88) 99741-1404"
+    ],
+    "cnes": "2611481",
+    "antivenoms": [
+      "Crotálico",
+      "Laquético",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Lonômico",
+      "Loxoscélico"
+    ],
+    "source_date": "2025-11-10",
+    "lat": -5.5931044,
+    "lng": -39.3765445,
+    "geocode_tier": 1
+  },
+  {
+    "state": "CE",
+    "state_name": "Ceará",
     "city": "Sobral",
     "hospital_name": "Hospital Regional Norte",
     "address": "Av. John Sanford, 1505 - Junco",
@@ -10389,6 +10806,27 @@
     "lat": -18.4100253,
     "lng": -40.2150522,
     "geocode_tier": 3
+  },
+  {
+    "state": "ES",
+    "state_name": "Espírito Santo",
+    "city": "Presidente Kennedy",
+    "hospital_name": "Pronto Atendimento Municipal de Presidente Kennedy - PAM",
+    "address": "Rua Sebastião Vieira de Menezes, 100 - Centro",
+    "phones": [
+      "(28) 3535-1105"
+    ],
+    "cnes": "2548119",
+    "antivenoms": [
+      "Fonêutrico",
+      "Loxoscélico",
+      "Escorpiônico",
+      "Botrópico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -21.1011228,
+    "lng": -41.045067499999995,
+    "geocode_tier": 1
   },
   {
     "state": "ES",
@@ -12386,6 +12824,28 @@
   {
     "state": "GO",
     "state_name": "Goiás",
+    "city": "São Domingos",
+    "hospital_name": "Hospital Municipal de São Domingos",
+    "address": "Rua Pedro Matias dos Santos, Qd 10, Lt 01-04 - Setor São Sebastião",
+    "phones": [
+      "(62) 3425-1598"
+    ],
+    "cnes": "2569701",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2025-10-15",
+    "lat": -16.691849899999998,
+    "lng": -49.281811399999995,
+    "geocode_tier": 1
+  },
+  {
+    "state": "GO",
+    "state_name": "Goiás",
     "city": "São João D'Aliança",
     "hospital_name": "Hospital Municipal Santa Madalena",
     "address": "Rua 08 Esq/ Rua 33, s/n - Label",
@@ -13052,6 +13512,30 @@
     "lat": -2.711317,
     "lng": -44.7343556,
     "geocode_tier": 3
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "BARÃO DE GRAJAU",
+    "hospital_name": "Hospital Municipal Barjonas Lobão",
+    "address": "Avenida BR 230 KM 04, S/N Centro",
+    "phones": [
+      "(98) 3523 1907"
+    ],
+    "cnes": "2460343",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -7.540929899999999,
+    "lng": -46.048328,
+    "geocode_tier": 1
   },
   {
     "state": "MA",
@@ -14986,6 +15470,54 @@
   {
     "state": "MA",
     "state_name": "Maranhão",
+    "city": "PRESIDENTE DUTRA",
+    "hospital_name": "Hosp. Macrorregional de Urgência e Emergência de Presidente Dutra (SOCORRÃO)",
+    "address": "Rua Honorato Gomes, S/N Centro",
+    "phones": [
+      "(98) 99146 5915"
+    ],
+    "cnes": "6483089",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -5.2913254,
+    "lng": -44.49260220000001,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "PRESIDENTE VARGAS",
+    "hospital_name": "Hospial Municipal Carlos Vidal da Silva",
+    "address": "Av. Pio XII, S/N Centro",
+    "phones": [
+      "(98) 98467 1206"
+    ],
+    "cnes": "2655969",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -3.4052465,
+    "lng": -44.0215087,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
     "city": "PINHEIRO",
     "hospital_name": "Hospital Reginal Dr Antenor Abreu",
     "address": "Maria Pinheiro Paiva, S/N Aantigo Aeroporto",
@@ -15077,6 +15609,30 @@
     "source_date": "2026-01-05",
     "lat": -6.345793599999999,
     "lng": -47.3981222,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "PORTO RICO",
+    "hospital_name": "Unidade Mista Onias Santos Pinheiro",
+    "address": "Av. Lucimar Correa Mendes, Nº 13 PQ Betel, Centro",
+    "phones": [
+      "(98)3404-1110"
+    ],
+    "cnes": "2464225",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.5678057,
+    "lng": -44.268976699999996,
     "geocode_tier": 1
   },
   {
@@ -15707,6 +16263,30 @@
     "source_date": "2026-01-05",
     "lat": -2.8951292,
     "lng": -44.8802776,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MA",
+    "state_name": "Maranhão",
+    "city": "SENADOR ALEXANDRE COSTA",
+    "hospital_name": "Hospital Municipal Maria José Machado",
+    "address": "Rua Conego Aderson, S/N Centro",
+    "phones": [
+      "(99) 98481 2163"
+    ],
+    "cnes": "2461625",
+    "antivenoms": [
+      "SAB",
+      "SAC",
+      "SABC",
+      "SABL",
+      "SAE",
+      "SAAr",
+      "SAEsc"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -5.2722093,
+    "lng": -44.0474058,
     "geocode_tier": 1
   },
   {
@@ -17516,6 +18096,24 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "Coroaci",
+    "hospital_name": "P. A. Gentil Ferreira Oliveira",
+    "address": "Praça Coronel Manoel Laje, 15, Centro",
+    "phones": [
+      "(33) 98412-7864"
+    ],
+    "cnes": "6640486",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -18.6222901,
+    "lng": -42.284076999999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "Coromandel",
     "hospital_name": "Pronto Socorro Municipal",
     "address": "Av. Dr. Humberto Machado, 216 - São Domingos",
@@ -17534,6 +18132,29 @@
     "source_date": "2025-12-18",
     "lat": -18.480063,
     "lng": -47.196594,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Coronel Fabriciano",
+    "hospital_name": "UPA",
+    "address": "Av: Manaim S/N, Silvio Pereira",
+    "phones": [
+      "(31)34067585"
+    ],
+    "cnes": "196347",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -19.499990399999998,
+    "lng": -42.615802099999996,
     "geocode_tier": 1
   },
   {
@@ -18113,6 +18734,29 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "Governador Valadares",
+    "hospital_name": "Hospital Municipal Governador Valadares",
+    "address": "Rua Teófilo Otoni, 361 - Centro",
+    "phones": [
+      "(33) 3271-2578"
+    ],
+    "cnes": "2222043",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -18.853806,
+    "lng": -41.939943,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "Grão Mogol",
     "hospital_name": "Hospital Afrânio Augusto Figueiredo",
     "address": "Praça São Sebastião, 147 - Centro",
@@ -18564,6 +19208,24 @@
     "lat": -21.0727887,
     "lng": -47.0541916,
     "geocode_tier": 3
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Itanhomi",
+    "hospital_name": "Hospital São Vicente de Paulo",
+    "address": "Rua JK, 574 - Centro",
+    "phones": [
+      "(33) 3231-1281"
+    ],
+    "cnes": "2102773",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -19.1683932,
+    "lng": -41.860193699999996,
+    "geocode_tier": 1
   },
   {
     "state": "MG",
@@ -20429,6 +21091,29 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "Ponte Nova",
+    "hospital_name": "Hospital Arnaldo Gavazza",
+    "address": "Av. Dr. José Grossi, 16 - Guarapiranga",
+    "phones": [
+      "(31) 3819-5000"
+    ],
+    "cnes": "2206382",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -20.4056064,
+    "lng": -42.8910878,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "Porteirinha",
     "hospital_name": "Santa Casa de Misericórdia e Hospital São Vicente de Paula",
     "address": "R. Belo Horizonte, 1000 - Outron Branco",
@@ -20509,6 +21194,52 @@
     "source_date": "2025-12-18",
     "lat": -19.2990071,
     "lng": -48.9145766,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Presidente Bernardes",
+    "hospital_name": "Hospital Municipal Santo Antônio",
+    "address": "AV Juca quintão, 82, Bela Vista",
+    "phones": [
+      "(32) 3538-1141"
+    ],
+    "cnes": "2148471",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -20.7678285,
+    "lng": -43.1810918,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Presidente Olegário",
+    "hospital_name": "Hospital Municipal Darci José Fernandes",
+    "address": "Praça José Batista Marra, s/n",
+    "phones": [
+      "(34) 3811-1467"
+    ],
+    "cnes": "2101432",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -18.419320499999998,
+    "lng": -46.420392799999995,
     "geocode_tier": 1
   },
   {
@@ -20724,6 +21455,27 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "S. Sebastião do Paraíso",
+    "hospital_name": "Sta. Casa de Misericórdia",
+    "address": "Praça Com. João Pio F. Westin 92 - Mocoquinha",
+    "phones": [
+      "(35) 3539-1300"
+    ],
+    "cnes": "2146525",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Loxoscélico e Fonêutrico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -20.925957399999998,
+    "lng": -46.9832543,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "Sabinópolis",
     "hospital_name": "Hospital São Sebastião de Sabinópolis",
     "address": "Rua Inácio Barroso, 331 - Centro",
@@ -20896,6 +21648,24 @@
     "source_date": "2025-12-18",
     "lat": -18.8471925,
     "lng": -50.1235158,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Santo Antônio de Jacinto",
+    "hospital_name": "UBS de Santo Antônio do Jacinto",
+    "address": "Rua Beira Rio, 354",
+    "phones": [
+      "(33) 3747-1256"
+    ],
+    "cnes": "6516556",
+    "antivenoms": [
+      "Escorpiônico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -16.4742756,
+    "lng": -40.343873599999995,
     "geocode_tier": 1
   },
   {
@@ -21296,6 +22066,26 @@
   {
     "state": "MG",
     "state_name": "Minas Gerais",
+    "city": "Senador Firmino",
+    "hospital_name": "Hospital São João de Deus",
+    "address": "Rua Pio XII, 15 - Centro",
+    "phones": [
+      "(32) 3536-1234"
+    ],
+    "cnes": "2760851",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Loxoscélico e Fonêutrico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -20.9160577,
+    "lng": -43.0982615,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
     "city": "Serra do Salitre",
     "hospital_name": "Hospital Municipal de Serra do Salitre",
     "address": "R. Austrália, 419, Serra do Salitre",
@@ -21518,6 +22308,29 @@
     "source_date": "2025-12-18",
     "lat": -21.3664953,
     "lng": -45.5201885,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Tumiritinga",
+    "hospital_name": "Centro Municipal de Saude",
+    "address": "Praça Tiradentes. nº 58, centro",
+    "phones": [
+      "(33) 99819-4370"
+    ],
+    "cnes": "6650961",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico e Lonômico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -18.978765799999998,
+    "lng": -41.6477867,
     "geocode_tier": 1
   },
   {
@@ -21843,6 +22656,26 @@
     "source_date": "2025-12-18",
     "lat": -18.4735694,
     "lng": -42.3097413,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MG",
+    "state_name": "Minas Gerais",
+    "city": "Visconde do Rio Branco",
+    "hospital_name": "Hospital São João Batista",
+    "address": "Praça Jorge Carone Filho, 806 - Centro",
+    "phones": [
+      "(32) 3551-8300"
+    ],
+    "cnes": "2760843",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Loxoscélico e Fonêutrico"
+    ],
+    "source_date": "2025-12-18",
+    "lat": -21.020778399999998,
+    "lng": -42.8418157,
     "geocode_tier": 1
   },
   {
@@ -22293,6 +23126,25 @@
     "lat": -18.8011942,
     "lng": -52.6241599,
     "geocode_tier": 2
+  },
+  {
+    "state": "MS",
+    "state_name": "Mato Grosso do Sul",
+    "city": "Coronel Sapucaia",
+    "hospital_name": "Hosp. Mun. Aparecido Vidal Garcia",
+    "address": "Rua Luís Soligo, s/n - Jardim do Lago",
+    "phones": [
+      "(67) 3483-1086"
+    ],
+    "cnes": "2376776",
+    "antivenoms": [
+      "Escorpiônico",
+      "Botrópico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -23.2765384,
+    "lng": -55.541342300000004,
+    "geocode_tier": 1
   },
   {
     "state": "MS",
@@ -24093,6 +24945,30 @@
   {
     "state": "MT",
     "state_name": "Mato Grosso",
+    "city": "General Carneiro",
+    "hospital_name": "Hospital Municipal Bonifácio Ribeiro Vilela",
+    "address": "Rua Rachid Jaude Mamede, 1.000-centro",
+    "phones": [
+      "(66) 99203-9873"
+    ],
+    "cnes": "2395398",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquetico",
+      "Escorpiônico",
+      "Loxoscelico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -15.708307099999997,
+    "lng": -52.7545481,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MT",
+    "state_name": "Mato Grosso",
     "city": "Guarantã do Norte",
     "hospital_name": "Hospital Municipal Nossa Senhora do Rosário",
     "address": "Av. Dante Martins de Oliveira, N° 555 -Cidade Nova",
@@ -24866,6 +25742,30 @@
   {
     "state": "MT",
     "state_name": "Mato Grosso",
+    "city": "Ponte Branca",
+    "hospital_name": "Hospital MunicipalBom Jesus",
+    "address": "Rua Presidente Dutra, N.º 301 - Centro",
+    "phones": [
+      "(66) 99978-4480"
+    ],
+    "cnes": "2395592",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquetico",
+      "Escorpiônico",
+      "Loxoscelico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -16.7675977,
+    "lng": -52.8367876,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MT",
+    "state_name": "Mato Grosso",
     "city": "Pontes e Lacerda",
     "hospital_name": "Hospital Vale doGuaporé",
     "address": "R. Antônio Bento Neto-Centro",
@@ -25156,6 +26056,30 @@
     "source_date": "2026-01-05",
     "lat": -16.4442309,
     "lng": -54.6689622,
+    "geocode_tier": 1
+  },
+  {
+    "state": "MT",
+    "state_name": "Mato Grosso",
+    "city": "Rosário Oeste",
+    "hospital_name": "Unidade de Pronto Atendimento",
+    "address": "Rua marechal Deodoro da Fonseca,925, Centro.",
+    "phones": [
+      "(65)3356-1984"
+    ],
+    "cnes": "2655780",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Laquetico",
+      "Escorpiônico",
+      "Loxoscelico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -14.833823800000001,
+    "lng": -56.4290245,
     "geocode_tier": 1
   },
   {
@@ -30244,6 +31168,30 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Almirante Tamandaré",
+    "hospital_name": "Unidade de Saúde 24 horas Almirante Tamandaré",
+    "address": "Rua Lourenço Angelo Buzato, 592 - Vila Santa Terezinha",
+    "phones": [
+      "(41) 3699-4840"
+    ],
+    "cnes": "7463529",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.313495999999997,
+    "lng": -49.2988109,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Altamira do Paraná",
     "hospital_name": "Hospital Municipal São Luiz",
     "address": "Rua João Alves Fernandes, s/n - Centro",
@@ -30858,6 +31806,26 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Capitão Leônidas Marques",
+    "hospital_name": "Hospital Nossa Senhora da Aparecida - APMI",
+    "address": "Rua Pedro Dalibra, s/n - Cidade Baixa",
+    "phones": [
+      "(45) 3286-1215"
+    ],
+    "cnes": "2571811",
+    "antivenoms": [
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.4777919,
+    "lng": -53.6198633,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Carlópolis",
     "hospital_name": "Hospital São José de Carlópolis",
     "address": "Rua Capitão Estácio, 460 - Centro",
@@ -31226,6 +32194,52 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Coronel Vivida",
+    "hospital_name": "Instituto Médico Nossa Vida de Coronel Vivida",
+    "address": "Rua Duque de Caxias, 312 - Centro",
+    "phones": [
+      "(46) 3232-1344"
+    ],
+    "cnes": "2595125",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.976900099999998,
+    "lng": -52.5671709,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Coronel Vivida",
+    "hospital_name": "UPA I Unidade de Pronto Atendimento de Coronel Vivida",
+    "address": "Rua Romário Martins, 154 - Centro",
+    "phones": [
+      "(46) 3232-4401"
+    ],
+    "cnes": "7096518",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -25.9830325,
+    "lng": -52.5650257,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Cruz Machado",
     "hospital_name": "Hospital Municipal Santa Terezinha",
     "address": "Avenida Presidente Getúlio Vargas, 310 - Centro",
@@ -31539,6 +32553,52 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Doutor Ulysses",
+    "hospital_name": "Pronto Atendimento Deputado Aníbal Khury",
+    "address": "Avenida São João Batista, s/n - Centro",
+    "phones": [
+      "(41) 3664-1218"
+    ],
+    "cnes": "2681579",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.569821899999997,
+    "lng": -49.423732,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Engenheiro Beltrão",
+    "hospital_name": "Santa Casa de Misericordia de Engenheiro Beltrâo",
+    "address": "Avenida Ivaí, 684 - Centro",
+    "phones": [
+      "(44) 3537-1388"
+    ],
+    "cnes": "2735962",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.026971200000002,
+    "lng": -52.400144499999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Fazenda Rio Grande",
     "hospital_name": "Hospital e Maternidade Nossa Senhora Aparecida",
     "address": "Avenida Francisco Claudino dos Santos, 430 - Iguaçu",
@@ -31654,6 +32714,30 @@
     "source_date": "2026-01-05",
     "lat": -26.0757725,
     "lng": -53.0565941,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "General Carneiro",
+    "hospital_name": "Pronto Atendimento de General Carneiro",
+    "address": "Rua Presidente Castelo Branco, 497 - Monte Castelo",
+    "phones": [
+      "(42) 3552-1211"
+    ],
+    "cnes": "9358129",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.4218653,
+    "lng": -51.310299,
     "geocode_tier": 1
   },
   {
@@ -32471,6 +33555,78 @@
     "source_date": "2026-01-05",
     "lat": -24.5168579,
     "lng": -51.6765111,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Marechal Cândido Rondon",
+    "hospital_name": "Unidade de Pronto Atendimento Marechal Cândido Rondon",
+    "address": "Rua Presidente Costa e Silva, 510 - Líder",
+    "phones": [
+      "(45) 3284-1351"
+    ],
+    "cnes": "9614990",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.557448599999997,
+    "lng": -54.0657905,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Marechal Cândido Rondon",
+    "hospital_name": "Hospital Rondon",
+    "address": "Rua Cabral, 985 - Centro",
+    "phones": [
+      "(44) 3284-7200"
+    ],
+    "cnes": "4053907",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.557448599999997,
+    "lng": -54.0657905,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
+    "city": "Marechal Cândido Rondon",
+    "hospital_name": "Hospital Municipal Dr. Cruzatti",
+    "address": "Rua 12 de Outubro, 1382 - Centro",
+    "phones": [
+      "(44) 3254-1252"
+    ],
+    "cnes": "7117485",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.5543849,
+    "lng": -54.0631506,
     "geocode_tier": 1
   },
   {
@@ -36037,6 +37193,25 @@
   {
     "state": "RO",
     "state_name": "Rondônia",
+    "city": "Presidente Médici",
+    "hospital_name": "Hospital E Maternidade Eufrasia Maria Da Conceição",
+    "address": "Rua Otavio Rodrigues De Matos",
+    "phones": [
+      "(69) 3471 - 2830"
+    ],
+    "cnes": "2495414",
+    "antivenoms": [
+      "Botropico; Escorpionico",
+      "Aracnídeo."
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.168966099999999,
+    "lng": -61.912197199999994,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RO",
+    "state_name": "Rondônia",
     "city": "Rio Crespo",
     "hospital_name": "Hospital De Pequeno Porte Elias De Oliveira Lima",
     "address": "Rua Ermelindo Milani, 1293 - Setor 02",
@@ -36101,6 +37276,26 @@
     "source_date": "2026-01-05",
     "lat": -12.0569796,
     "lng": -63.5700757,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RO",
+    "state_name": "Rondônia",
+    "city": "Sao Miguel D Guaporé",
+    "hospital_name": "Hospital Massao Okamoto",
+    "address": "Rua Valdemar Coelho Nº 2340",
+    "phones": [
+      "(69)36422690"
+    ],
+    "cnes": "2808668",
+    "antivenoms": [
+      "Botropico",
+      "Escorpionico",
+      "Laquetico E Crotalico."
+    ],
+    "source_date": "2026-01-05",
+    "lat": -11.6934814,
+    "lng": -62.717803700000005,
     "geocode_tier": 1
   },
   {
@@ -36252,6 +37447,28 @@
     "lat": 3.3645581,
     "lng": -59.8328042,
     "geocode_tier": 3
+  },
+  {
+    "state": "RR",
+    "state_name": "Roraima",
+    "city": "Caracaraí",
+    "hospital_name": "Unidade Mista Irmã Aqulina",
+    "address": "Rua P 02, s/n - Santa Luzia",
+    "phones": [
+      "(95) 3532-1217",
+      "(95) 3532-1348"
+    ],
+    "cnes": "2476649",
+    "antivenoms": [
+      "Crotálico",
+      "Escorpiônico",
+      "Botrópico",
+      "Laquético"
+    ],
+    "source_date": "2025-12-18",
+    "lat": 1.8285521,
+    "lng": -61.1217398,
+    "geocode_tier": 1
   },
   {
     "state": "RR",
@@ -37803,6 +39020,24 @@
   {
     "state": "RS",
     "state_name": "Rio Grande do Sul",
+    "city": "Santana do Livramento",
+    "hospital_name": "Santa Casa de Misericórdia",
+    "address": "Rua Manduca Rodrigues, 295",
+    "phones": [
+      "(55) 3621 0250"
+    ],
+    "cnes": "2248220",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2025-11-14",
+    "lat": -30.8900676,
+    "lng": -55.538247399999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RS",
+    "state_name": "Rio Grande do Sul",
     "city": "Santiago",
     "hospital_name": "Hospital de Caridade de Santiago",
     "address": "Rua Sete de Setembro, 570, Centro",
@@ -38064,6 +39299,30 @@
     "source_date": "2025-11-14",
     "lat": -29.4130444,
     "lng": -53.02641190000001,
+    "geocode_tier": 1
+  },
+  {
+    "state": "RS",
+    "state_name": "Rio Grande do Sul",
+    "city": "Tenente Portela",
+    "hospital_name": "Associação Hosp. Beneficente Santo Antônio",
+    "address": "Rua Romário Rosa Lopes, 42, Centro",
+    "phones": [
+      "(55) 3551 3600"
+    ],
+    "cnes": "5384117",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico",
+      "Lonômico"
+    ],
+    "source_date": "2025-11-14",
+    "lat": -27.370385700000003,
+    "lng": -53.7584478,
     "geocode_tier": 1
   },
   {
@@ -38553,6 +39812,25 @@
     "source_date": "2026-01-05",
     "lat": -27.1081323,
     "lng": -52.5984849,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SC",
+    "state_name": "Santa Catarina",
+    "city": "Coronel Freitas",
+    "hospital_name": "Hospital Nossa Senhora da Saúde",
+    "address": "R. Ceará, 434",
+    "phones": [
+      "(49) 3347.0368"
+    ],
+    "cnes": "2537958",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico."
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.9051999,
+    "lng": -52.7051681,
     "geocode_tier": 1
   },
   {
@@ -39991,6 +41269,24 @@
   {
     "state": "SC",
     "state_name": "Santa Catarina",
+    "city": "Major Vieira",
+    "hospital_name": "Hospital São Lucas",
+    "address": "Praça Hercília Gadotti, 1333 - Centro",
+    "phones": [
+      "(47) 3655.1113"
+    ],
+    "cnes": "2543079",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.366867900000003,
+    "lng": -50.335105,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SC",
+    "state_name": "Santa Catarina",
     "city": "Monte Castelo",
     "hospital_name": "Pronto Socorro Municipal",
     "address": "Rua José Jacinto Raimundo, 129, Centro",
@@ -40198,6 +41494,25 @@
     "source_date": "2026-01-05",
     "lat": -27.254075,
     "lng": -49.95054400000001,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SC",
+    "state_name": "Santa Catarina",
+    "city": "Presidente Getúlio",
+    "hospital_name": "Hospital de Maternidade Maria Auxiliadora",
+    "address": "R. Padre Adalberto Ortmann, 197",
+    "phones": [
+      "(47) 3352.1234"
+    ],
+    "cnes": "2377330",
+    "antivenoms": [
+      "Botrópico",
+      "Aracnídico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -27.0515767,
+    "lng": -49.621807499999996,
     "geocode_tier": 1
   },
   {
@@ -40860,6 +42175,24 @@
     "source_date": "2026-01-05",
     "lat": -26.3948006,
     "lng": -53.0822381,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SC",
+    "state_name": "Santa Catarina",
+    "city": "Ponte Serrada",
+    "hospital_name": "Hospital Santa Luzia",
+    "address": "Av. XV de Novembro, 860",
+    "phones": [
+      "(49) 3435.0220"
+    ],
+    "cnes": "2411164",
+    "antivenoms": [
+      "Botrópico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -26.868371,
+    "lng": -52.020398099999994,
     "geocode_tier": 1
   },
   {
@@ -42853,6 +44186,27 @@
     "source_date": "2026-02-10",
     "lat": -23.3392751,
     "lng": -46.730165,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "General Salgado",
+    "hospital_name": "Santa Casa de General Salgado",
+    "address": "Rua Nadyr Garcia, 555 - Centro",
+    "phones": [
+      "(17) 3832-1198",
+      "(17) 3832-1699"
+    ],
+    "cnes": "2081652",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -20.6479699,
+    "lng": -50.3580046,
     "geocode_tier": 1
   },
   {
@@ -45037,6 +46391,98 @@
     "source_date": "2026-02-10",
     "lat": -24.0047055,
     "lng": -46.4188652,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "Presidente Epitácio",
+    "hospital_name": "Santa Casa de Presidente Epitácio",
+    "address": "Rua Antonio Venâncio Lopes, 942 - Vila Maria",
+    "phones": [
+      "(18) 3251-8010"
+    ],
+    "cnes": "2751038",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -21.774024800000003,
+    "lng": -52.1112934,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "Presidente Prudente",
+    "hospital_name": "Hosp. Reg. de Presidente Prudente Domingos Leonardo Cerávolo",
+    "address": "Rua José Bogiovani, 900 - Cidade Universitária",
+    "phones": [
+      "(18) 3229-1500"
+    ],
+    "cnes": "2755130",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico",
+      "Lonômico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -22.132310399999998,
+    "lng": -51.407395,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "Presidente Prudente",
+    "hospital_name": "Santa Casa Hospital Dr. Aristóteles Oliveira Martins",
+    "address": "Rua Venceslau Braz, 05 - Vila Euclides",
+    "phones": [
+      "(18) 2101-8000"
+    ],
+    "cnes": "2080532",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico",
+      "Lonômico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -22.1294416,
+    "lng": -51.392297899999996,
+    "geocode_tier": 1
+  },
+  {
+    "state": "SP",
+    "state_name": "São Paulo",
+    "city": "Presidente Venceslau",
+    "hospital_name": "Santa Casa de Presidente Venceslau",
+    "address": "Rua Emiliano Vilanova, 66 - Centro",
+    "phones": [
+      "(18) 3271-2411"
+    ],
+    "cnes": "2078139",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Escorpiônico",
+      "Loxoscélico",
+      "Fonêutrico"
+    ],
+    "source_date": "2026-02-10",
+    "lat": -21.8715685,
+    "lng": -51.841602699999996,
     "geocode_tier": 1
   },
   {

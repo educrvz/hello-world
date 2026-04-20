@@ -1,0 +1,3 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+RO_0030,RO,Hospital E Maternidade Eufrasia Maria Da Conceição,Presidente Médici,"places_rooftop:hospital type, UF in FA, 0.4km from old",accept_best,-11.168966099999999,-61.912197199999994,,"R. Otavio Rodrigues de Matos, 2240 - Cunha e Silva, Pres. Médici - RO, 78968-000",ChIJ_xK7P1elyZMRXMVfskbMRJA,ROOFTOP
+RO_0034,RO,Hospital Massao Okamoto,Sao Miguel D Guaporé,"places_rooftop:hospital type, UF in FA, 0.0km from old",accept_best,-11.6934814,-62.717803700000005,,"R. Waldemar Coelho, 2340 - Centro, São Miguel do Guaporé - RO, 76932-000",ChIJ392OJWnJyJMRLtq4fd8XhwY,ROOFTOP

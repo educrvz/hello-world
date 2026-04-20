@@ -1,0 +1,3 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AC_0009,AC,Unidade Mista de Marechal Thaumaturgo,Marechal Thaumaturgo,medium_accept,accept_best,-8.9483336,-72.7858033,,"Mal. Thaumaturgo - AC, 69983-000",ChIJC4sd7qMon5ERpHipOBX6lQI,ROOFTOP
+AC_0015,AC,Hospital Dr. Ari Rodrigues,Senador Guiomard,medium_accept,accept_best,-10.1585325,-67.7324754,,"R. Sen. Eduardo Asmar, 123-179, Sen. Guiomard - AC, 69925-000",ChIJUZewUuvqf5ERN2LsTBMZ8MA,ROOFTOP

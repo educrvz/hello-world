@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AC_0003,AC,Hospital de Clínicas Raimundo Chaar,Brasiléia,"places_rooftop:hospital type, muni match, UF in FA, 88km away (penalty)",accept_best,-10.9916431,-68.7596374,,"R. I Dois, 31, Brasiléia - AC, 69932-000",ChIJGSSaKdy3fpERKLKzgips_lg,ROOFTOP

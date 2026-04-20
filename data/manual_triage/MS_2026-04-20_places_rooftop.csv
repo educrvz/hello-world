@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+MS_0022,MS,Hosp. Mun. Aparecido Vidal Garcia,Coronel Sapucaia,"places_rooftop:hospital type, UF in FA, 580km away (penalty)",accept_best,-23.2765384,-55.541342300000004,,"R. Luís Soligo, 286, Cel. Sapucaia - MS, 79995-000",ChIJ5cXQMgDfYZQR9Znd1Drrb7M,ROOFTOP

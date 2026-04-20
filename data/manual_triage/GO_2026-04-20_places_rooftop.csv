@@ -1,0 +1,2 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+GO_0077,GO,Hospital Municipal de São Domingos,São Domingos,"places_rooftop:hospital type, UF in FA",accept_best,-16.691849899999998,-49.281811399999995,,"Av. T-2, 1941 - St. Bueno, Goiânia - GO, 74215-010",ChIJI-aQoTfxXpMR9hj5ja6fbts,ROOFTOP

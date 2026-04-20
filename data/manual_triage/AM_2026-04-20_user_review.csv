@@ -1,0 +1,5 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AM_0060,AM,P.S. Denizal Pereira,Parintins,manual_pick,manual,-2.6379047,-56.7285708,"-2.459484150148123, -57.101479905313944","Nossa Sra. de Nazaré, Parintins - AM",ChIJEyFZjcecY5IRDYcqPFMvzgs,GEOMETRIC_CENTER
+AM_0062,AM,Hospital Geral Evaldo Neves Falcão,Presidente Figueiredo,medium_accept,accept_best,-1.9804119,-60.0515228,,"BR-174, S/N - Centro, Pres. Figueiredo - AM, 69735-000",ChIJYyEyJ2APcpIRfCm2UwbIdtw,ROOFTOP
+AM_0063,AM,Hospital de Balbina,Presidente Figueiredo,medium_accept,accept_best,-1.9359938999999997,-59.4208309,,"1237 - Av. Um, 1199 - Waimiri, Pres. Figueiredo - AM, 69735-000",ChIJb5Sg-bPDcZIRnqpykO6o8HM,ROOFTOP
+AM_0064,AM,Hospital de Pitinga,Presidente Figueiredo,medium_accept,accept_best,-0.7779529,-60.081122699999995,,"Balbina, Pres. Figueiredo - AM, 69735-000",ChIJ3ceVHoU9dJIRa2XiZMCTPys,ROOFTOP
