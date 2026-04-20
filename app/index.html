@@ -1047,7 +1047,10 @@
             mapMarkers.push(marker);
             bounds.push([h.lat, h.lng]);
         });
-        if (bounds.length > 1) {
+        if (gpsAvailable) {
+            // Zoom to a 250km radius around the user instead of fitting all markers
+            mapInstance.fitBounds(L.latLng(userLat, userLng).toBounds(500000), { padding: [20, 20] });
+        } else if (bounds.length > 1) {
             mapInstance.fitBounds(bounds, { padding: [30, 30] });
         }
         setTimeout(function() { mapInstance.invalidateSize(); }, 100);
