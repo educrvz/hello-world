@@ -60,23 +60,30 @@ def main(decisions_csv: Path) -> int:
             continue
 
         rep = repair.get(row_id, {})
+        # Prefer best_* columns baked into the decisions CSV (from ad-hoc regeocode
+        # passes like build_pa_triage.py); fall back to the muni_mismatch repair CSV.
+        best_fa = d.get("best_formatted_address") or rep.get("best_formatted_address", "")
+        best_place_id = d.get("best_place_id") or rep.get("best_place_id", "")
+        best_loc_type = d.get("best_location_type") or rep.get("best_location_type", "")
+        best_partial = d.get("best_partial_match") or rep.get("best_partial_match", "")
+
         if decision == "manual":
             coords = parse_coords(d.get("note", ""))
             if not coords:
                 print(f"WARN: {row_id} manual decision without lat,lng in note — skipped", file=sys.stderr)
                 continue
             new_lat, new_lng = coords
-            new_fa = rep.get("best_formatted_address", "") or row["formatted_address"]
-            new_place_id = rep.get("best_place_id", "") or row["place_id"]
+            new_fa = best_fa or row["formatted_address"]
+            new_place_id = best_place_id or row["place_id"]
             new_location_type = "ROOFTOP"
             new_partial = ""
         elif decision == "accept_best":
             new_lat = d.get("best_lat") or rep.get("best_lat", "")
             new_lng = d.get("best_lng") or rep.get("best_lng", "")
-            new_fa = rep.get("best_formatted_address", "")
-            new_place_id = rep.get("best_place_id", "")
-            new_location_type = rep.get("best_location_type", "")
-            new_partial = rep.get("best_partial_match", "")
+            new_fa = best_fa
+            new_place_id = best_place_id
+            new_location_type = best_loc_type
+            new_partial = best_partial
         else:
             print(f"WARN: {row_id} unknown decision {decision!r} — skipped", file=sys.stderr)
             continue

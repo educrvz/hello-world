@@ -25038,6 +25038,27 @@
   {
     "state": "PA",
     "state_name": "Pará",
+    "city": "Almerim",
+    "hospital_name": "Hospital Municipal de Almerim",
+    "address": "Rua Lameira Bittencourt, 1659 - Bairro do Palhão",
+    "phones": [],
+    "cnes": "2331748",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Laquético",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -1.528841608033536,
+    "lng": -52.58191434112879,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
     "city": "Altamira",
     "hospital_name": "Hospital Municipal São Rafael",
     "address": "Rua 6, 2089 - Mutirão",
@@ -25459,6 +25480,27 @@
     "lat": -1.8995846,
     "lng": -50.2091838,
     "geocode_tier": 3
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Baião",
+    "hospital_name": "Hosp. Munic. de São Joaquim",
+    "address": "Rua Doutor Bena Santana, s/n - Nova São Francisco",
+    "phones": [
+      "(91) 3795-1611"
+    ],
+    "cnes": "4005732",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.7966780007393974,
+    "lng": -49.66975618813233,
+    "geocode_tier": 1
   },
   {
     "state": "PA",
@@ -25965,6 +26007,43 @@
   {
     "state": "PA",
     "state_name": "Pará",
+    "city": "Capitão Poço",
+    "hospital_name": "AME- Assistencia Médica Especializada",
+    "address": "Fernando Guillhom s/n",
+    "phones": [],
+    "cnes": "9274138",
+    "antivenoms": [
+      "Botropico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -1.7521351927070103,
+    "lng": -47.06342582038933,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Castanhal",
+    "hospital_name": "UPA porte III 24 HORAS Governador Almir Gabriel",
+    "address": "BR 316 ,s/n , Bairro do Crsito",
+    "phones": [],
+    "cnes": "7474423",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Laquético",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -1.2960217344032845,
+    "lng": -47.95032875338581,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
     "city": "Castanhal",
     "hospital_name": "Hospital Municipal de Castanhal",
     "address": "Rua Major Wilson, s/n - Nova Olinda",
@@ -26192,6 +26271,27 @@
   {
     "state": "PA",
     "state_name": "Pará",
+    "city": "Eldorado dos Carajás",
+    "hospital_name": "Hospital Municipal de Eldorado dos Carajás",
+    "address": "Avenida Oziel Carneiro, s/n - Eldorado KM 02",
+    "phones": [
+      "(94) 98175-8668"
+    ],
+    "cnes": "3003469",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -6.105929300358932,
+    "lng": -49.34936143017513,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
     "city": "Faro",
     "hospital_name": "Unidade Mista de Faro",
     "address": "Avenida Independência, s/n - Campina",
@@ -26249,6 +26349,27 @@
     "lat": -1.939331,
     "lng": -47.0494961,
     "geocode_tier": 3
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Goianésia",
+    "hospital_name": "Hosp. Municipal de Goianésia",
+    "address": "Rua Tiradentes, 66 - Centro",
+    "phones": [
+      "(94) 99110-1640"
+    ],
+    "cnes": "2312174",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -3.84137721784901,
+    "lng": -49.1019882023157,
+    "geocode_tier": 1
   },
   {
     "state": "PA",
@@ -26332,6 +26453,27 @@
     "source_date": "2026-01-05",
     "lat": -1.4315827,
     "lng": -47.9153677,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Ipixuna",
+    "hospital_name": "Hospital Santa Clara",
+    "address": "Rua Ulisses Guimarães, s/n - Centro",
+    "phones": [
+      "(91) 3811-2123"
+    ],
+    "cnes": "2616483",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.5569908,
+    "lng": -47.5043893,
     "geocode_tier": 1
   },
   {
@@ -27182,6 +27324,27 @@
     "lat": -1.8045386,
     "lng": -53.4813461,
     "geocode_tier": 3
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Piçarras",
+    "hospital_name": "Unidade Mista de Saúde de Piçarras",
+    "address": "Rua João Abreu Angel, 00 - Brasil Novo",
+    "phones": [
+      "(94) 3422-1190"
+    ],
+    "cnes": "2622491",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -6.4424226,
+    "lng": -48.8614969,
+    "geocode_tier": 1
   },
   {
     "state": "PA",
@@ -28265,6 +28428,27 @@
     "source_date": "2026-01-05",
     "lat": -2.8906469,
     "lng": -52.0127932,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Viseu",
+    "hospital_name": "Hospital das Bem Aventuranças",
+    "address": "Rua da Piçarreira, s/n - Piçarreira",
+    "phones": [
+      "(94) 3429-1241"
+    ],
+    "cnes": "4006429",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -1.1986154683343015,
+    "lng": -46.14375538564532,
     "geocode_tier": 1
   },
   {
