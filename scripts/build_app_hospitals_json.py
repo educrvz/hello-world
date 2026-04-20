@@ -42,6 +42,7 @@ DOCS_ESTADO = ROOT / "Docs Estado"
 INPUT = BUILD / "master_geocoded_patched_v1.csv"
 OUT_APP = ROOT / "app" / "hospitals.json"
 OUT_ROOT = ROOT / "hospitals.json"
+OVERRIDES = ROOT / "data" / "location_overrides.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from phone_utils import expand_phones  # noqa: E402
@@ -109,6 +110,22 @@ def title_case_state(name: str) -> str:
     return " ".join(w if w in small and i > 0 else w.capitalize() for i, w in enumerate(words))
 
 
+def load_overrides() -> dict[str, dict]:
+    """Load manual coordinate overrides keyed by CNES.
+
+    Managed via the SoroJá overrides Google Sheet (see docs/PROCESS.md).
+    Returns {} if the file is missing so this script stays runnable in a
+    fresh checkout.
+    """
+    if not OVERRIDES.exists():
+        return {}
+    data = json.loads(OVERRIDES.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        sys.stderr.write(f"WARN: {OVERRIDES} is not a JSON object; ignoring.\n")
+        return {}
+    return data
+
+
 def parse_latlng(row: dict) -> tuple[float | None, float | None]:
     try:
         lat = float(row["lat"])
@@ -124,6 +141,9 @@ def main() -> int:
         return 2
 
     pdf_dates = load_pdf_date_map()
+    overrides = load_overrides()
+    overrides_applied: list[str] = []
+    overrides_unknown: list[str] = []
 
     with INPUT.open(encoding="utf-8", newline="") as fh:
         all_rows = list(csv.DictReader(fh))
@@ -132,6 +152,7 @@ def main() -> int:
     rows = [r for r in all_rows if (r.get("publish_policy") or "").strip() == "publish"]
     hidden = len(all_rows) - len(rows)
 
+    published_cnes: set[str] = set()
     out_records: list[dict] = []
     dropped_missing_coords: list[str] = []
 
@@ -145,6 +166,7 @@ def main() -> int:
         state_name = title_case_state((r.get("state") or "").strip())
         source_date = pdf_dates.get(uf, "")
 
+        cnes = (r.get("cnes") or "").strip()
         record = {
             "state": uf,
             "state_name": state_name,
@@ -152,14 +174,33 @@ def main() -> int:
             "hospital_name": (r.get("health_unit_name") or "").strip(),
             "address": (r.get("address") or "").strip(),
             "phones": clean_phones(r.get("phones_raw") or ""),
-            "cnes": (r.get("cnes") or "").strip(),
+            "cnes": cnes,
             "antivenoms": split_antivenoms(r.get("antivenoms_raw") or ""),
             "source_date": source_date,
             "lat": lat,
             "lng": lng,
             "geocode_tier": TIER_MAP.get((r.get("location_type") or "").strip(), 3),
         }
+
+        override = overrides.get(cnes) if cnes else None
+        if override:
+            try:
+                record["lat"] = float(override["lat"])
+                record["lng"] = float(override["lng"])
+                record["geocode_tier"] = 1
+                overrides_applied.append(cnes)
+            except (KeyError, TypeError, ValueError):
+                sys.stderr.write(
+                    f"WARN: override for cnes {cnes} missing/invalid lat/lng; ignored.\n"
+                )
+
+        if cnes:
+            published_cnes.add(cnes)
         out_records.append(record)
+
+    for cnes in overrides:
+        if cnes not in published_cnes:
+            overrides_unknown.append(cnes)
 
     # Match key order of the current prod file for minimal git diff churn
     canonical_order = [
@@ -177,6 +218,13 @@ def main() -> int:
     print(f"Source rows (master_geocoded_patched_v1): {len(all_rows):,}")
     print(f"Published (publish_policy == publish):   {len(rows):,}")
     print(f"Hidden (state-only / muni-mismatch / external-review): {hidden:,}")
+    print(f"Overrides applied: {len(overrides_applied)}")
+    if overrides_unknown:
+        print(
+            f"WARN: {len(overrides_unknown)} override cnes not found in published set: "
+            f"{', '.join(overrides_unknown[:5])}"
+            + (" …" if len(overrides_unknown) > 5 else "")
+        )
     print(f"Wrote {len(ordered):,} records to {OUT_APP}")
     print(f"Wrote {len(ordered):,} records to {OUT_ROOT}")
     if dropped_missing_coords:

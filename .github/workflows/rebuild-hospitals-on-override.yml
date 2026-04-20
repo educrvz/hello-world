@@ -1,0 +1,40 @@
+name: Rebuild hospitals.json from overrides
+
+# When the overrides file changes on main (e.g. the SoroJá sheet publishes a
+# fix), re-run the production build script and commit the regenerated
+# hospitals.json so Vercel picks it up on the next deploy.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/location_overrides.json'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Rebuild hospitals.json
+        run: python3 scripts/build_app_hospitals_json.py
+
+      - name: Commit updated hospitals.json (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- hospitals.json app/hospitals.json; then
+            echo "No change to hospitals.json — skipping commit."
+            exit 0
+          fi
+          git add hospitals.json app/hospitals.json
+          git commit -m "Rebuild hospitals.json from overrides (automated)"
+          git push

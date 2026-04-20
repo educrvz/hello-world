@@ -308,6 +308,48 @@ Verify:
 
 ---
 
+## Fixing a reported bad pin
+
+For one-off user reports (wrong pin on a specific hospital), you don't need
+the PDF pipeline. The **SoroJá Overrides** Google Sheet layers per-`cnes`
+coordinate corrections on top of `hospitals.json`. The override file at
+[`data/location_overrides.json`](../data/location_overrides.json) is the
+source of truth; the sheet edits it via the GitHub API.
+
+**Per-report workflow (~2 min, no terminal needed):**
+
+1. Open the SoroJá Overrides Google Sheet → tab **Hospitals** → filter by
+   name or city.
+2. Click **Current pin** (where SoroJá places it today) and **Find correct
+   pin** (Google Maps search for the stored address). Compare against the
+   reporter's evidence; if the address search shows the correct location,
+   right-click the correct pin in Google Maps and copy coordinates.
+3. Switch to tab **Overrides** → add a row: `cnes`, `corrected_lat`,
+   `corrected_lng`, `reason` (link the Notion report), `verified_on`. The
+   sheet rejects coords outside Brazil.
+4. Menu → **SoroJá → Publish overrides** → confirm. The script commits to
+   `main`; Vercel deploys in ~1 min. The row flips to `status = published`.
+
+**How it lands in `hospitals.json`:**
+
+Stage 11 ([`scripts/build_app_hospitals_json.py`](../scripts/build_app_hospitals_json.py))
+reads `data/location_overrides.json` at the end of its main loop. For each
+override whose `cnes` is in the published set, it overwrites `lat` / `lng`
+and sets `geocode_tier = 1` (manually verified). Unknown `cnes` values log
+a WARN and are skipped. A cold `refresh_dataset.sh` run automatically
+honors overrides — they live through pipeline refreshes.
+
+**Rollback a single override:** delete the row in the Overrides tab and
+click Publish again. The commit history has the prior state.
+
+**Setup & script source:**
+[`scripts/sheet/Code.gs`](../scripts/sheet/Code.gs) holds the Apps Script
+paste-in plus setup instructions (required script properties:
+`GITHUB_TOKEN` fine-grained PAT with `Contents: read/write`, `GITHUB_REPO`
+`educrvz/sos-antiveneno`).
+
+---
+
 ## Appendix A — handling the review queue
 
 `build/review_queue_v1.csv` contains 825 rows today:
