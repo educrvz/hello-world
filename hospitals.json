@@ -45170,7 +45170,7 @@
     "state_name": "São Paulo",
     "city": "Ribeirão Preto",
     "hospital_name": "Hospital das Clínicas FAEPA Ribeirão Preto",
-    "address": "Campus Universitário, s/n - Monte Alegre",
+    "address": "R. Bernardino de Campos, 1000 - Centro, Ribeirão Preto - SP, 14015-130, Brasil",
     "phones": [
       "(16) 3602-1157"
     ],
@@ -45185,9 +45185,9 @@
       "Lonômico"
     ],
     "source_date": "2026-02-10",
-    "lat": -21.1631033,
-    "lng": -47.8349179,
-    "geocode_tier": 3
+    "lat": -21.185455,
+    "lng": -47.8084284,
+    "geocode_tier": 1
   },
   {
     "state": "SP",
