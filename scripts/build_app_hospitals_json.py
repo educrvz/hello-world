@@ -123,9 +123,11 @@ def title_case_state(name: str) -> str:
 def load_overrides() -> dict[str, dict]:
     """Load manual overrides keyed by CNES.
 
-    Each value is a dict with any subset of: `lat`, `lng`, `address`.
+    Each value is a dict with any subset of: `lat`, `lng`, `address`, `note`.
     lat/lng must appear together; supplying either one alone is ignored.
-    address may appear alone. Managed via the SoroJá overrides Google
+    address and note may each appear alone. `note` renders as a short
+    warning below the address in the app (e.g. "campus does not attend;
+    go to the emergency unit"). Managed via the SoroJá overrides Google
     Sheet (see docs/PROCESS.md). Returns {} if the file is missing so
     this script stays runnable in a fresh checkout.
     """
@@ -211,6 +213,10 @@ def main() -> int:
             if address_override:
                 record["address"] = address_override
                 applied_any = True
+            note_override = str(override.get("note") or "").strip()
+            if note_override:
+                record["note"] = note_override
+                applied_any = True
             if applied_any:
                 overrides_applied.append(cnes)
             else:
@@ -232,7 +238,19 @@ def main() -> int:
         "phones", "cnes", "antivenoms", "source_date", "lat", "lng",
         "geocode_tier",
     ]
-    ordered = [{k: rec[k] for k in canonical_order} for rec in out_records]
+    # `note` is an optional field (override-driven only); emit it right after
+    # `address` when present so the display grouping stays together.
+    def _order(rec):
+        out = {k: rec[k] for k in canonical_order}
+        if "note" in rec:
+            rebuilt = {}
+            for k in canonical_order:
+                rebuilt[k] = out[k]
+                if k == "address":
+                    rebuilt["note"] = rec["note"]
+            return rebuilt
+        return out
+    ordered = [_order(rec) for rec in out_records]
 
     OUT_APP.parent.mkdir(parents=True, exist_ok=True)
     payload = json.dumps(ordered, ensure_ascii=False, indent=2)

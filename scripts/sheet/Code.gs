@@ -19,9 +19,9 @@
 //   - Find the hospital in tab "Hospitals"; click "Current pin" / "Find
 //     correct pin" to compare.
 //   - Add a row in tab "Overrides" (cnes, corrected lat/lng and/or
-//     corrected address, reason). You may correct coordinates, address,
-//     or both — but supplying only one of lat/lng (with the other blank)
-//     is an error.
+//     corrected address and/or corrected note, reason). You may correct
+//     coordinates, address, a warning note, or any combination — but
+//     supplying only one of lat/lng (with the other blank) is an error.
 //   - Menu: SoroJá → Publish overrides. Vercel deploys in ~1 minute.
 
 const HOSPITALS_SHEET = 'Hospitals';
@@ -38,11 +38,12 @@ const HOSPITAL_HEADERS = [
 
 const OVERRIDE_HEADERS = [
   'cnes', 'hospital_name (ref)', 'corrected_lat', 'corrected_lng',
-  'corrected_address', 'reason', 'verified_on', 'status', 'published_at',
+  'corrected_address', 'corrected_note', 'reason', 'verified_on',
+  'status', 'published_at',
 ];
 // Column indices (1-based) for fields the script writes back to the sheet.
-const OVERRIDE_COL_STATUS = 8;
-const OVERRIDE_COL_PUBLISHED_AT = 9;
+const OVERRIDE_COL_STATUS = 9;
+const OVERRIDE_COL_PUBLISHED_AT = 10;
 
 // Brazil bounding box — rejects obviously wrong paste values.
 const LAT_MIN = -34, LAT_MAX = 6;
@@ -74,6 +75,9 @@ function setupSheet() {
       .setValues([HOSPITAL_HEADERS])
       .setFontWeight('bold');
   hosp.setFrozenRows(1);
+  // Remove any pre-existing filter; createFilter throws if one already exists.
+  const existingFilter = hosp.getFilter();
+  if (existingFilter) existingFilter.remove();
   hosp.getRange('A:K').createFilter();
 
   let over = ss.getSheetByName(OVERRIDES_SHEET);
@@ -188,13 +192,14 @@ function publishOverrides() {
   for (let i = 0; i < values.length; i++) {
     const r = values[i];
     const rowNum = i + 2;
-    const [cnesRaw, , lat, lng, addressRaw, reason, verifiedOn, status] = r;
+    const [cnesRaw, , lat, lng, addressRaw, noteRaw, reason, verifiedOn, status] = r;
     const cnes = String(cnesRaw || '').trim();
     if (!cnes) continue; // blank row
 
     const latBlank = lat === '' || lat === null || lat === undefined;
     const lngBlank = lng === '' || lng === null || lng === undefined;
     const address = String(addressRaw || '').trim();
+    const note = String(noteRaw || '').trim();
 
     if (latBlank !== lngBlank) {
       throw new Error(`Row ${rowNum}: lat and lng must both be set or both blank.`);
@@ -208,8 +213,8 @@ function publishOverrides() {
         throw new Error(`Row ${rowNum}: lat/lng outside Brazil bounding box.`);
       }
     }
-    if (!hasCoords && !address) {
-      throw new Error(`Row ${rowNum}: provide corrected coordinates, a corrected address, or both.`);
+    if (!hasCoords && !address && !note) {
+      throw new Error(`Row ${rowNum}: provide corrected coordinates, a corrected address, a corrected note, or any combination.`);
     }
     if (!String(reason || '').trim()) {
       throw new Error(`Row ${rowNum}: reason is required.`);
@@ -225,6 +230,9 @@ function publishOverrides() {
     }
     if (address) {
       entry.address = address;
+    }
+    if (note) {
+      entry.note = note;
     }
     payload[cnes] = entry;
 

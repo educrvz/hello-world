@@ -193,6 +193,11 @@
         .card h3 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
         .card .city { font-size: 14px; color: var(--text2); margin-top: 2px; }
         .card .address { font-size: 13px; color: var(--text2); margin-top: 4px; }
+        .card .hospital-note {
+            font-size: 13px; font-style: italic; color: #B26A00;
+            background: #FFF8E1; border-left: 3px solid #F5A623;
+            padding: 6px 8px; border-radius: 4px; margin-top: 6px;
+        }
         .distance-badge {
             font-size: 15px; font-weight: 700; padding: 4px 10px;
             border-radius: 16px; white-space: nowrap; flex-shrink: 0;
@@ -708,7 +713,7 @@
         if (searchQuery) {
             var q = norm(searchQuery);
             results = results.filter(function(h) {
-                var hay = norm(h.hospital_name + ' ' + h.city + ' ' + h.state_name + ' ' + (h.address || ''));
+                var hay = norm(h.hospital_name + ' ' + h.city + ' ' + h.state_name + ' ' + (h.address || '') + ' ' + (h.note || ''));
                 return hay.indexOf(q) !== -1;
             });
         }
@@ -875,6 +880,7 @@
                 '<div><h3>' + h.hospital_name + '</h3>' +
                 '<div class="city">' + h.city + ', ' + h.state + '</div>' +
                 (h.address ? '<div class="address">' + h.address + '</div>' : '') +
+                (h.note ? '<div class="hospital-note">' + h.note + '</div>' : '') +
                 '</div>' + distHtml +
             '</div>' +
             tagsHtml +
@@ -1033,6 +1039,7 @@
             }).filter(Boolean).join('<br>');
             var popup = '<strong>' + h.hospital_name + '</strong><br>' +
                 h.city + ', ' + h.state + distText + '<br>' +
+                (h.note ? '<em style="color:#B26A00">' + h.note + '</em><br>' : '') +
                 (phonesHtml ? phonesHtml + '<br>' : '') +
                 '<a href="https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng +
                 '" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
