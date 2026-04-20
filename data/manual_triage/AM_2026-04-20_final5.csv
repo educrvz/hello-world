@@ -1,0 +1,3 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AM_0056,AM,Polo Base Kwatá,Nova Olinda do Norte,low,accept_best,-4.226043499999999,-59.2746218,,"QPFG+H5 - Canumã, Borba - AM, 69200-000",ChIJ4aiUAADRaZIRA4Wzn_NP7Oc,GEOMETRIC_CENTER
+AM_0078,AM,5º Pelotão Especial de Fronteira do Exército (5º BIS),São Gabriel da Cachoeira,low,accept_best,0.6252363,-66.1247352,,"Santa Isabel do Rio Negro - AM, 69740-000",ChIJDWc8OuTb_o0R6ikR7TclaJ8,GEOMETRIC_CENTER

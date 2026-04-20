@@ -43,11 +43,20 @@ def load_master():
         return {r["row_id"]: r for r in csv.DictReader(f)}
 
 
-def load_candidates(path: Path, ufs: set[str] | None) -> list[dict]:
+def load_candidates(path: Path, ufs: set[str] | None,
+                    still_hidden_only: bool = True) -> list[dict]:
     data = json.loads(path.read_text())
+    # Drop rows that are no longer hidden (already applied since the JSON was written).
+    still_hidden: set[str] | None = None
+    if still_hidden_only:
+        with MASTER.open() as f:
+            still_hidden = {r["row_id"] for r in csv.DictReader(f)
+                            if r.get("publish_policy", "") != "publish"}
     out = []
     for c in data:
         if c.get("grade") == "high":
+            continue
+        if still_hidden is not None and c["row_id"] not in still_hidden:
             continue
         if ufs and c.get("uf") not in ufs:
             continue

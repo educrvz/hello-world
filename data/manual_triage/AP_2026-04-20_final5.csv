@@ -1,0 +1,3 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note,best_formatted_address,best_place_id,best_location_type
+AP_0024,AP,UBSI Bona Apalai,Óbidos/Pará,low,keep_hidden,,,,,,
+AP_0025,AP,UBSI Missão Tiriyó,Almerim/Pará,low,manual,,,"2.2319466882264893, -55.9610317576138",,,
