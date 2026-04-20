@@ -18,7 +18,10 @@
 // Daily workflow:
 //   - Find the hospital in tab "Hospitals"; click "Current pin" / "Find
 //     correct pin" to compare.
-//   - Add a row in tab "Overrides" (cnes, corrected lat/lng, reason).
+//   - Add a row in tab "Overrides" (cnes, corrected lat/lng and/or
+//     corrected address, reason). You may correct coordinates, address,
+//     or both — but supplying only one of lat/lng (with the other blank)
+//     is an error.
 //   - Menu: SoroJá → Publish overrides. Vercel deploys in ~1 minute.
 
 const HOSPITALS_SHEET = 'Hospitals';
@@ -35,8 +38,11 @@ const HOSPITAL_HEADERS = [
 
 const OVERRIDE_HEADERS = [
   'cnes', 'hospital_name (ref)', 'corrected_lat', 'corrected_lng',
-  'reason', 'verified_on', 'status', 'published_at',
+  'corrected_address', 'reason', 'verified_on', 'status', 'published_at',
 ];
+// Column indices (1-based) for fields the script writes back to the sheet.
+const OVERRIDE_COL_STATUS = 8;
+const OVERRIDE_COL_PUBLISHED_AT = 9;
 
 // Brazil bounding box — rejects obviously wrong paste values.
 const LAT_MIN = -34, LAT_MAX = 6;
@@ -182,26 +188,45 @@ function publishOverrides() {
   for (let i = 0; i < values.length; i++) {
     const r = values[i];
     const rowNum = i + 2;
-    const [cnesRaw, , lat, lng, reason, verifiedOn, status] = r;
+    const [cnesRaw, , lat, lng, addressRaw, reason, verifiedOn, status] = r;
     const cnes = String(cnesRaw || '').trim();
     if (!cnes) continue; // blank row
 
-    if (typeof lat !== 'number' || typeof lng !== 'number') {
-      throw new Error(`Row ${rowNum}: lat/lng must be numeric.`);
+    const latBlank = lat === '' || lat === null || lat === undefined;
+    const lngBlank = lng === '' || lng === null || lng === undefined;
+    const address = String(addressRaw || '').trim();
+
+    if (latBlank !== lngBlank) {
+      throw new Error(`Row ${rowNum}: lat and lng must both be set or both blank.`);
     }
-    if (lat < LAT_MIN || lat > LAT_MAX || lng < LNG_MIN || lng > LNG_MAX) {
-      throw new Error(`Row ${rowNum}: lat/lng outside Brazil bounding box.`);
+    const hasCoords = !latBlank && !lngBlank;
+    if (hasCoords) {
+      if (typeof lat !== 'number' || typeof lng !== 'number') {
+        throw new Error(`Row ${rowNum}: lat/lng must be numeric.`);
+      }
+      if (lat < LAT_MIN || lat > LAT_MAX || lng < LNG_MIN || lng > LNG_MAX) {
+        throw new Error(`Row ${rowNum}: lat/lng outside Brazil bounding box.`);
+      }
+    }
+    if (!hasCoords && !address) {
+      throw new Error(`Row ${rowNum}: provide corrected coordinates, a corrected address, or both.`);
     }
     if (!String(reason || '').trim()) {
       throw new Error(`Row ${rowNum}: reason is required.`);
     }
 
-    payload[cnes] = {
-      lat: lat,
-      lng: lng,
+    const entry = {
       reason: String(reason).trim(),
       verified_on: verifiedOn ? formatDate_(verifiedOn) : '',
     };
+    if (hasCoords) {
+      entry.lat = lat;
+      entry.lng = lng;
+    }
+    if (address) {
+      entry.address = address;
+    }
+    payload[cnes] = entry;
 
     if (status !== 'published') toMarkPublished.push(rowNum);
   }
@@ -223,8 +248,8 @@ function publishOverrides() {
   // Mark rows as published.
   const now = new Date();
   for (const rowNum of toMarkPublished) {
-    over.getRange(rowNum, 7).setValue('published');       // status
-    over.getRange(rowNum, 8).setValue(formatDate_(now));  // published_at
+    over.getRange(rowNum, OVERRIDE_COL_STATUS).setValue('published');
+    over.getRange(rowNum, OVERRIDE_COL_PUBLISHED_AT).setValue(formatDate_(now));
   }
 
   ui.alert(

@@ -247,6 +247,18 @@ Writes `build/muni_mismatch_repair_best_attempts.csv` and
 Rerun `classify_geocode_quality_v3.py` and `apply_repairs.py` so the
 9d salvages propagate into the v3 buckets and the final `publish_policy`.
 
+### 9f. Re-apply committed manual-triage decisions
+
+Every CSV under [`data/manual_triage/`](../data/manual_triage/) is fed
+through [`scripts/apply_manual_triage.py`](../scripts/apply_manual_triage.py).
+Those files are the durable record of operator unhides produced by the
+`build_muni_triage.py` / `build_pa_triage.py` HTML triage tools. Because
+the master CSV is rebuilt from scratch whenever a state PDF changes, this
+stage is what keeps those unhides alive across re-ingests. Naming
+convention: `{UF}_{YYYY-MM-DD}_{bucket}.csv` (e.g.
+`PA_2026-04-20_muni_mismatch.csv`). The applier is idempotent — it
+archives `original_*` only on first touch.
+
 ## 10. Google Sheets exports (inlined in `refresh_dataset.sh`)
 
 Writes `build/google_sheets_publish_ready_v1.csv` and
@@ -308,13 +320,13 @@ Verify:
 
 ---
 
-## Fixing a reported bad pin
+## Fixing a reported bad pin or address
 
-For one-off user reports (wrong pin on a specific hospital), you don't need
-the PDF pipeline. The **SoroJá Overrides** Google Sheet layers per-`cnes`
-coordinate corrections on top of `hospitals.json`. The override file at
-[`data/location_overrides.json`](../data/location_overrides.json) is the
-source of truth; the sheet edits it via the GitHub API.
+For one-off user reports (wrong pin *or* wrong address on a specific
+hospital), you don't need the PDF pipeline. The **SoroJá Overrides** Google
+Sheet layers per-`cnes` corrections on top of `hospitals.json`. The override
+file at [`data/location_overrides.json`](../data/location_overrides.json) is
+the source of truth; the sheet edits it via the GitHub API.
 
 **Per-report workflow (~2 min, no terminal needed):**
 
@@ -324,9 +336,14 @@ source of truth; the sheet edits it via the GitHub API.
    pin** (Google Maps search for the stored address). Compare against the
    reporter's evidence; if the address search shows the correct location,
    right-click the correct pin in Google Maps and copy coordinates.
-3. Switch to tab **Overrides** → add a row: `cnes`, `corrected_lat`,
-   `corrected_lng`, `reason` (link the Notion report), `verified_on`. The
-   sheet rejects coords outside Brazil.
+3. Switch to tab **Overrides** → add a row. Columns:
+   - `cnes` (required).
+   - `corrected_lat`, `corrected_lng` — supply both or neither. Blank is
+     allowed when you only need to fix the address.
+   - `corrected_address` — optional free-text street address to display in
+     the app. Leave blank if only the pin is wrong.
+   - `reason` (required — link the Notion report), `verified_on`.
+   - The sheet rejects coords outside Brazil.
 4. Menu → **SoroJá → Publish overrides** → confirm. The script commits to
    `main`; Vercel deploys in ~1 min. The row flips to `status = published`.
 
@@ -334,10 +351,17 @@ source of truth; the sheet edits it via the GitHub API.
 
 Stage 11 ([`scripts/build_app_hospitals_json.py`](../scripts/build_app_hospitals_json.py))
 reads `data/location_overrides.json` at the end of its main loop. For each
-override whose `cnes` is in the published set, it overwrites `lat` / `lng`
-and sets `geocode_tier = 1` (manually verified). Unknown `cnes` values log
-a WARN and are skipped. A cold `refresh_dataset.sh` run automatically
-honors overrides — they live through pipeline refreshes.
+override whose `cnes` is in the published set:
+
+- If `lat` **and** `lng` are present, it overwrites both and sets
+  `geocode_tier = 1` (manually verified). Supplying only one of them logs a
+  WARN and is skipped.
+- If `address` is present and non-empty, it overwrites the displayed
+  address.
+- Unknown `cnes` values log a WARN and are skipped.
+
+A cold `refresh_dataset.sh` run automatically honors overrides — they live
+through pipeline refreshes because they apply at the final build stage.
 
 **Rollback a single override:** delete the row in the Overrides tab and
 click Publish again. The commit history has the prior state.

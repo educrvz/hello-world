@@ -122,6 +122,23 @@ say "Stage 09e: re-classify + re-apply (picks up 09d salvages)"
 $PY scripts/classify_geocode_quality_v3.py
 $PY scripts/apply_repairs.py
 
+say "Stage 09f: re-apply committed manual-triage decisions"
+# data/manual_triage/*.csv holds every operator decision ever made (muni-mismatch
+# unhides, state-only pins, etc.). Re-applying them here makes them survive the
+# from-scratch CSV rebuild that a new state PDF triggers. apply_manual_triage.py
+# is idempotent: it only archives original_* on first touch.
+shopt -s nullglob
+triage_files=(data/manual_triage/*.csv)
+shopt -u nullglob
+if [ ${#triage_files[@]} -eq 0 ]; then
+  echo "  (no manual-triage decision files committed — skipping)"
+else
+  for f in "${triage_files[@]}"; do
+    echo "  applying $f"
+    $PY scripts/apply_manual_triage.py "$f"
+  done
+fi
+
 say "Stage 10: google sheets exports"
 $PY - <<'PY'
 import csv

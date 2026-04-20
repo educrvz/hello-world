@@ -17,7 +17,7 @@ Schema mapping (see docs/PROCESS.md §11):
     state          <- source_state_abbr         (2-letter UF)
     state_name     <- state                     (title-cased)
     city           <- municipality
-    address        <- address
+    address        <- address                   (unless overridden via data/location_overrides.json)
     cnes           <- cnes
     phones         <- phones_raw                 (split on / and ,, placeholders dropped)
     antivenoms     <- antivenoms_raw             (split on |)
@@ -121,11 +121,13 @@ def title_case_state(name: str) -> str:
 
 
 def load_overrides() -> dict[str, dict]:
-    """Load manual coordinate overrides keyed by CNES.
+    """Load manual overrides keyed by CNES.
 
-    Managed via the SoroJá overrides Google Sheet (see docs/PROCESS.md).
-    Returns {} if the file is missing so this script stays runnable in a
-    fresh checkout.
+    Each value is a dict with any subset of: `lat`, `lng`, `address`.
+    lat/lng must appear together; supplying either one alone is ignored.
+    address may appear alone. Managed via the SoroJá overrides Google
+    Sheet (see docs/PROCESS.md). Returns {} if the file is missing so
+    this script stays runnable in a fresh checkout.
     """
     if not OVERRIDES.exists():
         return {}
@@ -194,14 +196,26 @@ def main() -> int:
 
         override = overrides.get(cnes) if cnes else None
         if override:
-            try:
-                record["lat"] = float(override["lat"])
-                record["lng"] = float(override["lng"])
-                record["geocode_tier"] = 1
+            applied_any = False
+            if "lat" in override and "lng" in override:
+                try:
+                    record["lat"] = float(override["lat"])
+                    record["lng"] = float(override["lng"])
+                    record["geocode_tier"] = 1
+                    applied_any = True
+                except (TypeError, ValueError):
+                    sys.stderr.write(
+                        f"WARN: override for cnes {cnes} has invalid lat/lng; ignored.\n"
+                    )
+            address_override = str(override.get("address") or "").strip()
+            if address_override:
+                record["address"] = address_override
+                applied_any = True
+            if applied_any:
                 overrides_applied.append(cnes)
-            except (KeyError, TypeError, ValueError):
+            else:
                 sys.stderr.write(
-                    f"WARN: override for cnes {cnes} missing/invalid lat/lng; ignored.\n"
+                    f"WARN: override for cnes {cnes} has no applicable fields; ignored.\n"
                 )
 
         if cnes:

@@ -1,0 +1,4 @@
+row_id,uf,name,municipality,outcome,decision,best_lat,best_lng,note
+PA_0006,PA,Hospital Municipal Monte Dourado,Almerim,improved_but_still_review,accept_best,-0.8621363999999999,-52.5412039,
+PA_0157,PA,Hospital Municipal de Senador José Porfirio,Senador José Porfírio,improved_but_still_review,accept_best,-2.5905658,-51.9520537,
+PA_0160,PA,Hospital Municipal Frei Eliseu Eismann,Terra Santa,improved_but_still_review,manual,-2.1098286,-56.4915262,"-2.1052046746520694, -56.49135574083636"

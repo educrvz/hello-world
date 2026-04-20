@@ -1,4 +1,4 @@
-"""Apply manual_triage decisions from the muni_mismatch triage HTML.
+"""Apply manual_triage decisions from the muni_mismatch / state-only triage HTML.
 
 Input CSV columns: row_id, uf, name, municipality, outcome, decision, best_lat, best_lng, note.
 Decisions handled:
@@ -11,6 +11,13 @@ For each applied row we:
   - overwrite lat, lng, formatted_address, place_id, partial_match, location_type
   - set final_status=publish_ready, publish_policy=publish
   - set repair_applied=true, repair_source=manual_triage
+
+Durable home for decision CSVs: `data/manual_triage/{UF}_{YYYY-MM-DD}_{bucket}.csv`.
+Files in that directory are auto-applied by stage 09f of `refresh_dataset.sh`, so
+they survive a from-scratch rebuild of master_geocoded_patched_v1.csv when a new
+state PDF lands. Files elsewhere (e.g. `build/pa_triage_decisions.csv` downloaded
+from the triage HTML tool) still apply when passed explicitly but will *not*
+survive a pipeline refresh.
 """
 
 from __future__ import annotations
