@@ -25015,6 +25015,29 @@
   {
     "state": "PA",
     "state_name": "Pará",
+    "city": "Almerim",
+    "hospital_name": "Hospital Municipal Monte Dourado",
+    "address": "Avenida Beira-Mar, s/n - Centro",
+    "phones": [
+      "(96) 99133-9795"
+    ],
+    "cnes": "2331470",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Laquético",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -0.8621363999999999,
+    "lng": -52.5412039,
+    "geocode_tier": 3
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
     "city": "Altamira",
     "hospital_name": "Hospital Municipal São Rafael",
     "address": "Rua 6, 2089 - Mutirão",
@@ -27957,6 +27980,27 @@
   {
     "state": "PA",
     "state_name": "Pará",
+    "city": "Senador José Porfírio",
+    "hospital_name": "Hospital Municipal de Senador José Porfirio",
+    "address": "Rua 7 de Setembro, s/n - Centro",
+    "phones": [
+      "(91) 3556-1388"
+    ],
+    "cnes": "2330946",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.5905658,
+    "lng": -51.9520537,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
     "city": "Soure",
     "hospital_name": "Hosp. Municipal Menino Deus",
     "address": "8ª Rua, s/n - Matinha",
@@ -27995,6 +28039,25 @@
     "lat": -2.9360251,
     "lng": -48.9486472,
     "geocode_tier": 3
+  },
+  {
+    "state": "PA",
+    "state_name": "Pará",
+    "city": "Terra Santa",
+    "hospital_name": "Hospital Municipal Frei Eliseu Eismann",
+    "address": "",
+    "phones": [],
+    "cnes": "2619946",
+    "antivenoms": [
+      "Botrópico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -2.1052046746520694,
+    "lng": -56.49135574083636,
+    "geocode_tier": 1
   },
   {
     "state": "PA",
