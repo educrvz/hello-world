@@ -93,7 +93,7 @@
     "address": "Avenida Japiim, s/n - Centro",
     "phones": [
       "(68) 99946-0048",
-      "99986 2932"
+      "(68) 99986 2932"
     ],
     "cnes": "2000083",
     "antivenoms": [
@@ -286,7 +286,8 @@
     "hospital_name": "Unidade de Emergência Dr. Daniel Houly",
     "address": "Rod. AL 220, km 05 s/n Arapiraca",
     "phones": [
-      "(82) 359-2450 e 3529-2488"
+      "(82) 359-2450",
+      "(82) 3529-2488"
     ],
     "cnes": "3015408",
     "antivenoms": [
@@ -411,7 +412,7 @@
     "address": "Avenida Maceió, s/n - Xingó",
     "phones": [
       "(82) 3686-1972",
-      "1195"
+      "(82) 3686-1195"
     ],
     "cnes": "2704544",
     "antivenoms": [
@@ -461,7 +462,8 @@
     "hospital_name": "Hospital Escola Dr. Helvio Auto - HEHA",
     "address": "Rua Cônego Fernando Lyra, no Trapiche da Barra",
     "phones": [
-      "(82) 3315-6826 e (82) 3315-3244"
+      "(82) 3315-6826",
+      "(82) 3315-3244"
     ],
     "cnes": "2720035",
     "antivenoms": [
@@ -638,7 +640,7 @@
     "address": "Estrada Alvarães Nogueira, s/n - Centro",
     "phones": [
       "(97) 3345-1204",
-      "1255"
+      "(97) 3345-1255"
     ],
     "cnes": "2017768",
     "antivenoms": [
@@ -755,7 +757,7 @@
     "address": "Rua Augusto Luzeiro, s/n - Centro",
     "phones": [
       "(97) 3417-1115",
-      "1152"
+      "(97) 3417-1152"
     ],
     "cnes": "2016672",
     "antivenoms": [
@@ -861,7 +863,7 @@
     "address": "Rua Francisco Barroncas, s/n - Centro",
     "phones": [
       "(92) 3317-1231",
-      "1335"
+      "(92) 3317-1335"
     ],
     "cnes": "2013045",
     "antivenoms": [
@@ -908,7 +910,7 @@
     "address": "Rua Terra Preta do Castanhal, s/n - São Judas Tadeu",
     "phones": [
       "(92) 3531-8125",
-      "7059"
+      "(92) 3531-7059"
     ],
     "cnes": "2012022",
     "antivenoms": [
@@ -952,7 +954,7 @@
     "address": "Rua 13 de Maio, 1492 - Coimbra",
     "phones": [
       "(97) 3415-5246",
-      "6240"
+      "(97) 3415-6240"
     ],
     "cnes": "2016974",
     "antivenoms": [
@@ -999,7 +1001,7 @@
     "address": "Estrada Presidente Figueiredo, s/n - Centro",
     "phones": [
       "(97) 3545-5158",
-      "7179"
+      "(97) 3545-7179"
     ],
     "cnes": "2016354",
     "antivenoms": [
@@ -1046,7 +1048,7 @@
     "address": "Rua Silverino Nery, s/n - Centro",
     "phones": [
       "(92) 3512-1526",
-      "1104"
+      "(92) 3512-1104"
     ],
     "cnes": "2012383",
     "antivenoms": [
@@ -1093,7 +1095,7 @@
     "address": "Avenida Botinelly, 213 - Centro",
     "phones": [
       "(97) 3334-1337",
-      "1068"
+      "(97) 3334-1068"
     ],
     "cnes": "2016419",
     "antivenoms": [
@@ -1117,7 +1119,7 @@
     "address": "Rua Celino de Menezes, 1672 - Nova República",
     "phones": [
       "(97) 3491-1116",
-      "1350"
+      "(97) 3491-1350"
     ],
     "cnes": "2017555",
     "antivenoms": [
@@ -1208,7 +1210,7 @@
     "address": "Rua Padre Hosphel, 1181 - Nossa Senhora Aparecida",
     "phones": [
       "(97) 3481-1428",
-      "3198"
+      "(97) 3481-3198"
     ],
     "cnes": "2016397",
     "antivenoms": [
@@ -1301,7 +1303,7 @@
     "address": "Rua 05 de setembro, 522 - Centro",
     "phones": [
       "(97) 3373-2190",
-      "1104"
+      "(97) 3373-1104"
     ],
     "cnes": "2017016",
     "antivenoms": [
@@ -1326,7 +1328,7 @@
     "address": "Avenida João Hercules Primo, s/n - Torre",
     "phones": [
       "(97) 3482-1073",
-      "1067"
+      "(97) 3482-1067"
     ],
     "cnes": "2013614",
     "antivenoms": [
@@ -1350,7 +1352,7 @@
     "address": "Travessa Juruá, s/n - Centro",
     "phones": [
       "(92) 3367-2302",
-      "2107"
+      "(92) 3367-2107"
     ],
     "cnes": "2012839",
     "antivenoms": [
@@ -1374,7 +1376,7 @@
     "address": "Rua Castro Leite, 2593 - Iraci",
     "phones": [
       "(92) 3521-4215",
-      "4220"
+      "(92) 3521-4220"
     ],
     "cnes": "2016923",
     "antivenoms": [
@@ -1690,7 +1692,7 @@
     "address": "Travessa 24 de outubro, s/n - Centro",
     "phones": [
       "(97) 3385-1043",
-      "1040"
+      "(97) 3385-1040"
     ],
     "cnes": "2014688",
     "antivenoms": [
@@ -1777,7 +1779,7 @@
     "address": "Estrada dos Moraes, 898 - Maresia",
     "phones": [
       "(92) 3542-1112",
-      "3222"
+      "(92) 3542-3222"
     ],
     "cnes": "2018144",
     "antivenoms": [
@@ -1821,7 +1823,7 @@
     "address": "Rua Senador Álvaro Maia, 23 - Centro",
     "phones": [
       "(92) 3534-7624",
-      "7300"
+      "(92) 3534-7300"
     ],
     "cnes": "2016540",
     "antivenoms": [
@@ -1845,7 +1847,7 @@
     "address": "Rua 7 de setembro, 364 - Santa Luzia",
     "phones": [
       "(92) 3318-1207",
-      "1227"
+      "(92) 3318-1227"
     ],
     "cnes": "2011905",
     "antivenoms": [
@@ -1892,7 +1894,7 @@
     "address": "Rua Raimundo Oliveira, s/n - Tucumã",
     "phones": [
       "(97) 3379-1481",
-      "1101"
+      "(97) 3379-1101"
     ],
     "cnes": "2019604",
     "antivenoms": [
@@ -1940,7 +1942,7 @@
     "address": "Rua 19 de março, 536 - Cidade Alta",
     "phones": [
       "(97) 3458-1253",
-      "1132"
+      "(97) 3458-1132"
     ],
     "cnes": "2018381",
     "antivenoms": [
@@ -1987,7 +1989,7 @@
     "address": "Rua Danilo Correa, s/n - Centro",
     "phones": [
       "(97) 3441-1944",
-      "1138"
+      "(97) 3441-1138"
     ],
     "cnes": "2016478",
     "antivenoms": [
@@ -2027,7 +2029,7 @@
     "address": "Rua Hugo Ribeiro, s/n - Santa Etelvina",
     "phones": [
       "(97) 3461-1959",
-      "1182"
+      "(97) 3461-1182"
     ],
     "cnes": "3220966",
     "antivenoms": [
@@ -2072,7 +2074,7 @@
     "address": "Rua Quitino de Sá Cavalcante, s/n - Dabarú",
     "phones": [
       "(97) 3471-1413",
-      "1475"
+      "(97) 3471-1475"
     ],
     "cnes": "4004787",
     "antivenoms": [
@@ -2274,7 +2276,7 @@
     "address": "Rua Monsenhor Evangelista, 309 - Centro",
     "phones": [
       "(97)3431-1482",
-      "1043"
+      "(97)3431-1043"
     ],
     "cnes": "2018128",
     "antivenoms": [
@@ -2318,7 +2320,7 @@
     "address": "Rua Álvaro Maia, s/n - Santa Maria",
     "phones": [
       "(92) 3572-1391",
-      "1107"
+      "(92) 3572-1107"
     ],
     "cnes": "2011859",
     "antivenoms": [
@@ -2342,7 +2344,7 @@
     "address": "Rua Eduardo Garcia, 26 - Centro",
     "phones": [
       "(92) 3528-2156",
-      "2115"
+      "(92) 3528-2115"
     ],
     "cnes": "2016249",
     "antivenoms": [
@@ -2433,7 +2435,7 @@
     "address": "Avenida Castelo Branco, s/n - Centro",
     "phones": [
       "(97) 3391-1128",
-      "1249"
+      "(97) 3391-1249"
     ],
     "cnes": "2012553",
     "antivenoms": [
@@ -2457,7 +2459,7 @@
     "address": "Estrada do Bexiga, s/n - Fonte Boa",
     "phones": [
       "(97) 3343-2446",
-      "2469"
+      "(97) 3343-2469"
     ],
     "cnes": "2016141",
     "antivenoms": [
@@ -3035,7 +3037,7 @@
     "address": "Rua Dr. Antonio Monteiro, 140 - Centro",
     "phones": [
       "(75) 3287-2222",
-      "2470"
+      "(75) 3287-2470"
     ],
     "cnes": "2304295",
     "antivenoms": [
@@ -3070,8 +3072,8 @@
     "address": "Rua Dantas Bião, 49 – Centro",
     "phones": [
       "(75) 3423-8376",
-      "3421-1004",
-      "1474"
+      "(75) 3421-1004",
+      "(75) 3423-1474"
     ],
     "cnes": "2487438",
     "antivenoms": [
@@ -3241,7 +3243,7 @@
     "hospital_name": "UPA de Araci",
     "address": "Rua José Mota, Centro. SN.",
     "phones": [
-      "75 92051989"
+      "(75) 92051989"
     ],
     "cnes": "7761112",
     "antivenoms": [
@@ -3401,7 +3403,7 @@
     "address": "Rua Pedro Teixeiras Brito, 01 – Centro",
     "phones": [
       "(75) 3267-2672",
-      "2364"
+      "(75) 3267-2364"
     ],
     "cnes": "2644827",
     "antivenoms": [
@@ -3631,7 +3633,7 @@
     "address": "Av. Prefeito Arival Viana, 716 - Centro",
     "phones": [
       "(77) 3442-2179",
-      "2144"
+      "(77) 3442-2144"
     ],
     "cnes": "2386674",
     "antivenoms": [
@@ -3971,7 +3973,7 @@
     "address": "Rua Luis Gomes Buraqueira, 170 - Centro",
     "phones": [
       "(75) 3274-1023",
-      "1220"
+      "(75) 3274-1220"
     ],
     "cnes": "2387719",
     "antivenoms": [
@@ -4093,7 +4095,7 @@
     "address": "Rua Geonísio Barroso, s/n - Boa Vista",
     "phones": [
       "(71) 3641-2742",
-      "2185"
+      "(71) 3641-2185"
     ],
     "cnes": "2388685",
     "antivenoms": [
@@ -4156,7 +4158,7 @@
     "address": "Praça Virgílio Bandeira, S/n – Centro",
     "phones": [
       "(77) 3489-1583",
-      "1166"
+      "(77) 3489-1166"
     ],
     "cnes": "2389584",
     "antivenoms": [
@@ -4497,7 +4499,7 @@
     "address": "Av. Eduardo Froés da Mota, s/n - 35 BI",
     "phones": [
       "(75) 3602-0300",
-      "0301"
+      "(75) 3602-0301"
     ],
     "cnes": "6602533",
     "antivenoms": [
@@ -4516,7 +4518,7 @@
     "address": "Av. Eduardo Fróes da Mota, s/n - 35 BI",
     "phones": [
       "(75) 3602-3300",
-      "3626-6438"
+      "(75) 3626-6438"
     ],
     "cnes": "2799758",
     "antivenoms": [
@@ -4625,7 +4627,7 @@
     "address": "Rodovia BA 046 – Km 01 – Bairro Cerâmica",
     "phones": [
       "(75) 3325-3030",
-      "2303"
+      "(75) 3325-2303"
     ],
     "cnes": "2772671",
     "antivenoms": [
@@ -4960,7 +4962,7 @@
     "address": "Rua Palmeiras, 86 - Centro",
     "phones": [
       "(75) 3364-2140",
-      "2112"
+      "(75) 3364-2112"
     ],
     "cnes": "4026772",
     "antivenoms": [
@@ -5152,7 +5154,7 @@
     "address": "Rua Frei Geremias s/nº - Novo Prado",
     "phones": [
       "(73) 3294-1242",
-      "1206"
+      "(73) 3294-1206"
     ],
     "cnes": "2556847",
     "antivenoms": [
@@ -5729,7 +5731,7 @@
     "address": "Estrada do Côco Km 45",
     "phones": [
       "(71) 3379-0099",
-      "7352"
+      "(71) 3379-7352"
     ],
     "cnes": "2802023",
     "antivenoms": [
@@ -5817,7 +5819,7 @@
     "address": "Rua Sebastião Lima, 1 - Centro",
     "phones": [
       "(77) 3472-2276",
-      "2247"
+      "(77) 3472-2247"
     ],
     "cnes": "6436838",
     "antivenoms": [
@@ -5917,7 +5919,7 @@
     "address": "Rua Maurilio Moreira, s/n – Centro",
     "phones": [
       "(71) 3635-1005",
-      "1705"
+      "(71) 3635-1705"
     ],
     "cnes": "2627418",
     "antivenoms": [
@@ -6076,7 +6078,7 @@
     "address": "Praça Coronel Propércio, s/nº – Centro",
     "phones": [
       "(75) 3338-2100",
-      "2112"
+      "(75) 3338-2112"
     ],
     "cnes": "2498790",
     "antivenoms": [
@@ -6307,7 +6309,7 @@
     "address": "Av. Centenário, 147 - Centro",
     "phones": [
       "(77) 3471-2241",
-      "2237"
+      "(77) 3471-2237"
     ],
     "cnes": "4029526",
     "antivenoms": [
@@ -6330,7 +6332,7 @@
     "address": "Rua Dr. Manoel Novaes, 436 – Centro",
     "phones": [
       "(77) 3664-2278",
-      "3664-2009"
+      "(77) 3664-2009"
     ],
     "cnes": "2601702",
     "antivenoms": [
@@ -6393,7 +6395,7 @@
     "address": "Av. da Caraibeiras, s/n – Chesf",
     "phones": [
       "(75) 3282-2163",
-      "2222"
+      "(75) 3282-2222"
     ],
     "cnes": "2533480",
     "antivenoms": [
@@ -6434,7 +6436,7 @@
     "address": "Av. João Ribeiro do Vale, 51 - Centro",
     "phones": [
       "(74) 3534-2709",
-      "2704"
+      "(74) 3534-2704"
     ],
     "cnes": "5166292",
     "antivenoms": [
@@ -6499,7 +6501,7 @@
     "address": "Av. 15 de Novembro, 001 - Centro",
     "phones": [
       "(77) 3434-2206",
-      "2561"
+      "(77) 3434-2561"
     ],
     "cnes": "2601117",
     "antivenoms": [
@@ -6520,8 +6522,8 @@
     "address": "Rua Oswaldo Cruz, 259 - Centro",
     "phones": [
       "(77) 3431-5448",
-      "5248",
-      "2380"
+      "(77) 3431-5248",
+      "(77) 3431-2380"
     ],
     "cnes": "2601583",
     "antivenoms": [
@@ -6729,7 +6731,7 @@
     "address": "Rua Salustiano Guerra, 338 - Centro",
     "phones": [
       "(75) 3278-1290",
-      "1140"
+      "(75) 3278-1140"
     ],
     "cnes": "2799790",
     "antivenoms": [
@@ -6851,7 +6853,7 @@
     "address": "BR 367, 80 – Mutary",
     "phones": [
       "(73) 3282-1188",
-      "1417"
+      "(73) 3282-1417"
     ],
     "cnes": "2510782",
     "antivenoms": [
@@ -6872,7 +6874,7 @@
     "address": "Av. Gov. Roberto Santos, s/n - Sambaíba",
     "phones": [
       "(77) 3483-8925",
-      "8926"
+      "(77) 3483-8926"
     ],
     "cnes": "2799804",
     "antivenoms": [
@@ -6913,7 +6915,7 @@
     "address": "Praça da Purificação, 61 – Centro",
     "phones": [
       "(75) 3241-8700",
-      "1799"
+      "(75) 3241-1799"
     ],
     "cnes": "2603284",
     "antivenoms": [
@@ -6952,7 +6954,7 @@
     "address": "Rua Cosme e Damião, s/n - Andaiá",
     "phones": [
       "(75) 3631-1400",
-      "4242"
+      "(75) 3631-4242"
     ],
     "cnes": "6414702",
     "antivenoms": [
@@ -6975,7 +6977,7 @@
     "hospital_name": "Hospital São Domingos",
     "address": "Praça Izaque Pinheiro",
     "phones": [
-      "75 98265-6665"
+      "(75) 98265-6665"
     ],
     "cnes": "4032101",
     "antivenoms": [
@@ -7014,9 +7016,9 @@
     "address": "Rua Rodolfo Tourinho, s/n – Centro",
     "phones": [
       "(71) 3651-8556",
-      "8553",
-      "8555",
-      "8554"
+      "(71) 3651-8553",
+      "(71) 3651-8555",
+      "(71) 3651-8554"
     ],
     "cnes": "2520168",
     "antivenoms": [
@@ -7359,7 +7361,7 @@
     "hospital_name": "Hospital Municipal Dr. José Nery",
     "address": "Av. Cafeeira, s/n - Centro",
     "phones": [
-      "74 98138-0329"
+      "(74) 98138-0329"
     ],
     "cnes": "2524805",
     "antivenoms": [
@@ -7414,7 +7416,7 @@
     "hospital_name": "Hospital Waldemar Ferreira de Araujo)",
     "address": "Rua Feira de Santana S/N",
     "phones": [
-      "75 99970-3968"
+      "(75) 99970-3968"
     ],
     "cnes": "4033043",
     "antivenoms": [
@@ -7493,7 +7495,7 @@
     "address": "Rua Antônio Teixeira Della Cellas s/n – Centro",
     "phones": [
       "(75) 3544-2102",
-      "981719152"
+      "(75) 981719152"
     ],
     "cnes": "2524996",
     "antivenoms": [
@@ -7576,9 +7578,9 @@
     "address": "Rua Barão de Jequiriçá, s/n - Centro",
     "phones": [
       "(75) 3641-8400",
-      "8435",
-      "8494",
-      "9595"
+      "(75) 3641-8435",
+      "(75) 3641-8494",
+      "(75) 3641-9595"
     ],
     "cnes": "2525712",
     "antivenoms": [
@@ -7730,7 +7732,7 @@
     "address": "Av. Filipinas, s/n – Jardim Alvorada",
     "phones": [
       "(77) 3424-6060",
-      "2804"
+      "(77) 3424-2804"
     ],
     "cnes": "2402076",
     "antivenoms": [
@@ -7792,7 +7794,7 @@
     "hospital_name": "Hospital Julieta Viana",
     "address": "Rua Erotides Nogueira, 703 - Centro",
     "phones": [
-      "74 3661-1107"
+      "(74) 3661-1107"
     ],
     "cnes": "2601729",
     "antivenoms": [
@@ -9373,7 +9375,7 @@
     "address": "Ladeira Cristo Rei, 514 - Perpétuo Socorro",
     "phones": [
       "(27) 2102-2100",
-      "2102"
+      "(27) 2102-2102"
     ],
     "cnes": "2448521",
     "antivenoms": [
@@ -9766,7 +9768,7 @@
     "address": "Avenida Germano Stabenow, s/n - Centro",
     "phones": [
       "(27) 3736-1323",
-      "1390"
+      "(27) 3736-1390"
     ],
     "cnes": "3007472",
     "antivenoms": [
@@ -9788,7 +9790,7 @@
     "address": "Rua Monsenhor Pedrinha, 800 - Araçá",
     "phones": [
       "(27) 3372-3043",
-      "1965"
+      "(27) 3372-1965"
     ],
     "cnes": "2465825",
     "antivenoms": [
@@ -9851,7 +9853,7 @@
     "address": "Rua Angela Saverginni, 265 - Centro",
     "phones": [
       "(27) 3724-2970",
-      "2983"
+      "(27) 3724-2983"
     ],
     "cnes": "2484633",
     "antivenoms": [
@@ -10244,7 +10246,7 @@
     "address": "Vila Boa Esperança, s/n - Jaciguá",
     "phones": [
       "(28) 3525-1091",
-      "99885-0720"
+      "(28) 99885-0720"
     ],
     "cnes": "2547201",
     "antivenoms": [
@@ -10481,7 +10483,7 @@
     "address": "Avenida Pedra de Fogo, s/n - Alfredo Sebastião BA",
     "phones": [
       "(62) 3347-6608",
-      "6622"
+      "(62) 3347-6622"
     ],
     "cnes": "2381885",
     "antivenoms": [
@@ -10527,7 +10529,7 @@
     "address": "Rua Itumbiara, 91 - Setor Dona Eleontina",
     "phones": [
       "(64) 3608-600",
-      "8300"
+      "(64) 3608-8300"
     ],
     "cnes": "3354423",
     "antivenoms": [
@@ -10550,7 +10552,7 @@
     "address": "Avenida Presidente Juscelino, s/n - Parque São João",
     "phones": [
       "(61) 3636-1512",
-      "1459"
+      "(61) 3636-1459"
     ],
     "cnes": "2437597",
     "antivenoms": [
@@ -10797,7 +10799,7 @@
     "address": "Avenida São Paulo Esq./ 3 de Julho, s/n - Centro",
     "phones": [
       "(62) 3339-1720",
-      "99425-0009"
+      "(62) 99425-0009"
     ],
     "cnes": "2361868",
     "antivenoms": [
@@ -10885,7 +10887,7 @@
     "address": "Praça Inácio José Campos, 06 - Centro",
     "phones": [
       "(62) 3365-1088",
-      "1390"
+      "(62) 3365-1390"
     ],
     "cnes": "2507420",
     "antivenoms": [
@@ -10974,7 +10976,7 @@
     "address": "Avenida Maestro João Luiz do Espirito Santo, 450 - Parque Laguna ll",
     "phones": [
       "(61) 3631-3002",
-      "7681"
+      "(61) 3631-7681"
     ],
     "cnes": "2534967",
     "antivenoms": [
@@ -11021,7 +11023,7 @@
     "address": "Rua 33 Esq. C/ 14, 416 - Centro",
     "phones": [
       "(62) 3935-1038",
-      "1039"
+      "(62) 3935-1039"
     ],
     "cnes": "2534584",
     "antivenoms": [
@@ -11044,7 +11046,7 @@
     "address": "Avenida Contorno, 3556 - Bela Vista",
     "phones": [
       "(62) 3201-3673",
-      "3748"
+      "(62) 3201-3748"
     ],
     "cnes": "2506661",
     "antivenoms": [
@@ -11269,7 +11271,7 @@
     "address": "Avenida José Albino Lagares, s/n - Vila Leonor",
     "phones": [
       "(62) 3375-1476",
-      "99815-4943"
+      "(62) 99815-4943"
     ],
     "cnes": "2382482",
     "antivenoms": [
@@ -11426,7 +11428,7 @@
     "address": "Avenida José do Patrocínio, s/n - Parque Estrela Dalva",
     "phones": [
       "(61) 3620 - 0155",
-      "0111"
+      "(61) 3620-0111"
     ],
     "cnes": "7883668",
     "antivenoms": [
@@ -11626,7 +11628,7 @@
     "address": "Avenida Anhanguera, 86 - Setor Belo Horizonte",
     "phones": [
       "(62) 3354-2254",
-      "4035"
+      "(62) 3354-4035"
     ],
     "cnes": "2534789",
     "antivenoms": [
@@ -11893,7 +11895,7 @@
     "address": "Avenida Rui Barbosa, 286 - Centro",
     "phones": [
       "(64) 3651-8881",
-      "8880"
+      "(64) 3651-8880"
     ],
     "cnes": "2360470",
     "antivenoms": [
@@ -12047,8 +12049,8 @@
     "address": "Rua Pernambuco, s/n - Setor Eliziário",
     "phones": [
       "(62) 3977-7122",
-      "7127",
-      "7123"
+      "(62) 3977-7127",
+      "(62) 3977-7123"
     ],
     "cnes": "2382431",
     "antivenoms": [
@@ -16058,8 +16060,9 @@
     "address": "Av. Alfredo Balena, 400 - Santa Efigênia",
     "phones": [
       "(31)3224-4000",
-      "3239-9308",
-      "3239-9223 e 3239-9224"
+      "(31)3239-9308",
+      "(31)3239-9223",
+      "(31)3239-9224"
     ],
     "cnes": "2692101",
     "antivenoms": [
@@ -16084,7 +16087,7 @@
     "address": "Praça Henrique Penido, s/n - Carijó",
     "phones": [
       "(31) 3734-1110",
-      "1394"
+      "(31) 3734-1394"
     ],
     "cnes": "2182610",
     "antivenoms": [
@@ -16107,7 +16110,7 @@
     "address": "R. Padre Pedro Heredes, s/n - São Francisco",
     "phones": [
       "(33) 3737-1106",
-      "1175"
+      "(33) 3737-1175"
     ],
     "cnes": "2134292",
     "antivenoms": [
@@ -16166,7 +16169,7 @@
     "address": "Praça Zico Caldeira, 50 - Centro",
     "phones": [
       "(38) 3251-6500",
-      "6555"
+      "(38) 3251-6555"
     ],
     "cnes": "2119471",
     "antivenoms": [
@@ -16333,8 +16336,8 @@
     "address": "Rua Barão Rio Branco, 315 - Centro",
     "phones": [
       "(31) 3651-3777",
-      "7953",
-      "7961"
+      "(31) 3651-7953",
+      "(31) 3651-7961"
     ],
     "cnes": "2117312",
     "antivenoms": [
@@ -16452,7 +16455,7 @@
     "address": "Rua Cornélia Alves Bicalho, 731,",
     "phones": [
       "(37) 3426-2100",
-      "2002"
+      "(37) 3426-2002"
     ],
     "cnes": "2098156",
     "antivenoms": [
@@ -16471,7 +16474,7 @@
     "address": "Av. Juscelino kubitschek, 221 - São Geraldo",
     "phones": [
       "(33) 3516-1366",
-      "2123"
+      "(33) 3516-2123"
     ],
     "cnes": "2135124",
     "antivenoms": [
@@ -16572,7 +16575,7 @@
     "address": "Rua Diamantina, 48 - Liliane",
     "phones": [
       "(38) 3526-1244",
-      "1577"
+      "(38) 3526-1577"
     ],
     "cnes": "2135116",
     "antivenoms": [
@@ -16743,8 +16746,8 @@
     "address": "Rua São João Evangelista, 99 - Centro",
     "phones": [
       "(33) 3526-1244",
-      "1617",
-      "1311"
+      "(33) 3526-1617",
+      "(33) 3526-1311"
     ],
     "cnes": "2135884",
     "antivenoms": [
@@ -16881,8 +16884,8 @@
     "address": "Av. João César Oliveira, 4495 - Cinco",
     "phones": [
       "(31)3352-8827",
-      "8826",
-      "3390-5919"
+      "(31)3352-8826",
+      "(31)3390-5919"
     ],
     "cnes": "2200473",
     "antivenoms": [
@@ -17048,7 +17051,7 @@
     "address": "Rua da Caridade, 106 - Centro",
     "phones": [
       "(38) 3532-1303",
-      "1300"
+      "(38) 3532-1300"
     ],
     "cnes": "2135132",
     "antivenoms": [
@@ -17249,7 +17252,7 @@
     "address": "Av. JK, 725 - Santa Tereza",
     "phones": [
       "(38) 3812-1995",
-      "3001"
+      "(38) 3812-3001"
     ],
     "cnes": "2105365",
     "antivenoms": [
@@ -17429,7 +17432,7 @@
     "address": "Av. JK, 360 - João Gonçalves",
     "phones": [
       "(38) 3233-2000",
-      "3223- 1267"
+      "(38) 3223- 1267"
     ],
     "cnes": "2185520",
     "antivenoms": [
@@ -17604,7 +17607,7 @@
     "address": "Praça Doutor Francisco Lessa, 162 - Centro",
     "phones": [
       "(35) 3551-5300",
-      "3559 1515"
+      "(35) 3559 1515"
     ],
     "cnes": "2796449",
     "antivenoms": [
@@ -17824,7 +17827,7 @@
     "address": "Rua Emídio Quites, 100 - Saudade",
     "phones": [
       "(31) 3562-4300",
-      "3561-7311"
+      "(31) 3561-7311"
     ],
     "cnes": "2213982",
     "antivenoms": [
@@ -18081,8 +18084,8 @@
     "address": "R. Cidade do Prata Nº 415",
     "phones": [
       "(34) 3415 8700",
-      "8715",
-      "8735"
+      "(34) 3415-8715",
+      "(34) 3415-8735"
     ],
     "cnes": "2201542",
     "antivenoms": [
@@ -18145,7 +18148,7 @@
     "address": "Av. Joaquim Garcia Ladeia, s",
     "phones": [
       "(38)3833-1480",
-      "1068"
+      "(38)3833-1068"
     ],
     "cnes": "2117479",
     "antivenoms": [
@@ -18454,7 +18457,7 @@
     "address": "Rua Ernesto Matioli, 885 - Santa Efigênia",
     "phones": [
       "(35) 3821-8971",
-      "9887"
+      "(35) 3821-9887"
     ],
     "cnes": "2115786",
     "antivenoms": [
@@ -18674,7 +18677,7 @@
     "address": "Rua Colina de São Pedro, 01 - Centro",
     "phones": [
       "(31) 3557-1224",
-      "1329"
+      "(31) 3557-1329"
     ],
     "cnes": "2200945",
     "antivenoms": [
@@ -18834,7 +18837,7 @@
     "address": "Av. Israel Pinheiro, 284 - Saudade",
     "phones": [
       "(38) 3764-1103",
-      "1202"
+      "(38) 3764-1202"
     ],
     "cnes": "2134268",
     "antivenoms": [
@@ -18889,7 +18892,7 @@
     "hospital_name": "Hospital Cristo Rei",
     "address": "R Montaigne, 33 - Centro",
     "phones": [
-      "38) 3614-1252"
+      "(38) 3614-1252"
     ],
     "cnes": "2119439",
     "antivenoms": [
@@ -18935,7 +18938,7 @@
     "address": "Rua Gov. Magalhães Pinto, 899 - São Geraldo",
     "phones": [
       "(38) 3811-1244",
-      "1417"
+      "(38) 3811-1417"
     ],
     "cnes": "2119404",
     "antivenoms": [
@@ -19162,7 +19165,7 @@
     "address": "Av. Domingos José de Matos, 518",
     "phones": [
       "(38) 3832-8113",
-      "8182"
+      "(38) 3832-8182"
     ],
     "cnes": "2203391",
     "antivenoms": [
@@ -19459,7 +19462,7 @@
     "address": "Rua Santa Casa, 164",
     "phones": [
       "(35) 3522-4214",
-      "9829-1967"
+      "(35) 9829-1967"
     ],
     "cnes": "4042751",
     "antivenoms": [
@@ -19552,7 +19555,7 @@
     "address": "Rua Horácio, 29, Centro",
     "phones": [
       "(33) 3411-1244",
-      "3334111399"
+      "(33) 3334111399"
     ],
     "cnes": "2103257",
     "antivenoms": [
@@ -19961,7 +19964,7 @@
     "address": "Rua Moraes de Carvalho, 333 - Centro",
     "phones": [
       "(33) 3263-1166",
-      "3263-1248"
+      "(33) 3263-1248"
     ],
     "cnes": "2168731",
     "antivenoms": [
@@ -20073,7 +20076,7 @@
     "address": "Travessa Francisco da Rocha, 34 - Centro",
     "phones": [
       "(38) 3343-3612",
-      "98851-6461"
+      "(38) 98851-6461"
     ],
     "cnes": "2135140",
     "antivenoms": [
@@ -20834,7 +20837,7 @@
     "address": "Rua Pedro Bonésio, 236 - Centro",
     "phones": [
       "(35) 3239-3950",
-      "3961"
+      "(35) 3239-3961"
     ],
     "cnes": "2760657",
     "antivenoms": [
@@ -25745,9 +25748,7 @@
     "city": "Brasil Novo",
     "hospital_name": "Hospital Municipal Maria José Biancardi",
     "address": "Travessa 28 de Abril, s/n, Centro",
-    "phones": [
-      "Sem Contato Fixo"
-    ],
+    "phones": [],
     "cnes": "9031103",
     "antivenoms": [
       "Botrópico",
@@ -26690,7 +26691,7 @@
     "address": "Pas. Tem. Pedro Nunes, 3388 - Serra Ocidente",
     "phones": [
       "(93) 3533-1211",
-      "2263"
+      "(93) 3533-2263"
     ],
     "cnes": "2652706",
     "antivenoms": [
@@ -28381,8 +28382,8 @@
     "address": "Av. João Agripino Filho - Ouro Branco - Piancó - CEP 58765-000",
     "phones": [
       "(83) 3452-2201",
-      "1518",
-      "1543"
+      "(83) 3452-1518",
+      "(83) 3452-1543"
     ],
     "cnes": "2600331",
     "antivenoms": [
@@ -28446,7 +28447,7 @@
     "address": "Rua Tabelião Antonio Holanda - Centro - Cajazeiras - CEP 58900-000",
     "phones": [
       "(83) 3531-3563",
-      "2736"
+      "(83) 3531-2736"
     ],
     "cnes": "2613476",
     "antivenoms": [
@@ -28718,7 +28719,7 @@
     "address": "Avenida José de Sá Maniçoba, s/n - Centro",
     "phones": [
       "(87) 2101-6501",
-      "6526"
+      "(87) 2101-6526"
     ],
     "cnes": "6042414",
     "antivenoms": [
@@ -28899,7 +28900,7 @@
     "address": "Avenida Dr. Raimundo dos Santos, 546 - Centro",
     "phones": [
       "(89) 3562-1192",
-      "1404"
+      "(89) 3562-1404"
     ],
     "cnes": "2364816",
     "antivenoms": [
@@ -28948,7 +28949,7 @@
     "address": "Rua Antonio Nogueira de Carvalho, s/n - Centro",
     "phones": [
       "(89) 3573-1465",
-      "2699"
+      "(89) 3573-2699"
     ],
     "cnes": "2777770",
     "antivenoms": [
@@ -28973,7 +28974,7 @@
     "address": "Rua Antonino Freire, s/n - Manguinha",
     "phones": [
       "(89) 3522-1323",
-      "1333"
+      "(89) 3522-1333"
     ],
     "cnes": "2365146",
     "antivenoms": [
@@ -29019,7 +29020,7 @@
     "address": "Avenida Rui Barbosa, 586 - Centro",
     "phones": [
       "(89) 3462-1714",
-      "1213"
+      "(89) 3462-1213"
     ],
     "cnes": "2777762",
     "antivenoms": [
@@ -29044,7 +29045,7 @@
     "address": "Rua Rodrigo Coimbra, 1650 - Rodoviária",
     "phones": [
       "(86) 3323-7188",
-      "7226"
+      "(86) 3323-7226"
     ],
     "cnes": "8015899",
     "antivenoms": [
@@ -29114,7 +29115,7 @@
     "address": "Avenida Dr. Pádua Oliveira, 300 - Morro da Saudade",
     "phones": [
       "(86) 3276-3362",
-      "1325"
+      "(86) 3276-1325"
     ],
     "cnes": "2777746",
     "antivenoms": [
@@ -29205,7 +29206,7 @@
     "address": "Avenida José Cavalcante, s/n - Centro",
     "phones": [
       "(89) 3544-2223",
-      "1405"
+      "(89) 3544-1405"
     ],
     "cnes": "2323680",
     "antivenoms": [
@@ -29278,7 +29279,7 @@
     "address": "Rua Rui Barbosa, 179 - Centro",
     "phones": [
       "(41) 3624-1293",
-      "1034"
+      "(41) 3624-1034"
     ],
     "cnes": "13129",
     "antivenoms": [
@@ -29497,7 +29498,7 @@
     "address": "Rua Guilherme da Mota Correia, 55 - Centro",
     "phones": [
       "(41) 3614-1603",
-      "1628"
+      "(41) 3614-1628"
     ],
     "cnes": "2753146",
     "antivenoms": [
@@ -30453,7 +30454,7 @@
     "address": "Rua Levy Buquera, 700 - Sítio Cercado",
     "phones": [
       "(41) 3378-6052",
-      "6094"
+      "(41) 3378-6094"
     ],
     "cnes": "2639556",
     "antivenoms": [
@@ -30990,7 +30991,7 @@
     "address": "Rua Zeferino Bittencourt, 1111 - Centro",
     "phones": [
       "(42) 3423-1311",
-      "1039"
+      "(42) 3423-1039"
     ],
     "cnes": "2783789",
     "antivenoms": [
@@ -32394,7 +32395,7 @@
     "address": "Rua Padre Francisco, 1450 - Centro",
     "phones": [
       "(41) 3623-1311",
-      "1107"
+      "(41) 3623-1107"
     ],
     "cnes": "2817667",
     "antivenoms": [
@@ -32537,7 +32538,7 @@
     "address": "Rua Generoso Marques, 414 - Centro",
     "phones": [
       "(41) 3973-8070",
-      "8072"
+      "(41) 3973-8072"
     ],
     "cnes": "18600",
     "antivenoms": [
@@ -33137,7 +33138,7 @@
     "address": "Rua Frei Gaudêncio, 417 - Centro",
     "phones": [
       "(42) 3275-1282",
-      "2500"
+      "(42) 3275-2500"
     ],
     "cnes": "2740567",
     "antivenoms": [
@@ -33634,7 +33635,7 @@
     "address": "Rua Eduardo Américo da Costa, s/n - São Vicente de Paulo",
     "phones": [
       "(22) 99286-8581",
-      "98819-8461"
+      "(22) 98819-8461"
     ],
     "cnes": "2285150",
     "antivenoms": [
@@ -33658,7 +33659,7 @@
     "address": "Avenida 12 de novembro (São José)",
     "phones": [
       "(22) 2623-6051",
-      "7622"
+      "(22) 2623-7622"
     ],
     "cnes": "6200702",
     "antivenoms": [
@@ -33705,7 +33706,7 @@
     "address": "Rua Pastor Luís Laurentino, 1292 - Santa Ely",
     "phones": [
       "(22) 2778-4543",
-      "3890"
+      "(22) 2778-3890"
     ],
     "cnes": "2280396",
     "antivenoms": [
@@ -33902,8 +33903,8 @@
     "address": "Rua Marques do Paraná, 303 - Centro",
     "phones": [
       "(21) 2629-9059",
-      "2629-9130",
-      "2629-9134"
+      "(21) 2629-9130",
+      "(21) 2629-9134"
     ],
     "cnes": "12505",
     "antivenoms": [
@@ -33969,7 +33970,7 @@
     "address": "Avenida São Pedro de Alcântara, s/n - Pontal",
     "phones": [
       "(24) 3371-6551",
-      "2954"
+      "(24) 3371-2954"
     ],
     "cnes": "2704587",
     "antivenoms": [
@@ -33993,8 +33994,8 @@
     "address": "R. Bernardo Proença, 500 - Itamarati",
     "phones": [
       "(24) 2246-8931",
-      "2280-0702",
-      "2280-4247"
+      "(24) 2280-0702",
+      "(24) 2280-4247"
     ],
     "cnes": "6922597",
     "antivenoms": [
@@ -34018,7 +34019,7 @@
     "address": "Avenida Marcílio Dias, 800 - Jardim Jalisco",
     "phones": [
       "(24) 3381-2080",
-      "2053"
+      "(24) 3381-2053"
     ],
     "cnes": "2288893",
     "antivenoms": [
@@ -34042,7 +34043,7 @@
     "address": "Rua João Carmo, 110 - Centro",
     "phones": [
       "(21) 3634-9990 R: 9562",
-      "99987-0134"
+      "(21) 99987-0134"
     ],
     "cnes": "2296241",
     "antivenoms": [
@@ -34062,7 +34063,7 @@
     "address": "Avenida Ayrton Senna, 2000 - Barra da Tijuca",
     "phones": [
       "(21) 3111-4736",
-      "4765"
+      "(21) 3111-4765"
     ],
     "cnes": "2270609",
     "antivenoms": [
@@ -34125,7 +34126,7 @@
     "address": "Rua Delfim Moreira, 2211 - Vale Paraíso",
     "phones": [
       "(21) 2741-4900",
-      "2152-4900"
+      "(21) 2152-4900"
     ],
     "cnes": "2297795",
     "antivenoms": [
@@ -34149,7 +34150,7 @@
     "address": "Avenida Zoelo Solla, 2100 - Triângulo",
     "phones": [
       "(24) 2255-1998",
-      "1075"
+      "(24) 2255-1075"
     ],
     "cnes": "6426174",
     "antivenoms": [
@@ -34265,7 +34266,7 @@
     "address": "Rua Antônio Vieira de Sá, s/n – Aeroporto",
     "phones": [
       "(84) 3315-3379",
-      "3414"
+      "(84) 3315-3414"
     ],
     "cnes": "2389061",
     "antivenoms": [
@@ -34314,7 +34315,7 @@
     "address": "Avenida Pedro Álvares Cabral, s/n - Parque dos Coqueiros",
     "phones": [
       "(84) 3232-7717",
-      "5408"
+      "(84) 3232-5408"
     ],
     "cnes": "2654261",
     "antivenoms": [
@@ -34474,7 +34475,7 @@
     "address": "Rua Vale Do Paraíso, 2340 - Setor 03",
     "phones": [
       "(69) 3238-2406",
-      "2408"
+      "(69) 3238-2408"
     ],
     "cnes": "2807076",
     "antivenoms": [
@@ -34539,8 +34540,8 @@
     "address": "Avenida Rosilene Xavier Transpadini, 2200 - Jardim Eldorado",
     "phones": [
       "(69) 3441-2747",
-      "8623",
-      "6101"
+      "(69) 3441-8623",
+      "(69) 3441-6101"
     ],
     "cnes": "7704364",
     "antivenoms": [
@@ -34737,8 +34738,8 @@
     "address": "Rua Dom Bosco, 1300 - Dom Bosco",
     "phones": [
       "(69) 3416-4097",
-      "4181",
-      "4093"
+      "(69) 3416-4181",
+      "(69) 3416-4093"
     ],
     "cnes": "2495279",
     "antivenoms": [
@@ -34782,7 +34783,7 @@
     "address": "Avenida Getúlio Vargas, 2263 - Centro",
     "phones": [
       "(69) 3581-3286",
-      "2119"
+      "(69) 3581-2119"
     ],
     "cnes": "2808617",
     "antivenoms": [
@@ -34921,7 +34922,7 @@
     "address": "Rua Abunã, 308 - Vila Extrema",
     "phones": [
       "(69) 3252-1502",
-      "1233"
+      "(69) 3252-1233"
     ],
     "cnes": "5618347",
     "antivenoms": [
@@ -34967,7 +34968,7 @@
     "address": "Avenida Cuiabá, 5414 - Planalto",
     "phones": [
       "(69) 3442-1192",
-      "3091"
+      "(69) 3442-3091"
     ],
     "cnes": "2495228",
     "antivenoms": [
@@ -35092,7 +35093,7 @@
     "address": "Avenida Sabino Bezerra De Queiroz, 4531 - Jardim América",
     "phones": [
       "(69) 3321-3821",
-      "3322-4070"
+      "(69) 3322-4070"
     ],
     "cnes": "2798484",
     "antivenoms": [
@@ -35118,7 +35119,7 @@
     "address": "Avenida Antonio José Altino, s/n - Tepequem",
     "phones": [
       "(95) 3593-1087",
-      "1006"
+      "(95) 3593-1006"
     ],
     "cnes": "2319705",
     "antivenoms": [
@@ -35542,7 +35543,7 @@
     "address": "Avenida Antonio José Altino, s/n - Tepequem",
     "phones": [
       "(95) 3593-1087",
-      "1006"
+      "(95) 3593-1006"
     ],
     "cnes": "2319705",
     "antivenoms": [
@@ -35672,7 +35673,7 @@
     "address": "Avenida Brig. Eduardo Gomes, 3308 - Aeroporto",
     "phones": [
       "(95) 2121-0636",
-      "0617"
+      "(95) 2121-0617"
     ],
     "cnes": "2319659",
     "antivenoms": [
@@ -35692,7 +35693,7 @@
     "address": "Avenida das Guianas, 1645 - 13 de Setembro",
     "phones": [
       "(95) 3624-1684",
-      "2026"
+      "(95) 3624-2026"
     ],
     "cnes": "2320681",
     "antivenoms": [
@@ -35757,7 +35758,7 @@
     "address": "Rua Mestre Cacaio, 1636, Canudos",
     "phones": [
       "(55) 3422 2888",
-      "4266"
+      "(55) 3422-4266"
     ],
     "cnes": "7648227",
     "antivenoms": [
@@ -36398,7 +36399,7 @@
     "address": "Rua Marechal Deodoro, 251",
     "phones": [
       "(55) 3742 9000",
-      "1003"
+      "(55) 3742-1003"
     ],
     "cnes": "2235323",
     "antivenoms": [
@@ -39902,8 +39903,8 @@
     "address": "Rua Dr. Jesse Fontes, 197 - Centro",
     "phones": [
       "(79) 3522-1314",
-      "2354",
-      "5888"
+      "(79) 3522-2354",
+      "(79) 3522-5888"
     ],
     "cnes": "2423529",
     "antivenoms": [
@@ -39928,8 +39929,8 @@
     "address": "Avenida 13 de Junho, 776 - Centro",
     "phones": [
       "(79) 2431-1430",
-      "2086",
-      "2710"
+      "(79) 2431-2086",
+      "(79) 2431-2710"
     ],
     "cnes": "2477661",
     "antivenoms": [
@@ -40146,7 +40147,7 @@
     "address": "Rua Júlio Manoel Oliveira, s/n - Centro",
     "phones": [
       "(79) 3611-1321",
-      "1194"
+      "(79) 3611-1194"
     ],
     "cnes": "2546000",
     "antivenoms": [
@@ -40211,7 +40212,7 @@
     "address": "Rua Coronel Joaquim Alberto, 421 - Centro",
     "phones": [
       "(16) 3665-7200",
-      "9624"
+      "(16) 3665-9624"
     ],
     "cnes": "2716593",
     "antivenoms": [
@@ -40296,7 +40297,7 @@
     "address": "Praça Levi Lisboa, 1202 - Centro",
     "phones": [
       "(15)3255-1055",
-      "1122"
+      "(15)3255-1122"
     ],
     "cnes": "2082748",
     "antivenoms": [
@@ -40412,7 +40413,7 @@
     "address": "Rua Osmar Luchini, 670 - Jardim Aeroporto",
     "phones": [
       "(18) 3322-3553",
-      "3302-6069"
+      "(18) 3302-6069"
     ],
     "cnes": "7640307",
     "antivenoms": [
@@ -40503,7 +40504,7 @@
     "address": "Avenida Bom Jesus 134 - Centro",
     "phones": [
       "(12) 3116-1288",
-      "1957"
+      "(12) 3116-1957"
     ],
     "cnes": "2087642",
     "antivenoms": [
@@ -40608,7 +40609,7 @@
     "address": "Avenida Moacir Dias de Morais, 525 - Joaquim Marinheiro",
     "phones": [
       "(16) 3761-9474",
-      "9499"
+      "(16) 3761-9499"
     ],
     "cnes": "6997600",
     "antivenoms": [
@@ -40627,7 +40628,7 @@
     "address": "Rua Rubens Arruda, Qd. 07, s/n",
     "phones": [
       "(14) 3104-1160",
-      "1166"
+      "(14) 3104-1166"
     ],
     "cnes": "4047303",
     "antivenoms": [
@@ -40651,9 +40652,9 @@
     "address": "Rua Marçal de Arruda Campos, Quadra 4-45 - Vila Lemos",
     "phones": [
       "(14) 3102-1213",
-      "1212",
-      "1214",
-      "1234"
+      "(14) 3102-1212",
+      "(14) 3102-1214",
+      "(14) 3102-1234"
     ],
     "cnes": "6822576",
     "antivenoms": [
@@ -40977,7 +40978,7 @@
     "address": "Avenida Ruy Rodrigues, 3434 - Jardim Yeda",
     "phones": [
       "(19) 3772-8347",
-      "8373"
+      "(19) 3772-8373"
     ],
     "cnes": "6053858",
     "antivenoms": [
@@ -40996,7 +40997,7 @@
     "address": "Rua Vital Brazil, 251 - Barão Geraldo",
     "phones": [
       "(19) 3521-6700",
-      "7555"
+      "(19) 3521-7555"
     ],
     "cnes": "2079798",
     "antivenoms": [
@@ -41021,7 +41022,7 @@
     "address": "Rua Harry Mauritz Lenin, s/n - Santa Cruz",
     "phones": [
       "(12) 3664-4424",
-      "5292"
+      "(12) 3664-5292"
     ],
     "cnes": "7947984",
     "antivenoms": [
@@ -41152,7 +41153,7 @@
     "address": "Rua Belém, 519 - Centro",
     "phones": [
       "(17) 3311-3023",
-      "3000"
+      "(17) 3311-3000"
     ],
     "cnes": "2089327",
     "antivenoms": [
@@ -41219,7 +41220,7 @@
     "address": "Rua Antonio Prado, 807 - Centro",
     "phones": [
       "(17) 3335-1116",
-      "8787"
+      "(17) 3335-8787"
     ],
     "cnes": "2090376",
     "antivenoms": [
@@ -41260,7 +41261,7 @@
     "address": "Avenida Odair Pacheco Pedroso, 171 - Jardim Monte Santo",
     "phones": [
       "(11) 4148-2222",
-      "4527"
+      "(11) 4148-4527"
     ],
     "cnes": "2792141",
     "antivenoms": [
@@ -41346,7 +41347,7 @@
     "address": "Avenida Padre Rodolfo, 320 - Alto do Cruzeiro",
     "phones": [
       "(12) 3111-2926",
-      "2833"
+      "(12) 3111-2833"
     ],
     "cnes": "2079518",
     "antivenoms": [
@@ -41673,7 +41674,7 @@
     "address": "Rua 21 de Abril, 19 - Centro",
     "phones": [
       "(15) 3547-1270",
-      "99639-5296"
+      "(15) 99639-5296"
     ],
     "cnes": "2083264",
     "antivenoms": [
@@ -41889,7 +41890,7 @@
     "hospital_name": "UPA -Domingos Bergamasco",
     "address": "Rua Maria do Carmo Nicolette Ortega,168",
     "phones": [
-      "14 997103613"
+      "(14) 997103613"
     ],
     "cnes": "2962888",
     "antivenoms": [
@@ -42082,7 +42083,7 @@
     "address": "Rua Vinte e Três de Maio, 385 - Centro",
     "phones": [
       "(15) 3562-1336",
-      "99766-0948"
+      "(15) 99766-0948"
     ],
     "cnes": "7603274",
     "antivenoms": [
@@ -42150,7 +42151,7 @@
     "address": "Rua Santos Dumont, 433 - Centro",
     "phones": [
       "(15) 3521-9500",
-      "99763-8307"
+      "(15) 99763-8307"
     ],
     "cnes": "2027186",
     "antivenoms": [
@@ -42275,7 +42276,7 @@
     "address": "Rua São Pedro, 30 - Centro",
     "phones": [
       "(15) 3532-3783",
-      "99713-4686"
+      "(15) 99713-4686"
     ],
     "cnes": "2081555",
     "antivenoms": [
@@ -43073,7 +43074,7 @@
     "address": "Avenida Monteiro Lobato, 9400 - Agenor de Campos",
     "phones": [
       "(13) 3507-1110",
-      "3506-5044"
+      "(13) 3506-5044"
     ],
     "cnes": "9364226",
     "antivenoms": [
@@ -43096,7 +43097,7 @@
     "address": "Rua Jeremias de Paula Eduardo, 2287 - Centro",
     "phones": [
       "(16) 3242-2100",
-      "8358"
+      "(16) 3242-8358"
     ],
     "cnes": "4048830",
     "antivenoms": [
@@ -43214,7 +43215,7 @@
     "address": "Rua Vinte e Oito de Outubro, 1202 - Centro",
     "phones": [
       "(17) 3542 9292",
-      "1020"
+      "(17) 3542-1020"
     ],
     "cnes": "2088487",
     "antivenoms": [
@@ -43235,7 +43236,7 @@
     "address": "Avenida Valdemar Lopes Ferraz, 288 - Centro",
     "phones": [
       "(17) 3281-6044",
-      "3280-6305"
+      "(17) 3280-6305"
     ],
     "cnes": "7040792",
     "antivenoms": [
@@ -43624,7 +43625,7 @@
     "address": "Rua Major José dos Santos Moreira, 466 - Centro",
     "phones": [
       "(12) 3643-2644",
-      "3642-2244 R. 270"
+      "(12) 3642-2244 R. 270"
     ],
     "cnes": "9225137",
     "antivenoms": [
@@ -43916,7 +43917,7 @@
     "address": "Rua Capitão Elias Pereira, 1198 - Centro",
     "phones": [
       "(15) 3553-1144",
-      "99716-4744"
+      "(15) 99716-4744"
     ],
     "cnes": "2705249",
     "antivenoms": [
@@ -44134,8 +44135,8 @@
     "address": "Rua Castelo Branco, 320 - Jaguari",
     "phones": [
       "(11) 4656-8150",
-      "8151",
-      "8152"
+      "(11) 4656-8151",
+      "(11) 4656-8152"
     ],
     "cnes": "7094132",
     "antivenoms": [
@@ -44265,8 +44266,8 @@
     "address": "Rua Secondo Modolin, 499 - Centro",
     "phones": [
       "(11) 2630-6029",
-      "6028",
-      "96605-1801"
+      "(11) 2630-6028",
+      "(11) 96605-1801"
     ],
     "cnes": "2069776",
     "antivenoms": [
@@ -44376,7 +44377,7 @@
     "address": "Rua Coronel Alípio Dias, 620 -Centro",
     "phones": [
       "(19) 3682-7826",
-      "3608-7484"
+      "(19) 3608-7484"
     ],
     "cnes": "2080923",
     "antivenoms": [
@@ -44501,7 +44502,7 @@
     "address": "Rua Saigiro Nakamura, 800 - Vila Industrial",
     "phones": [
       "(12) 3901-3400",
-      "3912-1232"
+      "(12) 3912-1232"
     ],
     "cnes": "9628",
     "antivenoms": [
@@ -44772,7 +44773,7 @@
     "address": "Rua Pedro Carleto Netto, 120 - Jardim Grande Aliança",
     "phones": [
       "(16) 3947-1270",
-      "11590"
+      "(16) 3947-11590"
     ],
     "cnes": "7792115",
     "antivenoms": [
@@ -45277,7 +45278,7 @@
     "hospital_name": "Hospital de Doenças Tropicais da Univ. Fed. Do TO",
     "address": "Avenida José de Brito, 1015 - Setor Anhanguera",
     "phones": [
-      "63 3413 8600"
+      "(63) 3413 8600"
     ],
     "cnes": "3654826",
     "antivenoms": [
@@ -45348,7 +45349,7 @@
     "address": "Rua Amazonas, s/n - Centro",
     "phones": [
       "(63)3456-1292",
-      "1313"
+      "(63)3456-1313"
     ],
     "cnes": "2468972",
     "antivenoms": [

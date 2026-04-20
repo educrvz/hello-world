@@ -43,10 +43,8 @@ INPUT = BUILD / "master_geocoded_patched_v1.csv"
 OUT_APP = ROOT / "app" / "hospitals.json"
 OUT_ROOT = ROOT / "hospitals.json"
 
-PHONE_PLACEHOLDERS = {
-    "", "-", "--", "****", "***", "não disponível",
-    "nao disponivel", "sem contato", "n/a", "nd", "indisponível",
-}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from phone_utils import expand_phones  # noqa: E402
 
 PDF_DATE_RE = re.compile(r"[A-Z]{2}_(\d{4})(\d{2})(\d{2})\.pdf$", re.IGNORECASE)
 
@@ -81,25 +79,14 @@ def load_pdf_date_map() -> dict[str, str]:
 
 
 def clean_phones(raw: str) -> list[str]:
-    if not raw:
-        return []
-    # Split on / or comma, trim, dedupe, drop placeholders
-    parts = re.split(r"\s*[/,]\s*", raw)
-    out: list[str] = []
-    seen: set[str] = set()
-    for p in parts:
-        s = p.strip()
-        if not s:
-            continue
-        if s.lower() in PHONE_PLACEHOLDERS:
-            continue
-        if len(s) < 4:
-            continue
-        if s in seen:
-            continue
-        seen.add(s)
-        out.append(s)
-    return out
+    """Expand Brazilian shared-prefix phone notation into full numbers.
+
+    Delegates to `phone_utils.expand_phones`, which handles
+    `(XX) YYYY-ABCD/EFGH` (shared exchange), `(XX) YYYY-ABCD/WWWW-QRST`
+    (shared area code), and fully independent phones — the three real-world
+    patterns seen in the PESA PDFs.
+    """
+    return expand_phones(raw)
 
 
 def split_antivenoms(raw: str) -> list[str]:
