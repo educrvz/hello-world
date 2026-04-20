@@ -6,5 +6,11 @@
     "lng": -47.8084284,
     "address": "R. Bernardino de Campos, 1000 - Centro, Ribeirão Preto - SP, 14015-130, Brasil",
     "note": "*Campus universitário não atende; endereço correto é a Unidade de Emergência"
+  },
+  "9164": {
+    "reason": "Coordenadas atualizadas manualmente (edge case).",
+    "verified_on": "2026-04-20",
+    "lat": -22.911024900605216,
+    "lng": -45.94992421575247
   }
 }
