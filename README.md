@@ -54,6 +54,7 @@ docs/           # PROCESS.md — runbook do refresh
 app/            # Aplicativo web (HTML/CSS/JS estático) + hospitals.json
 ```
 
-## Licença
+## Contribua
 
-MIT
+Este projeto é de código aberto. Correções de dados, sugestões e pull
+requests são muito bem-vindos — abra uma issue ou PR no GitHub.
