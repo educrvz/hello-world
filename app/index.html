@@ -5,379 +5,466 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0066CC">
     <meta name="description" content="SoroJá — Encontre hospitais com soro antiveneno mais próximos de você">
+
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SoroJá">
+    <meta property="og:title" content="SoroJá — Hospitais com soro antiveneno perto de você">
+    <meta property="og:description" content="Encontre os Pontos Estratégicos de Soro Antiveneno (PESA) mais próximos. Pode salvar vidas — compartilhe.">
+    <meta property="og:url" content="https://soroja.com.br/">
+    <meta property="og:image" content="https://soroja.com.br/og-image.png">
+    <meta property="og:image:secure_url" content="https://soroja.com.br/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SoroJá — Hospitais com soro antiveneno">
+    <meta property="og:locale" content="pt_BR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SoroJá — Hospitais com soro antiveneno perto de você">
+    <meta name="twitter:description" content="Encontre os Pontos Estratégicos de Soro Antiveneno (PESA) mais próximos. Pode salvar vidas.">
+    <meta name="twitter:image" content="https://soroja.com.br/og-image.png">
+
     <!-- <link rel="manifest" href="manifest.json"> -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
     <title>SoroJá</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --blue: #0066CC;
-            --blue-dark: #004C99;
-            --red: #D32F2F;
-            --green: #2E7D32;
-            --orange: #F57F17;
-            --bg: #F5F5F5;
-            --card: #FFFFFF;
-            --text: #212121;
-            --text2: #616161;
-            --shadow: 0 2px 8px rgba(0,0,0,0.12);
-            --radius: 12px;
-            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            /* Tema Ultra-Dark Noturno Otimizado para Pânico/Resgate Noturno */
+            --bg-color: #0B0F19; /* Preto Absoluto / Azul Profundo */
+            --card-color: #111827; /* Cinza Escuro Tático */
+            --border-color: rgba(255, 255, 255, 0.05);
+            --primary: #3B82F6; /* Azul Neo */
+            --primary-glow: rgba(59, 130, 246, 0.4);
+            --danger: #EF4444; /* Vermelho Alerta */
+            --danger-glow: rgba(239, 68, 68, 0.4);
+            --success: #10B981; /* Verde Resgate */
+            --success-glow: rgba(16, 185, 129, 0.3);
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%; }
-        body { font-family: var(--font); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.5; }
-        .hidden { display: none !important; }
 
-        /* SAMU Banner */
-        .samu-banner {
-            background: var(--red); color: white; text-align: center;
-            padding: 10px 16px; font-size: 15px; font-weight: 700;
-            position: sticky; top: 0; z-index: 200;
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg-color); color: var(--text-main); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .hidden, .hidden-modal { display: none !important; }
+
+        /* Header tipo App da Apple (Glassmorphism) */
+        .header {
+            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            padding: 18px 20px; position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
         }
-        .samu-banner .samu-text { margin-bottom: 8px; }
+        .header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; }
+        .header-title { min-width: 0; flex: 1; }
+        .header h1 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(90deg, #F8FAFC, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-title p { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-top: 4px; line-height: 1.4; }
+
+        /* Banners (PWA e SAMU) */
+        .offline-banner { background: #064E3B; border-bottom: 1px solid #10B981; padding: 14px 20px; font-size: 14px; color: #A7F3D0; display: flex; align-items: center; gap: 12px; }
+        .offline-banner strong { color: #34D399; font-weight: 800; }
+        .samu-banner { background: linear-gradient(135deg, #991B1B, #7F1D1D); padding: 16px 20px; text-align: center; font-weight: 800; box-shadow: 0 4px 12px var(--danger-glow); }
+        .btn-close-offline { background: rgba(0,0,0,0.3); width: 32px; height: 32px; border-radius: 50%; color: white; border: none; font-weight: 900; }
+
+        /* Inputs e Buscas Neumórficas */
+        .location-bar, .filters-collapsible { padding: 0 20px; }
+        .search-input, .filter-select, .location-bar input {
+            width: 100%; padding: 18px; border-radius: 16px; border: 1px solid var(--border-color);
+            background: #1F2937; color: white; font-size: 16px; margin-top: 12px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); transition: all 0.3s;
+        }
+        .search-input:focus, .location-bar input:focus, .filter-select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--primary-glow); }
+
+        /* Botões Táticos de Resgate Gigantes */
+        .triage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 20px; }
+        .triage-btn {
+            background: var(--card-color); border: 2px solid var(--border-color); border-radius: 24px;
+            padding: 24px 12px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .triage-btn:active { transform: scale(0.95); }
+        .triage-btn.active {
+            background: linear-gradient(145deg, #1D4ED8, #1E3A8A); border-color: #60A5FA;
+            box-shadow: 0 12px 24px var(--primary-glow);
+        }
+        .triage-btn .emoji { font-size: 48px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
+        .triage-btn .label { font-size: 15px; font-weight: 900; letter-spacing: 0.5px; }
+
+        /* Painel de Primeiros Socorros / Lembretes */
+        .first-aid-banner { margin: 10px 20px; background: #450A0A; border: 1px solid #7F1D1D; border-radius: 16px; padding: 20px; animation: pulseDanger 2s infinite; }
+        .first-aid-banner summary { font-size: 18px; font-weight: 900; color: #FCA5A5; cursor: pointer; list-style: none; }
+        .first-aid-content { padding-top: 12px; font-size: 15px; color: #FECACA; }
+        .first-aid-content .danger { color: #F87171; font-weight: 900; }
+        .first-aid-content .safe { color: #4ADE80; font-weight: 900; }
+
+        /* Estética dos Cartões de Hospitais */
+        .card { background: var(--card-color); border: 1px solid var(--border-color); border-radius: 24px; padding: 24px; margin: 20px; box-shadow: 0 12px 24px rgba(0,0,0,0.4); }
+        .card-nearest { background: linear-gradient(180deg, rgba(16, 185, 129, 0.15) 0%, var(--card-color) 100%); border: 2px solid var(--success); box-shadow: 0 0 40px var(--success-glow); animation: pulseSafe 2.5s infinite; }
+        .card h3 { font-size: 22px; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 8px; }
+        .card .distance-badge { background: #064E3B; color: #34D399; font-weight: 900; font-size: 18px; padding: 8px 16px; border-radius: 30px; letter-spacing: -0.5px; }
+
+        /* Botões de Ligação e Compartilhamento */
+        .actions { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+        .btn-call {
+            border: none; border-radius: 16px; padding: 18px; font-size: 16px; font-weight: 900;
+            text-transform: uppercase; cursor: pointer; text-align: center; color: white; text-decoration: none;
+            display: flex; gap: 8px; align-items: center; justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.1s;
+            background: var(--success);
+        }
+        .btn-call:active { transform: scale(0.97); background: #059669; }
+
+        /* Animações Viscerais e Legal Modal */
+        @keyframes pulseDanger { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+        @keyframes pulseSafe { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } 70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        .legal-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; }
+        .legal-modal { background: #1F2937; width: 90%; max-width: 420px; border-radius: 24px; padding: 32px; text-align: center; border-top: 8px solid var(--danger); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .legal-modal h2 { color: #FCA5A5; font-size: 26px; font-weight: 900; margin-bottom: 20px; }
+        .btn-accept-legal { background: var(--primary); color: white; border: none; border-radius: 16px; padding: 20px; font-size: 18px; font-weight: 900; width: 100%; box-shadow: 0 8px 24px var(--primary-glow); }
+        
+        .map-back { background: var(--card-color); border: 2px solid white; color: white; font-weight: 900; }
+        .leaflet-popup-content { font-family: 'Outfit', sans-serif; font-size: 16px; }
+
+        /* ===== SAMU banner (sticky top) ===== */
+        .samu-banner { position: sticky; top: 0; z-index: 1100; color: white; font-size: 15px; }
+        .samu-banner .samu-text { margin-bottom: 10px; font-weight: 800; }
         .samu-buttons { display: flex; gap: 10px; justify-content: center; }
         .samu-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            background: white; color: var(--red); border: none; border-radius: 8px;
-            padding: 10px 18px; font-size: 17px; font-weight: 800;
-            text-decoration: none; min-height: 44px; flex: 1; max-width: 180px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            flex: 1; max-width: 180px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            background: white; color: var(--danger); border-radius: 12px; padding: 12px 18px;
+            font-size: 16px; font-weight: 900; text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
         }
-        .samu-btn:active { background: #ffcccc; }
+        .samu-btn:active { transform: scale(0.97); background: #FEE2E2; }
 
-        /* Header */
-        .header {
-            background: var(--blue); color: white; padding: 16px;
-            position: sticky; top: 45px; z-index: 100; box-shadow: var(--shadow);
-        }
-        .header h1 { font-size: 22px; font-weight: 700; }
-        .header p { font-size: 13px; opacity: 0.9; margin-top: 2px; }
-        .header-row { display: flex; justify-content: space-between; align-items: center; }
+        /* ===== Botão toggle mapa no header ===== */
         .btn-map-toggle {
-            background: rgba(255,255,255,0.2); border: 2px solid white; color: white;
-            padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
-            cursor: pointer; white-space: nowrap;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: white;
+            padding: 10px 14px; border-radius: 12px; font-size: 14px; font-weight: 800;
+            cursor: pointer; white-space: nowrap; transition: all 0.2s;
         }
+        .btn-map-toggle:active { transform: scale(0.96); background: rgba(255,255,255,0.18); }
 
-        /* Loading Screen */
-        .screen-loading {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            min-height: 60vh; text-align: center; padding: 32px;
-        }
-        .screen-loading h2 { font-size: 28px; color: var(--blue); margin-bottom: 8px; }
-        .screen-loading p { color: var(--text2); margin-bottom: 24px; }
+        /* ===== Offline PWA banner ===== */
+        .offline-banner { align-items: flex-start; }
+        .offline-content { display: flex; align-items: flex-start; gap: 12px; flex: 1; line-height: 1.45; }
+
+        /* ===== Loading screen ===== */
+        .screen-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; text-align: center; padding: 32px; }
+        .screen-loading h2 { font-size: 34px; font-weight: 900; letter-spacing: -1px; background: linear-gradient(90deg, #F8FAFC, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .screen-loading p { color: var(--text-muted); margin-bottom: 24px; font-size: 14px; }
         .spinner {
-            width: 48px; height: 48px; border: 4px solid #ddd;
-            border-top-color: var(--blue); border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.08);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin 0.8s linear infinite; box-shadow: 0 0 24px var(--primary-glow);
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .btn-primary {
-            background: var(--blue); color: white; border: none; border-radius: 8px;
-            padding: 14px 28px; font-size: 18px; font-weight: 600; cursor: pointer;
-            min-height: 48px;
-        }
-        .btn-primary:active { background: var(--blue-dark); }
 
-        /* Filters */
-        .filters { padding: 12px 16px; background: white; border-bottom: 1px solid #e0e0e0; }
-        .filter-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
-        .filter-row::-webkit-scrollbar { display: none; }
-        .filter-select {
-            width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;
-            font-size: 16px; background: white; color: var(--text); appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 12px center;
+        /* ===== Filtros ===== */
+        .filters { padding: 4px 0 12px; }
+        .location-bar { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+        .location-bar label { font-size: 13px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.3px; }
+        .city-suggestions {
+            list-style: none; background: var(--card-color); border: 1px solid var(--border-color); border-radius: 14px;
+            max-height: 220px; overflow-y: auto; padding: 6px; box-shadow: 0 12px 24px rgba(0,0,0,0.4);
         }
-        .filter-select:focus { border-color: var(--blue); outline: none; }
-        .search-input {
-            width: 100%; padding: 12px 16px; border: 2px solid #ddd; border-radius: 8px;
-            font-size: 16px; margin-top: 8px;
+        .city-suggestions li { padding: 12px 14px; cursor: pointer; font-size: 15px; border-radius: 10px; color: var(--text-main); }
+        .city-suggestions li:hover, .city-suggestions li.selected { background: rgba(59,130,246,0.15); color: white; }
+        .location-chosen {
+            margin: 8px 20px 0; padding: 12px 14px; border-radius: 14px; background: rgba(16,185,129,0.12);
+            border: 1px solid rgba(16,185,129,0.35); color: #A7F3D0;
+            display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 14px; font-weight: 700;
         }
-        .search-input:focus { border-color: var(--blue); outline: none; }
-        .chip {
-            display: inline-flex; align-items: center; padding: 8px 14px;
-            border-radius: 20px; border: 2px solid var(--blue); background: white;
-            font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap;
-            min-height: 38px; color: var(--blue); flex-shrink: 0;
-        }
-        .chip.active { background: var(--blue); color: white; }
+        .location-chosen button { background: transparent; border: none; color: #FCA5A5; font-size: 18px; font-weight: 900; cursor: pointer; padding: 4px 8px; }
 
-        /* City search for manual location */
-        /* Filter toggle */
+        /* Filter toggle colapsável */
         .filter-toggle {
             display: flex; align-items: center; justify-content: center; gap: 6px;
-            width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd;
-            border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--text2);
-            cursor: pointer; margin-bottom: 4px;
+            width: calc(100% - 40px); margin: 12px 20px 0; padding: 14px;
+            background: var(--card-color); color: var(--text-muted);
+            border: 1px solid var(--border-color); border-radius: 14px;
+            font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s;
         }
-        .filter-toggle.active { background: #E3F2FD; color: var(--blue); border-color: var(--blue); }
-        .filters-collapsible { display: none; }
+        .filter-toggle.active { color: var(--primary); border-color: var(--primary); background: rgba(59,130,246,0.08); }
+        .filters-collapsible { display: none; padding-top: 4px; padding-bottom: 8px; }
         .filters-collapsible.open { display: block; }
-        .filters-always { } /* always-visible filter content */
 
-        .location-bar {
-            background: #E3F2FD; border: 2px solid var(--blue); border-radius: 8px;
-            padding: 12px; margin-top: 8px; display: flex; flex-direction: column; gap: 8px;
+        /* Chips de soro */
+        .filter-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0 4px; }
+        .chip {
+            display: inline-flex; align-items: center; padding: 10px 14px; border-radius: 999px;
+            background: var(--card-color); border: 1px solid var(--border-color); color: var(--text-muted);
+            font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s;
         }
-        .location-bar label { font-size: 13px; font-weight: 600; color: var(--blue-dark); }
-        .location-bar input {
-            width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 8px;
-            font-size: 15px;
-        }
-        .location-bar input:focus { border-color: var(--blue); outline: none; }
-        .city-suggestions {
-            list-style: none; background: white; border: 1px solid #ddd; border-radius: 8px;
-            max-height: 200px; overflow-y: auto; margin: 0; padding: 0;
-            box-shadow: var(--shadow);
-        }
-        .city-suggestions li {
-            padding: 10px 12px; cursor: pointer; font-size: 14px; border-bottom: 1px solid #f0f0f0;
-        }
-        .city-suggestions li:hover, .city-suggestions li.selected { background: #E3F2FD; }
-        .location-chosen {
-            background: #E8F5E9; border-color: var(--green); padding: 10px 12px;
-            border-radius: 8px; border: 2px solid var(--green); font-size: 14px;
-            display: flex; justify-content: space-between; align-items: center; margin-top: 8px;
-        }
-        .location-chosen button {
-            background: none; border: none; color: var(--red); font-weight: 700;
-            cursor: pointer; font-size: 16px;
-        }
+        .chip:active { transform: scale(0.96); }
+        .chip.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
-        /* Antivenom info section */
+        /* Antivenom info (details) */
         .antivenom-info {
-            margin-top: 8px; padding: 10px 12px; background: #F3E5F5; border-radius: 8px;
-            border: 1px solid #CE93D8;
+            margin-top: 14px; padding: 14px; background: var(--card-color);
+            border: 1px solid var(--border-color); border-radius: 14px;
         }
-        .antivenom-info summary {
-            font-size: 13px; font-weight: 600; color: #6A1B9A; cursor: pointer;
-        }
-        .antivenom-info .info-grid {
-            display: grid; grid-template-columns: 1fr; gap: 6px; margin-top: 8px;
-        }
-        .antivenom-info .info-item {
-            font-size: 12px; line-height: 1.4; padding: 4px 0;
-        }
-        .antivenom-info .info-item strong { color: #4A148C; }
+        .antivenom-info summary { font-size: 13px; font-weight: 800; color: var(--text-main); cursor: pointer; }
+        .antivenom-info .info-grid { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
+        .antivenom-info .info-item { font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+        .antivenom-info .info-item strong { color: var(--text-main); }
 
         /* Results info */
-        .results-info {
-            padding: 8px 16px; font-size: 13px; color: var(--text2);
-            background: var(--bg); border-bottom: 1px solid #e0e0e0;
+        .results-info { padding: 10px 20px; font-size: 13px; color: var(--text-muted); font-weight: 600; }
+
+        /* ===== CIATox ===== */
+        .ciatox-section { padding: 0 20px; margin-top: 8px; }
+        .ciatox-label { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 700; }
+        .card-ciatox {
+            background: var(--card-color); border: 1px solid var(--border-color); border-left: 4px solid #F59E0B;
+            border-radius: 16px; padding: 16px; margin-bottom: 10px; box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+        }
+        .card-ciatox h4 { font-size: 16px; font-weight: 900; color: #FCD34D; margin-bottom: 4px; }
+        .ciatox-city { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+        .ciatox-phones { display: flex; flex-wrap: wrap; gap: 8px; }
+        .btn-ciatox {
+            background: rgba(245,158,11,0.15); color: #FCD34D; text-decoration: none;
+            padding: 10px 14px; border-radius: 12px; font-size: 14px; font-weight: 800;
+            border: 1px solid rgba(245,158,11,0.35);
+        }
+        .btn-ciatox:active { transform: scale(0.96); }
+        .btn-ciatox-more {
+            display: block; margin: 8px auto 0; background: transparent; border: 1px solid var(--border-color);
+            color: var(--text-muted); padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer;
         }
 
-        /* Hospital Cards */
-        .card-list { padding: 8px 0 80px; }
-        .card {
-            background: var(--card); border-radius: var(--radius); padding: 16px;
-            margin: 10px 16px; box-shadow: var(--shadow);
-        }
-        .card-nearest {
-            border: 3px solid var(--green); position: relative;
-            box-shadow: 0 4px 16px rgba(46,125,50,0.25);
+        /* ===== Cards internos ===== */
+        .card-list { padding: 4px 0 40px; }
+        .card-header { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+        .card-header > div:first-child { min-width: 0; flex: 1; }
+        .card .city { font-size: 14px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        .card .address { font-size: 13px; color: var(--text-muted); line-height: 1.45; margin-bottom: 6px; }
+        .card .hospital-note {
+            margin-top: 6px; padding: 8px 10px; background: rgba(245,158,11,0.1);
+            border: 1px solid rgba(245,158,11,0.3); border-left: 3px solid #F59E0B;
+            border-radius: 8px; font-size: 12px; color: #FCD34D; line-height: 1.45;
         }
         .nearest-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: var(--green); color: white; font-size: 12px; font-weight: 700;
-            padding: 4px 10px; border-radius: 4px; margin-bottom: 8px;
-            text-transform: uppercase; letter-spacing: 0.5px;
+            display: inline-block; background: var(--success); color: white; font-size: 12px; font-weight: 900;
+            letter-spacing: 0.5px; padding: 6px 12px; border-radius: 999px; margin-bottom: 12px; text-transform: uppercase;
+            box-shadow: 0 4px 12px var(--success-glow);
         }
-        /* Phone unavailable */
-        .phone-unavailable {
-            font-size: 13px; color: #999; font-style: italic; padding: 8px 0;
-            width: 100%;
-        }
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-        .card h3 { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
-        .card .city { font-size: 14px; color: var(--text2); margin-top: 2px; }
-        .card .address { font-size: 13px; color: var(--text2); margin-top: 4px; }
-        .card .hospital-note {
-            font-size: 13px; font-style: italic; color: #B26A00;
-            background: #FFF8E1; border-left: 3px solid #F5A623;
-            padding: 6px 8px; border-radius: 4px; margin-top: 6px;
-        }
-        .distance-badge {
-            font-size: 15px; font-weight: 700; padding: 4px 10px;
-            border-radius: 16px; white-space: nowrap; flex-shrink: 0;
-        }
-        .dist-near { background: #E8F5E9; color: var(--green); }
-        .dist-mid { background: #FFF8E1; color: var(--orange); }
-        .dist-far { background: #FFEBEE; color: var(--red); }
-        .dist-approx::after { content: " ~"; font-size: 11px; }
 
-        /* Antivenom tags */
-        .tags-details { margin-top: 10px; }
+        /* Distância badges */
+        .distance-badge { flex-shrink: 0; align-self: flex-start; white-space: nowrap; }
+        .dist-near { background: #064E3B; color: #34D399; }
+        .dist-mid  { background: #422006; color: #FBBF24; }
+        .dist-far  { background: #3F0A0A; color: #FCA5A5; }
+        .dist-approx { opacity: 0.8; border: 1px dashed currentColor; }
+
+        /* Tags de soro */
+        .tags-details { margin-top: 14px; }
         .tags-details summary {
-            font-size: 15px; font-weight: 700; color: var(--text2);
-            cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 5px;
-            user-select: none;
+            cursor: pointer; font-size: 13px; font-weight: 800; color: var(--text-muted);
+            padding: 6px 0; display: flex; gap: 8px; align-items: center;
         }
-        .tags-details summary::-webkit-details-marker { display: none; }
-        .tags-details summary::before { content: '▶'; font-size: 9px; transition: transform 0.2s; display: inline-block; }
-        .tags-details[open] summary::before { transform: rotate(90deg); }
-        .tags-details .tags { margin-top: 8px; }
-        .tags-emojis { font-size: 24px; line-height: 1; vertical-align: middle; }
-        .tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+        .tags-emojis { font-size: 18px; }
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
         .tag {
-            font-size: 12px; font-weight: 600; padding: 4px 10px;
-            border-radius: 10px; color: white; text-transform: uppercase; letter-spacing: 0.3px;
-            position: relative; cursor: default;
+            font-size: 11px; font-weight: 800; padding: 5px 10px; border-radius: 999px;
+            background: rgba(255,255,255,0.06); color: var(--text-main); letter-spacing: 0.3px; text-transform: uppercase;
         }
-        .tag[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: calc(100% + 6px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(33,33,33,0.92);
-            color: white;
-            font-size: 11px;
-            font-weight: 400;
-            padding: 4px 8px;
-            border-radius: 4px;
-            white-space: nowrap;
-            pointer-events: none;
-            z-index: 50;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-        .tag-escorpionico { background: #F9A825; }
-        .tag-botropico { background: #388E3C; }
-        .tag-crotalico { background: #757575; }
-        .tag-laquetico { background: #2E7D32; }
-        .tag-elapidico { background: #D32F2F; }
-        .tag-foneutrico { background: #7B1FA2; }
-        .tag-loxoscelico { background: #795548; }
-        .tag-lonomico { background: #EF6C00; }
-        .tag-default { background: #1976D2; }
+        .tag-escorpionico { background: rgba(251,191,36,0.15); color: #FCD34D; }
+        .tag-botropico    { background: rgba(16,185,129,0.15); color: #6EE7B7; }
+        .tag-crotalico    { background: rgba(239,68,68,0.15); color: #FCA5A5; }
+        .tag-laquetico    { background: rgba(168,85,247,0.15); color: #D8B4FE; }
+        .tag-elapidico    { background: rgba(244,114,182,0.15); color: #F9A8D4; }
+        .tag-foneutrico   { background: rgba(96,165,250,0.15); color: #93C5FD; }
+        .tag-loxoscelico  { background: rgba(251,113,133,0.15); color: #FDA4AF; }
+        .tag-lonomico     { background: rgba(163,230,53,0.15); color: #BEF264; }
 
-        /* Action buttons */
-        .actions { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-        .phones-row { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
-        .btn-call {
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            background: var(--green); color: white; border: none; border-radius: 8px;
-            padding: 12px 16px; font-size: 15px; font-weight: 600; text-decoration: none;
-            min-height: 48px; flex: 1; cursor: pointer; min-width: 0;
-        }
-        .btn-directions {
-            display: flex; align-items: center; justify-content: center; gap: 6px;
-            background: var(--blue); color: white; border: none; border-radius: 8px;
-            padding: 12px 16px; font-size: 16px; font-weight: 600; text-decoration: none;
-            min-height: 48px; flex: 1; cursor: pointer;
+        /* Telefones e share dentro do card */
+        .phones-row { display: flex; flex-direction: column; gap: 8px; }
+        .phone-unavailable {
+            background: rgba(255,255,255,0.04); border: 1px dashed var(--border-color);
+            color: var(--text-muted); font-size: 13px; font-weight: 700; text-align: center;
+            padding: 18px; border-radius: 16px;
         }
         .btn-share {
-            display: flex; align-items: center; justify-content: center; gap: 4px;
-            background: #25D366; color: white; border: none; border-radius: 8px;
-            padding: 12px 14px; min-height: 48px; cursor: pointer; font-size: 13px; font-weight: 600;
+            background: rgba(255,255,255,0.08); color: white; border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 14px; font-weight: 800; cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;
         }
+        .btn-share:active { transform: scale(0.97); background: rgba(255,255,255,0.14); }
 
-        /* Load more */
+        /* Data da fonte */
+        .source-date { margin-top: 14px; font-size: 11px; color: var(--text-muted); text-align: right; }
+        .source-date a { color: var(--text-muted); text-decoration: underline; }
+
+        /* Empty state / load more / privacy */
+        .empty-state { text-align: center; padding: 60px 24px; color: var(--text-muted); }
+        .empty-state p:first-child { font-size: 48px; margin-bottom: 12px; }
+        .empty-state p { font-size: 15px; line-height: 1.5; }
+
         .load-more {
-            display: block; width: calc(100% - 32px); margin: 12px 16px;
-            padding: 14px; background: white; border: 2px solid var(--blue);
-            border-radius: 8px; font-size: 16px; font-weight: 600;
-            color: var(--blue); cursor: pointer; text-align: center;
+            display: block; margin: 8px 20px 24px; width: calc(100% - 40px);
+            background: var(--card-color); color: var(--text-main); border: 1px solid var(--border-color);
+            padding: 16px; border-radius: 16px; font-size: 15px; font-weight: 800; cursor: pointer; transition: all 0.2s;
         }
+        .load-more:active { transform: scale(0.98); background: rgba(255,255,255,0.05); }
 
-        /* Map */
-        #map-container {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 300;
+        .privacy-note {
+            font-size: 12px; color: var(--text-muted); line-height: 1.5; padding: 12px;
+            background: var(--card-color); border: 1px solid var(--border-color); border-radius: 12px;
         }
+        .privacy-note strong { color: var(--text-main); }
+
+        /* ===== Share bar ===== */
+        .share-bar { margin: 24px 20px; padding: 20px; background: var(--card-color); border: 1px solid var(--border-color); border-radius: 20px; text-align: center; }
+        .share-bar p { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 14px; }
+        .share-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .share-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px; border-radius: 14px; color: white; font-weight: 800; font-size: 14px;
+            text-decoration: none; border: none; cursor: pointer; transition: transform 0.1s;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+        }
+        .share-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .share-btn:active { transform: scale(0.97); }
+        .share-btn.whatsapp  { background: #25D366; }
+        .share-btn.facebook  { background: #1877F2; }
+        .share-btn.twitter   { background: #0F172A; border: 1px solid var(--border-color); }
+        .share-btn.instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+
+        /* ===== Footer ===== */
+        .footer { padding: 28px 20px 40px; font-size: 12px; color: var(--text-muted); line-height: 1.6; text-align: center; border-top: 1px solid var(--border-color); margin-top: 8px; }
+        .footer p { margin-bottom: 6px; }
+        .footer a { color: #93C5FD; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .footer strong { color: var(--text-main); }
+
+        /* ===== Mapa fullscreen ===== */
+        #map-container { position: fixed; inset: 0; z-index: 1200; background: var(--bg-color); }
         #map { width: 100%; height: 100%; }
         .map-back {
-            position: fixed; top: 16px; left: 60px; z-index: 1000;
-            background: var(--blue); border: none; border-radius: 8px;
-            padding: 12px 20px; font-size: 16px; font-weight: 700;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.4); cursor: pointer; color: white;
+            position: absolute; top: 16px; left: 16px; z-index: 1300;
+            padding: 12px 16px; border-radius: 14px; cursor: pointer; font-size: 14px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+        }
+        .leaflet-popup-content-wrapper { background: var(--card-color); color: var(--text-main); border-radius: 14px; }
+        .leaflet-popup-content a { color: #93C5FD; }
+        .leaflet-popup-tip { background: var(--card-color); }
+
+        /* ===== Legal modal (texto interno) ===== */
+        .disclaimer-box {
+            background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.35);
+            border-radius: 12px; padding: 14px; color: #FECACA; font-size: 14px; line-height: 1.5;
+            margin-bottom: 16px; text-align: left;
+        }
+        .legal-modal p { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin-bottom: 10px; text-align: left; }
+        .legal-modal p strong { color: var(--text-main); }
+
+        /* ===== Mini-mapa no card ===== */
+        .map-block { margin-top: 18px; }
+        .mini-map {
+            width: 100%; height: 160px; border-radius: 14px; overflow: hidden;
+            border: 1px solid var(--border-color); background: #1F2937;
+            position: relative; cursor: pointer;
+        }
+        .mini-map .leaflet-container { background: #0F172A; cursor: pointer; }
+        .mini-map::after {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            box-shadow: inset 0 -40px 40px -20px rgba(0,0,0,0.3);
+        }
+        .btn-directions-mini {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: 10px; padding: 12px 16px;
+            background: rgba(59,130,246,0.12); color: #93C5FD;
+            border: 1px solid rgba(59,130,246,0.35); border-radius: 12px;
+            font-size: 14px; font-weight: 800; text-decoration: none;
+            transition: all 0.15s;
+        }
+        .btn-directions-mini:active { transform: scale(0.98); }
+        .btn-directions-mini:hover { background: rgba(59,130,246,0.22); color: #BFDBFE; }
+
+        /* ===== Botão "Buscar perto de mim" ===== */
+        .btn-near-me {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin: 12px 20px 4px; width: calc(100% - 40px); padding: 16px;
+            background: linear-gradient(135deg, var(--primary), #1D4ED8);
+            color: white; border: none; border-radius: 16px;
+            font-size: 16px; font-weight: 900; letter-spacing: 0.3px;
+            box-shadow: 0 8px 24px var(--primary-glow); cursor: pointer;
+            transition: transform 0.1s; font-family: 'Outfit', sans-serif;
+        }
+        .btn-near-me:active { transform: scale(0.98); }
+        .btn-near-me:disabled { opacity: 0.7; cursor: wait; }
+        .btn-near-me .dot-spin {
+            width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.35);
+            border-top-color: white; border-radius: 50%;
+            animation: spin 0.7s linear infinite;
         }
 
-        /* CIATox cards */
-        .ciatox-section {
-            padding: 0 16px 8px;
-        }
-        .ciatox-label {
-            font-size: 13px; font-weight: 700; color: #B71C1C;
-            padding: 8px 0 4px; display: flex; align-items: center; gap: 6px;
-        }
-        .card-ciatox {
-            background: #FFF3E0; border-radius: var(--radius); padding: 14px 16px;
-            margin: 6px 0 10px; box-shadow: var(--shadow);
-            border-left: 4px solid #E65100;
-        }
-        .card-ciatox h4 { font-size: 15px; font-weight: 700; color: #BF360C; margin-bottom: 2px; }
-        .card-ciatox .ciatox-city { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
-        .card-ciatox .ciatox-phones { display: flex; flex-wrap: wrap; gap: 6px; }
-        .card-ciatox .btn-ciatox {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: #E65100; color: white; border: none; border-radius: 6px;
-            padding: 8px 12px; font-size: 13px; font-weight: 600;
-            text-decoration: none; cursor: pointer;
-        }
-        .btn-ciatox-more {
-            display: block; width: 100%; margin-top: 6px; padding: 8px 12px;
-            background: none; border: 1px solid #E65100; border-radius: 6px;
-            color: #E65100; font-size: 13px; font-weight: 600; cursor: pointer;
-            text-align: center;
-        }
-        .btn-ciatox-more:active { background: #FFF3E0; }
-
-        /* Source date on cards — subtle */
-        .source-date {
-            font-size: 10px; color: #bbb; margin-top: 8px;
-            padding-top: 4px;
-        }
-        .source-date a { color: #aaa; text-decoration: none; }
-        .source-date a:hover { text-decoration: underline; color: var(--blue); }
-
-        /* Privacy note */
-        .privacy-note {
-            background: #E3F2FD; border-radius: 8px; padding: 10px 14px;
-            font-size: 12px; color: #1565C0; margin-top: 12px; line-height: 1.4;
+        /* ===== Responsivo ===== */
+        /* Tablet / desktop pequeno: respira mais, card grid 2 cols */
+        @media (min-width: 720px) {
+            body { max-width: 1100px; margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.5); min-height: 100vh; }
+            .header h1 { font-size: 30px; }
+            .header-title p { font-size: 13px; }
+            .samu-buttons { gap: 14px; }
+            .samu-btn { max-width: 220px; font-size: 17px; padding: 14px 22px; }
+            .triage-btn .emoji { font-size: 56px; }
+            .triage-btn .label { font-size: 16px; }
+            /* Cards em grid adaptativo */
+            .card-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 4px; padding: 4px 8px 40px; }
+            .card { margin: 12px; }
+            .card h3 { font-size: 20px; }
+            /* Share bar em 4 colunas */
+            .share-buttons { grid-template-columns: repeat(4, 1fr); }
+            /* Aumenta área clicável dos dois botões principais */
+            .actions { gap: 14px; }
         }
 
-        /* Share bar */
-        .share-bar {
-            background: white; border-top: 1px solid #e0e0e0;
-            padding: 14px 16px; text-align: center;
+        /* Desktop grande: header/filtros mais largos, conteúdo centralizado */
+        @media (min-width: 1024px) {
+            .header { padding: 22px 32px; }
+            .triage-grid { padding: 24px 32px; gap: 20px; }
+            .filter-toggle { margin: 14px 32px 0; width: calc(100% - 64px); }
+            .location-bar, .filters-collapsible { padding: 0 32px; }
+            .results-info, .ciatox-section, .privacy-note, .share-bar, .first-aid-banner { margin-left: 32px; margin-right: 32px; }
+            .privacy-note { margin: 12px 32px !important; }
+            .footer { padding: 32px 32px 48px; }
         }
-        .share-bar p {
-            font-size: 13px; font-weight: 700; color: var(--text2);
-            margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;
-        }
-        .share-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .share-btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            padding: 10px 16px; border-radius: 8px; font-size: 14px; font-weight: 600;
-            text-decoration: none; color: white; border: none; cursor: pointer;
-            min-height: 44px; transition: opacity 0.2s;
-        }
-        .share-btn:active { opacity: 0.8; }
-        .share-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-        .share-btn.whatsapp { background: #25D366; }
-        .share-btn.facebook { background: #1877F2; }
-        .share-btn.twitter { background: #000000; }
-        .share-btn.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 
-        /* Footer */
-        .footer {
-            background: white; border-top: 1px solid #e0e0e0;
-            padding: 16px; text-align: center; font-size: 12px; color: var(--text2);
+        /* Telas muito largas: evita cards ficando miúdos */
+        @media (min-width: 1400px) {
+            .card-list { grid-template-columns: repeat(3, 1fr); }
         }
-        .footer a { color: var(--blue); }
 
-        /* Empty state */
-        .empty-state { text-align: center; padding: 40px 16px; color: var(--text2); }
-        .empty-state p { font-size: 16px; margin-top: 8px; }
-
-        /* Leaflet popup override */
-        .leaflet-popup-content { font-family: var(--font); font-size: 14px; }
-        .leaflet-popup-content a { color: var(--blue); }
+        /* Ponteiro fino (mouse): hover states */
+        @media (hover: hover) {
+            .triage-btn:hover { border-color: var(--primary); transform: translateY(-2px); }
+            .btn-map-toggle:hover { background: rgba(255,255,255,0.18); }
+            .chip:hover { border-color: var(--primary); color: var(--text-main); }
+            .card:hover { border-color: rgba(255,255,255,0.12); }
+            .btn-call:hover, .btn-directions:hover, .share-btn:hover, .load-more:hover { transform: translateY(-1px); }
+            .city-suggestions li:hover { background: rgba(59,130,246,0.2); }
+        }
     </style>
+
 </head>
 <body>
+    <!-- Modal Legal de Isenção de Responsabilidade (US01) -->
+    <div id="legal-modal-overlay" class="legal-modal-overlay hidden-modal">
+        <div class="legal-modal">
+            <h2>🚨 AVISO IMPORTANTE</h2>
+            <div class="disclaimer-box">
+                Este aplicativo é não-oficial e não substitui o serviço de emergência. A responsabilidade pelo trajeto e pela verificação do estoque de soro é inteiramente do usuário.
+            </div>
+            <p>O <strong>SoroJá</strong> é um guia focado apenas em informar com base nos dados disponibilizados pelo Ministério da Saúde, que podem conter atrasos.</p>
+            <p style="margin-bottom: 24px; font-weight: 600;">Em caso de emergência, ligue SEMPRE para o 192 (SAMU).</p>
+            <button class="btn-accept-legal" onclick="acceptLegalTerms()">Estou Ciente e Quero Acessar</button>
+        </div>
+    </div>
+
     <!-- SAMU Banner -->
     <div class="samu-banner" id="samu-banner">
         <div class="samu-text">&#128680; Emergência? Ligue imediatamente:</div>
@@ -391,11 +478,24 @@
     <!-- Header -->
     <div class="header" id="main-header">
         <div class="header-row">
-            <div>
-                <p><strong>SoroJá: Encontre os Pontos Estratégicos de Soro Antiveneno - PESA (hospitais de referência) para atendimento de acidentes por animais peçonhentos mais próximo</strong></p>
+            <div class="header-title">
+                <h1>SoroJá</h1>
+                <p>Pontos Estratégicos de Soro Antiveneno (PESA) — hospitais de referência para acidentes por animais peçonhentos.</p>
             </div>
             <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
         </div>
+    </div>
+
+    <!-- Offline PWA Banner -->
+    <div class="offline-banner" id="offline-banner">
+        <div class="offline-content">
+            <span style="font-size: 26px;">🏕️</span> 
+            <div>
+                <strong>Vai fazer trilha? Salve Offline!</strong><br>
+                Toque em "Compartilhar" (iOS) ou Menu (Android) e escolha <strong>"Adicionar à Tela de Início"</strong> para poder usar este app inteiro no mato sem internet.
+            </div>
+        </div>
+        <button class="btn-close-offline" onclick="document.getElementById('offline-banner').style.display='none'">✕</button>
     </div>
 
     <!-- Loading Screen -->
@@ -403,13 +503,18 @@
         <h2>SoroJá</h2>
         <p>Encontre hospitais com soro antiveneno perto de você</p>
         <div class="spinner" id="spinner"></div>
-        <p id="loading-msg" style="margin-top:16px; font-size:14px; color:#999;">Carregando dados...</p>
+        <p id="loading-msg" style="margin-top:16px; font-size:14px; color:var(--text-muted);">Carregando dados...</p>
     </div>
 
     <!-- Main Content -->
     <div id="screen-list" class="hidden">
         <!-- Filters -->
         <div class="filters">
+            <!-- Botão "Buscar perto de mim" (GPS) — visível quando GPS não está ativo -->
+            <button class="btn-near-me hidden" id="btn-near-me" onclick="requestGpsNow()">
+                <span id="btn-near-me-label">&#128205; Buscar perto de mim</span>
+            </button>
+
             <!-- Manual location picker (shown when GPS unavailable) -->
             <div id="location-bar" class="location-bar hidden">
                 <label>&#128205; Para encontrar hospitais próximos, informe sua cidade:</label>
@@ -420,17 +525,24 @@
                 <span id="location-chosen-text"></span>
                 <button onclick="clearChosenLocation()" title="Remover">&#10005;</button>
             </div>
+            
+            <!-- Botões Gigantes de Triagem (US03) -->
+            <div class="triage-grid">
+                <div class="triage-btn" onclick="onTriageClick('escorpiao')" id="tb-escorpiao">
+                    <div class="emoji">🦂</div><div class="label">ESCORPIÃO</div>
+                </div>
+                <div class="triage-btn" onclick="onTriageClick('cobra')" id="tb-cobra">
+                    <div class="emoji">🐍</div><div class="label">COBRA</div>
+                </div>
+                <div class="triage-btn" onclick="onTriageClick('aranha')" id="tb-aranha">
+                    <div class="emoji">🕷️</div><div class="label">ARANHA</div>
+                </div>
+            </div>
+            <input type="hidden" id="filter-incident" value="">
+
             <!-- Collapsible filters (hidden by default when GPS active) -->
-            <button class="filter-toggle" id="filter-toggle" onclick="toggleFilters()">&#128269; Filtrar por tipo, estado ou nome</button>
+            <button class="filter-toggle" id="filter-toggle" onclick="toggleFilters()">&#128269; Buscar por nome ou estado</button>
             <div class="filters-collapsible" id="filters-collapsible">
-                <select class="filter-select" id="filter-incident" onchange="onIncidentFilter()">
-                    <option value="">Tipo de acidente (opcional)</option>
-                    <option value="escorpiao">Picada de escorpião</option>
-                    <option value="cobra">Picada de cobra</option>
-                    <option value="aranha">Picada de aranha</option>
-                    <option value="lagarta">Contato com taturana/lagarta</option>
-                    <option value="outro">Outro / Não sei</option>
-                </select>
                 <input type="text" class="search-input" id="search-input" placeholder="Buscar hospital ou cidade..." oninput="onSearchInput()">
                 <select class="filter-select" id="filter-state" onchange="onStateFilter()" style="margin-top:8px; margin-bottom:12px;">
                     <option value="">Todos os estados</option>
@@ -445,15 +557,28 @@
                         <div class="info-item"><strong>&#128375; Picada de aranha</strong> &#8594; Pode requerer soro: <strong>Fonêutrico</strong> (armadeira) ou <strong>Loxoscélico</strong> (aranha-marrom)</div>
                         <div class="info-item"><strong>&#128027; Contato com taturana</strong> &#8594; Pode requerer soro: <strong>Lonômico</strong></div>
                     </div>
-                    <div style="margin-top:10px; padding:8px; background:#FFF3E0; border-radius:6px; font-size:12px; color:#BF360C;">
+                    <div style="margin-top:12px; padding:10px 12px; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.35); border-radius:10px; font-size:12px; color:#FCD34D; line-height:1.5;">
                         <strong>&#9888;&#65039; Procure atendimento imediato em caso de:</strong> dor intensa, vômitos, dificuldade para respirar, sangramento, inchaço que avança, ou alteração da visão.
                     </div>
-                    <div style="margin-top:6px; font-size:11px; color:#666; font-style:italic;">
+                    <div style="margin-top:8px; font-size:11px; color:var(--text-muted); font-style:italic;">
                         A indicação e aplicação do soro devem ser feitas exclusivamente por profissionais de saúde.
                     </div>
                 </details>
             </div>
         </div>
+
+        <!-- First Aid Quick Guide -->
+        <details class="first-aid-banner">
+            <summary>⚠️ Instruções Médicas de Primeiros Socorros (Leia no Trajeto)</summary>
+            <div class="first-aid-content">
+                <ul>
+                    <li><span class="safe">✓ FAÇA:</span> Lave o local apenas com água e sabão. Mantenha a vítima deitada em repouso e com o membro afetado elevado.</li>
+                    <li><span class="safe">✓ FAÇA:</span> Tente fotografar ou gravar a cor/tipo do animal caso seja seguro, para que o médico ministre o Soro correto.</li>
+                    <li><span class="danger">✗ NÃO FAÇA:</span> JAMAIS faça torniquete, amarramento ou qualquer pressão no membro. Isso acelera a necrose e causa amputação.</li>
+                    <li><span class="danger">✗ NÃO FAÇA:</span> JAMAIS corte a pele, tente chupar o veneno com a boca ou passe pó de café/receitas caseiras na ferida.</li>
+                </ul>
+            </div>
+        </details>
 
         <!-- Results info -->
         <div class="results-info" id="results-info"></div>
@@ -535,6 +660,8 @@
     var mapInstance = null;
     var mapMarkers = [];
     var mapShowing = false;
+    var miniMaps = [];
+    var miniMapObserver = null;
 
     // ===== ANTIVENOM CONFIG =====
     var ANTIVENOM_COLORS = {
@@ -850,13 +977,27 @@
             callHtml = '<div class="phone-unavailable">Telefone não disponível</div>';
         }
 
-        var dirHtml = '';
+        var mapBlockHtml = '';
+        var dirUrl = '';
         if (h.lat != null && h.lng != null) {
-            var dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
-            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
+            dirUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng;
+            mapBlockHtml =
+                '<div class="map-block">' +
+                    '<div class="mini-map" data-lat="' + h.lat + '" data-lng="' + h.lng + '" onclick="window.open(\'' + dirUrl + '\',\'_blank\')"></div>' +
+                    '<a class="btn-directions-mini" href="' + dirUrl + '" target="_blank" rel="noopener">' +
+                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
+                        ' Como chegar?' +
+                    '</a>' +
+                '</div>';
         } else if (h.address) {
-            var dirUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.hospital_name + ', ' + h.city + ', ' + h.state);
-            dirHtml = '<a class="btn-directions" href="' + dirUrl + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Como Chegar</a>';
+            dirUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(h.hospital_name + ', ' + h.city + ', ' + h.state);
+            mapBlockHtml =
+                '<div class="map-block">' +
+                    '<a class="btn-directions-mini" href="' + dirUrl + '" target="_blank" rel="noopener">' +
+                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
+                        ' Como chegar?' +
+                    '</a>' +
+                '</div>';
         }
 
         var phoneText = validPhones.join(' / ');
@@ -885,9 +1026,9 @@
                 '</div>' + distHtml +
             '</div>' +
             tagsHtml +
+            mapBlockHtml +
             '<div class="actions">' +
                 callHtml +
-                dirHtml +
                 '<button class="btn-share" onclick="window.open(\'https://wa.me/?text=' + shareText + '\')" title="Compartilhar via WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492l4.665-1.467A11.944 11.944 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-2.09 0-4.032-.66-5.625-1.783l-.403-.262-2.768.87.872-2.696-.283-.424A9.698 9.698 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg> Enviar</button>' +
             '</div>' +
             sourceHtml +
@@ -989,12 +1130,14 @@
         // CIATox
         renderCiatox();
 
-        // Cards
+        // Cards — destrói mini-mapas antigos antes de reescrever o HTML
+        destroyMiniMaps();
         var list = document.getElementById('card-list');
         if (filtered.length === 0) {
             list.innerHTML = '<div class="empty-state"><p>&#128269;</p><p>Nenhum hospital encontrado com os filtros selecionados.</p></div>';
         } else {
             list.innerHTML = visible.map(function(h, i) { return renderCard(h, i); }).join('');
+            initMiniMaps();
         }
 
         // Load more button
@@ -1004,6 +1147,48 @@
             btn.classList.remove('hidden');
         } else {
             btn.classList.add('hidden');
+        }
+    }
+
+    // ===== MINI-MAPAS (1 por card) =====
+    function destroyMiniMaps() {
+        miniMaps.forEach(function(m) { try { m.remove(); } catch (e) {} });
+        miniMaps = [];
+        if (miniMapObserver) { try { miniMapObserver.disconnect(); } catch (e) {} }
+        miniMapObserver = null;
+    }
+
+    function initMiniMap(el) {
+        if (el._inited) return;
+        el._inited = true;
+        var lat = parseFloat(el.dataset.lat);
+        var lng = parseFloat(el.dataset.lng);
+        if (isNaN(lat) || isNaN(lng)) return;
+        var m = L.map(el, {
+            zoomControl: false, attributionControl: false,
+            dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
+            boxZoom: false, keyboard: false, touchZoom: false, tap: false
+        }).setView([lat, lng], 14);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(m);
+        L.marker([lat, lng]).addTo(m);
+        miniMaps.push(m);
+    }
+
+    function initMiniMaps() {
+        var nodes = document.querySelectorAll('.mini-map');
+        if (!nodes.length) return;
+        if ('IntersectionObserver' in window) {
+            miniMapObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        initMiniMap(entry.target);
+                        miniMapObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '200px' });
+            nodes.forEach(function(el) { miniMapObserver.observe(el); });
+        } else {
+            nodes.forEach(initMiniMap);
         }
     }
 
@@ -1067,6 +1252,33 @@
             renderList();
         }, 300);
     };
+
+    window.onTriageClick = function(val) {
+        if (navigator.vibrate) navigator.vibrate(50); // Feedback físico no celular
+        var el = document.getElementById('filter-incident');
+        if (el.value === val) {
+            el.value = ''; // Toggle off
+        } else {
+            el.value = val;
+        }
+        ['escorpiao', 'cobra', 'aranha'].forEach(function(v) {
+            document.getElementById('tb-' + v).classList.toggle('active', el.value === v);
+        });
+        var selected = !!el.value;
+        window.onIncidentFilter();
+        if (selected) scrollToHighlighted();
+    };
+
+    function scrollToHighlighted() {
+        // Deixa o DOM terminar o render antes de rolar
+        requestAnimationFrame(function() {
+            var target = document.querySelector('.card-nearest') ||
+                         document.querySelector('#card-list .card');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 
     window.onIncidentFilter = function() {
         var val = document.getElementById('filter-incident').value;
@@ -1221,6 +1433,7 @@
         document.getElementById('location-chosen-text').innerHTML =
             '&#128205; ' + city.name + ', ' + city.state;
 
+        updateNearMeButton();
         showCount = SHOW_COUNT;
         renderList();
     };
@@ -1234,8 +1447,65 @@
         searchQuery = '';
         document.getElementById('location-chosen').classList.add('hidden');
         document.getElementById('location-bar').classList.remove('hidden');
+        updateNearMeButton();
         showCount = SHOW_COUNT;
         renderList();
+    };
+
+    // Mostra o botão "Buscar perto de mim" quando o usuário ainda não está usando GPS real
+    function updateNearMeButton() {
+        var btn = document.getElementById('btn-near-me');
+        if (!btn) return;
+        var usingRealGps = gpsAvailable && !chosenCity;
+        btn.classList.toggle('hidden', usingRealGps);
+    }
+
+    window.requestGpsNow = function() {
+        var btn = document.getElementById('btn-near-me');
+        var label = document.getElementById('btn-near-me-label');
+        if (!navigator.geolocation) {
+            alert('Seu navegador não suporta geolocalização.');
+            return;
+        }
+        btn.disabled = true;
+        label.innerHTML = '<span class="dot-spin"></span> Localizando...';
+        function done(success) {
+            btn.disabled = false;
+            label.innerHTML = '&#128205; Buscar perto de mim';
+            if (success) {
+                chosenCity = null;
+                document.getElementById('location-bar').classList.add('hidden');
+                document.getElementById('location-chosen').classList.add('hidden');
+                document.getElementById('search-input').value = '';
+                searchQuery = '';
+                updateNearMeButton();
+                showCount = SHOW_COUNT;
+                renderList();
+            } else {
+                alert('Não foi possível obter sua localização. Verifique a permissão do navegador ou use a busca por cidade.');
+            }
+        }
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                userLat = pos.coords.latitude;
+                userLng = pos.coords.longitude;
+                gpsAvailable = true;
+                done(true);
+            },
+            function() {
+                navigator.geolocation.getCurrentPosition(
+                    function(pos) {
+                        userLat = pos.coords.latitude;
+                        userLng = pos.coords.longitude;
+                        gpsAvailable = true;
+                        done(true);
+                    },
+                    function() { done(false); },
+                    { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
+                );
+            },
+            { enableHighAccuracy: true, timeout: GPS_TIMEOUT, maximumAge: 60000 }
+        );
     };
 
     // ===== INIT =====
@@ -1256,7 +1526,20 @@
                 if (!gpsAvailable) {
                     document.getElementById('location-bar').classList.remove('hidden');
                 }
+                updateNearMeButton();
+                
+                // Oculta o banner de instrução PWA se o usuário já instalou ele no celular
+                if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
+                    var bannerPWA = document.getElementById('offline-banner');
+                    if (bannerPWA) bannerPWA.style.display = 'none';
+                }
+
                 renderList();
+                
+                // Exibe o modal de disclaimer caso usuário não tenha aceito (US01)
+                if (!localStorage.getItem('soroja_accepted')) {
+                    document.getElementById('legal-modal-overlay').classList.remove('hidden-modal');
+                }
             })
             .catch(function(e) {
                 document.getElementById('loading-msg').textContent =
@@ -1266,6 +1549,11 @@
     }
 
     document.addEventListener('DOMContentLoaded', init);
+
+    window.acceptLegalTerms = function() {
+        localStorage.setItem('soroja_accepted', 'true');
+        document.getElementById('legal-modal-overlay').classList.add('hidden-modal');
+    };
 
     // Service worker disabled for local preview
     // if ('serviceWorker' in navigator) {
