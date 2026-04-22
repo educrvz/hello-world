@@ -6,6 +6,16 @@
     <meta name="theme-color" content="#0066CC">
     <meta name="description" content="SoroJá — Encontre hospitais com soro antiveneno mais próximos de você">
 
+    <!-- Theme boot: sets data-theme before styles apply (avoids flash) -->
+    <script>
+      (function() {
+        var saved = null;
+        try { saved = localStorage.getItem('soroja_theme'); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SoroJá">
@@ -32,19 +42,82 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root {
+        /* ===== Theme palettes ===== */
+        :root, [data-theme="light"] {
+            --bg-color: #F5F5F5;
+            --card-color: #FFFFFF;
+            --card-secondary: #F9FAFB;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --primary: #0066CC;
+            --primary-glow: rgba(0, 102, 204, 0.22);
+            --danger: #D32F2F;
+            --danger-glow: rgba(211, 47, 47, 0.28);
+            --success: #2E7D32;
+            --success-glow: rgba(46, 125, 50, 0.22);
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --text-inverse: #FFFFFF;
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --header-border: rgba(0, 0, 0, 0.06);
+            --header-title-from: #111827;
+            --header-title-to: #4B5563;
+            --input-bg: #FFFFFF;
+            --input-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+            --btn-ghost-bg: rgba(0, 0, 0, 0.04);
+            --btn-ghost-bg-strong: rgba(0, 0, 0, 0.08);
+            --overlay-strong: rgba(17, 24, 39, 0.6);
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --first-aid-bg: #FEE2E2;
+            --first-aid-border: #FCA5A5;
+            --first-aid-head: #991B1B;
+            --first-aid-text: #7F1D1D;
+            --first-aid-danger: #B91C1C;
+            --first-aid-safe: #166534;
+            --mini-map-bg: #E5E7EB;
+            --mini-map-tile: #F3F4F6;
+            --legal-modal-bg: #FFFFFF;
+            --legal-modal-border: var(--danger);
+            --link-color: #0066CC;
+            --footer-text: #6B7280;
+        }
+
+        [data-theme="dark"] {
             /* Tema Ultra-Dark Noturno Otimizado para Pânico/Resgate Noturno */
-            --bg-color: #0B0F19; /* Preto Absoluto / Azul Profundo */
-            --card-color: #111827; /* Cinza Escuro Tático */
+            --bg-color: #0B0F19;
+            --card-color: #111827;
+            --card-secondary: #1F2937;
             --border-color: rgba(255, 255, 255, 0.05);
-            --primary: #3B82F6; /* Azul Neo */
+            --primary: #3B82F6;
             --primary-glow: rgba(59, 130, 246, 0.4);
-            --danger: #EF4444; /* Vermelho Alerta */
+            --danger: #EF4444;
             --danger-glow: rgba(239, 68, 68, 0.4);
-            --success: #10B981; /* Verde Resgate */
+            --success: #10B981;
             --success-glow: rgba(16, 185, 129, 0.3);
             --text-main: #F9FAFB;
             --text-muted: #9CA3AF;
+            --text-inverse: #FFFFFF;
+            --header-bg: rgba(11, 15, 25, 0.85);
+            --header-border: rgba(255, 255, 255, 0.05);
+            --header-title-from: #F8FAFC;
+            --header-title-to: #94A3B8;
+            --input-bg: #1F2937;
+            --input-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            --btn-ghost-bg: rgba(255, 255, 255, 0.08);
+            --btn-ghost-bg-strong: rgba(255, 255, 255, 0.18);
+            --overlay-strong: rgba(0, 0, 0, 0.95);
+            --card-shadow: 0 12px 24px rgba(0,0,0,0.4);
+            --first-aid-bg: #450A0A;
+            --first-aid-border: #7F1D1D;
+            --first-aid-head: #FCA5A5;
+            --first-aid-text: #FECACA;
+            --first-aid-danger: #F87171;
+            --first-aid-safe: #4ADE80;
+            --mini-map-bg: #1F2937;
+            --mini-map-tile: #0F172A;
+            --legal-modal-bg: #1F2937;
+            --legal-modal-border: var(--danger);
+            --link-color: #93C5FD;
+            --footer-text: #888;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -53,14 +126,24 @@
 
         /* Header tipo App da Apple (Glassmorphism) */
         .header {
-            background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: var(--header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             padding: 18px 20px; position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--header-border);
         }
         .header-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; }
         .header-title { min-width: 0; flex: 1; }
-        .header h1 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(90deg, #F8FAFC, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .header h1 { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(90deg, var(--header-title-from), var(--header-title-to)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .header-title p { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-top: 4px; line-height: 1.4; }
+
+        /* Theme toggle button (top of header) */
+        .btn-theme-toggle {
+            background: var(--btn-ghost-bg); border: 1px solid var(--border-color); color: var(--text-main);
+            width: 42px; height: 42px; border-radius: 12px; font-size: 18px; line-height: 1;
+            cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+            transition: all 0.2s; flex-shrink: 0;
+        }
+        .btn-theme-toggle:active { transform: scale(0.94); background: var(--btn-ghost-bg-strong); }
 
         /* Banners (PWA e SAMU) */
         .offline-banner { background: #064E3B; border-bottom: 1px solid #10B981; padding: 14px 20px; font-size: 14px; color: #A7F3D0; display: flex; align-items: center; gap: 12px; }
@@ -72,8 +155,8 @@
         .location-bar, .filters-collapsible { padding: 0 20px; }
         .search-input, .filter-select, .location-bar input {
             width: 100%; padding: 18px; border-radius: 16px; border: 1px solid var(--border-color);
-            background: #1F2937; color: white; font-size: 16px; margin-top: 12px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); transition: all 0.3s;
+            background: var(--input-bg); color: var(--text-main); font-size: 16px; margin-top: 12px;
+            box-shadow: var(--input-shadow); transition: all 0.3s;
         }
         .search-input:focus, .location-bar input:focus, .filter-select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--primary-glow); }
 
@@ -93,17 +176,18 @@
         .triage-btn .label { font-size: 15px; font-weight: 900; letter-spacing: 0.5px; }
 
         /* Painel de Primeiros Socorros / Lembretes */
-        .first-aid-banner { margin: 10px 20px; background: #450A0A; border: 1px solid #7F1D1D; border-radius: 16px; padding: 20px; animation: pulseDanger 2s infinite; }
-        .first-aid-banner summary { font-size: 18px; font-weight: 900; color: #FCA5A5; cursor: pointer; list-style: none; }
-        .first-aid-content { padding-top: 12px; font-size: 15px; color: #FECACA; }
-        .first-aid-content .danger { color: #F87171; font-weight: 900; }
-        .first-aid-content .safe { color: #4ADE80; font-weight: 900; }
+        .first-aid-banner { margin: 10px 20px; background: var(--first-aid-bg); border: 1px solid var(--first-aid-border); border-radius: 16px; padding: 20px; animation: pulseDanger 2s infinite; }
+        .first-aid-banner summary { font-size: 18px; font-weight: 900; color: var(--first-aid-head); cursor: pointer; list-style: none; }
+        .first-aid-content { padding-top: 12px; font-size: 15px; color: var(--first-aid-text); }
+        .first-aid-content .danger { color: var(--first-aid-danger); font-weight: 900; }
+        .first-aid-content .safe { color: var(--first-aid-safe); font-weight: 900; }
 
         /* Estética dos Cartões de Hospitais */
-        .card { background: var(--card-color); border: 1px solid var(--border-color); border-radius: 24px; padding: 24px; margin: 20px; box-shadow: 0 12px 24px rgba(0,0,0,0.4); }
+        .card { background: var(--card-color); border: 1px solid var(--border-color); border-radius: 24px; padding: 24px; margin: 20px; box-shadow: var(--card-shadow); }
         .card-nearest { background: linear-gradient(180deg, rgba(16, 185, 129, 0.15) 0%, var(--card-color) 100%); border: 2px solid var(--success); box-shadow: 0 0 40px var(--success-glow); animation: pulseSafe 2.5s infinite; }
-        .card h3 { font-size: 22px; font-weight: 900; color: white; line-height: 1.2; margin-bottom: 8px; }
+        .card h3 { font-size: 22px; font-weight: 900; color: var(--text-main); line-height: 1.2; margin-bottom: 8px; }
         .card .distance-badge { background: #064E3B; color: #34D399; font-weight: 900; font-size: 18px; padding: 8px 16px; border-radius: 30px; letter-spacing: -0.5px; }
+        [data-theme="light"] .card .distance-badge { background: #D1FAE5; color: #065F46; }
 
         /* Botões de Ligação e Compartilhamento */
         .actions { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
@@ -120,12 +204,12 @@
         @keyframes pulseDanger { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
         @keyframes pulseSafe { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); } 70% { box-shadow: 0 0 0 20px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        .legal-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); z-index: 9999; display: flex; justify-content: center; align-items: center; }
-        .legal-modal { background: #1F2937; width: 90%; max-width: 420px; border-radius: 24px; padding: 32px; text-align: center; border-top: 8px solid var(--danger); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        .legal-modal h2 { color: #FCA5A5; font-size: 26px; font-weight: 900; margin-bottom: 20px; }
-        .btn-accept-legal { background: var(--primary); color: white; border: none; border-radius: 16px; padding: 20px; font-size: 18px; font-weight: 900; width: 100%; box-shadow: 0 8px 24px var(--primary-glow); }
-        
-        .map-back { background: var(--card-color); border: 2px solid white; color: white; font-weight: 900; }
+        .legal-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--overlay-strong); z-index: 9999; display: flex; justify-content: center; align-items: center; }
+        .legal-modal { background: var(--legal-modal-bg); width: 90%; max-width: 420px; border-radius: 24px; padding: 32px; text-align: center; border-top: 8px solid var(--legal-modal-border); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .legal-modal h2 { color: var(--danger); font-size: 26px; font-weight: 900; margin-bottom: 20px; }
+        .btn-accept-legal { background: var(--primary); color: var(--text-inverse); border: none; border-radius: 16px; padding: 20px; font-size: 18px; font-weight: 900; width: 100%; box-shadow: 0 8px 24px var(--primary-glow); }
+
+        .map-back { background: var(--card-color); border: 2px solid var(--text-main); color: var(--text-main); font-weight: 900; }
         .leaflet-popup-content { font-family: 'Outfit', sans-serif; font-size: 16px; }
 
         /* ===== SAMU banner (sticky top) ===== */
@@ -142,11 +226,11 @@
 
         /* ===== Botão toggle mapa no header ===== */
         .btn-map-toggle {
-            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); color: white;
+            background: var(--btn-ghost-bg); border: 1px solid var(--border-color); color: var(--text-main);
             padding: 10px 14px; border-radius: 12px; font-size: 14px; font-weight: 800;
             cursor: pointer; white-space: nowrap; transition: all 0.2s;
         }
-        .btn-map-toggle:active { transform: scale(0.96); background: rgba(255,255,255,0.18); }
+        .btn-map-toggle:active { transform: scale(0.96); background: var(--btn-ghost-bg-strong); }
 
         /* ===== Offline PWA banner ===== */
         .offline-banner { align-items: flex-start; }
@@ -154,10 +238,10 @@
 
         /* ===== Loading screen ===== */
         .screen-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 70vh; text-align: center; padding: 32px; }
-        .screen-loading h2 { font-size: 34px; font-weight: 900; letter-spacing: -1px; background: linear-gradient(90deg, #F8FAFC, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+        .screen-loading h2 { font-size: 34px; font-weight: 900; letter-spacing: -1px; background: linear-gradient(90deg, var(--header-title-from), var(--header-title-to)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
         .screen-loading p { color: var(--text-muted); margin-bottom: 24px; font-size: 14px; }
         .spinner {
-            width: 48px; height: 48px; border: 4px solid rgba(255,255,255,0.08);
+            width: 48px; height: 48px; border: 4px solid var(--btn-ghost-bg);
             border-top-color: var(--primary); border-radius: 50%;
             animation: spin 0.8s linear infinite; box-shadow: 0 0 24px var(--primary-glow);
         }
@@ -169,10 +253,10 @@
         .location-bar label { font-size: 13px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.3px; }
         .city-suggestions {
             list-style: none; background: var(--card-color); border: 1px solid var(--border-color); border-radius: 14px;
-            max-height: 220px; overflow-y: auto; padding: 6px; box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+            max-height: 220px; overflow-y: auto; padding: 6px; box-shadow: var(--card-shadow);
         }
         .city-suggestions li { padding: 12px 14px; cursor: pointer; font-size: 15px; border-radius: 10px; color: var(--text-main); }
-        .city-suggestions li:hover, .city-suggestions li.selected { background: rgba(59,130,246,0.15); color: white; }
+        .city-suggestions li:hover, .city-suggestions li.selected { background: rgba(59,130,246,0.15); color: var(--primary); }
         .location-chosen {
             margin: 8px 20px 0; padding: 12px 14px; border-radius: 14px; background: rgba(16,185,129,0.12);
             border: 1px solid rgba(16,185,129,0.35); color: #A7F3D0;
@@ -200,7 +284,7 @@
             font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all 0.15s;
         }
         .chip:active { transform: scale(0.96); }
-        .chip.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+        .chip.active { background: var(--primary); color: var(--text-inverse); border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
 
         /* Antivenom info (details) */
         .antivenom-info {
@@ -284,16 +368,25 @@
         /* Telefones e share dentro do card */
         .phones-row { display: flex; flex-direction: column; gap: 8px; }
         .phone-unavailable {
-            background: rgba(255,255,255,0.04); border: 1px dashed var(--border-color);
+            background: var(--btn-ghost-bg); border: 1px dashed var(--border-color);
             color: var(--text-muted); font-size: 13px; font-weight: 700; text-align: center;
             padding: 18px; border-radius: 16px;
         }
         .btn-share {
-            background: rgba(255,255,255,0.08); color: white; border: 1px solid var(--border-color);
+            background: var(--btn-ghost-bg); color: var(--text-main); border: 1px solid var(--border-color);
             border-radius: 16px; padding: 14px; font-weight: 800; cursor: pointer;
             display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px;
         }
-        .btn-share:active { transform: scale(0.97); background: rgba(255,255,255,0.14); }
+        .btn-share:active { transform: scale(0.97); background: var(--btn-ghost-bg-strong); }
+        .btn-share svg path { fill: currentColor; }
+
+        /* Discrete per-card report link */
+        .btn-report {
+            display: inline-flex; align-items: center; gap: 4px;
+            margin-left: 8px; color: var(--text-muted); font-size: 11px; font-weight: 600;
+            text-decoration: none; border-bottom: 1px dotted var(--text-muted);
+        }
+        .btn-report:hover { color: var(--text-main); border-bottom-color: var(--text-main); }
 
         /* Data da fonte */
         .source-date { margin-top: 14px; font-size: 11px; color: var(--text-muted); text-align: right; }
@@ -323,7 +416,7 @@
         .share-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .share-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 14px; border-radius: 14px; color: white; font-weight: 800; font-size: 14px;
+            padding: 14px; border-radius: 14px; color: #FFFFFF; font-weight: 800; font-size: 14px;
             text-decoration: none; border: none; cursor: pointer; transition: transform 0.1s;
             box-shadow: 0 6px 14px rgba(0,0,0,0.3);
         }
@@ -350,13 +443,13 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.5);
         }
         .leaflet-popup-content-wrapper { background: var(--card-color); color: var(--text-main); border-radius: 14px; }
-        .leaflet-popup-content a { color: #93C5FD; }
+        .leaflet-popup-content a { color: var(--link-color); }
         .leaflet-popup-tip { background: var(--card-color); }
 
         /* ===== Legal modal (texto interno) ===== */
         .disclaimer-box {
             background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.35);
-            border-radius: 12px; padding: 14px; color: #FECACA; font-size: 14px; line-height: 1.5;
+            border-radius: 12px; padding: 14px; color: var(--danger); font-size: 14px; line-height: 1.5;
             margin-bottom: 16px; text-align: left;
         }
         .legal-modal p { color: var(--text-muted); font-size: 14px; line-height: 1.55; margin-bottom: 10px; text-align: left; }
@@ -366,10 +459,10 @@
         .map-block { margin-top: 18px; }
         .mini-map {
             width: 100%; height: 160px; border-radius: 14px; overflow: hidden;
-            border: 1px solid var(--border-color); background: #1F2937;
+            border: 1px solid var(--border-color); background: var(--mini-map-bg);
             position: relative; cursor: pointer;
         }
-        .mini-map .leaflet-container { background: #0F172A; cursor: pointer; }
+        .mini-map .leaflet-container { background: var(--mini-map-tile); cursor: pointer; }
         .mini-map::after {
             content: ""; position: absolute; inset: 0; pointer-events: none;
             box-shadow: inset 0 -40px 40px -20px rgba(0,0,0,0.3);
@@ -389,8 +482,8 @@
         .btn-near-me {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             margin: 12px 20px 4px; width: calc(100% - 40px); padding: 16px;
-            background: linear-gradient(135deg, var(--primary), #1D4ED8);
-            color: white; border: none; border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary));
+            color: #FFFFFF; border: none; border-radius: 16px;
             font-size: 16px; font-weight: 900; letter-spacing: 0.3px;
             box-shadow: 0 8px 24px var(--primary-glow); cursor: pointer;
             transition: transform 0.1s; font-family: 'Outfit', sans-serif;
@@ -399,7 +492,7 @@
         .btn-near-me:disabled { opacity: 0.7; cursor: wait; }
         .btn-near-me .dot-spin {
             width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.35);
-            border-top-color: white; border-radius: 50%;
+            border-top-color: #FFFFFF; border-radius: 50%;
             animation: spin 0.7s linear infinite;
         }
 
@@ -482,7 +575,12 @@
                 <h1>SoroJá</h1>
                 <p>Pontos Estratégicos de Soro Antiveneno (PESA) — hospitais de referência para acidentes por animais peçonhentos.</p>
             </div>
-            <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
+            <div class="header-actions">
+                <button class="btn-theme-toggle" id="btn-theme-toggle" type="button" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                    <span id="theme-toggle-icon">🌙</span>
+                </button>
+                <button class="btn-map-toggle" id="btn-map-toggle" onclick="toggleMap()">&#128506; Mapa</button>
+            </div>
         </div>
     </div>
 
@@ -629,8 +727,9 @@
             <p style="margin-top:6px;">PESA — Pontos Estratégicos de Soro Antiveneno</p>
             <p style="margin-top:8px;">Em caso de emergência, ligue <a href="tel:192">192 (SAMU)</a> ou <a href="tel:193">193 (Bombeiros)</a></p>
             <p style="margin-top:8px; font-size:11px;">Este site tem caráter informativo e não substitui avaliação médica. A indicação e aplicação do soro antiveneno devem ser feitas exclusivamente por profissionais de saúde. Sempre ligue 192 (SAMU) ou 193 (Bombeiros) em caso de emergência. Os dados são fornecidos pelo Ministério da Saúde e podem estar desatualizados.</p>
-            <p style="margin-top:12px; font-size:12px; font-style:italic; color:#888;">Em homenagem a Bernardo de Lima Mendes, de 3 anos, que morreu após ser picado por escorpião em Conchal (SP) em março de 2026.</p>
-            <p style="margin-top:8px; font-size:12px; color:#888;">Projeto de código aberto. Se quiser contribuir, fique à vontade — <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener" style="color:#888;">github.com/educrvz/sos-antiveneno</a>.</p>
+            <p style="margin-top:12px; font-size:12px; font-style:italic; color:var(--footer-text);">Em homenagem a Bernardo de Lima Mendes, de 3 anos, que morreu após ser picado por escorpião em Conchal (SP) em março de 2026.</p>
+            <p style="margin-top:8px; font-size:12px; color:var(--footer-text);">Contato: <a href="mailto:contato.soroja@gmail.com" style="color:var(--footer-text);">contato.soroja@gmail.com</a></p>
+            <p style="margin-top:8px; font-size:12px; color:var(--footer-text);">Projeto de código aberto. Se quiser contribuir, fique à vontade — <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener" style="color:var(--footer-text);">github.com/educrvz/sos-antiveneno</a>.</p>
         </div>
     </div>
 
@@ -648,6 +747,37 @@
     // ===== CONFIG =====
     var SHOW_COUNT = 10;
     var GPS_TIMEOUT = 15000;
+
+    // ===== REPORT FORM =====
+    // Google Form for community reports. When the form is ready:
+    //   1) Replace REPORT_FORM_BASE with the public form URL (https://docs.google.com/forms/d/e/<ID>/viewform)
+    //   2) Replace the entry.XXXX placeholders with the IDs from the form's pre-fill link
+    //      (Form → menu → "Get pre-filled link"; inspect resulting URL)
+    // If left as placeholder, the "Reportar erro" link opens a safe fallback (mailto).
+    var REPORT_FORM_BASE = 'https://docs.google.com/forms/d/e/REPLACE_WITH_FORM_ID/viewform';
+    var REPORT_FORM_FIELDS = {
+        cnes: 'entry.000000001',
+        name: 'entry.000000002',
+        uf:   'entry.000000003'
+    };
+    var REPORT_FALLBACK_EMAIL = 'contato.soroja@gmail.com';
+
+    function reportFormUrl(h) {
+        if (REPORT_FORM_BASE.indexOf('REPLACE_WITH_FORM_ID') !== -1) {
+            var subject = 'Relato sobre ' + (h.hospital_name || 'hospital') + ' (' + (h.state || '') + ')';
+            var body = 'CNES: ' + (h.cnes || '') + '\nHospital: ' + (h.hospital_name || '') +
+                       '\nCidade: ' + (h.city || '') + ' - ' + (h.state || '') +
+                       '\n\nDescreva o erro ou sugestão:\n';
+            return 'mailto:' + REPORT_FALLBACK_EMAIL +
+                   '?subject=' + encodeURIComponent(subject) +
+                   '&body=' + encodeURIComponent(body);
+        }
+        var params = ['usp=pp_url'];
+        if (h.cnes)          params.push(REPORT_FORM_FIELDS.cnes + '=' + encodeURIComponent(h.cnes));
+        if (h.hospital_name) params.push(REPORT_FORM_FIELDS.name + '=' + encodeURIComponent(h.hospital_name));
+        if (h.state)         params.push(REPORT_FORM_FIELDS.uf   + '=' + encodeURIComponent(h.state));
+        return REPORT_FORM_BASE + '?' + params.join('&');
+    }
 
     // ===== STATE =====
     var hospitals = [];
@@ -1008,12 +1138,19 @@
             (h.lat ? '\nComo chegar: https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng : '')
         );
 
-        // Source date — subtle
-        var sourceHtml = '';
+        // Source date + discrete report link — subtle
+        var reportUrl = reportFormUrl(h);
+        var reportLinkHtml = '<a class="btn-report" href="' + reportUrl + '" target="_blank" rel="noopener"' +
+            ' aria-label="Reportar erro sobre ' + (h.hospital_name || '').replace(/"/g, '&quot;') + '">Reportar erro</a>';
+        var sourceHtml;
         if (h.source_date) {
             var dateFormatted = h.source_date.split('-').reverse().join('/');
             sourceHtml = '<div class="source-date">Atualizado ' + dateFormatted +
-                ' — <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia" target="_blank" rel="noopener">Fonte: MS</a></div>';
+                ' — <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia" target="_blank" rel="noopener">Fonte: MS</a>' +
+                reportLinkHtml +
+                '</div>';
+        } else {
+            sourceHtml = '<div class="source-date">' + reportLinkHtml + '</div>';
         }
 
         return '<div class="card' + (isNearest ? ' card-nearest' : '') + '">' +
@@ -1508,8 +1645,32 @@
         );
     };
 
+    // ===== THEME TOGGLE =====
+    function setThemeIcon(theme) {
+        var icon = document.getElementById('theme-toggle-icon');
+        if (!icon) return;
+        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        var btn = document.getElementById('btn-theme-toggle');
+        if (btn) btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    }
+
+    function initThemeToggle() {
+        var btn = document.getElementById('btn-theme-toggle');
+        if (!btn) return;
+        var current = document.documentElement.getAttribute('data-theme') || 'light';
+        setThemeIcon(current);
+        btn.addEventListener('click', function() {
+            var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            var next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try { localStorage.setItem('soroja_theme', next); } catch (e) {}
+            setThemeIcon(next);
+        });
+    }
+
     // ===== INIT =====
     function init() {
+        initThemeToggle();
         Promise.all([loadHospitals(), requestLocation()])
             .then(function() {
                 if (hospitals.length === 0) {
