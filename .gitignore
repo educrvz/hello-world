@@ -25,3 +25,7 @@ Thumbs.db
 
 # Claude Code session cache
 .claude/
+
+# Local-only Claude context (workflow prefs, internal CNES notes, Sheet IDs, Abracit thread)
+CLAUDE.md
+CLAUDE.local.md
