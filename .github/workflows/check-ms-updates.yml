@@ -75,7 +75,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 title,
-                body: `O verificador semanal detectou PDFs atualizados no site do Ministério da Saúde.\n\nSaída do script:\n\n\`\`\`\n${body}\n\`\`\`\n\nPróximos passos sugeridos:\n- [ ] Baixar os PDFs novos para \`Docs Estado/\`\n- [ ] Re-extrair para \`extracted/{UF}.json\`\n- [ ] Rodar \`scripts/refresh_dataset.sh\`\n- [ ] Validar contagem e canonicalização\n- [ ] Abrir PR\n\nFechando a issue quando todos os estados estiverem atualizados.`,
+                body: `O verificador diário detectou PDFs atualizados no site do Ministério da Saúde.\n\nSaída do script:\n\n\`\`\`\n${body}\n\`\`\`\n\nPróximos passos sugeridos:\n- [ ] Baixar os PDFs novos para \`Docs Estado/\`\n- [ ] Re-extrair para \`extracted/{UF}.json\`\n- [ ] Rodar \`scripts/refresh_dataset.sh\`\n- [ ] Validar contagem e canonicalização\n- [ ] Abrir PR\n\nFechando a issue quando todos os estados estiverem atualizados.`,
                 labels: ["data-refresh", "automated"],
               });
             }
