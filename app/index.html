@@ -161,7 +161,7 @@
         .search-input:focus, .location-bar input:focus, .filter-select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 4px var(--primary-glow); }
 
         /* Botões Táticos de Resgate Gigantes */
-        .triage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 20px; }
+        .triage-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; padding: 20px; }
         .triage-btn {
             background: var(--card-color); border: 2px solid var(--border-color); border-radius: 24px;
             padding: 24px 12px; display: flex; flex-direction: column; align-items: center; gap: 12px;
@@ -504,6 +504,7 @@
             .header-title p { font-size: 13px; }
             .samu-buttons { gap: 14px; }
             .samu-btn { max-width: 220px; font-size: 17px; padding: 14px 22px; }
+            .triage-grid { grid-template-columns: repeat(4, 1fr); }
             .triage-btn .emoji { font-size: 56px; }
             .triage-btn .label { font-size: 16px; }
             /* Cards em grid adaptativo */
@@ -634,6 +635,9 @@
                 </div>
                 <div class="triage-btn" onclick="onTriageClick('aranha')" id="tb-aranha">
                     <div class="emoji">🕷️</div><div class="label">ARANHA</div>
+                </div>
+                <div class="triage-btn" onclick="onTriageClick('lagarta')" id="tb-lagarta">
+                    <div class="emoji">🐛</div><div class="label">TATURANA</div>
                 </div>
             </div>
             <input type="hidden" id="filter-incident" value="">
@@ -1396,7 +1400,7 @@
         } else {
             el.value = val;
         }
-        ['escorpiao', 'cobra', 'aranha'].forEach(function(v) {
+        ['escorpiao', 'cobra', 'aranha', 'lagarta'].forEach(function(v) {
             document.getElementById('tb-' + v).classList.toggle('active', el.value === v);
         });
         var selected = !!el.value;
