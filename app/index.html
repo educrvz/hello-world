@@ -1024,39 +1024,37 @@
             opt.textContent = states[code] + ' (' + code + ')';
             sel.appendChild(opt);
         });
-        // Antivenom chips
-        var allTypes = {};
-        hospitals.forEach(function(h) {
-            if (h.antivenoms) h.antivenoms.forEach(function(a) {
-                var key = norm(a);
-                if (!allTypes[key]) allTypes[key] = a;
-            });
-        });
-        var chipContainer = document.getElementById('antivenom-chips');
+        // Antivenom chips — canonical types only. The downstream filter uses
+        // substring match on norm(a), so a single canonical chip covers all
+        // raw variants in the data (e.g. "Botrópico", "Botrópico.",
+        // "Botrópico e Crotálico"). Rendering every raw variant was producing
+        // 70+ noisy chips including typos, full sentences, and abbreviations.
+        var CHIP_LABELS = {
+            escorpionico: 'Escorpiônico',
+            botropico:    'Botrópico',
+            crotalico:    'Crotálico',
+            laquetico:    'Laquético',
+            elapidico:    'Elapídico',
+            foneutrico:   'Fonêutrico',
+            loxoscelico:  'Loxoscélico',
+            lonomico:     'Lonômico'
+        };
         var chipOrder = ['escorpionico','botropico','crotalico','laquetico','elapidico','foneutrico','loxoscelico','lonomico'];
+        var chipContainer = document.getElementById('antivenom-chips');
         chipOrder.forEach(function(key) {
-            for (var k in allTypes) {
-                if (k.indexOf(key) !== -1) {
-                    var btn = document.createElement('button');
-                    btn.className = 'chip';
-                    btn.dataset.type = key;
-                    btn.textContent = allTypes[k];
-                    btn.onclick = function() { onChipClick(this.dataset.type); };
-                    chipContainer.appendChild(btn);
-                    delete allTypes[k];
-                    break;
-                }
-            }
-        });
-        // Any remaining types
-        for (var k in allTypes) {
+            var hasMatch = hospitals.some(function(h) {
+                return h.antivenoms && h.antivenoms.some(function(a) {
+                    return norm(a).indexOf(key) !== -1;
+                });
+            });
+            if (!hasMatch) return;
             var btn = document.createElement('button');
             btn.className = 'chip';
-            btn.dataset.type = k;
-            btn.textContent = allTypes[k];
+            btn.dataset.type = key;
+            btn.textContent = CHIP_LABELS[key];
             btn.onclick = function() { onChipClick(this.dataset.type); };
             chipContainer.appendChild(btn);
-        }
+        });
     }
 
     // ===== RENDER CARD =====
