@@ -1699,12 +1699,12 @@
         var btn = document.getElementById('btn-near-me');
         var label = document.getElementById('btn-near-me-label');
         if (!navigator.geolocation) {
-            alert('Seu navegador não suporta geolocalização.');
+            alert('Seu navegador não suporta geolocalização. Use a busca por cidade.');
             return;
         }
         btn.disabled = true;
         label.innerHTML = '<span class="dot-spin"></span> Localizando...';
-        function done(success) {
+        function done(success, err) {
             btn.disabled = false;
             label.innerHTML = '&#128205; Buscar perto de mim';
             if (success) {
@@ -1716,9 +1716,24 @@
                 updateNearMeButton();
                 showCount = SHOW_COUNT;
                 renderList();
-            } else {
-                alert('Não foi possível obter sua localização. Verifique a permissão do navegador ou use a busca por cidade.');
+                return;
             }
+            // PositionError.code: 1=PERMISSION_DENIED, 2=POSITION_UNAVAILABLE, 3=TIMEOUT
+            var code = err && err.code;
+            var msg;
+            if (code === 1) {
+                msg = 'Permissão de localização negada. Vá em ajustes do site (ícone de cadeado na barra de endereço) → Localização → Permitir, e tente novamente. Ou use a busca por cidade.';
+            } else if (code === 2) {
+                msg = 'Não foi possível determinar sua localização (GPS / Wi-Fi indisponíveis). Use a busca por cidade.';
+            } else if (code === 3) {
+                msg = 'Tempo esgotado ao tentar obter sua localização. Tente novamente ou use a busca por cidade.';
+            } else {
+                msg = 'Não foi possível obter sua localização. Verifique a permissão do navegador ou use a busca por cidade.';
+            }
+            if (window.console) {
+                console.warn('[SoroJá] geolocation failed:', err);
+            }
+            alert(msg);
         }
         navigator.geolocation.getCurrentPosition(
             function(pos) {
@@ -1727,7 +1742,8 @@
                 gpsAvailable = true;
                 done(true);
             },
-            function() {
+            function(err1) {
+                // High-accuracy failed — fall back to low accuracy (works better on desktops without GPS)
                 navigator.geolocation.getCurrentPosition(
                     function(pos) {
                         userLat = pos.coords.latitude;
@@ -1735,7 +1751,7 @@
                         gpsAvailable = true;
                         done(true);
                     },
-                    function() { done(false); },
+                    function(err2) { done(false, err2 || err1); },
                     { enableHighAccuracy: false, timeout: 10000, maximumAge: 60000 }
                 );
             },
