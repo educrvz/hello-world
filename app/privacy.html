@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0066CC">
+    <meta name="description" content="Política de Privacidade do SoroJá — como tratamos seus dados.">
+    <title>Política de Privacidade — SoroJá</title>
+    <script>
+      (function() {
+        var saved = null;
+        try { saved = localStorage.getItem('soroja_theme'); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root, [data-theme="light"] {
+            --bg: #F5F5F5; --fg: #111827; --muted: #6B7280; --card: #FFFFFF;
+            --border: rgba(0,0,0,0.08); --link: #0066CC; --accent: #0066CC;
+        }
+        [data-theme="dark"] {
+            --bg: #0B0F19; --fg: #F3F4F6; --muted: #9CA3AF; --card: #111827;
+            --border: rgba(255,255,255,0.08); --link: #60A5FA; --accent: #3B82F6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+            background: var(--bg); color: var(--fg); line-height: 1.6;
+        }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back { display: inline-block; margin-bottom: 24px; color: var(--link); text-decoration: none; font-weight: 600; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+        h2 { font-size: 18px; font-weight: 700; margin: 32px 0 8px; }
+        h3 { font-size: 15px; font-weight: 700; margin: 20px 0 6px; color: var(--fg); }
+        .updated { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+        p, li { font-size: 15px; }
+        ul { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        a { color: var(--link); }
+        code { background: var(--card); border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+        hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+        .footnote { color: var(--muted); font-size: 13px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <a class="back" href="/">&larr; Voltar ao SoroJá</a>
+
+        <h1>Política de Privacidade</h1>
+        <p class="updated"><strong>Última atualização:</strong> 21 de abril de 2026</p>
+
+        <p>O SoroJá é uma ferramenta gratuita, de código aberto e sem fins lucrativos que ajuda pessoas a localizar os hospitais de referência do SUS mais próximos, que mantêm soro antiveneno contra acidentes por animais peçonhentos. Esta Política explica, em linguagem simples, o que acontece com seus dados quando você usa o site.</p>
+
+        <h2>1. Quem é o responsável</h2>
+        <p>O SoroJá é mantido de forma voluntária por Eduardo Cruz ("Edu Cruz"), pessoa física. Contato para qualquer dúvida sobre esta Política ou para exercer direitos da LGPD:</p>
+        <ul>
+            <li>E-mail: <a href="mailto:contato.soroja@gmail.com">contato.soroja@gmail.com</a></li>
+            <li>GitHub: <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener">github.com/educrvz/sos-antiveneno</a></li>
+        </ul>
+
+        <h2>2. Que dados a gente usa</h2>
+
+        <h3>2.1 Sua localização geográfica (GPS / rede)</h3>
+        <p>Quando você autoriza o compartilhamento da sua localização no navegador, o SoroJá usa a latitude/longitude <strong>apenas</strong> no próprio aparelho para calcular a distância entre você e cada hospital da base. Essa informação <strong>não é enviada aos nossos servidores</strong>, não é armazenada em cookies, não é salva em localStorage e não é compartilhada com terceiros para fins de análise, publicidade ou marketing.</p>
+        <p>Base legal (LGPD, art. 11, II, "f"): tratamento de dado pessoal sensível necessário para a <strong>tutela da saúde</strong>, em procedimento realizado por meio de serviço de saúde disponível ao cidadão.</p>
+
+        <h3>2.2 Dados que seu navegador envia automaticamente a terceiros</h3>
+        <p>Como qualquer site moderno, o SoroJá carrega alguns recursos técnicos de serviços externos, que — por funcionamento normal da internet — recebem seu endereço IP e informações básicas do navegador:</p>
+        <ul>
+            <li><strong>Mapa (OpenStreetMap):</strong> ao visualizar o mapa, seu navegador solicita "tiles" (imagens de mapa) de <code>tile.openstreetmap.org</code>. Com isso, o servidor do OpenStreetMap fica sabendo a região aproximada que você está consultando.</li>
+            <li><strong>Biblioteca de mapa (Leaflet, via unpkg.com):</strong> o código do mapa é carregado do CDN unpkg.com (CloudFlare), que registra logs técnicos de acesso contendo seu IP.</li>
+            <li><strong>"Como chegar" (Google Maps):</strong> ao clicar em <strong>Como Chegar</strong>, seu navegador abre o Google Maps com o endereço do hospital destino. O Google recebe essa informação e aplica a sua <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidade</a> e os Termos do Google Maps.</li>
+            <li><strong>Compartilhar (WhatsApp, Facebook, X, Instagram):</strong> só quando você clica nos botões de compartilhamento, você é redirecionado para a plataforma correspondente, que passa a aplicar a política de privacidade dela.</li>
+        </ul>
+        <p>O SoroJá não utiliza Google Analytics, Meta Pixel, Hotjar, nem qualquer ferramenta de rastreamento de usuário.</p>
+
+        <h3>2.3 Cookies</h3>
+        <p>O SoroJá <strong>não usa cookies próprios</strong>. Os recursos de terceiros citados acima podem definir cookies técnicos em seu próprio domínio quando acionados.</p>
+
+        <h2>3. O que NÃO fazemos</h2>
+        <ul>
+            <li>Não armazenamos sua localização em banco de dados.</li>
+            <li>Não vendemos, alugamos ou compartilhamos seus dados com anunciantes.</li>
+            <li>Não fazemos perfil de usuário.</li>
+            <li>Não enviamos e-mails de marketing.</li>
+            <li>Não cruzamos seus dados com outros bancos.</li>
+        </ul>
+
+        <h2>4. Origem dos dados dos hospitais</h2>
+        <p>A lista de hospitais apresentada é construída a partir de dados públicos do <strong>Ministério da Saúde</strong> ("Hospitais de Referência para Atendimento a Acidentes por Animais Peçonhentos"), complementada quando disponível por bases estaduais (Secretarias Estaduais de Saúde e CIATox) e por geocodificação via Google Maps API (realizada off-line pelo mantenedor, sem uso de dados do usuário).</p>
+
+        <h2>5. Seus direitos (LGPD)</h2>
+        <p>Mesmo que o SoroJá não armazene dados seus, você tem direitos sobre informações pessoais em geral (art. 18 da LGPD), incluindo o direito de pedir confirmação do tratamento, acesso, correção, anonimização, eliminação e portabilidade. Para exercê-los, envie um pedido para o contato do item 1.</p>
+
+        <h2>6. Limitação de responsabilidade</h2>
+        <p>O SoroJá é uma ferramenta <strong>informativa</strong>, sem vínculo oficial com o Ministério da Saúde, Secretarias Estaduais, Butantan ou CIATox. Em caso de emergência, <strong>sempre ligue 192 (SAMU) ou 193 (Bombeiros)</strong>. Ligue também para o hospital ANTES de se deslocar, para confirmar que o soro específico está disponível no momento — o site mostra os pontos cadastrados como referência pelo Ministério da Saúde, mas a disponibilidade de estoque pode variar.</p>
+        <p>A indicação, dose e aplicação do soro antiveneno são atos privativos de profissionais de saúde habilitados.</p>
+
+        <h2>7. Alterações desta Política</h2>
+        <p>Podemos atualizar esta Política quando a ferramenta mudar. A versão mais recente fica sempre no rodapé do site, com a data da última atualização no topo deste documento.</p>
+
+        <h2>8. Segurança</h2>
+        <p>O site é servido exclusivamente via HTTPS. O código-fonte é aberto e auditável em <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener">github.com/educrvz/sos-antiveneno</a> — qualquer pessoa pode verificar o que o SoroJá faz (e não faz) com seus dados.</p>
+
+        <hr>
+        <p class="footnote">Para sugestões ou reporte de problemas nesta Política, abra uma issue no repositório ou escreva para <a href="mailto:contato.soroja@gmail.com">contato.soroja@gmail.com</a>.</p>
+    </div>
+</body>
+</html>

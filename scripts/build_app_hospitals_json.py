@@ -47,6 +47,7 @@ SOURCE_DATES = ROOT / "data" / "source_dates.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from phone_utils import expand_phones  # noqa: E402
+from canonicalize_antivenoms import canonicalize_list  # noqa: E402
 
 PDF_DATE_RE = re.compile(r"[A-Z]{2}_(\d{4})(\d{2})(\d{2})\.pdf$", re.IGNORECASE)
 
@@ -169,6 +170,9 @@ def main() -> int:
     published_cnes: set[str] = set()
     out_records: list[dict] = []
     dropped_missing_coords: list[str] = []
+    leaks_moved = 0
+    other_soros_count = 0
+    unknown_strings: dict[str, int] = {}
 
     for r in rows:
         lat, lng = parse_latlng(r)
@@ -181,6 +185,12 @@ def main() -> int:
         source_date = pdf_dates.get(uf, "")
 
         cnes = (r.get("cnes") or "").strip()
+        raw_antivenoms = split_antivenoms(r.get("antivenoms_raw") or "")
+        canon_result = canonicalize_list(raw_antivenoms)
+        if canon_result.unknown:
+            for u in canon_result.unknown:
+                unknown_strings[u] = unknown_strings.get(u, 0) + 1
+
         record = {
             "state": uf,
             "state_name": state_name,
@@ -189,12 +199,22 @@ def main() -> int:
             "address": (r.get("address") or "").strip(),
             "phones": clean_phones(r.get("phones_raw") or ""),
             "cnes": cnes,
-            "antivenoms": split_antivenoms(r.get("antivenoms_raw") or ""),
+            "antivenoms": canon_result.canonical,
+            "source_antivenoms_raw": raw_antivenoms,
             "source_date": source_date,
             "lat": lat,
             "lng": lng,
             "geocode_tier": TIER_MAP.get((r.get("location_type") or "").strip(), 3),
         }
+
+        if canon_result.leaks:
+            leaks_moved += 1
+            leak_text = " / ".join(canon_result.leaks)
+            existing_note = (record.get("note") or "").strip()
+            record["note"] = (existing_note + " — " + leak_text) if existing_note else leak_text
+        if canon_result.other_soros:
+            other_soros_count += 1
+            record["other_soros"] = canon_result.other_soros
 
         override = overrides.get(cnes) if cnes else None
         if override:
@@ -232,24 +252,25 @@ def main() -> int:
         if cnes not in published_cnes:
             overrides_unknown.append(cnes)
 
-    # Match key order of the current prod file for minimal git diff churn
+    # Match key order of the current prod file for minimal git diff churn.
+    # `source_antivenoms_raw` sits next to `antivenoms` for auditability;
+    # `other_soros` (non-antivenom vaccines — raiva/tetano/DT — surfaced by
+    # the canonicalizer) emits only when present.
     canonical_order = [
         "state", "state_name", "city", "hospital_name", "address",
-        "phones", "cnes", "antivenoms", "source_date", "lat", "lng",
-        "geocode_tier",
+        "phones", "cnes", "antivenoms", "source_antivenoms_raw",
+        "source_date", "lat", "lng", "geocode_tier",
     ]
-    # `note` is an optional field (override-driven only); emit it right after
-    # `address` when present so the display grouping stays together.
     def _order(rec):
         out = {k: rec[k] for k in canonical_order}
-        if "note" in rec:
-            rebuilt = {}
-            for k in canonical_order:
-                rebuilt[k] = out[k]
-                if k == "address":
-                    rebuilt["note"] = rec["note"]
-            return rebuilt
-        return out
+        rebuilt = {}
+        for k in canonical_order:
+            rebuilt[k] = out[k]
+            if k == "address" and "note" in rec:
+                rebuilt["note"] = rec["note"]
+            if k == "source_antivenoms_raw" and "other_soros" in rec:
+                rebuilt["other_soros"] = rec["other_soros"]
+        return rebuilt
     ordered = [_order(rec) for rec in out_records]
 
     OUT_APP.parent.mkdir(parents=True, exist_ok=True)
@@ -269,6 +290,15 @@ def main() -> int:
         )
     print(f"Wrote {len(ordered):,} records to {OUT_APP}")
     print(f"Wrote {len(ordered):,} records to {OUT_ROOT}")
+    print(f"Antivenom leaks moved to note: {leaks_moved}")
+    print(f"Hospitals with non-antivenom soros (raiva/tetano/DT): {other_soros_count}")
+    if unknown_strings:
+        top = sorted(unknown_strings.items(), key=lambda kv: -kv[1])[:5]
+        preview = ", ".join(f"{s!r}({n})" for s, n in top)
+        print(
+            f"WARN: {len(unknown_strings)} unknown antivenom string(s) not canonicalized; "
+            f"top: {preview}"
+        )
     if dropped_missing_coords:
         print(
             f"WARN: dropped {len(dropped_missing_coords)} row(s) with missing lat/lng: "
