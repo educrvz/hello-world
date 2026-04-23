@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Canonicalizer self-test (32 asserts on raw variants)
+        run: python3 scripts/canonicalize_antivenoms.py --self-test
+
+      - name: Pytest suite
+        run: python3 -m pytest scripts/tests/ -v
+
+      - name: Validate app/hospitals.json schema
+        run: python3 scripts/validate_hospitals_json.py app/hospitals.json

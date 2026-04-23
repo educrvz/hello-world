@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0066CC">
+    <meta name="description" content="Termos de Uso do SoroJá — natureza da ferramenta, limitações e isenção de responsabilidade.">
+    <title>Termos de Uso — SoroJá</title>
+    <script>
+      (function() {
+        var saved = null;
+        try { saved = localStorage.getItem('soroja_theme'); } catch (e) {}
+        var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230066CC' rx='20' width='100' height='100'/><text x='50' y='72' font-size='55' text-anchor='middle' fill='white'>&#9764;</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root, [data-theme="light"] {
+            --bg: #F5F5F5; --fg: #111827; --muted: #6B7280; --card: #FFFFFF;
+            --border: rgba(0,0,0,0.08); --link: #0066CC; --accent: #0066CC;
+        }
+        [data-theme="dark"] {
+            --bg: #0B0F19; --fg: #F3F4F6; --muted: #9CA3AF; --card: #111827;
+            --border: rgba(255,255,255,0.08); --link: #60A5FA; --accent: #3B82F6;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+            background: var(--bg); color: var(--fg); line-height: 1.6;
+        }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 24px 20px 80px; }
+        .back { display: inline-block; margin-bottom: 24px; color: var(--link); text-decoration: none; font-weight: 600; }
+        .back:hover { text-decoration: underline; }
+        h1 { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+        h2 { font-size: 18px; font-weight: 700; margin: 32px 0 8px; }
+        .updated { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+        p, li { font-size: 15px; }
+        ul { padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        a { color: var(--link); }
+        hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+        .footnote { color: var(--muted); font-size: 13px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <a class="back" href="/">&larr; Voltar ao SoroJá</a>
+
+        <h1>Termos de Uso</h1>
+        <p class="updated"><strong>Última atualização:</strong> 21 de abril de 2026</p>
+
+        <h2>1. Natureza da ferramenta</h2>
+        <p>O SoroJá é um site informativo, gratuito, não-oficial e sem fins lucrativos, que apresenta a lista pública de hospitais de referência do Ministério da Saúde para atendimento de acidentes por animais peçonhentos. Ao usar o site você concorda com estes Termos.</p>
+
+        <h2>2. Não é atendimento médico</h2>
+        <p>O SoroJá <strong>não presta serviço de saúde</strong>, não substitui avaliação médica, não indica tratamento, não prescreve dose e não orienta aplicação de soro. A indicação, dose e aplicação de soro antiveneno são atos privativos de médicos e equipe de saúde habilitada, conforme Lei nº 12.842/2013.</p>
+
+        <h2>3. Em caso de emergência</h2>
+        <p><strong>Ligue IMEDIATAMENTE para o SAMU (192) ou Bombeiros (193).</strong> Se possível, também ligue para o Centro de Informação e Assistência Toxicológica (CIATox) do seu estado — o número aparece no topo dos resultados do site.</p>
+        <p>O SoroJá funciona apenas como apoio para localização; o atendimento de emergência é responsabilidade exclusiva dos serviços de saúde.</p>
+
+        <h2>4. Limitações dos dados</h2>
+        <p>A base do SoroJá é construída a partir de PDFs e bases públicas do Ministério da Saúde e de Secretarias Estaduais. Isso implica:</p>
+        <ul>
+            <li><strong>A disponibilidade real do soro em estoque não é consultada em tempo real.</strong> A ferramenta indica quem é ponto de referência cadastrado, não garante estoque no momento.</li>
+            <li><strong>Sempre ligue antes para o hospital</strong> confirmar que o tipo específico de soro está disponível antes de se deslocar.</li>
+            <li><strong>Os dados podem estar desatualizados.</strong> Endereços, telefones e lista de soros de cada hospital dependem da última atualização dos PDFs do MS pelo órgão oficial. A data da última atualização aparece em cada card de hospital.</li>
+            <li>O SoroJá não tem vínculo oficial com o Ministério da Saúde, Secretarias Estaduais, Butantan ou CIATox.</li>
+        </ul>
+
+        <h2>5. Isenção de responsabilidade</h2>
+        <p>O SoroJá é disponibilizado "no estado em que se encontra", sem garantia de qualquer tipo. O mantenedor e colaboradores <strong>não se responsabilizam</strong> por:</p>
+        <ul>
+            <li>Informação desatualizada, incompleta ou errada proveniente das bases públicas que alimentam o site;</li>
+            <li>Ruptura de estoque de soro em hospital listado;</li>
+            <li>Decisões clínicas tomadas a partir das informações do site — a decisão é sempre do profissional de saúde que atende o paciente;</li>
+            <li>Indisponibilidade técnica do site;</li>
+            <li>Conduta de serviços de terceiros (OpenStreetMap, Google Maps, WhatsApp, redes sociais) acionados a partir do site.</li>
+        </ul>
+
+        <h2>6. Uso pretendido</h2>
+        <p>Você pode usar o SoroJá para:</p>
+        <ul>
+            <li>Localizar o hospital de referência mais próximo;</li>
+            <li>Compartilhar o site em redes sociais, grupos de saúde e com familiares;</li>
+            <li>Reutilizar o código-fonte, conforme a licença do projeto em <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener">github.com/educrvz/sos-antiveneno</a>.</li>
+        </ul>
+        <p>Você <strong>não</strong> deve:</p>
+        <ul>
+            <li>Raspar (scraping) a base de hospitais para revendê-la;</li>
+            <li>Apresentar o SoroJá como ferramenta oficial do Ministério da Saúde;</li>
+            <li>Modificar ou remover os avisos de emergência (SAMU/Bombeiros) em versões derivadas.</li>
+        </ul>
+
+        <h2>7. Propriedade intelectual</h2>
+        <p>Os dados dos hospitais são de domínio público, provenientes do Ministério da Saúde. O código-fonte do SoroJá é publicado em <a href="https://github.com/educrvz/sos-antiveneno" target="_blank" rel="noopener">github.com/educrvz/sos-antiveneno</a> sob a licença indicada no próprio repositório. O nome "SoroJá" e o domínio <code>soroja.com.br</code> são mantidos pelo autor do projeto.</p>
+
+        <h2>8. Privacidade</h2>
+        <p>O tratamento de dados pessoais segue a <a href="/privacy">Política de Privacidade</a> do SoroJá.</p>
+
+        <h2>9. Alterações</h2>
+        <p>Estes Termos podem ser atualizados quando a ferramenta mudar. A data da última atualização está no topo.</p>
+
+        <h2>10. Foro</h2>
+        <p>Para eventuais questões judiciais, fica eleito o foro da Comarca de São Paulo, SP, onde reside o mantenedor, com renúncia a qualquer outro por mais privilegiado que seja.</p>
+
+        <hr>
+        <p class="footnote">Dúvidas ou problemas? Abra uma issue em <a href="https://github.com/educrvz/sos-antiveneno/issues" target="_blank" rel="noopener">github.com/educrvz/sos-antiveneno/issues</a>.</p>
+    </div>
+</body>
+</html>

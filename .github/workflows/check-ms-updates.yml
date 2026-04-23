@@ -1,0 +1,87 @@
+name: Check MS PDFs for Updates
+
+# Roda o scripts/check_updates.py semanalmente e abre/atualiza uma issue
+# automática quando o Ministério da Saúde publica PDFs mais recentes que
+# os PDFs locais. O script sai com exit code != 0 quando há atualização
+# pendente — usamos isso para condicionar a criação da issue.
+
+on:
+  schedule:
+    # Toda quarta-feira às 09:00 UTC (06:00 BRT).
+    - cron: "0 9 * * 3"
+  workflow_dispatch: {}  # permite rodar manualmente pela aba Actions
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run check_updates.py
+        id: check
+        run: |
+          set +e
+          python3 scripts/check_updates.py | tee check_output.txt
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+      - name: Parse results
+        id: parse
+        run: |
+          {
+            echo "has_updates=${{ steps.check.outputs.exit_code != '0' }}"
+            echo "body<<EOF"
+            cat check_output.txt
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Open or update tracking issue
+        if: steps.check.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = process.env.REPORT_BODY;
+            const title = `[auto] PDFs do MS atualizados — verificação em ${new Date().toISOString().slice(0,10)}`;
+            // Procura issue aberta com o prefixo [auto]
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              labels: "data-refresh",
+              per_page: 20,
+            });
+            const existing = issues.find(i => i.title.startsWith("[auto] PDFs do MS atualizados"));
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `Nova verificação em ${new Date().toISOString().slice(0,10)}:\n\n\`\`\`\n${body}\n\`\`\``,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: `O verificador semanal detectou PDFs atualizados no site do Ministério da Saúde.\n\nSaída do script:\n\n\`\`\`\n${body}\n\`\`\`\n\nPróximos passos sugeridos:\n- [ ] Baixar os PDFs novos para \`Docs Estado/\`\n- [ ] Re-extrair para \`extracted/{UF}.json\`\n- [ ] Rodar \`scripts/refresh_dataset.sh\`\n- [ ] Validar contagem e canonicalização\n- [ ] Abrir PR\n\nFechando a issue quando todos os estados estiverem atualizados.`,
+                labels: ["data-refresh", "automated"],
+              });
+            }
+        env:
+          REPORT_BODY: ${{ steps.parse.outputs.body }}
+
+      - name: Summary (sem atualizações)
+        if: steps.check.outputs.exit_code == '0'
+        run: echo "Nenhuma atualização pendente do MS encontrada."
