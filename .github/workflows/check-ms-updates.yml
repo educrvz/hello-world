@@ -1,14 +1,14 @@
 name: Check MS PDFs for Updates
 
-# Roda o scripts/check_updates.py semanalmente e abre/atualiza uma issue
+# Roda o scripts/check_updates.py diariamente e abre/atualiza uma issue
 # automática quando o Ministério da Saúde publica PDFs mais recentes que
 # os PDFs locais. O script sai com exit code != 0 quando há atualização
 # pendente — usamos isso para condicionar a criação da issue.
 
 on:
   schedule:
-    # Toda quarta-feira às 09:00 UTC (06:00 BRT).
-    - cron: "0 9 * * 3"
+    # Todo dia às 09:00 UTC (06:00 BRT).
+    - cron: "0 9 * * *"
   workflow_dispatch: {}  # permite rodar manualmente pela aba Actions
 
 permissions:
