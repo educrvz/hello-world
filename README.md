@@ -35,8 +35,14 @@ v3 → repair → publish — é executado por:
 
 Runbook completo: **[docs/PROCESS.md](docs/PROCESS.md)**.
 Reports de cada etapa do último refresh: **[reports/](reports/)**.
-Feedback de usuários sobre pins incorretos:
-**[SoroJ Feedback (Notion)](https://www.notion.so/SoroJ-Feedback-345eeae1044a80b99355cb03bd794c15?source=copy_link)**.
+
+## Feedback e correções de dados
+
+Se você encontrou um pin errado, telefone desatualizado, hospital fechado ou
+quer relatar um dado faltando, use o botão **"Reportar erro"** em cada cartão
+do app — ele abre um formulário estruturado.
+
+Contato do mantenedor: `contato.soroja@gmail.com`.
 
 ## Em caso de emergência
 
