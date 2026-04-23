@@ -1382,8 +1382,21 @@
                 var link = formatPhone(p);
                 return link ? '<a href="tel:' + link + '">&#128222; ' + p + '</a>' : '';
             }).filter(Boolean).join('<br>');
+            // Antivenom emojis (deduplicated, skip the fallback 💉)
+            var popupEmojis = '';
+            if (h.antivenoms && h.antivenoms.length) {
+                var seenPE = {}, peList = [];
+                h.antivenoms.forEach(function(a) {
+                    var e = tagEmoji(a);
+                    if (e !== '💉' && !seenPE[e]) { seenPE[e] = true; peList.push(e); }
+                });
+                if (peList.length) {
+                    popupEmojis = '<div style="font-size:20px; margin:4px 0;">' + peList.join(' ') + '</div>';
+                }
+            }
             var popup = '<strong>' + h.hospital_name + '</strong><br>' +
                 h.city + ', ' + h.state + distText + '<br>' +
+                popupEmojis +
                 (h.note ? '<em style="color:#B26A00">' + h.note + '</em><br>' : '') +
                 (phonesHtml ? phonesHtml + '<br>' : '') +
                 '<a href="https://www.google.com/maps/dir/?api=1&destination=' + h.lat + ',' + h.lng +
@@ -1477,10 +1490,27 @@
         renderList();
     };
 
+    // Build Leaflet bounds that include `lat,lng` plus the N nearest hospitals
+    // with valid coords. Used so "my location" zoom always reveals at least
+    // a handful of hospitals — adapts to density (tight in cities, wider in
+    // rural areas) instead of a fixed zoom level.
+    function boundsIncludingNearest(lat, lng, n) {
+        var withDist = hospitals
+            .filter(function(h) { return h.lat != null && h.lng != null; })
+            .map(function(h) { return { h: h, d: haversine(lat, lng, h.lat, h.lng) }; })
+            .sort(function(a, b) { return a.d - b.d; })
+            .slice(0, n);
+        var points = [[lat, lng]];
+        withDist.forEach(function(x) { points.push([x.h.lat, x.h.lng]); });
+        return L.latLngBounds(points);
+    }
+
     window.goToMyLocation = function() {
         if (!mapInstance) return;
         var btn = document.getElementById('btn-my-location');
-        function panTo(lat, lng) { mapInstance.setView([lat, lng], 15); }
+        function panTo(lat, lng) {
+            mapInstance.fitBounds(boundsIncludingNearest(lat, lng, 3), { padding: [40, 40] });
+        }
         if (gpsAvailable && userLat != null && userLng != null) {
             panTo(userLat, userLng);
             return;
