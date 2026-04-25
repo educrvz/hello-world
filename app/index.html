@@ -308,6 +308,12 @@
         }
         .card-ciatox h4 { font-size: 16px; font-weight: 900; color: #FCD34D; margin-bottom: 4px; }
         .ciatox-city { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+        .ciatox-note {
+            margin-bottom: 12px; padding: 10px 12px; background: rgba(245,158,11,0.1);
+            border: 1px solid rgba(245,158,11,0.3); border-left: 3px solid #F59E0B;
+            border-radius: 8px; font-size: 13px; color: #FCD34D; line-height: 1.45;
+            white-space: pre-line;
+        }
         .ciatox-phones { display: flex; flex-wrap: wrap; gap: 8px; }
         .btn-ciatox {
             background: rgba(245,158,11,0.15); color: #FCD34D; text-decoration: none;
@@ -878,6 +884,12 @@
         {state:"SE",city:"Aracaju",name:"CIATox/SE",phones:["0800-722-6001"]}
     ];
 
+    // State-level CIATox notes — shown as a banner above the cards when the
+    // active state matches. Provided directly by the state's CIATox.
+    var CIATOX_STATE_NOTES = {
+        PR: "Mensagem do CIATox/PR:\nEm caso de acidente com animal peçonhento, procure imediatamente o serviço de saúde mais próximo de você!\nCaso seja necessário uso de soro e ele não esteja disponível no local, você será transferido para o local de aplicação ou o soro será levado até você!"
+    };
+
     // ===== UTILS =====
     function norm(s) {
         if (!s) return '';
@@ -1264,12 +1276,14 @@
                 return '<a class="btn-ciatox" href="tel:' + link + '">&#128222; ' + p + '</a>';
             }).join('');
             return '<div class="card-ciatox">' +
-                '<h4>&#9888;&#65039; ' + c.name + '</h4>' +
-                '<div class="ciatox-city">' + c.city + ', ' + c.state + ' — Orientação toxicológica por telefone</div>' +
+                '<h4>&#9888;&#65039; ' + escapeHtml(c.name) + '</h4>' +
+                '<div class="ciatox-city">' + escapeHtml(c.city) + ', ' + escapeHtml(c.state) + ' — Orientação toxicológica por telefone</div>' +
                 '<div class="ciatox-phones">' + phonesHtml + '</div>' +
             '</div>';
         }
-        var html = renderCenter(centers[0]);
+        var stateNote = CIATOX_STATE_NOTES[centers[0].state];
+        var html = stateNote ? '<div class="ciatox-note">' + escapeHtml(stateNote) + '</div>' : '';
+        html += renderCenter(centers[0]);
         if (centers.length > 1) {
             html += '<div class="ciatox-more hidden" id="ciatox-more">' +
                 centers.slice(1).map(renderCenter).join('') +
