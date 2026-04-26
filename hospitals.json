@@ -6029,6 +6029,13 @@
     "city": "Condeúba",
     "hospital_name": "Hospital Municipal Dr. José Cardoso dos Apóstolos",
     "address": "Praça Alcides Cordeiro, s/n - São Francisco",
+    "community_notes": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-25",
+        "public_summary": "Relato da comunidade: telefone atualizado para (77) 99188-5559."
+      }
+    ],
     "phones": [
       "(77) 3435-2023"
     ],
@@ -27857,6 +27864,13 @@
     "city": "Recreio",
     "hospital_name": "Pronto Socorro Municipal",
     "address": "Rua Cel. José Maria Cardoso, s/n - centro",
+    "community_notes": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-25",
+        "public_summary": "Relato da comunidade: telefone atualizado para (32) 99995-2476."
+      }
+    ],
     "phones": [
       "(32) 3444-1144"
     ],
@@ -50319,6 +50333,13 @@
     "city": "Canoas",
     "hospital_name": "Hospital de Pronto Socorro de Canoas",
     "address": "Rua Caçapava, 100, Mathias Velho",
+    "community_notes": [
+      {
+        "category": "closed",
+        "reported_at": "2026-04-23",
+        "public_summary": "Relato da comunidade: HPS desativado pela enchente de maio de 2024 e ainda não foi reaberto."
+      }
+    ],
     "phones": [
       "(51) 3415 4500"
     ],
@@ -60014,6 +60035,13 @@
     "city": "Orindiúva",
     "hospital_name": "Santa Casa de Orindiúva",
     "address": "AV. FRANCISCO TOMÁS AQUINO, 170 - 250, ORINDIÚVA - SP, 15480-000",
+    "community_notes": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-23",
+        "public_summary": "Relato da comunidade: telefone atualizado para (17) 3816-9400."
+      }
+    ],
     "phones": [
       "(17)3816-1297"
     ],
@@ -61933,6 +61961,13 @@
     "city": "São Paulo",
     "hospital_name": "Hospital Municipal Tide Setúbal",
     "address": "R. Dr. José Guilherme Eiras, 123 - São Miguel Paulista",
+    "community_notes": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-22",
+        "public_summary": "Relato da comunidade: telefone atualizado para (11) 5178-1250."
+      }
+    ],
     "phones": [
       "(11) 3394-8770"
     ],

@@ -21,6 +21,41 @@
         "reported_at": "2026-04-25",
         "public_summary": "Relato da comunidade: o pronto-socorro foi substituído neste endereço; agora funciona uma UPA na Rua Quim Quevedo, nº 56."
       }
+    ],
+    "3626245": [
+      {
+        "category": "closed",
+        "reported_at": "2026-04-23",
+        "public_summary": "Relato da comunidade: HPS desativado pela enchente de maio de 2024 e ainda não foi reaberto."
+      }
+    ],
+    "2801566": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-25",
+        "public_summary": "Relato da comunidade: telefone atualizado para (77) 99188-5559."
+      }
+    ],
+    "2063018": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-23",
+        "public_summary": "Relato da comunidade: telefone atualizado para (17) 3816-9400."
+      }
+    ],
+    "2080583": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-22",
+        "public_summary": "Relato da comunidade: telefone atualizado para (11) 5178-1250."
+      }
+    ],
+    "2122634": [
+      {
+        "category": "contact_fix",
+        "reported_at": "2026-04-25",
+        "public_summary": "Relato da comunidade: telefone atualizado para (32) 99995-2476."
+      }
     ]
   }
 }
