@@ -339,16 +339,31 @@
         }
         /* Community-reported relatos. Visually distinct from .hospital-note
            (which is maintainer-verified) — dashed border, dimmer amber, and
-           a date prefix make the trust contract explicit. */
+           a date prefix make the trust contract explicit. Collapsed by
+           default; click the label to expand. */
         .card .community-relatos {
-            margin-top: 6px; padding: 10px 12px; background: rgba(245,158,11,0.06);
+            margin-top: 6px; background: rgba(245,158,11,0.06);
             border: 1px dashed rgba(245,158,11,0.45); border-radius: 8px;
             font-size: 12px; line-height: 1.45;
         }
-        .card .community-relatos .relato-label {
-            font-weight: 800; color: #FCD34D; font-size: 11px;
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+        .card .relato-toggle {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; padding: 10px 12px; background: transparent;
+            border: 0; cursor: pointer; color: #FCD34D;
+            font-family: inherit; text-align: left;
         }
+        .card .relato-toggle:active { opacity: 0.85; }
+        .card .relato-label {
+            font-weight: 800; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .card .relato-chevron {
+            font-size: 10px; opacity: 0.7; transition: transform 0.15s ease-out;
+        }
+        .card .relato-toggle[aria-expanded="true"] .relato-chevron {
+            transform: rotate(180deg);
+        }
+        .card .relato-body { padding: 0 12px 12px; }
         .card .community-relato {
             color: #FCD34D; margin-bottom: 6px; display: flex; gap: 6px;
         }
@@ -357,7 +372,7 @@
             font-weight: 800; flex-shrink: 0; opacity: 0.85;
         }
         .card .community-relato .relato-text { flex: 1; }
-        .card .community-relatos .relato-disclaimer {
+        .card .relato-disclaimer {
             margin-top: 8px; padding-top: 8px;
             border-top: 1px solid rgba(245,158,11,0.2);
             font-size: 11px; color: var(--text-muted); font-style: italic;
@@ -1147,8 +1162,9 @@
     }
 
     // ===== Build the "Relatos da comunidade" block for a hospital card.
-    // Returns '' if no notes. All dynamic values are escaped per the
-    // existing XSS discipline (see escapeHtml). =====
+    // Collapsed by default; click the label to expand. Returns '' if no
+    // notes. All dynamic values are escaped per the existing XSS discipline
+    // (see escapeHtml). =====
     function renderCommunityRelatos(notes) {
         if (!notes || !notes.length) return '';
         var items = notes.map(function(n) {
@@ -1161,12 +1177,34 @@
             '</div>';
         }).filter(Boolean).join('');
         if (!items) return '';
+        var count = notes.length;
+        var label = '&#128172; Relatos da comunidade (' + count + ')';
         return '<div class="community-relatos">' +
-            '<div class="relato-label">&#128172; Relatos da comunidade</div>' +
-            items +
-            '<div class="relato-disclaimer">Informa&ccedil;&atilde;o n&atilde;o confirmada pelo Minist&eacute;rio da Sa&uacute;de. Em emerg&ecirc;ncia, ligue 192.</div>' +
+            '<button type="button" class="relato-toggle" aria-expanded="false" onclick="toggleRelatos(this)">' +
+                '<span class="relato-label">' + label + '</span>' +
+                '<span class="relato-chevron">&#9662;</span>' +
+            '</button>' +
+            '<div class="relato-body hidden">' +
+                items +
+                '<div class="relato-disclaimer">Informa&ccedil;&atilde;o n&atilde;o confirmada pelo Minist&eacute;rio da Sa&uacute;de. Em emerg&ecirc;ncia, ligue 192.</div>' +
+            '</div>' +
         '</div>';
     }
+
+    // Toggle expand/collapse state of a community-relatos block. Stays
+    // local to the card it was clicked on. Mirrors toggleCiatoxMore.
+    window.toggleRelatos = function(btn) {
+        var body = btn.parentElement && btn.parentElement.querySelector('.relato-body');
+        if (!body) return;
+        var expanded = !body.classList.contains('hidden');
+        if (expanded) {
+            body.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            body.classList.remove('hidden');
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    };
 
     // ===== RENDER CARD =====
     function renderCard(h, idx) {
