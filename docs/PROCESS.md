@@ -374,6 +374,46 @@ paste-in plus setup instructions (required script properties:
 
 ---
 
+## Community notes (additive layer)
+
+Community-sourced relatos that surface "the official Ministry of Health
+data is wrong" without mutating any official field. They render as a
+distinct amber callout on each hospital card, dated, with the standing
+disclaimer *"Informação não confirmada pelo Ministério da Saúde."*
+
+**Source:** the **Community Notes** tab in the same overrides Google Sheet.
+One row per relato; multiple rows for the same CNES become an array of
+notes on that hospital. Columns:
+
+```
+cnes | hospital_name (ref) | category | reported_at | public_summary | expires_at | status | published_at
+```
+
+**Allowed categories** (mirrors `docs/community-reports-plan.md`):
+`contact_fix`, `pin_fix`, `closed`, `wrong_unit`, `other`.
+
+**Critical invariant:** `public_summary` is **maintainer-authored canned
+text**, not raw user input. Keep it factual, ≤280 chars, no PII, no
+phone numbers of reporters, no patient details. The Apps Script
+validator enforces the length cap; the no-PII discipline is enforced by
+convention.
+
+**Publishing flow:** add rows in the Community Notes tab → menu
+*SoroJá → Publicar relatos da comunidade* → Apps Script writes
+`data/community_notes.json` to GitHub → the rebuild workflow regenerates
+`hospitals.json` with notes attached inline → Vercel deploys.
+
+**Build-time behavior:** [`scripts/build_app_hospitals_json.py`](../scripts/build_app_hospitals_json.py)
+loads `data/community_notes.json` and attaches active (non-expired)
+notes to each hospital record as a `community_notes: [...]` array,
+sorted most-recent-first. The official fields (`hospital_name`, `phones`,
+`address`, `note`) are never touched by this layer.
+
+**Removing a note:** delete the row in the Community Notes tab and
+re-publish, or set its `expires_at` to a past date.
+
+---
+
 ## Appendix A — handling the review queue
 
 `build/review_queue_v1.csv` contains 825 rows today:

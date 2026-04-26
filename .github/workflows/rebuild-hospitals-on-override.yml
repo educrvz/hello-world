@@ -1,14 +1,16 @@
 name: Rebuild hospitals.json from overrides
 
-# When the overrides file changes on main (e.g. the SoroJá sheet publishes a
-# fix), re-run the production build script and commit the regenerated
-# hospitals.json so Vercel picks it up on the next deploy.
+# When overrides or community notes change on main (e.g. the SoroJá sheet
+# publishes a fix or a new relato), re-run the production build script and
+# commit the regenerated hospitals.json so Vercel picks it up on the next
+# deploy.
 
 on:
   push:
     branches: [main]
     paths:
       - 'data/location_overrides.json'
+      - 'data/community_notes.json'
   workflow_dispatch: {}
 
 permissions:
@@ -36,5 +38,5 @@ jobs:
             exit 0
           fi
           git add hospitals.json app/hospitals.json
-          git commit -m "Rebuild hospitals.json from overrides (automated)"
+          git commit -m "Rebuild hospitals.json from overrides/community notes (automated)"
           git push

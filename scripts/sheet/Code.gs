@@ -26,7 +26,9 @@
 
 const HOSPITALS_SHEET = 'Hospitals';
 const OVERRIDES_SHEET = 'Overrides';
+const COMMUNITY_NOTES_SHEET = 'Community Notes';
 const OVERRIDES_PATH = 'data/location_overrides.json';
+const COMMUNITY_NOTES_PATH = 'data/community_notes.json';
 const RAW_HOSPITALS_URL =
   'https://raw.githubusercontent.com/educrvz/sos-antiveneno/main/hospitals.json';
 
@@ -45,6 +47,19 @@ const OVERRIDE_HEADERS = [
 const OVERRIDE_COL_STATUS = 9;
 const OVERRIDE_COL_PUBLISHED_AT = 10;
 
+// Community notes tab — additive, dated relatos. One row per note;
+// multiple rows for the same CNES become an array of notes on the
+// hospital record. public_summary is maintainer-authored canned text
+// (no raw user reports). See docs/community-reports-plan.md.
+const COMMUNITY_NOTE_HEADERS = [
+  'cnes', 'hospital_name (ref)', 'category', 'reported_at',
+  'public_summary', 'expires_at', 'status', 'published_at',
+];
+const COMMUNITY_NOTE_COL_STATUS = 7;
+const COMMUNITY_NOTE_COL_PUBLISHED_AT = 8;
+const COMMUNITY_NOTE_CATEGORIES = ['contact_fix', 'pin_fix', 'closed', 'wrong_unit', 'other'];
+const COMMUNITY_NOTE_SUMMARY_MAX = 280;
+
 // Brazil bounding box — rejects obviously wrong paste values.
 const LAT_MIN = -34, LAT_MAX = 6;
 const LNG_MIN = -74, LNG_MAX = -33;
@@ -54,6 +69,7 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('SoroJá')
     .addItem('Publish overrides', 'publishOverrides')
+    .addItem('Publicar relatos da comunidade', 'publishCommunityNotes')
     .addItem('Refresh hospitals list', 'refreshHospitals')
     .addSeparator()
     .addItem('Setup sheet (first time only)', 'setupSheet')
@@ -104,6 +120,26 @@ function setupSheet() {
       .setAllowInvalid(false).build();
   over.getRange('C2:C').setDataValidation(latRule);
   over.getRange('D2:D').setDataValidation(lngRule);
+
+  // Community Notes tab — additive layer, never mutates official fields.
+  let notes = ss.getSheetByName(COMMUNITY_NOTES_SHEET);
+  if (!notes) notes = ss.insertSheet(COMMUNITY_NOTES_SHEET);
+  notes.clear();
+  notes.getRange(1, 1, 1, COMMUNITY_NOTE_HEADERS.length)
+       .setValues([COMMUNITY_NOTE_HEADERS])
+       .setFontWeight('bold');
+  notes.setFrozenRows(1);
+
+  // hospital_name (ref) auto-populates from the Hospitals tab.
+  notes.getRange('B2:B').setFormula(
+    `=IF(A2="","",IFERROR(VLOOKUP(A2,${HOSPITALS_SHEET}!A:B,2,FALSE),"⚠ cnes not found"))`
+  );
+  // Category dropdown.
+  const categoryRule = SpreadsheetApp.newDataValidation()
+      .requireValueInList(COMMUNITY_NOTE_CATEGORIES, true)
+      .setHelpText('Categoria: ' + COMMUNITY_NOTE_CATEGORIES.join(' / '))
+      .setAllowInvalid(false).build();
+  notes.getRange('C2:C').setDataValidation(categoryRule);
 
   SpreadsheetApp.getUi().alert(
     'Sheet setup complete. Next: run SoroJá → Refresh hospitals list.'
@@ -265,6 +301,140 @@ function publishOverrides() {
     `Committed ${count} override(s) to ${repo}.\n\n` +
     `Commit: ${result.commit.sha.substring(0, 7)}\n\n` +
     `Vercel will deploy in ~1 minute.`,
+    ui.ButtonSet.OK
+  );
+}
+
+
+// ---------------------------------------------------------------------------
+// Publish community notes to GitHub
+//
+// One row in the "Community Notes" tab = one dated relato. Multiple rows
+// for the same CNES become an array of notes on the published JSON.
+// public_summary is maintainer-authored canned text — never raw user
+// reports — and is capped at 280 characters at the validator gate.
+// ---------------------------------------------------------------------------
+
+function publishCommunityNotes() {
+  const props = PropertiesService.getScriptProperties();
+  const token = props.getProperty('GITHUB_TOKEN');
+  const repo = props.getProperty('GITHUB_REPO');
+  if (!token || !repo) {
+    throw new Error(
+      'Missing script properties GITHUB_TOKEN and/or GITHUB_REPO. ' +
+      'Open Project Settings → Script properties to add them.'
+    );
+  }
+
+  const ss = SpreadsheetApp.getActive();
+  const notes = ss.getSheetByName(COMMUNITY_NOTES_SHEET);
+  if (!notes) throw new Error(`Missing "${COMMUNITY_NOTES_SHEET}" tab — run Setup first.`);
+
+  const lastRow = notes.getLastRow();
+  if (lastRow < 2) {
+    SpreadsheetApp.getUi().alert('Sem relatos para publicar — a aba Community Notes está vazia.');
+    return;
+  }
+
+  const values = notes.getRange(2, 1, lastRow - 1, COMMUNITY_NOTE_HEADERS.length).getValues();
+  const grouped = {}; // cnes -> [note, ...]
+  const toMarkPublished = [];
+  let totalNotes = 0;
+
+  for (let i = 0; i < values.length; i++) {
+    const r = values[i];
+    const rowNum = i + 2;
+    const [cnesRaw, , categoryRaw, reportedAtRaw, summaryRaw, expiresAtRaw, status] = r;
+    const cnes = String(cnesRaw || '').trim();
+    if (!cnes) continue; // blank row
+
+    const category = String(categoryRaw || '').trim();
+    if (!category) {
+      throw new Error(`Row ${rowNum}: category is required.`);
+    }
+    if (COMMUNITY_NOTE_CATEGORIES.indexOf(category) < 0) {
+      throw new Error(
+        `Row ${rowNum}: category "${category}" is not allowed. ` +
+        `Use one of: ${COMMUNITY_NOTE_CATEGORIES.join(', ')}.`
+      );
+    }
+
+    if (!reportedAtRaw) {
+      throw new Error(`Row ${rowNum}: reported_at is required.`);
+    }
+    const reportedAt = formatDate_(reportedAtRaw);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(reportedAt)) {
+      throw new Error(`Row ${rowNum}: reported_at must be a valid date.`);
+    }
+
+    const summary = String(summaryRaw || '').trim();
+    if (!summary) {
+      throw new Error(`Row ${rowNum}: public_summary is required.`);
+    }
+    if (summary.length > COMMUNITY_NOTE_SUMMARY_MAX) {
+      throw new Error(
+        `Row ${rowNum}: public_summary is ${summary.length} chars; ` +
+        `max is ${COMMUNITY_NOTE_SUMMARY_MAX}.`
+      );
+    }
+
+    const entry = {
+      category: category,
+      reported_at: reportedAt,
+      public_summary: summary,
+    };
+
+    if (expiresAtRaw) {
+      const expiresAt = formatDate_(expiresAtRaw);
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(expiresAt)) {
+        throw new Error(`Row ${rowNum}: expires_at must be a valid date when set.`);
+      }
+      if (expiresAt <= reportedAt) {
+        throw new Error(`Row ${rowNum}: expires_at must be after reported_at.`);
+      }
+      entry.expires_at = expiresAt;
+    }
+
+    if (!grouped[cnes]) grouped[cnes] = [];
+    grouped[cnes].push(entry);
+    totalNotes += 1;
+
+    if (status !== 'published') toMarkPublished.push(rowNum);
+  }
+
+  const cnesCount = Object.keys(grouped).length;
+  const ui = SpreadsheetApp.getUi();
+  if (totalNotes === 0) {
+    ui.alert('Sem relatos para publicar — verifique a aba Community Notes.');
+    return;
+  }
+  const confirm = ui.alert(
+    'Publicar relatos da comunidade',
+    `Publicar ${totalNotes} relato(s) referente(s) a ${cnesCount} hospital(is) em ${repo}?`,
+    ui.ButtonSet.YES_NO
+  );
+  if (confirm !== ui.Button.YES) return;
+
+  const payload = {
+    generated_at: formatDate_(new Date()),
+    notes: grouped,
+  };
+  const json = JSON.stringify(payload, null, 2) + '\n';
+  const result = putFile_(repo, COMMUNITY_NOTES_PATH, json, token,
+    `Update community notes (${totalNotes} relato${totalNotes === 1 ? '' : 's'}) via sheet`
+  );
+
+  // Mark rows as published.
+  const now = new Date();
+  for (const rowNum of toMarkPublished) {
+    notes.getRange(rowNum, COMMUNITY_NOTE_COL_STATUS).setValue('published');
+    notes.getRange(rowNum, COMMUNITY_NOTE_COL_PUBLISHED_AT).setValue(formatDate_(now));
+  }
+
+  ui.alert(
+    'Publicado',
+    `Commit: ${result.commit.sha.substring(0, 7)}\n\n` +
+    `${totalNotes} relato(s) em ${cnesCount} hospital(is). Vercel deploys in ~1 minute.`,
     ui.ButtonSet.OK
   );
 }

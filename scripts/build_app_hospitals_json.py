@@ -34,6 +34,7 @@ import csv
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -43,6 +44,7 @@ INPUT = BUILD / "master_geocoded_patched_v1.csv"
 OUT_APP = ROOT / "app" / "hospitals.json"
 OUT_ROOT = ROOT / "hospitals.json"
 OVERRIDES = ROOT / "data" / "location_overrides.json"
+COMMUNITY_NOTES = ROOT / "data" / "community_notes.json"
 SOURCE_DATES = ROOT / "data" / "source_dates.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -144,6 +146,45 @@ def load_overrides() -> dict[str, dict]:
     return data
 
 
+def load_community_notes() -> dict[str, list[dict]]:
+    """Load community notes keyed by CNES.
+
+    Schema: { "generated_at": "YYYY-MM-DD", "notes": { "<cnes>": [note, ...] } }
+    Each note: { category, reported_at, public_summary, expires_at? }.
+
+    Community notes are an *additive* layer — they NEVER mutate the
+    MoH-sourced fields (hospital_name, phones, address, note). They render
+    as "Relato da comunidade — DD/MM/YYYY" callouts on the public site,
+    visibly distinct from the maintainer-verified `note` override.
+
+    Source of truth is the "Community Notes" tab in the SoroJá overrides
+    Google Sheet (see docs/PROCESS.md). Returns {} if the file is missing
+    so this script stays runnable in a fresh checkout.
+    """
+    if not COMMUNITY_NOTES.exists():
+        return {}
+    data = json.loads(COMMUNITY_NOTES.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        sys.stderr.write(f"WARN: {COMMUNITY_NOTES} is not a JSON object; ignoring.\n")
+        return {}
+    notes = data.get("notes")
+    if not isinstance(notes, dict):
+        sys.stderr.write(f"WARN: {COMMUNITY_NOTES} missing 'notes' object; ignoring.\n")
+        return {}
+    return notes
+
+
+def _is_expired(note: dict, today: date) -> bool:
+    expires = (note.get("expires_at") or "").strip()
+    if not expires:
+        return False
+    try:
+        return date.fromisoformat(expires) < today
+    except ValueError:
+        # Malformed expires_at: don't drop the note silently.
+        return False
+
+
 def parse_latlng(row: dict) -> tuple[float | None, float | None]:
     try:
         lat = float(row["lat"])
@@ -160,9 +201,13 @@ def main() -> int:
 
     pdf_dates = load_pdf_date_map()
     overrides = load_overrides()
+    community_notes = load_community_notes()
+    today = date.today()
     overrides_applied: list[str] = []
     overrides_hidden: list[str] = []
     overrides_unknown: list[str] = []
+    notes_attached_count = 0
+    notes_unknown_cnes: list[str] = []
 
     with INPUT.open(encoding="utf-8", newline="") as fh:
         all_rows = list(csv.DictReader(fh))
@@ -252,6 +297,18 @@ def main() -> int:
                     f"WARN: override for cnes {cnes} has no applicable fields; ignored.\n"
                 )
 
+        # Community notes — additive only. Must run AFTER overrides and must
+        # NEVER mutate hospital_name/phones/address/note. Multiple notes per
+        # CNES are sorted most-recent-first; expired entries (per expires_at)
+        # are dropped at build time so removing a note is just deleting a row.
+        notes_for_cnes = community_notes.get(cnes, []) if cnes else []
+        if notes_for_cnes:
+            active = [n for n in notes_for_cnes if isinstance(n, dict) and not _is_expired(n, today)]
+            active.sort(key=lambda n: n.get("reported_at", ""), reverse=True)
+            if active:
+                record["community_notes"] = active
+                notes_attached_count += 1
+
         if cnes:
             published_cnes.add(cnes)
         out_records.append(record)
@@ -259,6 +316,10 @@ def main() -> int:
     for cnes in overrides:
         if cnes not in published_cnes:
             overrides_unknown.append(cnes)
+
+    for cnes in community_notes:
+        if cnes not in published_cnes:
+            notes_unknown_cnes.append(cnes)
 
     # Match key order of the current prod file for minimal git diff churn.
     # `source_antivenoms_raw` sits next to `antivenoms` for auditability;
@@ -276,6 +337,8 @@ def main() -> int:
             rebuilt[k] = out[k]
             if k == "address" and "note" in rec:
                 rebuilt["note"] = rec["note"]
+            if k == "address" and "community_notes" in rec:
+                rebuilt["community_notes"] = rec["community_notes"]
             if k == "source_antivenoms_raw" and "other_soros" in rec:
                 rebuilt["other_soros"] = rec["other_soros"]
         return rebuilt
@@ -300,6 +363,13 @@ def main() -> int:
         )
     print(f"Wrote {len(ordered):,} records to {OUT_APP}")
     print(f"Wrote {len(ordered):,} records to {OUT_ROOT}")
+    print(f"Hospitals with community notes: {notes_attached_count}")
+    if notes_unknown_cnes:
+        print(
+            f"WARN: {len(notes_unknown_cnes)} community-note cnes not found in published set: "
+            f"{', '.join(notes_unknown_cnes[:5])}"
+            + (" …" if len(notes_unknown_cnes) > 5 else "")
+        )
     print(f"Antivenom leaks moved to note: {leaks_moved}")
     print(f"Hospitals with non-antivenom soros (raiva/tetano/DT): {other_soros_count}")
     if unknown_strings:

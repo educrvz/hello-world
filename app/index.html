@@ -337,6 +337,31 @@
             border: 1px solid rgba(245,158,11,0.3); border-left: 3px solid #F59E0B;
             border-radius: 8px; font-size: 12px; color: #FCD34D; line-height: 1.45;
         }
+        /* Community-reported relatos. Visually distinct from .hospital-note
+           (which is maintainer-verified) — dashed border, dimmer amber, and
+           a date prefix make the trust contract explicit. */
+        .card .community-relatos {
+            margin-top: 6px; padding: 10px 12px; background: rgba(245,158,11,0.06);
+            border: 1px dashed rgba(245,158,11,0.45); border-radius: 8px;
+            font-size: 12px; line-height: 1.45;
+        }
+        .card .community-relatos .relato-label {
+            font-weight: 800; color: #FCD34D; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+        }
+        .card .community-relato {
+            color: #FCD34D; margin-bottom: 6px; display: flex; gap: 6px;
+        }
+        .card .community-relato:last-of-type { margin-bottom: 0; }
+        .card .community-relato .relato-date {
+            font-weight: 800; flex-shrink: 0; opacity: 0.85;
+        }
+        .card .community-relato .relato-text { flex: 1; }
+        .card .community-relatos .relato-disclaimer {
+            margin-top: 8px; padding-top: 8px;
+            border-top: 1px solid rgba(245,158,11,0.2);
+            font-size: 11px; color: var(--text-muted); font-style: italic;
+        }
         .nearest-badge {
             display: inline-block; background: var(--success); color: white; font-size: 12px; font-weight: 900;
             letter-spacing: 0.5px; padding: 6px 12px; border-radius: 999px; margin-bottom: 12px; text-transform: uppercase;
@@ -1113,6 +1138,36 @@
         });
     }
 
+    // ===== Format an ISO YYYY-MM-DD date as DD/MM/YYYY (pt-BR). Returns
+    // the original string unchanged if it doesn't match — never throws. =====
+    function formatBrDate(iso) {
+        if (!iso) return '';
+        var m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})/);
+        return m ? (m[3] + '/' + m[2] + '/' + m[1]) : String(iso);
+    }
+
+    // ===== Build the "Relatos da comunidade" block for a hospital card.
+    // Returns '' if no notes. All dynamic values are escaped per the
+    // existing XSS discipline (see escapeHtml). =====
+    function renderCommunityRelatos(notes) {
+        if (!notes || !notes.length) return '';
+        var items = notes.map(function(n) {
+            var date = formatBrDate(n.reported_at);
+            var summary = String(n.public_summary || '').trim();
+            if (!summary) return '';
+            return '<div class="community-relato">' +
+                (date ? '<span class="relato-date">' + escapeHtml(date) + '</span>' : '') +
+                '<span class="relato-text">' + escapeHtml(summary) + '</span>' +
+            '</div>';
+        }).filter(Boolean).join('');
+        if (!items) return '';
+        return '<div class="community-relatos">' +
+            '<div class="relato-label">&#128172; Relatos da comunidade</div>' +
+            items +
+            '<div class="relato-disclaimer">Informa&ccedil;&atilde;o n&atilde;o confirmada pelo Minist&eacute;rio da Sa&uacute;de. Em emerg&ecirc;ncia, ligue 192.</div>' +
+        '</div>';
+    }
+
     // ===== RENDER CARD =====
     function renderCard(h, idx) {
         var isNearest = gpsAvailable && idx === 0;
@@ -1214,6 +1269,7 @@
                 '<div class="city">' + escapeHtml(h.city) + ', ' + escapeHtml(h.state) + '</div>' +
                 (h.address ? '<div class="address">' + escapeHtml(h.address) + '</div>' : '') +
                 (h.note ? '<div class="hospital-note">' + escapeHtml(h.note) + '</div>' : '') +
+                renderCommunityRelatos(h.community_notes) +
                 '</div>' + distHtml +
             '</div>' +
             tagsHtml +
