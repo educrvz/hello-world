@@ -24,5 +24,10 @@
     "verified_on": "2026-04-26",
     "lat": -23.710930585032493,
     "lng": -46.8488716088045
+  },
+  "9491252": {
+    "reason": "Dados misturados na fonte: CNES 9491252 está rotulado como 'Hospital de Base' em São José dos Campos, mas reaproveita endereço e telefone do CNES 2077396 (Hospital de Base de São José do Rio Preto). Sem dados confiáveis para o registro — ocultado para evitar pin enganoso.",
+    "verified_on": "2026-04-26",
+    "hide": true
   }
 }

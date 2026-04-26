@@ -124,13 +124,16 @@ def title_case_state(name: str) -> str:
 def load_overrides() -> dict[str, dict]:
     """Load manual overrides keyed by CNES.
 
-    Each value is a dict with any subset of: `lat`, `lng`, `address`, `note`.
-    lat/lng must appear together; supplying either one alone is ignored.
-    address and note may each appear alone. `note` renders as a short
-    warning below the address in the app (e.g. "campus does not attend;
-    go to the emergency unit"). Managed via the SoroJá overrides Google
-    Sheet (see docs/PROCESS.md). Returns {} if the file is missing so
-    this script stays runnable in a fresh checkout.
+    Each value is a dict with any subset of: `lat`, `lng`, `address`, `note`,
+    `hide`. lat/lng must appear together; supplying either one alone is
+    ignored. address and note may each appear alone. `note` renders as a
+    short warning below the address in the app (e.g. "campus does not
+    attend; go to the emergency unit"). `hide: true` drops the record from
+    the published JSON entirely — used when source data is corrupt and the
+    correct fix can't be expressed via lat/lng/address (e.g. a duplicated
+    CNES that mixes two facilities). Managed via the SoroJá overrides
+    Google Sheet (see docs/PROCESS.md). Returns {} if the file is missing
+    so this script stays runnable in a fresh checkout.
     """
     if not OVERRIDES.exists():
         return {}
@@ -158,6 +161,7 @@ def main() -> int:
     pdf_dates = load_pdf_date_map()
     overrides = load_overrides()
     overrides_applied: list[str] = []
+    overrides_hidden: list[str] = []
     overrides_unknown: list[str] = []
 
     with INPUT.open(encoding="utf-8", newline="") as fh:
@@ -217,6 +221,10 @@ def main() -> int:
             record["other_soros"] = canon_result.other_soros
 
         override = overrides.get(cnes) if cnes else None
+        if override and bool(override.get("hide")):
+            overrides_hidden.append(cnes)
+            published_cnes.add(cnes)
+            continue
         if override:
             applied_any = False
             if "lat" in override and "lng" in override:
@@ -282,6 +290,8 @@ def main() -> int:
     print(f"Published (publish_policy == publish):   {len(rows):,}")
     print(f"Hidden (state-only / muni-mismatch / external-review): {hidden:,}")
     print(f"Overrides applied: {len(overrides_applied)}")
+    if overrides_hidden:
+        print(f"Overrides hidden: {len(overrides_hidden)} ({', '.join(overrides_hidden)})")
     if overrides_unknown:
         print(
             f"WARN: {len(overrides_unknown)} override cnes not found in published set: "

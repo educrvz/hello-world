@@ -61683,41 +61683,6 @@
     "state": "SP",
     "state_name": "São Paulo",
     "city": "São José dos Campos",
-    "hospital_name": "Hospital de Base",
-    "address": "AV. BRIGADEIRO FARIA LIMA 5544",
-    "phones": [
-      "(17) 3201-5000"
-    ],
-    "cnes": "9491252",
-    "antivenoms": [
-      "Botrópico",
-      "Crotálico",
-      "Elapídico",
-      "Laquético",
-      "Escorpiônico",
-      "Loxoscélico",
-      "Fonêutrico",
-      "Lonômico"
-    ],
-    "source_antivenoms_raw": [
-      "Botrópico",
-      "Crotálico",
-      "Elapídico",
-      "Laquético",
-      "Escorpiônico",
-      "Loxoscélico",
-      "Fonêutrico",
-      "Lonômico"
-    ],
-    "source_date": "2026-02-10",
-    "lat": -23.2182205,
-    "lng": -45.8540861,
-    "geocode_tier": 2
-  },
-  {
-    "state": "SP",
-    "state_name": "São Paulo",
-    "city": "São José dos Campos",
     "hospital_name": "HOSPITAL DE CLÍNICAS SUL",
     "address": "PRAÇA NATAL, 55 PARQUE INDUSTRIAL",
     "phones": [
