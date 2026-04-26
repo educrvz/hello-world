@@ -18,5 +18,11 @@
     "verified_on": "2026-04-25",
     "lat": -9.573292802841062,
     "lng": -35.773553246390996
+  },
+  "2086271": {
+    "reason": "Pin apontava para hospital errado; correção via reporte do usuário (Maternidade Municipal Zoraide Eva das Dores, Itapecerica da Serra/SP).",
+    "verified_on": "2026-04-26",
+    "lat": -23.710930585032493,
+    "lng": -46.8488716088045
   }
 }
