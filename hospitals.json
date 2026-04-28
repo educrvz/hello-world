@@ -41843,6 +41843,40 @@
   {
     "state": "PR",
     "state_name": "Paraná",
+    "city": "Cascavel",
+    "hospital_name": "Hospital do Coração",
+    "address": "Rua Carlos de Carvalho, 4191 - Centro",
+    "note": "Relato comunitário (27/04/2026): hospital possivelmente desativado. Confirme antes de se deslocar.",
+    "phones": [
+      "(45) 3039-4848"
+    ],
+    "cnes": "2738252",
+    "antivenoms": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_antivenoms_raw": [
+      "Botrópico",
+      "Crotálico",
+      "Elapídico",
+      "Escorpiônico",
+      "Fonêutrico",
+      "Loxoscélico",
+      "Lonômico"
+    ],
+    "source_date": "2026-01-05",
+    "lat": -24.9530906,
+    "lng": -53.45904179999999,
+    "geocode_tier": 1
+  },
+  {
+    "state": "PR",
+    "state_name": "Paraná",
     "city": "Castro",
     "hospital_name": "Hospital da Cruz Vermelha de Castro",
     "address": "Rua Doutor Otavio Novaes Jr, 190 - Jardom Social Arapongas",
