@@ -29,5 +29,16 @@
     "reason": "Dados misturados na fonte: CNES 9491252 está rotulado como 'Hospital de Base' em São José dos Campos, mas reaproveita endereço e telefone do CNES 2077396 (Hospital de Base de São José do Rio Preto). Sem dados confiáveis para o registro — ocultado para evitar pin enganoso.",
     "verified_on": "2026-04-26",
     "hide": true
+  },
+  "2738252": {
+    "reason": "Hospital do Coração (Cascavel/PR) — relato comunitário de que o hospital não existe mais; ocultado até confirmação.",
+    "verified_on": "2026-04-27",
+    "hide": true
+  },
+  "2034441": {
+    "reason": "Correção de coordenadas via reporte do usuário (Pronto Socorro Municipal, Rio Claro/SP).",
+    "verified_on": "2026-04-27",
+    "lat": -22.41558364583021,
+    "lng": -47.55683487500426
   }
 }

@@ -1,4 +1,4 @@
-var CACHE_NAME = 'sos-antiveneno-v15';
+var CACHE_NAME = 'sos-antiveneno-v16';
 var ASSETS = [
     './',
     './index.html',
