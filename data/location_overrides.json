@@ -40,5 +40,15 @@
     "verified_on": "2026-04-27",
     "lat": -22.41558364583021,
     "lng": -47.55683487500426
+  },
+  "8000956": {
+    "reason": "Policlínica Pronto Atendimento (Conselheiro Lafaiete/MG) — relato comunitário (29/04/2026) de mudança para UPA 24h Dr. Luiz de Souza Dias (Rua Vereador Alfredo Mafuz, 525) e novo telefone (31) 3764-9892; mantido visível com nota até confirmação.",
+    "verified_on": "2026-04-29",
+    "note": "Comunidade reportou (29/04/2026): endereço mudou para UPA 24h Dr. Luiz de Souza Dias, Rua Vereador Alfredo Mafuz, 525; novo telefone (31) 3764-9892. Confirme antes de se deslocar."
+  },
+  "2569701": {
+    "reason": "Hospital Municipal de São Domingos (São Domingos/GO) — relato comunitário (29/04/2026) de possível encerramento; mantido visível com nota até confirmação oficial.",
+    "verified_on": "2026-04-29",
+    "note": "Comunidade reportou (29/04/2026): possível encerramento. Confirme por telefone antes de se deslocar."
   }
 }
