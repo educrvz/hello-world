@@ -31,7 +31,7 @@
     "hide": true
   },
   "2738252": {
-    "reason": "Hospital do Coração (Cascavel/PR) — relato comunitário (Giovani Munaretto, 27/04/2026) de que o hospital não existe mais; mantido visível com nota até confirmação oficial.",
+    "reason": "Hospital do Coração (Cascavel/PR) — relato comunitário (27/04/2026) de que o hospital não existe mais; mantido visível com nota até confirmação oficial.",
     "verified_on": "2026-04-27",
     "note": "Relato comunitário (27/04/2026): hospital possivelmente desativado. Confirme antes de se deslocar."
   },
@@ -50,5 +50,10 @@
     "reason": "Hospital Municipal de São Domingos (São Domingos/GO) — relato comunitário (29/04/2026) de possível encerramento; mantido visível com nota até confirmação oficial.",
     "verified_on": "2026-04-29",
     "note": "Comunidade reportou (29/04/2026): possível encerramento. Confirme por telefone antes de se deslocar."
+  },
+  "6483089": {
+    "reason": "Hosp. Macrorregional de Urgência e Emergência de Presidente Dutra/SOCORRÃO (MA) — relato comunitário (29/04/2026) de telefone correto.",
+    "verified_on": "2026-04-29",
+    "note": "Comunidade reportou (29/04/2026): telefone correto é (98) 99187-0040."
   }
 }
