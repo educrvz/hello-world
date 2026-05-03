@@ -31,9 +31,9 @@
     "hide": true
   },
   "2738252": {
-    "reason": "Hospital do Coração (Cascavel/PR) — relato comunitário (27/04/2026) de que o hospital não existe mais; mantido visível com nota até confirmação oficial.",
-    "verified_on": "2026-04-27",
-    "note": "Relato comunitário (27/04/2026): hospital possivelmente desativado. Confirme antes de se deslocar."
+    "reason": "Hospital do Coração (Cascavel/PR) — dois relatos comunitários (27/04/2026 e 01/05/2026) de que o hospital não está mais em funcionamento; mantido visível com nota até confirmação oficial.",
+    "verified_on": "2026-05-01",
+    "note": "Relatos comunitários (27/04 e 01/05/2026): hospital não está mais em funcionamento. Confirme antes de se deslocar."
   },
   "2034441": {
     "reason": "Correção de coordenadas via reporte do usuário (Pronto Socorro Municipal, Rio Claro/SP).",
