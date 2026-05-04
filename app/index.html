@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0066CC">
     <meta name="description" content="SoroJá — Encontre hospitais com soro antiveneno mais próximos de você">
 
@@ -166,11 +166,14 @@
             background: var(--card-color); border: 2px solid var(--border-color); border-radius: 24px;
             padding: 24px 12px; display: flex; flex-direction: column; align-items: center; gap: 12px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3); cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font: inherit; color: var(--text-main); text-align: center;
         }
+        .triage-btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--primary-glow), 0 10px 20px rgba(0,0,0,0.3); }
         .triage-btn:active { transform: scale(0.95); }
         .triage-btn.active {
             background: linear-gradient(145deg, #1D4ED8, #1E3A8A); border-color: #60A5FA;
             box-shadow: 0 12px 24px var(--primary-glow);
+            color: var(--text-inverse);
         }
         .triage-btn .emoji { font-size: 48px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
         .triage-btn .label { font-size: 15px; font-weight: 900; letter-spacing: 0.5px; }
@@ -689,18 +692,18 @@
             
             <!-- Botões Gigantes de Triagem (US03) -->
             <div class="triage-grid">
-                <div class="triage-btn" onclick="onTriageClick('escorpiao')" id="tb-escorpiao">
-                    <div class="emoji">🦂</div><div class="label">ESCORPIÃO</div>
-                </div>
-                <div class="triage-btn" onclick="onTriageClick('cobra')" id="tb-cobra">
-                    <div class="emoji">🐍</div><div class="label">COBRA</div>
-                </div>
-                <div class="triage-btn" onclick="onTriageClick('aranha')" id="tb-aranha">
-                    <div class="emoji">🕷️</div><div class="label">ARANHA</div>
-                </div>
-                <div class="triage-btn" onclick="onTriageClick('lagarta')" id="tb-lagarta">
-                    <div class="emoji">🐛</div><div class="label">TATURANA</div>
-                </div>
+                <button type="button" class="triage-btn" onclick="onTriageClick('escorpiao')" id="tb-escorpiao" aria-pressed="false">
+                    <span class="emoji">🦂</span><span class="label">ESCORPIÃO</span>
+                </button>
+                <button type="button" class="triage-btn" onclick="onTriageClick('cobra')" id="tb-cobra" aria-pressed="false">
+                    <span class="emoji">🐍</span><span class="label">COBRA</span>
+                </button>
+                <button type="button" class="triage-btn" onclick="onTriageClick('aranha')" id="tb-aranha" aria-pressed="false">
+                    <span class="emoji">🕷️</span><span class="label">ARANHA</span>
+                </button>
+                <button type="button" class="triage-btn" onclick="onTriageClick('lagarta')" id="tb-lagarta" aria-pressed="false">
+                    <span class="emoji">🐛</span><span class="label">TATURANA</span>
+                </button>
             </div>
             <input type="hidden" id="filter-incident" value="">
 
@@ -931,6 +934,23 @@
     };
 
     // ===== UTILS =====
+    function storageGet(key) {
+        try {
+            return window.localStorage.getItem(key);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function storageSet(key, value) {
+        try {
+            window.localStorage.setItem(key, value);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
     function norm(s) {
         if (!s) return '';
         return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -1562,7 +1582,10 @@
             el.value = val;
         }
         ['escorpiao', 'cobra', 'aranha', 'lagarta'].forEach(function(v) {
-            document.getElementById('tb-' + v).classList.toggle('active', el.value === v);
+            var btn = document.getElementById('tb-' + v);
+            var pressed = el.value === v;
+            btn.classList.toggle('active', pressed);
+            btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
         });
         var selected = !!el.value;
         window.onIncidentFilter();
@@ -1743,9 +1766,14 @@
             return norm(c.name).indexOf(q) !== -1;
         }).slice(0, 8);
         if (matches.length === 0) { list.classList.add('hidden'); return; }
-        list.innerHTML = matches.map(function(c, i) {
-            return '<li onclick="pickCity(' + i + ')" data-idx="' + i + '">' + c.name + ', ' + c.state + '</li>';
-        }).join('');
+        list.replaceChildren();
+        matches.forEach(function(c, i) {
+            var item = document.createElement('li');
+            item.dataset.idx = i;
+            item.textContent = c.name + ', ' + c.state;
+            item.onclick = function() { pickCity(i); };
+            list.appendChild(item);
+        });
         list.classList.remove('hidden');
         // Store matches for pickCity
         list._matches = matches;
@@ -1774,8 +1802,8 @@
         list.classList.add('hidden');
         document.getElementById('location-bar').classList.add('hidden');
         document.getElementById('location-chosen').classList.remove('hidden');
-        document.getElementById('location-chosen-text').innerHTML =
-            '&#128205; ' + city.name + ', ' + city.state;
+        document.getElementById('location-chosen-text').textContent =
+            '📍 ' + city.name + ', ' + city.state;
 
         updateNearMeButton();
         showCount = SHOW_COUNT;
@@ -1886,7 +1914,7 @@
             var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
             var next = cur === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
-            try { localStorage.setItem('soroja_theme', next); } catch (e) {}
+            storageSet('soroja_theme', next);
             setThemeIcon(next);
         });
     }
@@ -1921,7 +1949,7 @@
                 renderList();
                 
                 // Exibe o modal de disclaimer caso usuário não tenha aceito (US01)
-                if (!localStorage.getItem('soroja_accepted')) {
+                if (!storageGet('soroja_accepted')) {
                     document.getElementById('legal-modal-overlay').classList.remove('hidden-modal');
                 }
             })
@@ -1935,7 +1963,7 @@
     document.addEventListener('DOMContentLoaded', init);
 
     window.acceptLegalTerms = function() {
-        localStorage.setItem('soroja_accepted', 'true');
+        storageSet('soroja_accepted', 'true');
         document.getElementById('legal-modal-overlay').classList.add('hidden-modal');
     };
 
