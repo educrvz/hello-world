@@ -139,67 +139,14 @@ else
   done
 fi
 
-say "Stage 10: google sheets exports"
-$PY - <<'PY'
-import csv
-from pathlib import Path
-ROOT = Path.cwd()
-BUILD = ROOT / "build"
-IN_PUB = BUILD / "publish_ready_v1.csv"
-IN_REV = BUILD / "review_queue_v1.csv"
-OUT_PUB = BUILD / "google_sheets_publish_ready_v1.csv"
-OUT_REV = BUILD / "google_sheets_review_queue_v1.csv"
-
-V3_BUCKETS = {
-    "geocode_auto_accept_v3.csv": "auto_accept",
-    "geocode_watchlist_v3.csv": "watchlist",
-    "geocode_retry_queue_v3.csv": "retry_queue",
-    "geocode_manual_review_high_risk_v3.csv": "manual_review_high_risk",
-}
-v3 = {}
-for fn, bucket in V3_BUCKETS.items():
-    p = BUILD / fn
-    if p.exists():
-        for r in csv.DictReader(p.open()):
-            v3[r["row_id"]] = (bucket, r.get("review_reasons", ""))
-
-COLS = [
-    "row_id","source_state_abbr","state","municipality","health_unit_name",
-    "address","phones_raw","cnes","antivenoms_raw","geocode_query",
-    "formatted_address","lat","lng","place_id","partial_match",
-    "location_type","geocode_status","final_status",
-    "repair_applied","repair_source","repair_outcome",
-    "review_status","review_reasons",
-]
-NULL_LITS = {"null","None","NULL","nan","NaN"}
-
-def clean(v):
-    s = "" if v is None else str(v).strip()
-    return "" if s in NULL_LITS else s
-
-def prep(row):
-    rid = row["row_id"]
-    bucket, reasons = v3.get(rid, ("", ""))
-    out = {c: clean(row.get(c, "")) for c in COLS}
-    ant = out.get("antivenoms_raw", "")
-    if ant:
-        out["antivenoms_raw"] = ", ".join(p.strip() for p in ant.split("|") if p.strip())
-    out["review_status"] = bucket
-    out["review_reasons"] = reasons
-    return out
-
-for src, dst in [(IN_PUB, OUT_PUB), (IN_REV, OUT_REV)]:
-    rows = [prep(r) for r in csv.DictReader(src.open())]
-    with dst.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=COLS)
-        w.writeheader()
-        for r in rows:
-            w.writerow(r)
-    print(f"  wrote {len(rows)} rows to {dst.relative_to(ROOT)}")
-PY
+say "Stage 10: rebuild final queues and google sheets exports"
+$PY scripts/rebuild_final_artifacts.py
 
 say "Stage 11: build app/hospitals.json (production contract)"
 $PY scripts/build_app_hospitals_json.py
+
+say "Stage 12: validate final artifacts"
+$PY scripts/rebuild_final_artifacts.py --check
 
 say "Refresh complete. Ready to commit:"
 echo "   app/hospitals.json"
