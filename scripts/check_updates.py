@@ -11,10 +11,10 @@ Source pages:
     Page 2: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia?b_start:int=15
 """
 
-import os
 import re
 import sys
-from datetime import datetime
+from datetime import date, datetime
+from pathlib import Path
 
 try:
     import requests
@@ -23,8 +23,9 @@ try:
 except ImportError:
     HAS_WEB = False
 
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PDF_DIR = os.path.join(SCRIPT_DIR, "..")
+ROOT = Path(__file__).resolve().parent.parent
+PDF_DIR = ROOT / "Docs Estado"
+SOURCE_DATES = ROOT / "data" / "source_dates.json"
 
 PAGES = [
     "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/animais-peconhentos/hospitais-de-referencia",
@@ -44,10 +45,47 @@ STATE_CODES = {
 }
 
 
-def get_local_dates():
+def _parse_iso_date(value: str) -> date | None:
+    try:
+        return datetime.strptime(value, "%Y-%m-%d").date()
+    except (TypeError, ValueError):
+        return None
+
+
+def _load_source_dates(source_dates_path: Path = SOURCE_DATES) -> dict[str, date]:
+    """Read committed source dates from data/source_dates.json."""
+    if not source_dates_path.exists():
+        return {}
+    try:
+        import json
+
+        data = json.loads(source_dates_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"  ERROR reading {source_dates_path}: {e}")
+        return {}
+    if not isinstance(data, dict):
+        print(f"  ERROR: {source_dates_path} must be a JSON object")
+        return {}
+    out: dict[str, date] = {}
+    for code, value in data.items():
+        code = str(code).upper()
+        if code not in STATE_CODES.values():
+            continue
+        parsed = _parse_iso_date(str(value))
+        if parsed:
+            out[code] = parsed
+        else:
+            print(f"  WARN: ignoring invalid source date for {code}: {value!r}")
+    return out
+
+
+def _scan_pdf_dates(pdf_dir: Path = PDF_DIR) -> dict[str, date]:
     """Read dates from local PDF filenames ({STATE}_{YYYYMMDD}.pdf)."""
-    local = {}
-    for f in os.listdir(PDF_DIR):
+    local: dict[str, date] = {}
+    if not pdf_dir.exists():
+        return local
+    for p in pdf_dir.iterdir():
+        f = p.name
         if not f.endswith(".pdf"):
             continue
         # Handle V2_PI_20251110.pdf style
@@ -67,9 +105,48 @@ def get_local_dates():
     return local
 
 
+def get_local_dates(
+    source_dates_path: Path = SOURCE_DATES,
+    pdf_dir: Path = PDF_DIR,
+) -> dict[str, date]:
+    """Return baseline source dates.
+
+    CI checkouts do not contain `Docs Estado/` because PDFs are ignored by git,
+    so the committed `data/source_dates.json` is the primary source. Local PDF
+    filenames remain a fallback and fill gaps when a maintainer has just
+    downloaded a new PDF before updating `source_dates.json`.
+    """
+    local = _load_source_dates(source_dates_path)
+    pdf_dates = _scan_pdf_dates(pdf_dir)
+    for code, pdf_date in pdf_dates.items():
+        if code not in local or pdf_date > local[code]:
+            local[code] = pdf_date
+    return local
+
+
+def parse_online_dates_from_html(text: str) -> dict[str, date]:
+    """Parse gov.br page text for per-state PDF publication dates."""
+    online: dict[str, date] = {}
+
+    # The page structure has: StateName ... publicado DD/MM/YYYY
+    # We need the "publicado" date that follows each state name.
+    for state_name, code in STATE_CODES.items():
+        pattern = re.compile(
+            re.escape(state_name) + r".{1,200}?publicado\s+(\d{2}/\d{2}/\d{4})",
+            re.DOTALL,
+        )
+        match = pattern.search(text)
+        if match:
+            try:
+                online[code] = datetime.strptime(match.group(1), "%d/%m/%Y").date()
+            except ValueError:
+                pass
+    return online
+
+
 def scrape_online_dates():
     """Scrape the gov.br pages for current PDF dates."""
-    online = {}
+    online: dict[str, date] = {}
     for url in PAGES:
         try:
             resp = requests.get(url, timeout=30, headers={
@@ -82,24 +159,34 @@ def scrape_online_dates():
 
         soup = BeautifulSoup(resp.text, "html.parser")
         text = soup.get_text()
-
-        # The page structure has: StateName ... publicado DD/MM/YYYY
-        # We need the "publicado" date that follows each state name
-        for state_name, code in STATE_CODES.items():
-            # Match: state name, then "publicado DD/MM/YYYY" (within ~200 chars)
-            pattern = re.compile(
-                re.escape(state_name) + r".{1,200}?publicado\s+(\d{2}/\d{2}/\d{4})",
-                re.DOTALL
-            )
-            match = pattern.search(text)
-            if match:
-                try:
-                    date = datetime.strptime(match.group(1), "%d/%m/%Y").date()
-                    online[code] = date
-                except ValueError:
-                    pass
+        online.update(parse_online_dates_from_html(text))
 
     return online
+
+
+def compare_dates(local: dict[str, date], online: dict[str, date]):
+    updates_needed = []
+    up_to_date = []
+    missing_local = []
+    missing_online = []
+
+    for code in sorted(STATE_CODES.values()):
+        online_date = online.get(code)
+        local_date = local.get(code)
+        state_name = [k for k, v in STATE_CODES.items() if v == code][0]
+
+        if not online_date:
+            missing_online.append((code, state_name))
+            continue
+
+        if not local_date:
+            missing_local.append((code, state_name, online_date))
+        elif online_date > local_date:
+            updates_needed.append((code, state_name, local_date, online_date))
+        else:
+            up_to_date.append((code, state_name, local_date))
+
+    return updates_needed, up_to_date, missing_local, missing_online
 
 
 def main():
@@ -110,7 +197,11 @@ def main():
 
     # Get local dates
     local = get_local_dates()
-    print(f"PDFs locais encontrados: {len(local)}/27")
+    print(f"Datas locais encontradas: {len(local)}/27")
+    if SOURCE_DATES.exists():
+        print(f"Base local: {SOURCE_DATES.relative_to(ROOT)} (+ PDFs locais se existirem)")
+    else:
+        print(f"Base local: PDFs em {PDF_DIR}")
     print()
 
     # Try to get online dates
@@ -142,24 +233,7 @@ def main():
     print()
 
     # Compare
-    updates_needed = []
-    up_to_date = []
-    missing_local = []
-
-    for code in sorted(STATE_CODES.values()):
-        online_date = online.get(code)
-        local_date = local.get(code)
-        state_name = [k for k, v in STATE_CODES.items() if v == code][0]
-
-        if not online_date:
-            continue
-
-        if not local_date:
-            missing_local.append((code, state_name, online_date))
-        elif online_date > local_date:
-            updates_needed.append((code, state_name, local_date, online_date))
-        else:
-            up_to_date.append((code, state_name, local_date))
+    updates_needed, up_to_date, missing_local, missing_online = compare_dates(local, online)
 
     # Report
     if updates_needed:
@@ -176,9 +250,17 @@ def main():
         print()
 
     if missing_local:
-        print("⚠️  PDFs NÃO ENCONTRADOS LOCALMENTE:")
+        print("⚠️  DATAS LOCAIS NÃO ENCONTRADAS:")
         for code, name, online_d in missing_local:
             print(f"  {code} ({name}) — online: {online_d.strftime('%d/%m/%Y')}")
+        print("  Atualize data/source_dates.json ou baixe o PDF correspondente em Docs Estado/.")
+        print()
+
+    if missing_online:
+        print("⚠️  ESTADOS NÃO ENCONTRADOS ONLINE:")
+        for code, name in missing_online:
+            print(f"  {code} ({name})")
+        print("  A página do gov.br pode ter mudado de formato; confira o parser.")
         print()
 
     print(f"✅ {len(up_to_date)} estados atualizados")
@@ -189,12 +271,12 @@ def main():
     if updates_needed:
         print("PRÓXIMOS PASSOS:")
         print("  1. Baixe os PDFs atualizados do gov.br")
-        print(f"  2. Salve como {{ESTADO}}_{{YYYYMMDD}}.pdf em {os.path.abspath(PDF_DIR)}")
-        print("  3. Execute: python3 scripts/extract.py")
-        print("  4. Execute: python3 scripts/geocode.py")
-        print("  5. Copie app/hospitals.json para o repositório")
+        print(f"  2. Salve como {{UF}}_{{YYYYMMDD}}.pdf em {PDF_DIR}")
+        print("  3. Re-extraia o(s) estado(s) afetado(s) para extracted/{UF}.json")
+        print("  4. Execute: ./scripts/refresh_dataset.sh")
+        print("  5. Valide, revise o diff e abra PR")
 
-    return len(updates_needed)
+    return len(updates_needed) + len(missing_local) + len(missing_online)
 
 
 if __name__ == "__main__":
