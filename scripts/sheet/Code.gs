@@ -87,6 +87,8 @@ function setupSheet() {
   let hosp = ss.getSheetByName(HOSPITALS_SHEET);
   if (!hosp) hosp = ss.insertSheet(HOSPITALS_SHEET);
   hosp.clear();
+  const hospFilter = hosp.getFilter();
+  if (hospFilter) hospFilter.remove();
   hosp.getRange(1, 1, 1, HOSPITAL_HEADERS.length)
       .setValues([HOSPITAL_HEADERS])
       .setFontWeight('bold');
@@ -99,6 +101,8 @@ function setupSheet() {
   let over = ss.getSheetByName(OVERRIDES_SHEET);
   if (!over) over = ss.insertSheet(OVERRIDES_SHEET);
   over.clear();
+  const overFilter = over.getFilter();
+  if (overFilter) overFilter.remove();
   over.getRange(1, 1, 1, OVERRIDE_HEADERS.length)
       .setValues([OVERRIDE_HEADERS])
       .setFontWeight('bold');
