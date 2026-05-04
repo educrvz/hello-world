@@ -61,16 +61,18 @@ build/geocode_manual_review_high_risk_v3.csv
       │  [stage 9c] apply_repairs.py
       │  [stage 9d] repair_muni_mismatch.py  (salvages retry_queue hide_muni_mismatch rows)
       │  [stage 9e] classify_geocode_quality_v3.py + apply_repairs.py  (propagates 9d salvages)
+      │  [stage 9f] apply_manual_triage.py  (re-applies committed operator decisions)
       ▼
 build/master_geocoded_patched_v1.csv   (includes publish_policy column)
+      │  [stage 10] rebuild_final_artifacts.py
+      ▼
 build/publish_ready_v1.csv
 build/review_queue_v1.csv
-      │  [stage 10] google-sheets-friendly exports (inlined in refresh_dataset.sh)
-      ▼
 build/google_sheets_{publish_ready,review_queue}_v1.csv
       │  [stage 11] build_app_hospitals_json.py
       ▼
 app/hospitals.json  +  hospitals.json  ←  production contract
+      │  [stage 12] rebuild_final_artifacts.py --check
 ```
 
 Every stage writes a report at `reports/NN_*.md` that you can read
@@ -259,11 +261,18 @@ convention: `{UF}_{YYYY-MM-DD}_{bucket}.csv` (e.g.
 `PA_2026-04-20_muni_mismatch.csv`). The applier is idempotent — it
 archives `original_*` only on first touch.
 
-## 10. Google Sheets exports (inlined in `refresh_dataset.sh`)
+## 10. Reconcile final artifacts — `scripts/rebuild_final_artifacts.py`
 
-Writes `build/google_sheets_publish_ready_v1.csv` and
-`build/google_sheets_review_queue_v1.csv` with pipe-separated antivenoms
-flattened to commas and `null` literals converted to blank cells. See
+Regenerates `build/publish_ready_v1.csv`, `build/review_queue_v1.csv`,
+`build/google_sheets_publish_ready_v1.csv`,
+`build/google_sheets_review_queue_v1.csv`, and
+`reports/10_google_sheets_export_summary.md` from the final
+`build/master_geocoded_patched_v1.csv` after stage 9f has re-applied
+manual triage. This prevents stale pre-triage queue/export rows from
+surviving a full refresh.
+
+The Google Sheets exports flatten pipe-separated antivenoms to commas and
+convert `null` literals to blank cells. See
 [`reports/10_google_sheets_import_guide.md`](../reports/10_google_sheets_import_guide.md)
 to drop these into a Google Sheet.
 
@@ -274,6 +283,10 @@ Consumes: `build/master_geocoded_patched_v1.csv`, filtered to rows where
 auto-accept + confidently-repaired + safe watchlist + safe retry.
 Produces: `app/hospitals.json` (Vercel serves this) and `hospitals.json` at
 the repo root (same file, kept for diff convenience and legacy tooling).
+
+Stage 12 runs `scripts/rebuild_final_artifacts.py --check` after this build.
+It verifies that the master, queues, Google Sheets exports, root JSON and app
+JSON still agree on row identity/counts and published CNES values.
 
 Field mapping:
 
@@ -416,15 +429,13 @@ re-publish, or set its `expires_at` to a past date.
 
 ## Appendix A — handling the review queue
 
-`build/review_queue_v1.csv` contains 825 rows today:
+`build/review_queue_v1.csv` contains 684 rows today:
 
-- **795 `retry_queue`** — Google returned something (often APPROXIMATE) but
+- **655 `retry_queue`** — Google returned something (often APPROXIMATE) but
   the evidence didn't stack up. Most common fix: hand-pick a better
   `geocode_query` and re-run stage 7 on that one row.
 - **29 `watchlist`** — geocoded to neighborhood-level precision, usable but
   worth a second pair of eyes before promoting.
-- **1 `manual_review_pending_external`** — today's `PR_0031`, the only row
-  the repair pass couldn't fix; needs a CNES DATASUS lookup.
 
 To promote a reviewed row back to `publish_ready`, append its patched row
 to `build/master_geocoded_patched_v1.csv` with `final_status = publish_ready`,
