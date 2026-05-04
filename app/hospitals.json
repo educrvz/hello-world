@@ -5415,7 +5415,9 @@
       "(77)3466 2111"
     ],
     "cnes": "2556901",
-    "antivenoms": [],
+    "antivenoms": [
+      "Escorpiônico"
+    ],
     "source_antivenoms_raw": [
       "Antiescorpiônico. Os demais, são supridos pela rede de frio quando do atendimento de ocorrência, dada a proximidade"
     ],
@@ -6658,7 +6660,9 @@
       "(77)34652237"
     ],
     "cnes": "2412551",
-    "antivenoms": [],
+    "antivenoms": [
+      "Escorpiônico"
+    ],
     "source_antivenoms_raw": [
       "Escorpiônico. (Os demais são supridos pela Rede de Frio quando atendimento de ocorrência)."
     ],
@@ -6837,7 +6841,9 @@
       "(77) 3466-2112"
     ],
     "cnes": "2627256",
-    "antivenoms": [],
+    "antivenoms": [
+      "Escorpiônico"
+    ],
     "source_antivenoms_raw": [
       "Escorpiônico. Os demais são supridos pela rede de frio quando do atendimento de ocorrência."
     ],

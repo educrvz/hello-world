@@ -225,6 +225,10 @@ def _is_leak(raw: str) -> bool:
     return False
 
 
+def _is_judicial_note(raw: str) -> bool:
+    return bool(re.search(r"judicial", raw, re.IGNORECASE))
+
+
 def _is_non_antivenom(norm: str) -> bool:
     for pat in NON_ANTIVENOM_PATTERNS:
         if pat.search(norm):
@@ -258,6 +262,18 @@ def _try_patterns(norm: str) -> List[str]:
     return found
 
 
+def _try_mentions_in_text(norm: str) -> List[str]:
+    """Extract canonical names embedded in longer observation text.
+
+    Mixed source cells such as "Escorpiônico. Os demais são supridos..."
+    are both useful antivenom data and an operational note. Normal splitting
+    treats the long sentence as a leak, so this punctuation-normalized pass
+    rescues the canonical mention before the full raw cell is moved to `note`.
+    """
+    search_norm = re.sub(r"[^a-z0-9]+", " ", norm).strip()
+    return _try_patterns(search_norm)
+
+
 # ---------------------------------------------------------------------------
 # API pública
 # ---------------------------------------------------------------------------
@@ -273,11 +289,15 @@ def canonicalize_one(raw: str) -> Tuple[List[str], str]:
     if not raw or not raw.strip():
         return [], "unknown"
 
-    # 1) Vazamento óbvio por frase
-    if _is_leak(raw):
-        return [], "leak"
-
     norm = _normalize(raw)
+
+    # 1) Vazamento óbvio por frase. Before classifying it as note-only,
+    # rescue any canonical antivenom mention embedded in the observation.
+    if _is_leak(raw):
+        mentions = [] if _is_judicial_note(raw) else _try_mentions_in_text(norm)
+        if mentions:
+            return mentions, "canonical"
+        return [], "leak"
 
     # 2) Divide por delimitadores e resolve cada parte
     parts = [p.strip() for p in SPLIT_PATTERN.split(norm) if p.strip()]
@@ -333,6 +353,8 @@ def canonicalize_list(raw_list: Iterable[str]) -> CanonicalResult:
                 # preserva ordem mas deduplica global
                 if c not in seen_canonical:
                     seen_canonical.append(c)
+            if _is_leak(raw) and raw not in result.leaks:
+                result.leaks.append(raw)
         elif category == "leak":
             if raw not in result.leaks:
                 result.leaks.append(raw)
@@ -485,6 +507,16 @@ def _self_test():
     ) == ([], "leak")
     assert canonicalize_one("É suprido pelo Hospital Clériston Andrade, quando necessário") == ([], "leak")
     assert canonicalize_one("É suprido pelo CIATox quando do atendimento de ocorrência, dada a proximidade") == ([], "leak")
+    assert canonicalize_one(
+        "Antiescorpiônico. Os demais, são supridos pela rede de frio quando do atendimento de ocorrência, dada a proximidade"
+    ) == (["Escorpiônico"], "canonical")
+    assert canonicalize_one(
+        "Escorpiônico. (Os demais são supridos pela Rede de Frio quando atendimento de ocorrência)."
+    ) == (["Escorpiônico"], "canonical")
+    assert canonicalize_one(
+        "Escorpiônico. Os demais são supridos pela rede de frio quando do atendimento de ocorrência."
+    ) == (["Escorpiônico"], "canonical")
+    assert canonicalize_one("Elapídico (judicial)") == ([], "leak")
 
     # Soros NÃO-antiveneno
     assert canonicalize_one("Antirrábico") == ([], "non_antivenom")
@@ -516,6 +548,14 @@ def _self_test():
     assert res.canonical == ["Botrópico", "Escorpiônico", "Laquético", "Fonêutrico", "Lonômico"]
     assert len(res.leaks) == 1
     assert res.other_soros == ["Antirrábico"]
+
+    mixed = canonicalize_list([
+        "Escorpiônico. Os demais são supridos pela rede de frio quando do atendimento de ocorrência."
+    ])
+    assert mixed.canonical == ["Escorpiônico"]
+    assert mixed.leaks == [
+        "Escorpiônico. Os demais são supridos pela rede de frio quando do atendimento de ocorrência."
+    ]
     assert res.unknown == []
 
     print("✓ Todos os testes passaram.")
