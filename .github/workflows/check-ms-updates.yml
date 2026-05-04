@@ -32,10 +32,12 @@ jobs:
 
       - name: Run check_updates.py
         id: check
+        shell: bash
         run: |
           set +e
+          set -o pipefail
           python3 scripts/check_updates.py | tee check_output.txt
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          echo "exit_code=${PIPESTATUS[0]}" >> $GITHUB_OUTPUT
 
       - name: Parse results
         id: parse
